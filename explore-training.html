@@ -1,1 +1,253 @@
 
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Explore Trainings — Skills Builder Institute</title>
+
+<link rel="stylesheet" href="skill.css">
+
+<style>
+  :root{
+    --accent:#FF6A00;
+    --bg:#f5f7fa;
+    --card:#ffffff;
+    --text:#0f1724;
+    --muted:#6b7280;
+    --radius:12px;
+    --container:1100px;
+  }
+
+  body{
+    margin:0;
+    font-family:Inter,system-ui,Arial;
+    background:var(--bg);
+    color:var(--text);
+  }
+
+  a{text-decoration:none;color:inherit}
+
+  .container{max-width:var(--container);margin:0 auto;padding:18px}
+
+  /* HEADER same as other pages */
+  header{background:#071028;color:#fff;padding:12px 18px;position:sticky;top:0;z-index:1000;box-shadow:0 2px 8px rgba(2,6,23,.08)}
+  .navbar{display:flex;align-items:center;justify-content:space-between}
+  nav ul{display:flex;gap:18px;list-style:none;margin:0;padding:0}
+  nav a{padding:8px 10px;color:#fff;border-radius:6px;font-size:14px}
+  nav a:hover{background:rgba(255,255,255,.08)}
+
+  /* Dropdown */
+  .dropdown{background:#0b1624;border-radius:8px;padding:6px;position:absolute;top:44px;left:0;display:none;min-width:200px;box-shadow:0 8px 30px rgba(2,6,23,.35)}
+  .dropdown a{color:#fff;display:block;padding:8px}
+
+  /* Slider Banner */
+  .slider-wrapper{position:relative;width:100%;height:340px;overflow:hidden;border-bottom-left-radius:0;border-bottom-right-radius:0}
+  .slide{position:absolute;width:100%;height:100%;background-size:cover;background-position:center;opacity:0;transition:opacity .7s}
+  .slide.active{opacity:1}
+
+  /* Overlap Category Boxes */
+  .overlap-boxes{
+    position:relative;
+    top:-40px;
+    z-index:10;
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:12px;
+    padding:0 20px;
+  }
+
+  .cat-box{
+    background:#fff;
+    border-radius:12px;
+    padding:18px;
+    text-align:center;
+    font-weight:700;
+    color:#071028;
+    box-shadow:0 8px 25px rgba(2,6,23,.08);
+    cursor:pointer;
+    transition:.3s;
+  }
+  .cat-box:hover{transform:translateY(-3px);box-shadow:0 12px 35px rgba(2,6,23,.12)}
+
+  @media(max-width:768px){
+    .overlap-boxes{grid-template-columns:repeat(2,1fr);}
+    .slider-wrapper{height:240px}
+  }
+
+  /* Content section */
+  .section{
+    background:white;padding:18px;border-radius:12px;box-shadow:0 10px 30px rgba(2,6,23,.06);margin-top:-20px
+  }
+
+  /* FOOTER same as other pages */
+  footer{background:#061222;color:#fff;padding:30px 18px;margin-top:30px}
+  .footer-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:20px;max-width:var(--container);margin:0 auto}
+  .social-row{display:flex;gap:12px;flex-wrap:wrap}
+</style>
+</head>
+
+<body>
+
+<!-- HEADER START -->
+<header>
+  <div class="container navbar">
+
+    <!-- Logo Map Icon -->
+    <a href="https://www.google.com/maps/search/?api=1&query=Sona+Complex+Tulshi+Nagar+Near+Dayanand+Ayurvedic+Medical+College+Siwan+Bihar+841226" target="_blank">
+      <svg width="40" height="40" viewBox="0 0 24 24">
+        <path d="M12 2C8.7 2 6 4.7 6 8c0 4.7 6 12 6 12s6-7.3 6-12c0-3.3-2.7-6-6-6z" fill="#FF6A00"/>
+        <circle cx="12" cy="8" r="2.2" fill="#fff"/>
+      </svg>
+    </a>
+
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+
+        <li id="exploreLi" style="position:relative">
+          <a href="explore-training.html">Explore Training ▾</a>
+          <div class="dropdown" id="exploreDropdown">
+            <a href="explore-training.html">All Training</a>
+            <a href="explore-training&careerguidence/skilltraining-bluecollar.html">Skill Training</a>
+            <a href="explore-training&careerguidence/professional.html">Professional Courses</a>
+            <a href="explore-training&careerguidence/engineer.html">Engineering Courses</a>
+            <a href="explore-training&careerguidence/programmer.html">Programming & IT</a>
+            <a href="explore-training&careerguidence/softskill.html">Soft Skills</a>
+          </div>
+        </li>
+
+        <li><a href="career&guidence.html">Career Guidance</a></li>
+        <li><a href="aboutus.html">About Us</a></li>
+        <li><a href="contactus.html">Contact Us</a></li>
+      </ul>
+    </nav>
+
+    <select id="langSelect" style="padding:6px;border-radius:6px;background:transparent;color:white;border:1px solid rgba(255,255,255,.2)">
+      <option value="en">English</option>
+      <option value="hi">Hindi</option>
+      <option value="ar">Arabic</option>
+    </select>
+  </div>
+</header>
+<!-- HEADER END -->
+
+<!-- SLIDER START -->
+<div class="slider-wrapper">
+
+  <div class="slide active" style="background-image:url('explorephotos/engineerbanner.png')"></div>
+  <div class="slide" style="background-image:url('explorephotos/professionalbanner.png')"></div>
+  <div class="slide" style="background-image:url('explorephotos/programmerbanner.png')"></div>
+  <div class="slide" style="background-image:url('explorephotos/skilltrainingbanner.png')"></div>
+  <div class="slide" style="background-image:url('explorephotos/softskillbanner.png')"></div>
+
+</div>
+<!-- SLIDER END -->
+
+<!-- OVERLAP CATEGORY BOXES -->
+<div class="overlap-boxes container">
+  <a href="explore-training&careerguidence/skilltraining-bluecollar.html" class="cat-box">Skill Training</a>
+  <a href="explore-training&careerguidence/professional.html" class="cat-box">Professional</a>
+  <a href="explore-training&careerguidence/engineer.html" class="cat-box">Engineering</a>
+  <a href="explore-training&careerguidence/programmer.html" class="cat-box">Programming</a>
+  <a href="explore-training&careerguidence/softskill.html" class="cat-box">Soft Skills</a>
+</div>
+
+<!-- CONTENT SECTION -->
+<div class="container">
+  <div class="section">
+    <h2>Training Programs Overview</h2>
+    <p style="color:var(--muted);line-height:1.6">
+      Our training programs are structured to help learners develop practical, job-ready skills for both Indian
+      and international opportunities. Every course is designed with industry-aligned curriculum and hands-on
+      practical sessions. Whether you choose Skill Training, Professional Courses, Engineering, Programming, or
+      Soft Skills, our goal is to make you fully prepared for real workplace environments.
+    </p>
+
+    <p style="color:var(--muted);line-height:1.6">
+      Each category includes training led by experienced professionals who guide you through modern tools,
+      techniques, and best practices. Certificates are awarded at the end of training, and our placement support
+      team helps eligible students secure opportunities locally and abroad.
+    </p>
+
+    <p style="color:var(--muted);line-height:1.6">
+      These programs provide confidence, technical ability, communication improvement, and overall personality
+      enhancement required for career growth. Continuous practice, assessments, mock interviews, and mentoring
+      sessions ensure strong skill development for every learner.
+    </p>
+  </div>
+</div>
+
+<!-- FOOTER START -->
+<footer>
+  <div class="footer-grid container">
+
+    <!-- Map & Address -->
+    <div>
+      <a href="https://www.google.com/maps/search/?api=1&query=Sona+Complex+Tulshi+Nagar+Near+Dayanand+Ayurvedic+Medical+College+Siwan+Bihar+841226" target="_blank">
+        <svg width="44" height="44" viewBox="0 0 24 24">
+          <path d="M12 2C8.7 2 6 4.7 6 8c0 4.7 6 12 6 12s6-7.3 6-12c0-3.3-2.7-6-6-6z" fill="#FF6A00"/>
+          <circle cx="12" cy="8" r="2.2" fill="#fff"/>
+        </svg>
+      </a>
+
+      <div style="margin-top:10px">
+        <b>Sona Complex, 2nd Floor (Tulshi Nagar)</b>
+        <div style="color:#ddd;margin-top:6px">Near Dayanand Ayurvedic Medical College, Siwan (Bihar)</div>
+      </div>
+    </div>
+
+    <!-- Quick Links -->
+    <div>
+      <h3 style="margin-bottom:10px">Quick Links</h3>
+      <div style="display:flex;flex-direction:column;gap:6px">
+        <a href="index.html">Home</a>
+        <a href="explore-training.html">Explore Training</a>
+        <a href="career&guidence.html">Career Guidance</a>
+        <a href="aboutus.html">About Us</a>
+        <a href="contactus.html">Contact Us</a>
+      </div>
+    </div>
+
+    <!-- Social Links -->
+    <div>
+      <h3 style="margin-bottom:10px">Follow Us</h3>
+      <div class="social-row">
+        <a href="https://www.youtube.com/@SkillsBuilderInstitute" target="_blank">YouTube</a>
+        <a href="https://www.fb.com/skillsbuilderinstitute" target="_blank">Facebook</a>
+        <a href="https://www.instagram.com/skills_builder_institute" target="_blank">Instagram</a>
+        <a href="https://t.me/skillsbuilderinstitute" target="_blank">Telegram</a>
+        <a href="https://whatsapp.com/channel/0029Vb6Kou2DuMRmU5kAKy1W" target="_blank">WhatsApp</a>
+        <a href="https://www.snapchat.com/add/skillsbuildersv" target="_blank">Snapchat</a>
+        <a href="https://www.threads.net/@skills_builder_institute" target="_blank">Threads</a>
+        <a href="https://x.com/@SkillsBuilderSV" target="_blank">X</a>
+      </div>
+    </div>
+
+  </div>
+</footer>
+<!-- FOOTER END -->
+
+<!-- SLIDER SCRIPT -->
+<script>
+  let slides = document.querySelectorAll(".slide");
+  let index = 0;
+
+  function showSlide(){
+    slides.forEach(s => s.classList.remove("active"));
+    slides[index].classList.add("active");
+    index = (index + 1) % slides.length;
+  }
+
+  setInterval(showSlide, 3000);
+
+  // Dropdown
+  const exploreLi = document.getElementById("exploreLi");
+  const exploreDropdown = document.getElementById("exploreDropdown");
+
+  exploreLi.addEventListener("mouseenter", () => exploreDropdown.style.display = "block");
+  exploreLi.addEventListener("mouseleave", () => exploreDropdown.style.display = "none");
+</script>
+
+</body>
+</html>
