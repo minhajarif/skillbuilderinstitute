@@ -1,1 +1,91 @@
 
+{
+  "nav": {
+    "home": "الرئيسية",
+    "explore": "استكشف التدريب",
+    "explore_all": "جميع الدورات",
+    "skilltraining": "تدريب المهارات",
+    "professional": "دورات مهنية",
+    "programmer": "البرمجة",
+    "engineer": "الهندسة",
+    "softskill": "المهارات الناعمة",
+    "career": "توجيه مهني",
+    "about": "من نحن",
+    "contact": "اتصل بنا"
+  },
+  "header": {
+    "email": "info@skillsbuilderinstitute.com",
+    "call": "+91-7488894910",
+    "whatsapp": "واتساب"
+  },
+  "lang": {
+    "english": "الإنجليزية",
+    "hindi": "الهندية",
+    "arabic": "العربية"
+  },
+  "hero": {
+    "contact_title": "اتصل بـ Skills Builder Institute",
+    "explore_title": "استكشف التدريب — اختر مسارك"
+  },
+  "home": {
+    "title": "مرحبًا بكم في معهد سكيلز بيلدر",
+    "para1": "نحن ملتزمون ببناء مهارات قوية وصياغة مسارات مهنية ناجحة. يقدم معهد سكيلز بيلدر تدريبًا عمليًا، ودورات مهنية مصممة وفق احتياجات الصناعة، وإرشادًا مهنيًا شاملاً للطلاب والباحثين عن عمل والمحترفين. تم تصميم برامجنا لتتناسب مع متطلبات العالم الحقيقي، مما يضمن حصول كل متعلم على خبرة عملية وشهادة ودعم للتوظيف. بوجود مدربين ذوي خبرة وطرق تدريب حديثة، نهدف إلى تمكين الشباب وتحويل محتوى التدريب في سيون وولاية بيهار. لقد دربنا أكثر من 10,000 طالب وساعدنا أكثر من 5,000 في الحصول على وظائف محلية ودولية. انضم إلينا لبناء مسار مهني قوي وواثق وجاهز للمستقبل."
+  },
+  "contact": {
+    "form": {
+      "fullname": "الاسم الكامل",
+      "age": "العمر",
+      "state": "الولاية",
+      "city": "المدينة",
+      "phone": "رقم الهاتف",
+      "whatsapp": "رقم واتساب",
+      "interest": "أرغب في",
+      "training_select": "إذا تدريب، اختر",
+      "message": "رسالة قصيرة (اختياري)",
+      "send": "إرسال",
+      "training_option_career": "توجيه مهني",
+      "training_option_training": "تدريب"
+    },
+    "details": {
+      "address_line1": "Sona Complex, الطابق الثاني (Tulshi Nagar)، بالقرب من Dayanand Ayurvedic Medical College، Siwan (Bihar) — 841226",
+      "phone_numbers": "+91-7488894910, +91-9939998360, +91-8709225954",
+      "email": "info@skillsbuilderinstitute.com",
+      "map_button": "عرض على خرائط جوجل"
+    }
+  },
+  "follow": {
+    "whatsapp": "واتساب",
+    "youtube": "يوتيوب",
+    "facebook": "فيسبوك",
+    "instagram": "انستغرام",
+    "telegram": "تيليجرام",
+    "snapchat": "سناب شات",
+    "map": "الخريطة",
+    "x": "إكس"
+  },
+  "courses": {
+    "skilltraining_title": "تدريب المهارات (العمالة الزرقاء)",
+    "professional_title": "الدورات المهنية",
+    "programmer_title": "البرمجة وتكنولوجيا المعلومات",
+    "engineer_title": "الهندسة والتقنية",
+    "softskill_title": "تدريب المهارات الناعمة"
+  },
+  "career": {
+    "title": "التوجيه المهني",
+    "choice": "اختيار المهنة",
+    "mock_interview": "محاكاة المقابلات",
+    "interview_prep": "التحضير للمقابلات",
+    "mock_gd": "محاكاة مناقشة المجموعة",
+    "counselling": "الإرشاد"
+  },
+  "footer": {
+    "quick_links": "روابط سريعة",
+    "follow_us": "تابعنا"
+  },
+  "common": {
+    "apply_contact": "قدم / اتصل بنا",
+    "learn_more": "تعرف أكثر",
+    "book_session": "حجز جلسة",
+    "view_courses": "عرض الدورات"
+  }
+}
