@@ -1,232 +1,354 @@
-
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Skill Training (Blue Collar)</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Skill Training (Blue Collar) — Skills Builder Institute</title>
+  <link rel="stylesheet" href="../skill.css">
+  <style>
+    /* Page helpers (keeps consistent with site) */
+    :root{--muted:#6b7a92;--accent:#ff7a00}
+    body{font-family:Inter,system-ui,Arial,sans-serif;margin:0;background:#f6f8fb;color:#0b1320}
+    .container{max-width:1150px;margin:0 auto;padding:18px}
+    header.top-header{display:flex;justify-content:space-between;align-items:center;padding:10px 18px;background:#06263a;color:#fff}
+    header .contact-left span{margin-right:14px;display:inline-flex;gap:8px;align-items:center}
+    .icon-small{height:18px;vertical-align:middle}
+    nav.main-nav{display:flex;align-items:center;justify-content:center;padding:12px 18px;background:linear-gradient(90deg,#06263a,#073147);color:#fff;position:sticky;top:0;z-index:1200}
+    nav.main-nav ul{list-style:none;margin:0;padding:0;display:flex;gap:18px;align-items:center;font-weight:600}
+    nav.main-nav a{color:#fff;text-decoration:none;padding:6px 8px;border-radius:6px}
+    .hero{border-radius:10px; overflow:hidden; background:#e9eef5; margin-top:18px; position:relative;}
+    .hero img{width:100%; height:320px; object-fit:cover; display:block}
+    .hero .title{position:absolute; left:22px; bottom:18px; background:rgba(3,10,24,0.36); color:#fff; padding:10px 14px; border-radius:8px; font-weight:700}
 
-<link rel="stylesheet" href="../skill.css">
+    /* skill cards grid: desktop 3, tablet 2, mobile 1 */
+    .skills-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:22px}
+    @media(max-width:980px){ .skills-grid{grid-template-columns:repeat(2,1fr)} }
+    @media(max-width:640px){ .skills-grid{grid-template-columns:1fr} }
 
-<style>
-  :root{
-    --accent:#FF6A00;
-    --bg:#f5f7fa;
-    --card:#ffffff;
-    --text:#0f1724;
-    --muted:#6b7280;
-    --container:1100px;
-    --radius:12px;
-  }
+    .skill-card{
+      background:#fff;border-radius:12px;padding:16px;box-shadow:0 12px 30px rgba(10,24,40,0.06);
+      display:flex;flex-direction:column;gap:10px;min-height:140px;border-left:6px solid var(--accent);
+    }
+    .skill-card h4{margin:0;font-size:18px}
+    .skill-card p{margin:0;color:var(--muted);line-height:1.5}
+    .skill-card .cta{margin-top:auto;display:flex;justify-content:space-between;align-items:center}
+    .btn{background:var(--accent);color:#fff;padding:8px 12px;border-radius:8px;text-decoration:none;font-weight:700}
 
-  body{margin:0;font-family:Inter,system-ui,Arial;background:var(--bg);color:var(--text);}
-  a{text-decoration:none;color:inherit}
-  .container{max-width:var(--container);margin:0 auto;padding:18px}
-
-  /* Header */
-  header{background:#071028;color:#fff;padding:12px 18px;position:sticky;top:0;z-index:1000}
-  .navbar{display:flex;align-items:center;justify-content:space-between}
-  nav ul{display:flex;gap:18px;list-style:none}
-  nav a{color:#fff;padding:8px 10px;border-radius:6px;font-size:14px}
-  nav a:hover{background:rgba(255,255,255,.08)}
-  .dropdown{background:#0b1624;padding:6px;border-radius:8px;position:absolute;top:44px;display:none;min-width:200px}
-
-  /* Banner */
-  .banner{
-    height:260px;
-    background-size:cover;
-    background-position:center;
-    margin-bottom:20px;
-  }
-
-  /* Boxes */
-  .grid{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:14px;
-    margin-top:-10px;
-  }
-
-  .box{
-    background:#fff;
-    padding:18px;
-    border-radius:12px;
-    text-align:center;
-    font-weight:700;
-    cursor:pointer;
-    box-shadow:0 10px 30px rgba(2,6,23,.08);
-    transition:.3s;
-  }
-
-  .box:hover{
-    transform:translateY(-4px);
-    box-shadow:0 14px 40px rgba(2,6,23,.12);
-  }
-
-  @media(max-width:780px){
-    .grid{grid-template-columns:repeat(2,1fr);}
-    .banner{height:200px}
-  }
-
-  /* Content */
-  .section{
-    background:#fff;
-    padding:18px;
-    margin-top:20px;
-    border-radius:12px;
-    box-shadow:0 10px 30px rgba(2,6,23,.06);
-  }
-
-  /* Footer */
-  footer{background:#061222;color:#fff;padding:30px 18px;margin-top:40px}
-  .footer-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:20px;max-width:var(--container);margin:0 auto}
-  .social-row{display:flex;gap:12px;flex-wrap:wrap}
-</style>
+    /* content block */
+    .content-card{background:#fff;border-radius:12px;padding:18px;box-shadow:0 12px 30px rgba(10,24,40,0.06);margin-top:20px}
+    .muted{color:var(--muted)}
+    .wa-float{position:fixed; right:18px; bottom:18px; z-index:1600; display:flex; align-items:center; gap:12px; background:linear-gradient(180deg,#25D366,#128C7E); color:#fff; padding:10px 16px; border-radius:999px; box-shadow:0 12px 40px rgba(18,140,126,0.16); text-decoration:none; font-weight:800}
+    .wa-round{width:44px;height:44px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;background:#fff;margin-left:-6px}
+    .chip{display:inline-block;padding:8px 12px;border-radius:999px;background:#fff;border:1px solid rgba(8,18,30,0.05);cursor:pointer}
+  </style>
 </head>
-
 <body>
 
-<!-- HEADER -->
-<header>
-  <div class="container navbar">
-
-    <!-- Map Icon -->
-    <a href="https://www.google.com/maps/search/?api=1&query=Sona+Complex+Tulshi+Nagar+Near+Dayanand+Ayurvedic+Medical+College+Siwan+Bihar+841226" target="_blank">
-      <svg width="40" height="40" viewBox="0 0 24 24">
-        <path d="M12 2C8.7 2 6 4.7 6 8c0 4.7 6 12 6 12s6-7.3 6-12c0-3.3-2.7-6-6-6z" fill="#FF6A00"/>
-        <circle cx="12" cy="8" r="2.2" fill="#fff"/>
-      </svg>
-    </a>
-
-    <nav>
-      <ul>
-        <li><a href="../index.html">Home</a></li>
-
-        <li style="position:relative" id="exploreLi">
-          <a href="../explore-training.html">Explore Training ▾</a>
-          <div class="dropdown" id="exploreDropdown">
-            <a href="../explore-training.html">All Training</a>
-            <a href="skilltraining-bluecollar.html">Skill Training</a>
-            <a href="professional.html">Professional Courses</a>
-            <a href="engineer.html">Engineering Courses</a>
-            <a href="programmer.html">Programming</a>
-            <a href="softskill.html">Soft Skills</a>
-          </div>
-        </li>
-
-        <li><a href="../career&guidence.html">Career Guidance</a></li>
-        <li><a href="../aboutus.html">About Us</a></li>
-        <li><a href="../contactus.html">Contact Us</a></li>
-      </ul>
-    </nav>
-
-  </div>
-</header>
-
-<!-- BANNER -->
-<div class="banner" style="background-image:url('../explorephotos/skilltrainingbanner.png')"></div>
-
-<!-- BOX GRID -->
-<div class="container">
-  <div class="grid">
-
-    <div class="box">Electrician</div>
-    <div class="box">Plumber</div>
-    <div class="box">Welder</div>
-    <div class="box">Shuttering / Carpenter</div>
-    <div class="box">Pipe Fitter</div>
-    <div class="box">Steel Fixer</div>
-    <div class="box">AC Technician</div>
-    <div class="box">Mason</div>
-    <div class="box">Painter</div>
-    <div class="box">Cleaner</div>
-    <div class="box">House Keeper</div>
-    <div class="box">Store Keeper</div>
-    <div class="box">Helper</div>
-
-  </div>
-</div>
-
-<!-- CONTENT -->
-<div class="container">
-  <div class="section">
-    <h2>Blue Collar Skill Training</h2>
-
-    <p style="color:var(--muted);line-height:1.6">
-      Our Blue Collar Skill Training programs are designed for learners who want practical, hands-on experience
-      that directly prepares them for jobs in India and abroad. All training is delivered by experienced industry
-      professionals who focus on real-world tasks, tools, safety practices, and technical accuracy.
-    </p>
-
-    <p style="color:var(--muted);line-height:1.6">
-      Each category such as Electrician, Plumber, Welder, Mason, Carpenter, or AC Technician includes practical
-      workshops that help students learn through real working conditions. Trainees get full exposure to tools,
-      machines, repair techniques, installation procedures, and field-level problem solving.
-    </p>
-
-    <p style="color:var(--muted);line-height:1.6">
-      After successful training, students receive a certificate and guidance for job placements. Many students
-      trained under Skill Builder Institute have secured opportunities in India, Gulf countries, and various
-      international projects. We focus on ensuring that every learner becomes confident, work-ready, and capable
-      of delivering quality results.
-    </p>
-  </div>
-</div>
-
-<!-- FOOTER -->
-<footer>
-  <div class="footer-grid container">
-
-    <div>
-      <a href="https://www.google.com/maps/search/?api=1&query=Sona+Complex+Tulshi+Nagar+Near+Dayanand+Ayurvedic+Medical+College+Siwan+Bihar+841226" target="_blank">
-        <svg width="44" height="44" viewBox="0 0 24 24">
-          <path d="M12 2C8.7 2 6 4.7 6 8c0 4.7 6 12 6 12s6-7.3 6-12c0-3.3-2.7-6-6-6z" fill="#FF6A00"/>
-          <circle cx="12" cy="8" r="2.2" fill="#fff"/>
-        </svg>
-      </a>
-
-      <div style="margin-top:10px">
-        <b>Sona Complex, 2nd Floor, Tulshi Nagar</b>
-        <div style="color:#ddd;margin-top:6px">Near Dayanand Ayurvedic Medical College, Siwan (Bihar)</div>
-      </div>
+  <!-- TOP HEADER -->
+  <header class="top-header" role="banner">
+    <div class="contact-left">
+      <span><img src="../images/mail.png" class="icon-small" alt="mail"> info@skillsbuilderinstitute.com</span>
+      <span><img src="../images/call.png" class="icon-small" alt="call"> +91-7488894910</span>
     </div>
 
-    <div>
-      <h3>Quick Links</h3>
-      <div style="display:flex;flex-direction:column;gap:6px;margin-top:10px">
-        <a href="../index.html">Home</a>
-        <a href="../explore-training.html">Explore Training</a>
-        <a href="../career&guidence.html">Career Guidance</a>
-        <a href="../aboutus.html">About Us</a>
-        <a href="../contactus.html">Contact Us</a>
+    <div style="position:relative;">
+      <button id="langBtn" style="background:transparent;border:0;color:#fff;font-weight:700;padding:6px 10px;cursor:pointer">
+        <span id="langFlag">🇬🇧</span> <span id="langText">EN</span> ▾
+      </button>
+      <div id="langPanel" style="display:none;position:absolute;right:0;top:36px;background:#fff;color:#05283b;border-radius:8px;box-shadow:0 12px 30px rgba(0,0,0,0.12);overflow:hidden;">
+        <button data-lang="en" data-flag="🇬🇧" style="display:block;padding:10px 14px;border:0;background:transparent;width:100%;text-align:left">🇬🇧 English</button>
+        <button data-lang="hi" data-flag="🇮🇳" style="display:block;padding:10px 14px;border:0;background:transparent;width:100%;text-align:left">🇮🇳 हिंदी</button>
+        <button data-lang="ar" data-flag="🇦🇪" style="display:block;padding:10px 14px;border:0;background:transparent;width:100%;text-align:left">🇦🇪 العربية</button>
       </div>
     </div>
+  </header>
 
-    <div>
-      <h3>Follow Us</h3>
-      <div class="social-row" style="margin-top:10px">
-        <a href="https://www.youtube.com/@SkillsBuilderInstitute" target="_blank">YouTube</a>
-        <a href="https://www.fb.com/skillsbuilderinstitute" target="_blank">Facebook</a>
-        <a href="https://www.instagram.com/skills_builder_institute" target="_blank">Instagram</a>
-        <a href="https://t.me/skillsbuilderinstitute" target="_blank">Telegram</a>
-        <a href="https://whatsapp.com/channel/0029Vb6Kou2DuMRmU5kAKy1W" target="_blank">WhatsApp</a>
-        <a href="https://www.snapchat.com/add/skillsbuildersv" target="_blank">Snapchat</a>
-        <a href="https://www.threads.net/@skills_builder_institute" target="_blank">Threads</a>
-        <a href="https://x.com/@SkillsBuilderSV" target="_blank">X</a>
-      </div>
+  <!-- NAVBAR -->
+  <nav class="main-nav" role="navigation" aria-label="Main menu">
+    <a href="../index.html" style="margin-right:18px"><img src="../images/logo.png" alt="logo" style="height:56px"></a>
+
+    <ul>
+      <li><a href="../index.html">Home</a></li>
+
+      <li class="nav-item">
+        <a id="exploreToggle" href="../explore-training.html">Explore Training ▾</a>
+        <div class="dropdown-panel" id="explorePanel" aria-hidden="true">
+          <a href="../explore-training.html">All Training</a>
+          <a href="skilltraining-bluecollar.html">Skill Training</a>
+          <a href="../explore-training&careerguidence/professional.html">Professional</a>
+          <a href="../explore-training&careerguidence/engineer.html">Engineering</a>
+          <a href="../explore-training&careerguidence/programmer.html">Programming</a>
+          <a href="../explore-training&careerguidence/softskill.html">Soft Skills</a>
+        </div>
+      </li>
+
+      <li><a href="../career&guidence.html">Career Guidance</a></li>
+      <li><a href="../aboutus.html">About Us</a></li>
+      <li><a href="../contactus.html">Contact Us</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <main class="container" role="main">
+    <section class="hero card" aria-label="Skill training banner">
+      <img src="../images/explorephotos/skilltrainingbanner.png" alt="Skill training banner image">
+      <div class="title">Skill Training (Blue Collar)</div>
+    </section>
+
+    <!-- short intro -->
+    <section style="margin-top:18px">
+      <p class="muted" style="line-height:1.8">
+        Our Skill Training courses are focused on hands-on vocational trades that prepare learners for immediate employment.
+        Each course emphasizes practical practice, workplace safety, and real project experience so graduates are job-ready.
+        Short-term, industry-focused, and locally relevant — these programs are built with employer needs in mind.
+      </p>
+    </section>
+
+    <!-- SKILL CARDS GRID -->
+    <div class="skills-grid" role="list" aria-label="Blue collar skills list">
+      <article class="skill-card" role="listitem" tabindex="0">
+        <h4>Electrician</h4>
+        <p class="muted">Domestic and industrial electrical installation, maintenance, wiring, and troubleshooting with safety practices.</p>
+        <div class="cta">
+          <a class="btn" href="skillpages/electrician.html">View</a>
+          <div class="small muted">Practical + certificate</div>
+        </div>
+      </article>
+
+      <article class="skill-card" role="listitem" tabindex="0">
+        <h4>Plumber</h4>
+        <p class="muted">Pipe fitting, leak repairs, sanitary works, and installation for domestic and commercial settings.</p>
+        <div class="cta">
+          <a class="btn" href="skillpages/plumber.html">View</a>
+          <div class="small muted">Hands-on practice</div>
+        </div>
+      </article>
+
+      <article class="skill-card" role="listitem" tabindex="0">
+        <h4>Welder</h4>
+        <p class="muted">MIG/TIG/Arc welding techniques, metal joining, reading fabrication drawings, and workshop safety.</p>
+        <div class="cta">
+          <a class="btn" href="skillpages/welder.html">View</a>
+          <div class="small muted">Shop projects</div>
+        </div>
+      </article>
+
+      <article class="skill-card" role="listitem" tabindex="0">
+        <h4>Shuttering</h4>
+        <p class="muted">Formwork creation, reinforcement handling and concrete planning for construction projects.</p>
+        <div class="cta">
+          <a class="btn" href="skillpages/shuttering.html">View</a>
+          <div class="small muted">Construction ready</div>
+        </div>
+      </article>
+
+      <article class="skill-card" role="listitem" tabindex="0">
+        <h4>Carpenter</h4>
+        <p class="muted">Carpentry basics, furniture making, finishing, joinery and site installation techniques.</p>
+        <div class="cta">
+          <a class="btn" href="skillpages/carpenter.html">View</a>
+          <div class="small muted">Portfolio projects</div>
+        </div>
+      </article>
+
+      <article class="skill-card" role="listitem" tabindex="0">
+        <h4>Pipe Fitter</h4>
+        <p class="muted">Measurement, cutting, threading and assembling piping systems for water, gas and industrial applications.</p>
+        <div class="cta">
+          <a class="btn" href="skillpages/pipefitter.html">View</a>
+          <div class="small muted">Workshop practice</div>
+        </div>
+      </article>
+
+      <article class="skill-card" role="listitem" tabindex="0">
+        <h4>Steel Fixer</h4>
+        <p class="muted">Rebar bending, tying and reinforcement placement for structural concrete works following standards.</p>
+        <div class="cta">
+          <a class="btn" href="skillpages/steelfixer.html">View</a>
+          <div class="small muted">Site-ready training</div>
+        </div>
+      </article>
+
+      <article class="skill-card" role="listitem" tabindex="0">
+        <h4>AC Technician</h4>
+        <p class="muted">Air conditioning installation, troubleshooting, refrigeration basics and preventive maintenance.</p>
+        <div class="cta">
+          <a class="btn" href="skillpages/actech.html">View</a>
+          <div class="small muted">Service skills</div>
+        </div>
+      </article>
+
+      <article class="skill-card" role="listitem" tabindex="0">
+        <h4>Helper</h4>
+        <p class="muted">Supportive on-site tasks, basic construction assistance and skills to step up into trades roles.</p>
+        <div class="cta">
+          <a class="btn" href="skillpages/helper.html">View</a>
+          <div class="small muted">Entry level</div>
+        </div>
+      </article>
+
+      <article class="skill-card" role="listitem" tabindex="0">
+        <h4>Mason</h4>
+        <p class="muted">Block laying, plastering, finishing, and mixing mortar techniques for building work.</p>
+        <div class="cta">
+          <a class="btn" href="skillpages/mason.html">View</a>
+          <div class="small muted">Site training</div>
+        </div>
+      </article>
+
+      <article class="skill-card" role="listitem" tabindex="0">
+        <h4>Painter</h4>
+        <p class="muted">Surface prep, painting techniques, color selection and protective coatings for interiors and exteriors.</p>
+        <div class="cta">
+          <a class="btn" href="skillpages/painter.html">View</a>
+          <div class="small muted">Finish skills</div>
+        </div>
+      </article>
+
+      <article class="skill-card" role="listitem" tabindex="0">
+        <h4>Cleaner</h4>
+        <p class="muted">Professional cleaning methods, equipment handling and hygiene standards for residential and commercial spaces.</p>
+        <div class="cta">
+          <a class="btn" href="skillpages/cleaner.html">View</a>
+          <div class="small muted">Job-ready</div>
+        </div>
+      </article>
+
+      <article class="skill-card" role="listitem" tabindex="0">
+        <h4>House Keeper</h4>
+        <p class="muted">Housekeeping procedures, guest service basics and maintenance tasks for hospitality and homes.</p>
+        <div class="cta">
+          <a class="btn" href="skillpages/housekeeper.html">View</a>
+          <div class="small muted">Hospitality skills</div>
+        </div>
+      </article>
+
+      <article class="skill-card" role="listitem" tabindex="0">
+        <h4>Store Keeper</h4>
+        <p class="muted">Inventory control, stock handling, basic billing and warehouse best-practices for stores.</p>
+        <div class="cta">
+          <a class="btn" href="skillpages/storekeeper.html">View</a>
+          <div class="small muted">Logistics basics</div>
+        </div>
+      </article>
     </div>
 
-  </div>
-</footer>
+    <!-- detailed content (12 lines) -->
+    <div class="content-card" aria-labelledby="skills-heading">
+      <h3 id="skills-heading">What these skill courses give you</h3>
+      <p class="muted" style="line-height:1.8">
+        1. Practical, hands-on training that focuses on the tasks you will perform on the job. <br>
+        2. Real workshop and on-site exercises to build confidence and competence. <br>
+        3. Experienced trainers who teach practical tips, safety and quality standards. <br>
+        4. Industry-aligned curriculum developed to meet employer expectations. <br>
+        5. Certificate of completion that helps in local hiring and shortlisting by employers. <br>
+        6. Mock practical tests, performance evaluations and feedback for improvement. <br>
+        7. Placement assistance and connections with local employers and contractors. <br>
+        8. Soft-skill coaching — communication, punctuality, and workplace behaviour. <br>
+        9. Flexible batches and scheduling options to suit students and working learners. <br>
+        10. Ongoing support and mentorship after course completion for better job outcomes. <br>
+        11. Affordable fees with focus on high return on investment through placement. <br>
+        12. A clear pathway to upgrade skills or take professional/engineering courses later.
+      </p>
+    </div>
 
-<script>
-  // Dropdown menu
-  const exploreLi = document.getElementById("exploreLi");
-  const exploreDropdown = document.getElementById("exploreDropdown");
+    <!-- CTA -->
+    <div style="margin-top:18px;text-align:center">
+      <a class="btn" href="../contactus.html">Apply / Contact us</a>
+    </div>
+  </main>
 
-  exploreLi.addEventListener("mouseenter", ()=> exploreDropdown.style.display="block");
-  exploreLi.addEventListener("mouseleave", ()=> exploreDropdown.style.display="none");
-</script>
+  <!-- FOOTER -->
+  <footer class="site-footer" role="contentinfo" style="margin-top:28px;background:linear-gradient(180deg,#05283b,#0a3760);color:#fff;padding:28px 0">
+    <div class="container" style="display:grid;grid-template-columns:1fr 1fr 300px;gap:20px;align-items:start">
+      <div>
+        <a href="../index.html"><img src="../images/logo.png" alt="logo" style="height:70px;border-radius:8px"></a>
+        <div style="margin-top:12px;color:#d7e9ff">
+          Sona Complex, 2nd Floor (Tulshi Nagar), Near Dayanand Ayurvedic Medical College, Siwan (Bihar) — 841226
+        </div>
+        <div style="margin-top:8px;color:#d7e9ff">
+          <img src="../images/call.png" class="icon-small" alt="call"> +91-7488894910 &nbsp;
+          <img src="../images/mail.png" class="icon-small" alt="mail"> info@skillsbuilderinstitute.com
+        </div>
+        <a href="https://www.google.com/maps/search/?api=1&query=Sona+Complex+Tulshi+Nagar+Siwan+Bihar+841226" target="_blank" class="map-btn" style="display:inline-block;margin-top:10px;background:transparent;border:1px solid rgba(255,255,255,0.15);color:#d9e7fb;padding:8px 12px;border-radius:8px;text-decoration:none">View on Google Map</a>
+      </div>
 
+      <div style="color:#d9e7fb">
+        <h4 style="color:#fff">Quick Links</h4>
+        <a href="../index.html" style="display:block;color:#d9e7fb;text-decoration:none;margin-bottom:8px">➤ Home</a>
+        <a href="../explore-training.html" style="display:block;color:#d9e7fb;text-decoration:none;margin-bottom:8px">➤ Explore Training</a>
+        <a href="../career&guidence.html" style="display:block;color:#d9e7fb;text-decoration:none;margin-bottom:8px">➤ Career Guidance</a>
+        <a href="../aboutus.html" style="display:block;color:#d9e7fb;text-decoration:none;margin-bottom:8px">➤ About Us</a>
+        <a href="../contactus.html" style="display:block;color:#d9e7fb;text-decoration:none;margin-bottom:8px">➤ Contact Us</a>
+      </div>
+
+      <div style="text-align:right;">
+        <h4 style="color:#fff">Follow Us</h4>
+        <div style="display:flex;flex-direction:column;gap:10px;align-items:flex-end;">
+          <a href="https://wa.me/917488894910" style="color:#d9e7fb;text-decoration:none">➤ WhatsApp</a>
+          <a href="https://www.instagram.com/skills_builder_institute" style="color:#d9e7fb;text-decoration:none">➤ Instagram</a>
+          <a href="https://www.fb.com/skillsbuilderinstitute" style="color:#d9e7fb;text-decoration:none">➤ Facebook</a>
+          <a href="https://www.youtube.com/@SkillsBuilderInstitute" style="color:#d9e7fb;text-decoration:none">➤ YouTube</a>
+          <a href="https://t.me/skillsbuilderinstitute" style="color:#d9e7fb;text-decoration:none">➤ Telegram</a>
+          <a href="https://www.snapchat.com/add/skillsbuildersv" style="color:#d9e7fb;text-decoration:none">➤ Snapchat</a>
+          <a href="https://x.com/skillsbuilder" style="color:#d9e7fb;text-decoration:none">➤ X (Twitter)</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Floating WhatsApp -->
+  <a href="https://wa.me/917488894910" class="wa-float" aria-label="WhatsApp chat" target="_blank" rel="noopener">
+    <span class="wa-round"><img src="../images/whatsapp.png" alt="wa" style="width:22px;height:22px"></span>
+    <span style="font-weight:800">WhatsApp</span>
+  </a>
+
+  <!-- Minimal JS: dropdowns & language label -->
+  <script>
+    (function(){
+      // explore dropdown
+      const exploreToggle = document.getElementById('exploreToggle');
+      const explorePanel = document.getElementById('explorePanel');
+      if(exploreToggle && explorePanel){
+        exploreToggle.addEventListener('mouseenter', ()=> explorePanel.style.display='block');
+        exploreToggle.parentElement.addEventListener('mouseleave', ()=> explorePanel.style.display='none');
+        exploreToggle.addEventListener('click', (e)=> { e.preventDefault(); explorePanel.style.display = explorePanel.style.display === 'block' ? 'none' : 'block'; });
+      }
+
+      // language panel
+      const langBtn = document.getElementById('langBtn');
+      const langPanel = document.getElementById('langPanel');
+      const langText = document.getElementById('langText');
+      const langFlag = document.getElementById('langFlag');
+      if(langBtn && langPanel){
+        langBtn.addEventListener('click', ()=> {
+          langPanel.style.display = langPanel.style.display === 'block' ? 'none' : 'block';
+        });
+        langPanel.querySelectorAll('button').forEach(btn=>{
+          btn.addEventListener('click', ()=>{
+            const flag = btn.dataset.flag || '';
+            const lang = btn.dataset.lang || '';
+            if(langText) langText.textContent = (lang || '').toUpperCase();
+            if(langFlag && flag) langFlag.textContent = flag;
+            langPanel.style.display = 'none';
+            // hook for i18n loader if implemented
+          });
+        });
+        document.addEventListener('click', (e)=> {
+          if(!langBtn.contains(e.target) && !langPanel.contains(e.target)) langPanel.style.display = 'none';
+        });
+      }
+
+      // keyboard: press enter on card to open link
+      document.querySelectorAll('.skill-card').forEach(card=>{
+        card.addEventListener('keydown', e=>{
+          if(e.key === 'Enter' || e.key === ' ') {
+            const a = card.querySelector('.btn');
+            if(a) a.click();
+          }
+        });
+      });
+    })();
+  </script>
 </body>
 </html>
