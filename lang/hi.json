@@ -1,1 +1,91 @@
 
+{
+  "nav": {
+    "home": "होम",
+    "explore": "Explore Training",
+    "explore_all": "सभी प्रशिक्षण",
+    "skilltraining": "स्किल ट्रेनिंग",
+    "professional": "प्रोफेशनल",
+    "programmer": "प्रोग्रामर",
+    "engineer": "इंजीनियर",
+    "softskill": "सॉफ्ट स्किल्स",
+    "career": "करियर गाइडेंस",
+    "about": "हमारे बारे में",
+    "contact": "संपर्क करें"
+  },
+  "header": {
+    "email": "info@skillsbuilderinstitute.com",
+    "call": "+91-7488894910",
+    "whatsapp": "व्हाट्सएप"
+  },
+  "lang": {
+    "english": "English",
+    "hindi": "हिन्दी",
+    "arabic": "अरबी"
+  },
+  "hero": {
+    "contact_title": "Skills Builder Institute से संपर्क करें",
+    "explore_title": "Explore Training — अपना रास्ता चुनें"
+  },
+  "home": {
+    "title": "Skills Builder Institute में आपका स्वागत है",
+    "para1": "हम मजबूत कौशल बनाने और सफल करियर चुनने के लिए समर्पित हैं। Skills Builder Institute व्यावहारिक प्रशिक्षण, उद्योग-उन्मुख पाठ्यक्रम और छात्रों, नौकरी चाहने वालों और पेशेवरों के लिए संपूर्ण करियर मार्गदर्शन प्रदान करता है। हमारे प्रोग्राम वास्तविक दुनिया की जरूरतों के अनुरूप डिजाइन किए गए हैं ताकि हर सीखने वाले को व्यावहारिक अनुभव, प्रमाणपत्र और प्लेसमेंट सहायता मिल सके। अनुभवी प्रशिक्षकों और आधुनिक प्रशिक्षण विधियों के साथ, हमारा मिशन युवाओं को सशक्त बनाना है। अब तक 10,000+ से अधिक छात्रों को हमने प्रशिक्षित किया है और 5,000+ से अधिक लोगों को स्थानीय और अंतरराष्ट्रीय रूप से नौकरी दिलाने में मदद की है। हमारे साथ जुड़ें और एक मजबूत, आत्मविश्वासी और भविष्य-तैयार करियर बनाएं।"
+  },
+  "contact": {
+    "form": {
+      "fullname": "पूरा नाम",
+      "age": "आयु",
+      "state": "राज्य",
+      "city": "शहर",
+      "phone": "कॉल करने का नंबर",
+      "whatsapp": "व्हाट्सएप नंबर",
+      "interest": "मुझे चाहिए",
+      "training_select": "यदि प्रशिक्षण, तो चुनें",
+      "message": "संक्षिप्त संदेश (वैकल्पिक)",
+      "send": "भेजें",
+      "training_option_career": "करियर गाइडेंस",
+      "training_option_training": "प्रशिक्षण"
+    },
+    "details": {
+      "address_line1": "Sona Complex, 2nd Floor (Tulshi Nagar), Near Dayanand Ayurvedic Medical College, Siwan (Bihar) — 841226",
+      "phone_numbers": "+91-7488894910, +91-9939998360, +91-8709225954",
+      "email": "info@skillsbuilderinstitute.com",
+      "map_button": "गूगल मैप पर देखें"
+    }
+  },
+  "follow": {
+    "whatsapp": "व्हाट्सएप",
+    "youtube": "YouTube",
+    "facebook": "Facebook",
+    "instagram": "Instagram",
+    "telegram": "Telegram",
+    "snapchat": "Snapchat",
+    "map": "मैप",
+    "x": "X"
+  },
+  "courses": {
+    "skilltraining_title": "स्किल ट्रेनिंग (ब्लू कॉलर)",
+    "professional_title": "प्रोफेशनल कोर्स",
+    "programmer_title": "प्रोग्रामिंग और आईटी",
+    "engineer_title": "इंजीनियरिंग और टेक्निकल",
+    "softskill_title": "सॉफ्ट स्किल्स ट्रेनिंग"
+  },
+  "career": {
+    "title": "करियर गाइडेंस",
+    "choice": "करियर चॉइस",
+    "mock_interview": "मॉक इंटरव्यू",
+    "interview_prep": "इंटरव्यू तैयारी",
+    "mock_gd": "मॉक ग्रुप डिस्कशन",
+    "counselling": "काउंसलिंग"
+  },
+  "footer": {
+    "quick_links": "त्वरित लिंक",
+    "follow_us": "हमे फॉलो करें"
+  },
+  "common": {
+    "apply_contact": "एप्लाई / संपर्क करें",
+    "learn_more": "और जानें",
+    "book_session": "सेशन बुक करें",
+    "view_courses": "कोर्स देखें"
+  }
+}
