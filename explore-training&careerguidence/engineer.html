@@ -1,1 +1,238 @@
 
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Engineering Courses — Skills Builder Institute</title>
+
+<link rel="stylesheet" href="../skill.css">
+
+<style>
+  :root{
+    --accent:#FF6A00;
+    --bg:#f5f7fa;
+    --card:#ffffff;
+    --text:#0f1724;
+    --muted:#6b7280;
+    --container:1100px;
+    --radius:12px;
+  }
+  body{margin:0;font-family:Inter,system-ui,Arial;background:var(--bg);color:var(--text);}
+  a{text-decoration:none;color:inherit}
+  .container{max-width:var(--container);margin:0 auto;padding:18px}
+
+  /* Header */
+  header{background:#071028;color:#fff;padding:12px 18px;position:sticky;top:0;z-index:1000}
+  .navbar{display:flex;align-items:center;justify-content:space-between}
+  nav ul{display:flex;list-style:none;gap:18px;padding:0;margin:0}
+  nav a{color:#fff;padding:8px 10px;border-radius:6px;font-size:14px}
+  nav a:hover{background:rgba(255,255,255,.08)}
+  .dropdown{background:#0b1624;border-radius:8px;padding:6px;position:absolute;top:44px;left:0;min-width:200px;display:none}
+
+  /* Banner */
+  .banner{
+    height:260px;
+    background-size:cover;
+    background-position:center;
+    margin-bottom:20px;
+  }
+
+  /* Boxes grid */
+  .grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:14px;
+    margin-top:-10px;
+  }
+  .box{
+    background:#fff;
+    padding:18px;
+    border-radius:12px;
+    text-align:center;
+    font-weight:700;
+    cursor:pointer;
+    box-shadow:0 10px 30px rgba(2,6,23,.08);
+    transition:.3s;
+  }
+  .box:hover{
+    transform:translateY(-4px);
+    box-shadow:0 14px 40px rgba(2,6,23,.12);
+  }
+  @media(max-width:780px){
+    .grid{grid-template-columns:repeat(2,1fr);}
+    .banner{height:200px}
+  }
+
+  /* Content */
+  .section{
+    background:#fff;
+    padding:18px;
+    margin-top:20px;
+    border-radius:12px;
+    box-shadow:0 10px 30px rgba(2,6,23,.06);
+  }
+
+  /* Footer */
+  footer{background:#061222;color:#fff;padding:30px 18px;margin-top:40px}
+  .footer-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:20px;max-width:var(--container);margin:0 auto}
+  .social-row{display:flex;gap:12px;flex-wrap:wrap}
+</style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="container navbar">
+
+    <!-- Logo Map -->
+    <a href="https://www.google.com/maps/search/?api=1&query=Sona+Complex+Tulshi+Nagar+Near+Dayanand+Ayurvedic+Medical+College+Siwan+Bihar+841226" target="_blank">
+      <svg width="40" height="40" viewBox="0 0 24 24">
+        <path d="M12 2C8.7 2 6 4.7 6 8c0 4.7 6 12 6 12s6-7.3 6-12c0-3.3-2.7-6-6-6z" fill="#FF6A00"/>
+        <circle cx="12" cy="8" r="2.2" fill="#fff"/>
+      </svg>
+    </a>
+
+    <nav>
+      <ul>
+        <li><a href="../index.html">Home</a></li>
+
+        <li id="exploreLi" style="position:relative">
+          <a href="../explore-training.html">Explore Training ▾</a>
+          <div class="dropdown" id="exploreDropdown">
+            <a href="../explore-training.html">All Training</a>
+            <a href="skilltraining-bluecollar.html">Skill Training</a>
+            <a href="professional.html">Professional Courses</a>
+            <a href="engineer.html" aria-current="page">Engineering Courses</a>
+            <a href="programmer.html">Programming</a>
+            <a href="softskill.html">Soft Skills</a>
+          </div>
+        </li>
+
+        <li><a href="../career&guidence.html">Career Guidance</a></li>
+        <li><a href="../aboutus.html">About Us</a></li>
+        <li><a href="../contactus.html">Contact Us</a></li>
+      </ul>
+    </nav>
+
+  </div>
+</header>
+
+<!-- BANNER -->
+<div class="banner" style="background-image:url('../explorephotos/engineerbanner.png')"></div>
+
+<!-- GRID BOXES -->
+<div class="container">
+  <div class="grid">
+
+    <div class="box">Civil Engineer</div>
+    <div class="box">Electrical Engineer</div>
+    <div class="box">Mechanical Engineer</div>
+
+    <div class="box">Electronic Engineer</div>
+    <div class="box">Mobile Engineer</div>
+    <div class="box">Project Engineer</div>
+
+    <div class="box">Data Analytics</div>
+    <div class="box">Product Engineer</div>
+
+  </div>
+</div>
+
+<!-- CONTENT -->
+<div class="container">
+  <div class="section">
+    <h2>Engineering Skill Development</h2>
+
+    <p style="color:var(--muted);line-height:1.6">
+      Our Engineering courses are designed for students who want industry-oriented technical skills along with
+      real project exposure. Each module focuses on practical learning, tool-based training, and professional
+      problem-solving techniques relevant to modern engineering roles.
+    </p>
+
+    <p style="color:var(--muted);line-height:1.6">
+      Civil, Mechanical, Electrical and Electronics engineering modules include hands-on labs, equipment practice,
+      site-level concepts, drafting basics, project understanding and real application-based tasks. Learners get
+      exposure to how engineering operations work in real organisations.
+    </p>
+
+    <p style="color:var(--muted);line-height:1.6">
+      The Mobile Engineer and Project Engineer tracks help students understand technical workflows, product
+      repair basics, project planning, team coordination, reporting and quality standards needed in engineering
+      companies.
+    </p>
+
+    <p style="color:var(--muted);line-height:1.6">
+      Our Data Analytics and Product Engineering modules introduce essential analytics tools, product lifecycle,
+      requirements understanding, documentation, and decision-making concepts used in product teams.
+    </p>
+
+    <p style="color:var(--muted);line-height:1.6">
+      Students completing these engineering programs receive certificates and placement support for suitable
+      roles in India and international markets. Training is delivered by experienced professionals who guide
+      learners through real examples and industry expectations.
+    </p>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid container">
+
+    <!-- Address -->
+    <div>
+      <a href="https://www.google.com/maps/search/?api=1&query=Sona+Complex+Tulshi+Nagar+Near+Dayanand+Ayurvedic+Medical+College+Siwan+Bihar+841226" target="_blank">
+        <svg width="44" height="44" viewBox="0 0 24 24">
+          <path d="M12 2C8.7 2 6 4.7 6 8c0 4.7 6 12 6 12s6-7.3 6-12c0-3.3-2.7-6-6-6z" fill="#FF6A00"/>
+          <circle cx="12" cy="8" r="2.2" fill="#fff"/>
+        </svg>
+      </a>
+
+      <div style="margin-top:10px">
+        <b>Sona Complex, 2nd Floor, Tulshi Nagar</b>
+        <div style="color:#ddd;margin-top:6px">Near Dayanand Ayurvedic Medical College, Siwan (Bihar)</div>
+      </div>
+    </div>
+
+    <!-- quick links -->
+    <div>
+      <h3>Quick Links</h3>
+      <div style="margin-top:10px;display:flex;flex-direction:column;gap:6px">
+        <a href="../index.html">Home</a>
+        <a href="../explore-training.html">Explore Training</a>
+        <a href="../career&guidence.html">Career Guidance</a>
+        <a href="../aboutus.html">About Us</a>
+        <a href="../contactus.html">Contact Us</a>
+      </div>
+    </div>
+
+    <!-- Social -->
+    <div>
+      <h3>Follow Us</h3>
+      <div class="social-row" style="margin-top:10px">
+        <a href="https://www.youtube.com/@SkillsBuilderInstitute" target="_blank">YouTube</a>
+        <a href="https://www.fb.com/skillsbuilderinstitute" target="_blank">Facebook</a>
+        <a href="https://www.instagram.com/skills_builder_institute" target="_blank">Instagram</a>
+        <a href="https://t.me/skillsbuilderinstitute" target="_blank">Telegram</a>
+        <a href="https://whatsapp.com/channel/0029Vb6Kou2DuMRmU5kAKy1W" target="_blank">WhatsApp</a>
+        <a href="https://www.snapchat.com/add/skillsbuildersv" target="_blank">Snapchat</a>
+        <a href="https://www.threads.net/@skills_builder_institute" target="_blank">Threads</a>
+        <a href="https://x.com/@SkillsBuilderSV" target="_blank">X</a>
+      </div>
+    </div>
+
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script>
+  const exploreLi = document.getElementById('exploreLi');
+  const exploreDropdown = document.getElementById('exploreDropdown');
+
+  exploreLi.addEventListener('mouseenter', ()=> exploreDropdown.style.display='block');
+  exploreLi.addEventListener('mouseleave', ()=> exploreDropdown.style.display='none');
+</script>
+
+</body>
+</html>
