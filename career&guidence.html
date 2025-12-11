@@ -1,1 +1,246 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Career Guidance — Skills Builder Institute</title>
 
+<link rel="stylesheet" href="skill.css">
+
+<style>
+  :root{
+    --accent:#FF6A00;
+    --bg:#f5f7fa;
+    --card:#ffffff;
+    --text:#0f1724;
+    --muted:#6b7280;
+    --radius:12px;
+    --container:1100px;
+  }
+
+  body{margin:0;font-family:Inter,system-ui,Arial;background:var(--bg);color:var(--text);}
+  a{text-decoration:none;color:inherit}
+  .container{max-width:var(--container);margin:0 auto;padding:18px}
+
+  /* Header */
+  header{background:#071028;color:#fff;padding:12px 18px;position:sticky;top:0;z-index:1000;box-shadow:0 2px 8px rgba(2,6,23,.08)}
+  .navbar{display:flex;align-items:center;justify-content:space-between}
+  nav ul{display:flex;gap:18px;list-style:none}
+  nav a{color:#fff;padding:8px 10px;border-radius:6px;font-size:14px}
+  nav a:hover{background:rgba(255,255,255,.08)}
+  .dropdown{background:#0b1624;border-radius:8px;padding:6px;position:absolute;top:44px;left:0;min-width:200px;display:none;box-shadow:0 8px 30px rgba(2,6,23,.35)}
+  .dropdown a{color:#fff;display:block;padding:8px}
+
+  /* Banner */
+  .banner{
+    height:300px;
+    background-size:cover;
+    background-position:center;
+    border-bottom-left-radius:0;
+    border-bottom-right-radius:0;
+  }
+
+  /* Boxes */
+  .box-grid{
+    margin-top:-40px;
+    position:relative;
+    z-index:10;
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:14px;
+  }
+  .box{
+    background:#fff;
+    padding:18px;
+    border-radius:12px;
+    box-shadow:0 10px 30px rgba(2,6,23,.08);
+    text-align:center;
+    font-weight:700;
+    cursor:pointer;
+    transition:.3s;
+  }
+  .box:hover{
+    transform:translateY(-4px);
+    box-shadow:0 12px 40px rgba(2,6,23,.12);
+  }
+
+  @media(max-width:780px){
+    .box-grid{grid-template-columns:repeat(2,1fr);}
+    .banner{height:220px}
+  }
+
+  /* Content */
+  .section{
+    background:#fff;
+    margin-top:18px;
+    padding:18px;
+    border-radius:12px;
+    box-shadow:0 10px 30px rgba(2,6,23,.06);
+  }
+
+  /* Footer */
+  footer{background:#061222;color:#fff;padding:30px 18px;margin-top:30px}
+  .footer-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:20px;max-width:var(--container);margin:0 auto}
+  .social-row{display:flex;gap:12px;flex-wrap:wrap}
+</style>
+
+</head>
+
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="container navbar">
+
+    <!-- Map Icon -->
+    <a href="https://www.google.com/maps/search/?api=1&query=Sona+Complex+Tulshi+Nagar+Near+Dayanand+Ayurvedic+Medical+College+Siwan+Bihar+841226" target="_blank">
+      <svg width="40" height="40" viewBox="0 0 24 24">
+        <path d="M12 2C8.7 2 6 4.7 6 8c0 4.7 6 12 6 12s6-7.3 6-12c0-3.3-2.7-6-6-6z" fill="#FF6A00"/>
+        <circle cx="12" cy="8" r="2.2" fill="#fff"/>
+      </svg>
+    </a>
+
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+
+        <li id="exploreLi" style="position:relative">
+          <a href="explore-training.html">Explore Training ▾</a>
+          <div class="dropdown" id="exploreDropdown">
+            <a href="explore-training.html">All Training</a>
+            <a href="explore-training&careerguidence/skilltraining-bluecollar.html">Skill Training</a>
+            <a href="explore-training&careerguidence/professional.html">Professional Courses</a>
+            <a href="explore-training&careerguidence/engineer.html">Engineering Courses</a>
+            <a href="explore-training&careerguidence/programmer.html">Programming & IT</a>
+            <a href="explore-training&careerguidence/softskill.html">Soft Skills</a>
+          </div>
+        </li>
+
+        <li><a href="career&guidence.html" aria-current="page">Career Guidance</a></li>
+        <li><a href="aboutus.html">About Us</a></li>
+        <li><a href="contactus.html">Contact Us</a></li>
+      </ul>
+    </nav>
+
+    <!-- Language -->
+    <select id="langSelect" style="padding:6px;border-radius:6px;background:transparent;color:white;border:1px solid rgba(255,255,255,.3)">
+      <option value="en">English</option>
+      <option value="hi">Hindi</option>
+      <option value="ar">Arabic</option>
+    </select>
+  </div>
+</header>
+
+<!-- BANNER -->
+<div class="banner" style="background-image:url('images/career&guidencebanner.png')"></div>
+
+<!-- BOXES -->
+<div class="container">
+  <div class="box-grid">
+
+    <div class="box">Career Choice</div>
+    <div class="box">Mock Interview</div>
+    <div class="box">Interview Preparation</div>
+    <div class="box">Mock Group Discussion</div>
+    <div class="box">Counselling</div>
+
+  </div>
+</div>
+
+<!-- CONTENT -->
+<div class="container">
+  <div class="section">
+    <h2>Career Guidance & Mentorship</h2>
+    <p style="color:var(--muted);line-height:1.6">
+      Our Career Guidance program is designed to give students clarity, confidence, and the right direction
+      for their future. Every learner receives personalised support from mentors who understand industry
+      requirements and hiring expectations. We ensure that students not only choose the right path but also
+      develop the skills needed to succeed.
+    </p>
+
+    <p style="color:var(--muted);line-height:1.6">
+      The Career Choice session helps students understand their strengths, interests, and suitable job roles.
+      Our Mock Interview and Interview Preparation modules allow them to practice real HR and technical
+      rounds to build confidence and reduce nervousness during actual interviews.
+    </p>
+
+    <p style="color:var(--muted);line-height:1.6">
+      Mock Group Discussion prepares students for modern hiring processes where teamwork, communication,
+      leadership and decision-making skills are evaluated. Additionally, our Counselling sessions help
+      learners overcome confusion, improve decision-making, and plan long-term career growth.
+    </p>
+
+    <p style="color:var(--muted);line-height:1.6">
+      We aim to support every youth in selecting the right career path and developing employability skills
+      that open opportunities in India as well as overseas markets. Students receive continuous guidance from
+      experienced mentors who help them achieve both personal and professional goals.
+    </p>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid container">
+
+    <!-- Address -->
+    <div>
+      <a href="https://www.google.com/maps/search/?api=1&query=Sona+Complex+Tulshi+Nagar+Near+Dayanand+Ayurvedic+Medical+College+Siwan+Bihar+841226" target="_blank">
+        <svg width="44" height="44" viewBox="0 0 24 24">
+          <path d="M12 2C8.7 2 6 4.7 6 8c0 4.7 6 12 6 12s6-7.3 6-12c0-3.3-2.7-6-6-6z" fill="#FF6A00"/>
+          <circle cx="12" cy="8" r="2.2" fill="#fff"/>
+        </svg>
+      </a>
+
+      <div style="margin-top:10px">
+        <b>Sona Complex, 2nd Floor (Tulshi Nagar)</b>
+        <div style="color:#ddd;margin-top:6px">
+          Near Dayanand Ayurvedic Medical College, Siwan (Bihar)
+        </div>
+      </div>
+    </div>
+
+    <!-- Quick Links -->
+    <div>
+      <h3 style="margin-bottom:10px">Quick Links</h3>
+      <div style="display:flex;flex-direction:column;gap:6px">
+        <a href="index.html">Home</a>
+        <a href="explore-training.html">Explore Training</a>
+        <a href="career&guidence.html">Career Guidance</a>
+        <a href="aboutus.html">About Us</a>
+        <a href="contactus.html">Contact Us</a>
+      </div>
+    </div>
+
+    <!-- Social -->
+    <div>
+      <h3 style="margin-bottom:10px">Follow Us</h3>
+      <div class="social-row">
+        <a href="https://www.youtube.com/@SkillsBuilderInstitute" target="_blank">YouTube</a>
+        <a href="https://www.fb.com/skillsbuilderinstitute" target="_blank">Facebook</a>
+        <a href="https://www.instagram.com/skills_builder_institute" target="_blank">Instagram</a>
+        <a href="https://t.me/skillsbuilderinstitute" target="_blank">Telegram</a>
+        <a href="https://whatsapp.com/channel/0029Vb6Kou2DuMRmU5kAKy1W" target="_blank">WhatsApp</a>
+        <a href="https://www.snapchat.com/add/skillsbuildersv" target="_blank">Snapchat</a>
+        <a href="https://www.threads.net/@skills_builder_institute" target="_blank">Threads</a>
+        <a href="https://x.com/@SkillsBuilderSV" target="_blank">X</a>
+      </div>
+    </div>
+
+  </div>
+</footer>
+
+<!-- JS (Dropdown + Language alert) -->
+<script>
+  const exploreLi = document.getElementById("exploreLi");
+  const exploreDropdown = document.getElementById("exploreDropdown");
+  exploreLi.addEventListener("mouseenter", ()=> exploreDropdown.style.display="block");
+  exploreLi.addEventListener("mouseleave", ()=> exploreDropdown.style.display="none");
+
+  document.getElementById("langSelect").addEventListener("change",function(){
+    alert("Language system enabled. Content remains English until translated version added.");
+    this.value="en";
+  });
+</script>
+
+</body>
+</html>
