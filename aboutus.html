@@ -2,311 +2,368 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>About Us — Skills Builder Institute</title>
 
-  <!-- Link to your main stylesheet -->
-  <link rel="stylesheet" href="skill.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 
-  <!-- Minimal inline styles (keeps the page professional if skill.css missing) -->
   <style>
     :root{
-      --accent:#FF6A00;
-      --bg:#f5f7fa;
+      --nav-bg:#06172a;
+      --nav-grad:linear-gradient(90deg,#06172a,#073147);
+      --accent:#ff7a00;
+      --muted:#6b7a92;
       --card:#ffffff;
-      --text:#0f1724;
-      --muted:#6b7280;
-      --radius:12px;
-      --container:1100px;
+      --page-bg:#f6f8fb;
+      --wa-green:#25D366;
+      --footer-top:#072434;
+      --footer-bot:#042634;
+      --maxw:1150px;
     }
     *{box-sizing:border-box}
-    html,body{height:100%}
-    body{margin:0;font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; background:var(--bg); color:var(--text); -webkit-font-smoothing:antialiased;}
+    body{font-family:Inter,system-ui,Arial,sans-serif;margin:0;background:var(--page-bg);color:#0b1320;-webkit-font-smoothing:antialiased}
     a{color:inherit;text-decoration:none}
-    .container{max-width:var(--container);margin:0 auto;padding:18px}
-    header{background:#071028;color:#fff;padding:12px 18px;position:sticky;top:0;z-index:1000;box-shadow:0 2px 8px rgba(2,6,23,.08)}
-    .navbar{display:flex;align-items:center;gap:16px;justify-content:space-between}
+    .container{max-width:var(--maxw);margin:0 auto;padding:0 18px}
+
+    /* HEADER / NAV */
+    header.site-header{position:sticky;top:0;z-index:120;background:var(--nav-grad);color:#fff;box-shadow:0 6px 24px rgba(2,8,23,0.2)}
+    .nav-row{display:flex;align-items:center;gap:18px;padding:10px 18px;max-width:var(--maxw);margin:0 auto}
     .brand{display:flex;align-items:center;gap:12px}
-    .brand .title{font-weight:700;font-size:18px}
-    nav ul{display:flex;list-style:none;gap:18px;margin:0;padding:0;align-items:center}
-    nav li{position:relative}
-    nav a{color:#fff;padding:8px 10px;border-radius:6px;font-size:14px}
-    nav a:hover{background:rgba(255,255,255,.06)}
-    .dropdown{background:#0b1624;border-radius:8px;padding:6px;position:absolute;top:44px;left:0;min-width:200px;display:none;box-shadow:0 8px 30px rgba(2,6,23,.35)}
-    .dropdown a{display:block;padding:8px 10px;color:#fff;font-size:14px}
-    .icons-row{display:flex;gap:10px;align-items:center}
-    .icon-btn{display:flex;align-items:center;gap:8px;color:#fff;background:transparent;border:none;cursor:pointer;padding:6px 8px;border-radius:8px}
-    .lang-select{background:transparent;border:1px solid rgba(255,255,255,.08);padding:6px 8px;border-radius:8px;color:#fff;font-size:13px}
+    .brand img{height:56px}
+    nav.main{flex:1}
+    nav.main ul{display:flex;gap:18px;align-items:center;list-style:none;margin:0;padding:0;justify-content:center}
+    nav.main a{color:#e6f6ff;padding:8px 10px;border-radius:6px;font-weight:600}
+    nav.main a:hover{background:rgba(255,255,255,0.03)}
+    .nav-item{position:relative}
+    .dropdown{position:absolute;top:46px;left:0;background:#fff;color:#05283b;border-radius:8px;padding:8px;min-width:220px;box-shadow:0 14px 40px rgba(2,8,23,0.18);display:none}
+    .dropdown a{display:block;padding:10px 12px;color:inherit;border-radius:6px}
+    .dropdown a:hover{background:#f3f8ff}
+    .nav-item:hover .dropdown{display:block}
 
-    /* Banner */
-    .banner{height:320px;background-size:cover;background-position:center;display:flex;align-items:center;justify-content:center;color:#fff}
-    .banner-overlay{background:rgba(0,0,0,.28);width:100%;height:100%;display:flex;align-items:center;justify-content:center}
-    .banner-title{font-size:28px;font-weight:700}
+    /* header right group */
+    .hdr-right{display:flex;gap:12px;align-items:center}
+    .hdr-link{display:flex;gap:8px;align-items:center;color:#e8f7ff;font-weight:600;padding:6px 8px;border-radius:6px}
+    .hdr-link svg{opacity:0.95}
+    .lang-btn{display:flex;align-items:center;gap:8px;background:transparent;border:0;color:#e8f7ff;cursor:pointer;font-weight:700;padding:6px;border-radius:6px}
+    .lang-panel{position:absolute;right:0;top:46px;background:#fff;border-radius:8px;box-shadow:0 14px 40px rgba(2,8,23,0.16);display:none;overflow:hidden}
+    .lang-panel button{display:flex;gap:8px;align-items:center;padding:10px 12px;border:0;background:transparent;width:180px;text-align:left;cursor:pointer}
+    .lang-panel img{width:22px;height:14px;object-fit:cover}
 
-    /* Content sections */
-    .section{background:var(--card);padding:20px;border-radius:12px;margin-bottom:18px;box-shadow:0 8px 30px rgba(2,6,23,.04)}
-    .section h2{margin-top:0}
-    .list{margin:10px 0 0 18px;color:var(--muted);line-height:1.6}
+    /* HERO / banner */
+    .banner{height:300px;overflow:hidden;background:#ddd}
+    .banner img{width:100%;height:100%;object-fit:cover;display:block}
 
-    /* Achievements small list style */
-    .achievements li{margin-bottom:8px}
+    /* GRID CONTENT */
+    main.container{padding:20px 18px}
+    .grid{display:grid;grid-template-columns:1fr;gap:20px;align-items:start}
+    @media(max-width:980px){ .brand img{height:44px} .banner{height:200px} }
 
-    /* Infrastructure grid */
-    .infra-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
-    .infra-item{display:flex;gap:10px;align-items:flex-start;color:var(--muted)}
+    .card{background:var(--card);border-radius:12px;padding:18px;box-shadow:0 14px 36px rgba(2,8,23,0.06)}
+    h1,h2,h3{margin:0 0 12px 0}
+    .lead{font-size:18px;color:var(--muted);line-height:1.6}
 
-    /* Footer */
-    footer{background:#061222;color:#fff;padding:30px 18px;margin-top:30px}
-    .footer-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:20px;max-width:var(--container);margin:0 auto;align-items:start}
-    .quick-links a{display:flex;align-items:center;gap:8px;color:#fff;margin-bottom:8px;font-size:14px}
-    .social-row{display:flex;gap:12px;flex-wrap:wrap}
-    .social-row a{color:#fff;font-size:14px}
+    /* features grid */
+    .features{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:16px}
+    @media(max-width:980px){ .features{grid-template-columns:1fr} }
+    .feat{background:#fbfdff;border-radius:10px;padding:14px;display:flex;gap:12px;align-items:flex-start;border:1px solid rgba(6,23,34,0.04)}
+    .feat svg{width:36px;height:36px;flex-shrink:0}
+    .feat .title{font-weight:700}
+    .feat .desc{color:var(--muted);font-size:14px}
 
-    /* Responsive */
-    @media (max-width:1024px){.infra-grid{grid-template-columns:repeat(1,1fr)} .cards-grid{grid-template-columns:repeat(2,1fr)}}
-    @media (max-width:680px){
-      nav ul{display:none}
-      .banner{height:220px}
-      .container{padding:12px}
-      .infra-grid{grid-template-columns:1fr}
-      .brand .title{font-size:16px}
-      .section{padding:14px}
-    }
+    /* numbers bar */
+    .stats{display:flex;gap:18px;margin-top:20px;align-items:center}
+    .stat{background:linear-gradient(180deg,#fff,#fbfdff);padding:14px;border-radius:10px;min-width:120px;text-align:center;border:1px solid rgba(6,23,34,0.04)}
+    .stat .num{font-size:22px;font-weight:800;color:var(--nav-bg)}
+    .stat .label{color:var(--muted);font-size:13px}
+
+    /* trainers block */
+    .trainers{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:18px}
+    @media(max-width:980px){.trainers{grid-template-columns:1fr}}
+    .trainer{background:#fff;border-radius:10px;padding:12px;text-align:center;border:1px solid rgba(6,23,34,0.04)}
+    .trainer img{width:100%;height:140px;object-fit:cover;border-radius:8px}
+
+    /* footer */
+    footer.site-footer{background:linear-gradient(180deg,var(--footer-top),var(--footer-bot));color:#e6f6ff;padding:34px 0;margin-top:28px}
+    .footer-grid{max-width:var(--maxw);margin:0 auto;display:grid;grid-template-columns:1fr 1fr 300px;gap:20px;padding:0 18px;align-items:start}
+    @media(max-width:980px){.footer-grid{grid-template-columns:1fr} .footer-right{align-items:flex-start}}
+    .footer-logo img{height:72px;border-radius:8px}
+    .footer-addr{margin-top:12px;color:#d6eefb}
+    .map-btn{display:inline-flex;gap:8px;align-items:center;background:var(--accent);color:#fff;padding:10px 12px;border-radius:8px;margin-top:12px}
+    .quick-links a{display:block;color:#d6eefb;margin-bottom:8px}
+    .social-vertical{display:flex;flex-direction:column;gap:10px;align-items:flex-end}
+    @media(max-width:980px){.social-vertical{align-items:flex-start}}
+
+    /* floating whatsapp sticky */
+    .whatsapp-float{position:fixed;right:22px;bottom:22px;z-index:9999;display:flex;align-items:center;gap:10px;background:linear-gradient(180deg,var(--wa-green),#128C7E);padding:12px 18px;border-radius:999px;color:#fff;box-shadow:0 12px 40px rgba(0,0,0,0.18);font-weight:800}
+    .wa-circle{width:44px;height:44px;border-radius:999px;background:#fff;display:flex;align-items:center;justify-content:center}
+    .wa-circle svg{width:24px;height:24px}
+    .wa-text{font-weight:800}
+    @media(max-width:480px){.whatsapp-float{padding:0;border-radius:999px;width:56px;height:56px;align-items:center;justify-content:center}.wa-text{display:none}.wa-circle{display:none}}
+
+    .small{font-size:13px;color:var(--muted)}
+    .spacer{height:14px}
   </style>
 </head>
 <body>
 
-  <!-- Header / Navigation (same as index for consistency) -->
-  <header>
-    <div class="container navbar" role="navigation" aria-label="Main navigation">
-      <div class="brand" aria-hidden="false">
-        <a href="https://www.google.com/maps/search/?api=1&query=Sona+Complex+Tulshi+Nagar+Near+Dayanand+Ayurvedic+Medical+College+Siwan+Bihar+841226" target="_blank" rel="noopener noreferrer" title="Open location on Google Maps" aria-label="Open location on Google Maps">
-          <!-- inline map-pin SVG -->
-          <svg width="40" height="40" viewBox="0 0 24 24" role="img" aria-label="Map pin" xmlns="http://www.w3.org/2000/svg">
-            <path d="M12 2C8.686 2 6 4.686 6 8c0 4.75 6 12 6 12s6-7.25 6-12c0-3.314-2.686-6-6-6z" fill="#FF6A00"></path>
-            <circle cx="12" cy="8" r="2.2" fill="#fff"></circle>
-          </svg>
-        </a>
-
-        <div>
-          <div class="title">Skills Builder Institute</div>
-          <div style="font-size:12px;color:rgba(255,255,255,.8)">Practical training • Certification • Placement support</div>
-        </div>
+  <!-- HEADER / NAV (same layout as contact page) -->
+  <header class="site-header" role="banner">
+    <div class="nav-row">
+      <div class="brand">
+        <a href="index.html"><img src="images/logo.png" alt="Skills Builder Institute logo"></a>
       </div>
 
-      <nav>
+      <nav class="main" role="navigation" aria-label="Main menu">
         <ul>
-          <li><a href="index.html">Home</a></li>
-          <li id="exploreLi">
-            <a href="explore-training.html" id="exploreToggle">Explore Training ▾</a>
-            <div class="dropdown" id="exploreDropdown" aria-hidden="true">
+          <li class="nav-item"><a href="index.html">Home</a></li>
+
+          <li class="nav-item">
+            <a href="explore-training.html">Explore Training ▾</a>
+            <div class="dropdown" aria-hidden="true">
               <a href="explore-training.html">All Training</a>
-              <a href="explore-training&careerguidence/skilltraining-bluecollar.html">Skill Training</a>
-              <a href="explore-training&careerguidence/professional.html">Professional Courses</a>
-              <a href="explore-training&careerguidence/engineer.html">Engineering Courses</a>
-              <a href="explore-training&careerguidence/programmer.html">Programming & IT</a>
-              <a href="explore-training&careerguidence/softskill.html">Soft Skills</a>
+              <a href="skilltraining-bluecollar.html">Skill Training</a>
+              <a href="professional.html">Professional</a>
+              <a href="engineer.html">Engineering</a>
+              <a href="programmer.html">Programming</a>
+              <a href="softskill.html">Soft Skills</a>
             </div>
           </li>
-          <li><a href="career&guidence.html">Career Guidance</a></li>
-          <li><a href="aboutus.html" aria-current="page">About Us</a></li>
-          <li><a href="contactus.html">Contact Us</a></li>
+
+          <li class="nav-item"><a href="career&guidence.html">Career Guidance</a></li>
+          <li class="nav-item"><a href="aboutus.html" style="background:rgba(255,255,255,0.04);border-radius:6px;padding:8px 10px">About Us</a></li>
+          <li class="nav-item"><a href="contactus.html">Contact Us</a></li>
         </ul>
       </nav>
 
-      <div class="icons-row" role="region" aria-label="Quick contact">
-        <a class="icon-btn" href="mailto:info@skillsbuilderinstitute.com" title="Email info@skillsbuilderinstitute.com" aria-label="Email info@skillsbuilderinstitute.com">
-          <svg width="18" height="18" viewBox="0 0 24 24" role="img" aria-label="Email" xmlns="http://www.w3.org/2000/svg">
-            <path d="M3 6.5v11c0 .8.7 1.5 1.5 1.5h15c.8 0 1.5-.7 1.5-1.5v-11c0-.8-.7-1.5-1.5-1.5h-15C3.7 5 3 5.7 3 6.5z" stroke="#fff" stroke-width="1.1" fill="none"/>
-            <path d="M4 7.2l8 5 8-5" stroke="#fff" stroke-width="1.1" fill="none"/>
-          </svg>
-          <span style="font-size:13px;color:#fff">info@skillsbuilderinstitute.com</span>
+      <div class="hdr-right" style="align-items:center;position:relative">
+        <a class="hdr-link" href="mailto:info@skillsbuilderinstitute.com" title="Email us">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 7.5v9A2.5 2.5 0 0 0 5.5 19h13A2.5 2.5 0 0 0 21 16.5v-9" stroke="#fff" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span>info@skillsbuilderinstitute.com</span>
         </a>
 
-        <a class="icon-btn" href="https://whatsapp.com/channel/0029Vb6Kou2DuMRmU5kAKy1W" target="_blank" rel="noopener noreferrer" title="WhatsApp channel" aria-label="WhatsApp channel">
-          <svg width="18" height="18" viewBox="0 0 24 24" role="img" aria-label="WhatsApp" xmlns="http://www.w3.org/2000/svg">
-            <path d="M21 12.1c0 4.9-3.9 8.9-8.8 8.9-1.5 0-2.9-.4-4.2-1.1L3 21l1.4-4.2C3.8 15.5 3.2 14 3.2 12.1 3.2 7.2 7.1 3.3 12 3.3S21 7.2 21 12.1z" stroke="#fff" stroke-width="1.1" fill="#25D366"/>
-            <path d="M15.1 14.2c-.3-.2-1-.5-2-.8-.7-.2-1-.4-1.5.1-.4.4-1 .8-1.6.9-.3.1-.6.1-.9-.1-.6-.2-1.8-.7-3-1.8-1.1-1.1-1.6-2-1.8-2.6-.2-.6 0-.9.2-1.1.2-.2.4-.6.6-.9.2-.3.2-.6.3-.8 0-.2 0-.5-.1-.8-.1-.4-.9-1.5-1.2-1.8-.3-.3-.5-.3-.8-.3s-.6 0-.9 0c-.3 0-.8.2-1.3.6-.5.4-1.3 1.2-1.3 2.6 0 1.4.6 3.1 1.9 4.8 1.3 1.8 3.1 3.3 5.6 4.2 2.5.9 3.7.6 4.4.5.7-.1 1.9-.8 2.1-1.5.2-.8.2-1.5-.1-1.7-.4-.2-1.1-.3-1.4-.5z" fill="#fff"/>
-          </svg>
+        <a class="hdr-link" href="tel:+917488894910" title="Call us">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M22 16.9a18 18 0 0 1-8.9 4.5 1 1 0 0 1-1-.3l-2.6-2.6a1 1 0 0 1-.2-1.1l1.3-2.6a1 1 0 0 0-.2-1.1l-3.9-3.9a1 1 0 0 0-1.1-.2L3.8 9.9a1 1 0 0 1-.9-.1" stroke="#fff" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span>+91-7488894910</span>
         </a>
 
-        <select class="lang-select" id="langSelect" aria-label="Select language">
-          <option value="en">English</option>
-          <option value="hi">Hindi</option>
-          <option value="ar">Arabic</option>
-        </select>
+        <a class="hdr-link" href="https://wa.me/917488894910" target="_blank" rel="noopener" title="WhatsApp">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12.2 22.8c-2.6 0-5-.7-7.1-1.9l-.5-.3-2.3.7.7-2.1-.4-.6A9.5 9.5 0 0 1 2.7 11.1C2.7 6 7.2 1.5 12.2 1.5s9.5 4.5 9.5 9.6-4.5 9.7-9.5 9.7z" fill="#25D366"/><path d="M17.3 14.5c-.3-.1-1.9-.9-2.2-1a1.5 1.5 0 0 1-.7-.8c-.1-.3 0-.6.1-.7.1-.1.5-.2.8-.2.2 0 .5 0 .7.1.2.1.5.3.7.4.2.1.4.2.6 0 .2-.2.6-.7.9-.9.2-.2.6-.3.9-.2.3.1.8.3 1 .7.3.4.2.8-.1 1.1-.3.3-.9 1.1-1.2 1.3z" fill="#fff"/></svg>
+          <span>WhatsApp</span>
+        </a>
+
+        <div style="position:relative">
+          <button class="lang-btn" id="langBtnAbout" aria-expanded="false" title="Language">
+            <img src="images/flag-en.png" alt="EN" style="width:20px;height:14px;object-fit:cover;border-radius:2px">
+            <span id="langLabelAbout">EN</span>
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" style="margin-left:8px"><path d="M6 9l6 6 6-6" stroke="#e6f6ff" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+
+          <div class="lang-panel" id="langPanelAbout" aria-hidden="true" style="display:none">
+            <button data-lang="en" data-flag="images/flag-en.png"><img src="images/flag-en.png" alt="EN"> English</button>
+            <button data-lang="hi" data-flag="images/flag-hi.png"><img src="images/flag-hi.png" alt="HI"> हिंदी</button>
+            <button data-lang="ar" data-flag="images/flag-ar.png"><img src="images/flag-ar.png" alt="AR"> العربية</button>
+          </div>
+        </div>
       </div>
     </div>
   </header>
 
-  <!-- Banner -->
-  <section class="banner" style="background-image:url('images/aboutus.png');" role="img" aria-label="About us banner">
-    <div class="banner-overlay">
-      <div class="banner-title">About Skills Builder Institute</div>
-    </div>
+  <!-- BANNER -->
+  <section class="banner" aria-label="About banner">
+    <img src="images/about-banner.jpg" alt="About Skills Builder Institute">
   </section>
 
-  <!-- Main content -->
-  <main class="container" role="main" aria-label="About us content" style="padding-top:20px">
-
-    <!-- Who we are -->
-    <section class="section" aria-labelledby="who-heading">
-      <h2 id="who-heading">Who We Are</h2>
-      <p style="color:var(--muted);line-height:1.6">
-        Skills Builder Institute is a vocational and professional training centre dedicated to delivering practical, job-oriented courses. We combine hands-on workshops with industry exposure to prepare learners for real work environments. Our programmes cover a wide range of technical, professional and soft-skill subjects designed for immediate employability and career advancement.
+  <main class="container" style="padding:20px 18px 40px;">
+    <div class="card">
+      <h1>About Skills Builder Institute</h1>
+      <p class="lead">
+        Skills Builder Institute is a leading skill development centre in Siwan, dedicated to building career-ready professionals through hands-on training and personalised mentorship. Since our inception, we have trained over <strong>10,000</strong> learners and successfully placed more than <strong>5,000</strong> students in local and international roles. Our curriculum blends practical workshops, industry-oriented projects, and soft-skills coaching to ensure learners are work-ready.
       </p>
-    </section>
 
-    <!-- Vision & Mission -->
-    <section class="section" aria-labelledby="vision-heading">
-      <h2 id="vision-heading">Our Vision & Mission</h2>
+      <div class="features" aria-hidden="false">
+        <div class="feat">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M12 2l2 6h6l-4.8 3.5L18 20l-6-3.8L6 20l1.6-8.5L3 8h6z" fill="#FFAA33"></path></svg>
+          <div>
+            <div class="title">Practical Courses</div>
+            <div class="desc">Hands-on training that mirrors real workplace projects and tools.</div>
+          </div>
+        </div>
 
-      <div style="margin-top:8px">
-        <strong>Vision:</strong>
-        <div style="color:var(--muted);margin-top:6px">To become a trusted and innovative skill development institute that empowers learners with practical skills for the modern workforce.</div>
+        <div class="feat">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M3 6h18v2H3zM6 10h12v8H6z" fill="#3BA4FF"></path></svg>
+          <div>
+            <div class="title">Certified Programs</div>
+            <div class="desc">Recognised certificates on course completion to boost your CV.</div>
+          </div>
+        </div>
+
+        <div class="feat">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M12 2a10 10 0 100 20 10 10 0 000-20zM11 6h2v6h-2zM11 14h2v2h-2z" fill="#7BE495"></path></svg>
+          <div>
+            <div class="title">Placement Support</div>
+            <div class="desc">Dedicated placement team that connects learners with employers.</div>
+          </div>
+        </div>
       </div>
 
-      <div style="margin-top:12px">
-        <strong>Mission:</strong>
-        <ul class="list" style="color:var(--muted)">
-          <li>Provide practical, hands-on training aligned with industry requirements.</li>
-          <li>Bridge the gap between education and employment with job-relevant skills.</li>
-          <li>Offer youth-targeted training that opens opportunities in local and international job markets.</li>
-          <li>Encourage continuous learning and professional growth through certifications and mentoring.</li>
-        </ul>
+      <div class="spacer"></div>
+
+      <div class="stats" role="region" aria-label="Our numbers">
+        <div class="stat"><div class="num">10,000+</div><div class="label">Learners trained</div></div>
+        <div class="stat"><div class="num">5,000+</div><div class="label">Placed professionals</div></div>
+        <div class="stat"><div class="num">100%</div><div class="label">Practical curriculum</div></div>
       </div>
-    </section>
 
-    <!-- Achievements -->
-    <section class="section" aria-labelledby="achieve-heading">
-      <h2 id="achieve-heading">Our Achievements</h2>
-      <ul class="achievements" style="color:var(--muted)">
-        <li>Trained 1000+ learners across blue-collar and white-collar programmes.</li>
-        <li>Helped many candidates pass overseas skill tests and obtain GCC job placements.</li>
-        <li>High success rate for placement assistance among eligible participants.</li>
-        <li>Strong partnerships with industry recruiters and employers.</li>
-      </ul>
-    </section>
+      <div class="spacer"></div>
 
-    <!-- Courses offered -->
-    <section class="section" aria-labelledby="courses-heading">
-      <h2 id="courses-heading">Courses Offered</h2>
-
-      <h4 style="margin-bottom:6px">Blue Collar / Technical Skill Programs</h4>
-      <ul class="list" style="color:var(--muted)">
-        <li>Electrician, Plumber, Pipe Fitter, Welder, Fabricator, Steel Fixer, Carpenter</li>
-        <li>AC Technician, MEP Foreman training, Mason, Painter, Helper and other trades</li>
-        <li>Saudi Skill Test preparation & practical job-readiness training</li>
-      </ul>
-
-      <h4 style="margin-top:12px;margin-bottom:6px">White Collar / Professional Programs</h4>
-      <ul class="list" style="color:var(--muted)">
-        <li>HR Trainee, Payroll Executive, Admin Executive, Store Keeper</li>
-        <li>Sales Executive, Digital Marketing, Business Communication, Tally</li>
-        <li>Call Centre / BPO training, Data Entry, Product & Business Analytics basics</li>
-      </ul>
-    </section>
-
-    <!-- Infrastructure -->
-    <section class="section" aria-labelledby="infra-heading">
-      <h2 id="infra-heading">Our World-Class Infrastructure</h2>
-      <div class="infra-grid">
-        <div class="infra-item"><svg width="18" height="18" viewBox="0 0 24 24" role="img"><rect x="2" y="4" width="20" height="14" rx="2" fill="#FF6A00"/></svg><div>Smart classrooms & projectors</div></div>
-        <div class="infra-item"><svg width="18" height="18" viewBox="0 0 24 24" role="img"><rect x="2" y="4" width="20" height="14" rx="2" fill="#FF6A00"/></svg><div>Modern computer lab</div></div>
-        <div class="infra-item"><svg width="18" height="18" viewBox="0 0 24 24" role="img"><rect x="2" y="6" width="20" height="12" rx="2" fill="#FF6A00"/></svg><div>Free study materials</div></div>
-        <div class="infra-item"><svg width="18" height="18" viewBox="0 0 24 24" role="img"><rect x="2" y="6" width="20" height="12" rx="2" fill="#FF6A00"/></svg><div>Placement support desk</div></div>
-        <div class="infra-item"><svg width="18" height="18" viewBox="0 0 24 24" role="img"><rect x="3" y="3" width="18" height="18" rx="3" fill="#FF6A00"/></svg><div>Air-conditioned premises</div></div>
-        <div class="infra-item"><svg width="18" height="18" viewBox="0 0 24 24" role="img"><rect x="3" y="3" width="18" height="18" rx="3" fill="#FF6A00"/></svg><div>Free Wi-Fi & refreshment area</div></div>
-      </div>
-    </section>
-
-    <!-- Call to action -->
-    <section class="section" aria-labelledby="cta-heading">
-      <h2 id="cta-heading">Why Choose Us</h2>
-      <p style="color:var(--muted);line-height:1.6">
-        We focus on practical learning delivered by experienced trainers who understand industry expectations. Our training model emphasizes hands-on practice, industry-aligned curriculum, and placement guidance to help students convert skills into jobs. Certificates are issued to participants who complete the courses, and placement support is offered to eligible learners in India and abroad.
+      <h2>Our approach</h2>
+      <p class="lead">
+        We focus on project-based learning, continuous feedback, and real employer expectations. Each course includes live sessions, recorded materials, assignments, and interview preparation. Trainers are selected for both technical expertise and teaching ability — they mentor each student until job-readiness. We support learners from registration through placement, ensuring a smooth career transition.
       </p>
-      <div style="margin-top:12px">
-        <a class="btn" style="background:var(--accent);color:#fff;border-radius:10px;padding:10px 14px" href="contactus.html">Enquire Now</a>
-      </div>
-    </section>
 
+      <div class="spacer"></div>
+
+      <h2>Vision & Mission</h2>
+      <p class="lead">
+        Our vision is to cover Siwan and all of Bihar with high-quality skill training within five years. We aim to make vocational and professional education accessible, practical, and outcome-focused. Our mission is to empower learners with job-ready skills, ethical training, and long-term career growth.
+      </p>
+
+      <div class="spacer"></div>
+
+      <h2>Meet our trainers</h2>
+      <div class="trainers">
+        <div class="trainer">
+          <img src="images/trainer1.jpg" alt="Trainer 1">
+          <div style="margin-top:8px;font-weight:700">Mr. Ankit Kumar</div>
+          <div class="small muted">Full-stack trainer — 8+ years industry</div>
+        </div>
+        <div class="trainer">
+          <img src="images/trainer2.jpg" alt="Trainer 2">
+          <div style="margin-top:8px;font-weight:700">Ms. Priya Singh</div>
+          <div class="small muted">Soft-skills & placement coach</div>
+        </div>
+        <div class="trainer">
+          <img src="images/trainer3.jpg" alt="Trainer 3">
+          <div style="margin-top:8px;font-weight:700">Mr. Ravi Chaudhary</div>
+          <div class="small muted">Engineering & hardware</div>
+        </div>
+      </div>
+
+      <div class="spacer"></div>
+
+      <p class="small muted">Want to join our next batch or talk to admissions? <a href="contactus.html" style="color:var(--nav-bg);font-weight:700">Contact us</a> — we’re here to help.</p>
+    </div>
   </main>
 
-  <!-- Footer (same as index) -->
-  <footer role="contentinfo" aria-label="Footer">
-    <div class="footer-grid container">
-      <!-- Left: map & contact -->
-      <div>
-        <a href="https://www.google.com/maps/search/?api=1&query=Sona+Complex+Tulshi+Nagar+Near+Dayanand+Ayurvedic+Medical+College+Siwan+Bihar+841226" target="_blank" rel="noopener noreferrer" aria-label="Open Google Maps location" style="display:flex;align-items:center;gap:12px">
-          <svg width="44" height="44" viewBox="0 0 24 24" role="img" aria-label="Map pin" xmlns="http://www.w3.org/2000/svg">
-            <path d="M12 2C8.686 2 6 4.686 6 8c0 4.75 6 12 6 12s6-7.25 6-12c0-3.314-2.686-6-6-6z" fill="#FF6A00"></path>
-            <circle cx="12" cy="8" r="2.2" fill="#fff"></circle>
-          </svg>
-        </a>
-
-        <div style="margin-top:10px">
-          <div style="font-weight:700">Sona Complex, 2nd Floor (Tulshi Nagar)</div>
-          <div style="font-size:14px;color:rgba(255,255,255,.9);margin-top:6px">Near Dayanand Ayurvedic Medical College, Siwan (Bihar) – 841226</div>
-          <div style="margin-top:8px;font-size:14px">Phone: <a href="tel:+917488894910" style="color:#fff">+91-7488894910</a>, <a href="tel:+919939998360" style="color:#fff">+91-9939998360</a>, <a href="tel:+918709225954" style="color:#fff">+91-8709225954</a></div>
-          <div style="font-size:14px;margin-top:6px">Email: <a href="mailto:info@skillsbuilderinstitute.com" style="color:#fff">info@skillsbuilderinstitute.com</a></div>
+  <!-- FOOTER (same pattern as contact page) -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="footer-grid">
+      <div class="footer-left">
+        <div class="footer-logo">
+          <a href="index.html"><img src="images/logo.png" alt="Skill Builder Institute logo"></a>
+        </div>
+        <div class="footer-addr" style="margin-top:12px">
+          <strong>Sona Complex, 2nd Floor (Tulshi Nagar)</strong><br>
+          Near Dayanand Ayurvedic Medical College, Siwan (Bihar) — 841226<br>
+          Phone: <a href="tel:+917488894910" style="color:#e6f6ff">+91-7488894910</a><br>
+          Email: <a href="mailto:info@skillsbuilderinstitute.com" style="color:#e6f6ff">info@skillsbuilderinstitute.com</a>
+        </div>
+        <div style="margin-top:12px">
+          <a class="map-btn" href="https://www.google.com/maps/search/?api=1&query=Sona+Complex+Tulshi+Nagar+Siwan+Bihar+841226" target="_blank" rel="noopener">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="#fff"><path d="M12 2C8.1 2 5 5.1 5 9c0 5.1 7 12.9 7 12.9S19 14.1 19 9c0-3.9-3.1-7-7-7zm0 9.5A2.5 2.5 0 1114.5 9 2.5 2.5 0 0112 11.5z"/></svg>
+            <span>View on Google Map</span>
+          </a>
         </div>
       </div>
 
-      <!-- Center: quick links -->
-      <div>
-        <div style="font-weight:700;margin-bottom:10px">Quick Links</div>
-        <div class="quick-links" aria-label="Quick links list">
-          <a href="index.html"><svg width="16" height="16" viewBox="0 0 24 24" role="img"><path d="M3 11.5L12 4l9 7.5" fill="none" stroke="#fff" stroke-width="1.2"/></svg> Home</a>
-          <a href="explore-training.html"><svg width="16" height="16" viewBox="0 0 24 24" role="img"><circle cx="12" cy="8" r="3" fill="#fff"/></svg> Explore Training</a>
-          <a href="career&guidence.html"><svg width="16" height="16" viewBox="0 0 24 24" role="img"><rect x="3" y="6" width="18" height="12" rx="2" fill="#fff"/></svg> Career Guidance</a>
-          <a href="aboutus.html"><svg width="16" height="16" viewBox="0 0 24 24" role="img"><path d="M12 2a5 5 0 110 10 5 5 0 010-10z" fill="#fff"/></svg> About Us</a>
-          <a href="contactus.html"><svg width="16" height="16" viewBox="0 0 24 24" role="img"><path d="M3 6h18v12H3z" stroke="#fff" fill="none"/></svg> Contact Us</a>
+      <div class="footer-mid">
+        <h4>Quick Links</h4>
+        <div class="quick-links" style="margin-top:8px">
+          <a href="index.html">Home</a>
+          <a href="explore-training.html">Explore Training</a>
+          <a href="career&guidence.html">Career Guidance</a>
+          <a href="contactus.html">Contact Us</a>
         </div>
       </div>
 
-      <!-- Right: social -->
-      <div>
-        <div style="font-weight:700;margin-bottom:10px">Follow us</div>
-        <div class="social-row" role="navigation" aria-label="Social media links">
-          <a href="https://www.youtube.com/@SkillsBuilderInstitute" target="_blank" rel="noopener noreferrer" aria-label="YouTube">YouTube</a>
-          <a href="https://www.fb.com/skillsbuilderinstitute" target="_blank" rel="noopener noreferrer" aria-label="Facebook">Facebook</a>
-          <a href="https://www.instagram.com/skills_builder_institute" target="_blank" rel="noopener noreferrer" aria-label="Instagram">Instagram</a>
-          <a href="https://t.me/skillsbuilderinstitute" target="_blank" rel="noopener noreferrer" aria-label="Telegram">Telegram</a>
-          <a href="https://whatsapp.com/channel/0029Vb6Kou2DuMRmU5kAKy1W" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">WhatsApp</a>
-          <a href="https://www.snapchat.com/add/skillsbuildersv" target="_blank" rel="noopener noreferrer" aria-label="Snapchat">Snapchat</a>
-          <a href="https://www.threads.net/@skills_builder_institute" target="_blank" rel="noopener noreferrer" aria-label="Threads">Threads</a>
-          <a href="https://x.com/@SkillsBuilderSV" target="_blank" rel="noopener noreferrer" aria-label="X">X</a>
+      <div class="footer-right">
+        <h4>Follow us</h4>
+        <div class="social-vertical" style="margin-top:8px">
+          <a href="https://www.youtube.com/@SkillsBuilderInstitute" target="_blank" rel="noopener"> YouTube</a>
+          <a href="https://www.fb.com/skillsbuilderinstitute" target="_blank" rel="noopener">f Facebook</a>
+          <a href="https://www.instagram.com/skills_builder_institute" target="_blank" rel="noopener"> Instagram</a>
+          <a href="https://t.me/skillsbuilderinstitute" target="_blank" rel="noopener"> Telegram</a>
+          <a href="https://wa.me/917488894910" target="_blank" rel="noopener"> WhatsApp</a>
+          <a href="https://www.snapchat.com/add/skillsbuildersv" target="_blank" rel="noopener"> Snapchat</a>
+          <a href="https://x.com/@SkillsBuilderSV" target="_blank" rel="noopener"> X / Twitter</a>
         </div>
       </div>
     </div>
 
-    <div style="max-width:var(--container);margin:18px auto;color:rgba(255,255,255,.6);font-size:13px;text-align:center">© <span id="year"></span> Skills Builder Institute — All Rights Reserved</div>
+    <div style="text-align:center;color:#bcd9ea;padding-top:18px">© 2025 Skills Builder Institute — All Rights Reserved.</div>
   </footer>
 
-  <!-- Small scripts: dropdown, year, language demo -->
+  <!-- FLOATING WHATSAPP -->
+  <a class="whatsapp-float" href="https://wa.me/917488894910" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+    <span class="wa-circle" aria-hidden>
+      <svg viewBox="0 0 24 24" fill="#25D366"><path d="M20.52 3.48A11.88 11.88 0 0012.04.5 12 12 0 000 12c0 2.11.55 4.08 1.6 5.82L.6 23.5l5.02-1.35A11.95 11.95 0 0012 24c6.6 0 12-5.4 12-12 0-3.18-1.24-6.12-3.48-8.52z"/></svg>
+    </span>
+    <span class="wa-text">WhatsApp</span>
+  </a>
+
   <script>
-    // Year
-    document.getElementById('year').textContent = new Date().getFullYear();
+    // Language panel toggle + update nav labels (same as contact page)
+    (function(){
+      const btn = document.getElementById('langBtnAbout');
+      const panel = document.getElementById('langPanelAbout');
+      const label = document.getElementById('langLabelAbout');
 
-    // Explore dropdown
-    const exploreLi = document.getElementById('exploreLi');
-    const exploreDropdown = document.getElementById('exploreDropdown');
-    exploreLi.addEventListener('mouseenter', ()=> exploreDropdown.style.display = 'block');
-    exploreLi.addEventListener('mouseleave', ()=> exploreDropdown.style.display = 'none');
-    exploreLi.querySelector('a').addEventListener('focus', ()=> exploreDropdown.style.display = 'block');
+      btn && btn.addEventListener('click', (e)=>{
+        e.stopPropagation();
+        panel.style.display = panel.style.display === 'block' ? 'none' : 'block';
+      });
+      document.addEventListener('click', ()=> panel.style.display = 'none');
 
-    // Language select demo
-    document.getElementById('langSelect').addEventListener('change', function(){
-      const v = this.value;
-      if(v === 'en') return;
-      if(v === 'hi') {
-        alert('Hindi language selected — this demo shows selection only. Site content remains in English.');
-      } else if(v === 'ar') {
-        alert('Arabic language selected — this demo shows selection only. Site content remains in English.');
+      document.querySelectorAll('#langPanelAbout button').forEach(b=>{
+        b.addEventListener('click', ()=>{
+          const lang = b.getAttribute('data-lang');
+          const flag = b.getAttribute('data-flag');
+          label.textContent = lang.toUpperCase();
+          const img = document.querySelector('.lang-btn img');
+          if(img && flag) img.src = flag;
+
+          const map = {
+            en:{home:'Home', explore:'Explore Training', career:'Career Guidance', about:'About Us', contact:'Contact Us'},
+            hi:{home:'होम', explore:'ट्रेनिंग देखें', career:'कैरियर गाइडेंस', about:'हमारे बारे में', contact:'संपर्क करें'},
+            ar:{home:'الرئيسية', explore:'استكشاف التدريب', career:'إرشاد مهني', about:'معلومات عنا', contact:'اتصل بنا'}
+          };
+          const t = map[lang] || map.en;
+          document.querySelectorAll('nav.main ul li').forEach(li=>{
+            const a = li.querySelector('a');
+            if(!a) return;
+            const href = a.getAttribute('href')||'';
+            if(href.includes('index')) a.textContent = t.home;
+            if(href.includes('explore-training')) a.textContent = t.explore;
+            if(href.includes('career&guidence')) a.textContent = t.career;
+            if(href.includes('aboutus')) a.textContent = t.about;
+            if(href.includes('contactus')) a.textContent = t.contact;
+          });
+
+          panel.style.display = 'none';
+        });
+      });
+    })();
+
+    // Floating WA responsiveness
+    (function(){
+      function adj(){
+        const wa = document.querySelector('.whatsapp-float');
+        if(!wa) return;
+        if(window.innerWidth < 480){ wa.style.right='12px'; wa.style.bottom='12px'; } else { wa.style.right='22px'; wa.style.bottom='22px'; }
       }
-      this.value = 'en';
-    });
+      window.addEventListener('resize',adj);
+      adj();
+    })();
   </script>
 </body>
 </html>
