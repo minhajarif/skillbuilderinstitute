@@ -1,1 +1,90 @@
-
+{
+  "nav": {
+    "home": "Home",
+    "explore": "Explore Training",
+    "explore_all": "All Training",
+    "skilltraining": "Skill Training",
+    "professional": "Professional",
+    "programmer": "Programmer",
+    "engineer": "Engineer",
+    "softskill": "Soft Skills",
+    "career": "Career Guidance",
+    "about": "About Us",
+    "contact": "Contact Us"
+  },
+  "header": {
+    "email": "info@skillsbuilderinstitute.com",
+    "call": "+91-7488894910",
+    "whatsapp": "WhatsApp"
+  },
+  "lang": {
+    "english": "English",
+    "hindi": "Hindi",
+    "arabic": "Arabic"
+  },
+  "hero": {
+    "contact_title": "Contact Skills Builder Institute",
+    "explore_title": "Explore Training — Choose your path"
+  },
+  "home": {
+    "title": "Welcome to Skills Builder Institute",
+    "para1": "We are dedicated to building strong skills and shaping successful careers. Skills Builder Institute provides practical training, industry-focused courses, and complete career guidance for students, job seekers, and professionals. Our programs are designed with real-world needs in mind, ensuring that every learner receives hands-on exposure, certification, and placement support. With expert trainers, modern training methods, and a mission to empower youth, we aim to transform skill development in Siwan and Bihar. More than 10,000+ students have already trained with us, and over 5,000+ have secured jobs locally and internationally through our guidance. Join us and build a strong, confident, and future-ready career."
+  },
+  "contact": {
+    "form": {
+      "fullname": "Full Name",
+      "age": "Age",
+      "state": "State",
+      "city": "City",
+      "phone": "Calling Phone No.",
+      "whatsapp": "WhatsApp No.",
+      "interest": "I want",
+      "training_select": "If training, choose",
+      "message": "Short message (optional)",
+      "send": "Send",
+      "training_option_career": "Career Guidance",
+      "training_option_training": "Training"
+    },
+    "details": {
+      "address_line1": "Sona Complex, 2nd Floor (Tulshi Nagar), Near Dayanand Ayurvedic Medical College, Siwan (Bihar) — 841226",
+      "phone_numbers": "+91-7488894910, +91-9939998360, +91-8709225954",
+      "email": "info@skillsbuilderinstitute.com",
+      "map_button": "View on Google Map"
+    }
+  },
+  "follow": {
+    "whatsapp": "WhatsApp",
+    "youtube": "YouTube",
+    "facebook": "Facebook",
+    "instagram": "Instagram",
+    "telegram": "Telegram",
+    "snapchat": "Snapchat",
+    "map": "Map",
+    "x": "X"
+  },
+  "courses": {
+    "skilltraining_title": "Skill Training (Blue Collar)",
+    "professional_title": "Professional Courses",
+    "programmer_title": "Programming & IT",
+    "engineer_title": "Engineering & Technical",
+    "softskill_title": "Soft Skills Training"
+  },
+  "career": {
+    "title": "Career Guidance",
+    "choice": "Career Choice",
+    "mock_interview": "Mock Interview",
+    "interview_prep": "Interview Preparation",
+    "mock_gd": "Mock Group Discussion",
+    "counselling": "Counselling"
+  },
+  "footer": {
+    "quick_links": "Quick Links",
+    "follow_us": "Follow Us"
+  },
+  "common": {
+    "apply_contact": "Apply / Contact us",
+    "learn_more": "Learn more",
+    "book_session": "Book session",
+    "view_courses": "View Courses"
+  }
+}
