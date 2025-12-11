@@ -2,533 +2,357 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Contact Us — Skills Builder Institute</title>
 
+  <!-- Link to your main CSS (make sure path is correct) -->
   <link rel="stylesheet" href="skill.css">
 
-  <!-- Minimal inline styles so page looks professional even without skill.css -->
+  <!-- Optional: Google font (Inter) -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
   <style>
-    :root{
-      --accent:#FF6A00;
-      --bg:#f5f7fa;
-      --card:#ffffff;
-      --text:#0f1724;
-      --muted:#6b7280;
-      --container:1100px;
-      --radius:12px;
-    }
-    *{box-sizing:border-box}
-    body{margin:0;font-family:Inter,system-ui,Arial,sans-serif;background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased}
-    a{color:inherit;text-decoration:none}
-    .container{max-width:var(--container);margin:0 auto;padding:18px}
-    header{background:#071028;color:#fff;padding:12px 18px;position:sticky;top:0;z-index:1000;box-shadow:0 2px 8px rgba(2,6,23,.08)}
-    .navbar{display:flex;align-items:center;gap:16px;justify-content:space-between}
-    .brand{display:flex;align-items:center;gap:12px}
-    nav ul{display:flex;list-style:none;gap:18px;margin:0;padding:0;align-items:center}
-    nav a{color:#fff;padding:8px 10px;border-radius:6px;font-size:14px}
-    .icons-row{display:flex;gap:10px;align-items:center}
-    .icon-btn{display:flex;align-items:center;gap:8px;color:#fff;background:transparent;border:none;cursor:pointer;padding:6px 8px;border-radius:8px}
-    .lang-select{background:transparent;border:1px solid rgba(255,255,255,.08);padding:6px 8px;border-radius:8px;color:#fff;font-size:13px}
+    /* Small page-specific tweaks */
+    .page-hero{position:relative;overflow:hidden;height:380px;border-radius:8px;background:#eef2f7}
+    .page-hero .hero-img{width:100%;height:100%;object-fit:cover;display:block;filter:contrast(0.95)}
+    .hero-overlay{position:absolute;left:0;right:0;top:0;bottom:0;background:linear-gradient(180deg,rgba(3,10,24,0.28),rgba(3,10,24,0.28));display:flex;align-items:center;justify-content:center}
+    .hero-title{color:#fff;font-size:28px;font-weight:800;padding:12px 18px;border-radius:10px;background:linear-gradient(90deg, rgba(0,0,0,0.28), rgba(0,0,0,0.18));}
 
-    /* Page layout */
-    .top-block{display:flex;gap:20px;align-items:flex-start;margin-top:18px}
-    .contact-card{background:var(--card);padding:18px;border-radius:12px;box-shadow:0 10px 30px rgba(2,6,23,.06);flex:1}
+    .page-grid{display:grid;grid-template-columns:360px 1fr;gap:24px;margin-top:20px}
+    @media (max-width:980px){ .page-grid{grid-template-columns:1fr; } .page-hero{height:260px} }
+
+    /* follow-us box */
+    .follow-box{background:var(--card);padding:18px;border-radius:12px;box-shadow:var(--shadow-sm)}
+    .follow-row{display:flex;flex-direction:column;gap:12px}
+    .follow-item{display:flex;align-items:center;gap:12px;padding:10px;border-radius:10px;border:1px solid rgba(0,0,0,0.04);background:linear-gradient(180deg,#fff,#fbfdff)}
+    .follow-item svg{width:34px;height:34px;flex-shrink:0}
+    .follow-item .label{font-weight:800}
+
+    /* contact card */
+    .contact-card{background:var(--card);padding:18px;border-radius:12px;box-shadow:var(--shadow-sm)}
     .contact-card h2{margin:0 0 8px 0}
-    .contact-item{display:flex;gap:10px;align-items:flex-start;margin:8px 0;color:var(--muted)}
-    .social-row{display:flex;gap:12px;flex-wrap:wrap;margin-top:10px}
+    .muted{color:var(--muted)}
 
-    /* Form */
-    .form-card{background:var(--card);padding:18px;border-radius:12px;box-shadow:0 10px 30px rgba(2,6,23,.06);flex:1}
-    form{display:flex;flex-direction:column;gap:12px}
-    label{font-size:14px;font-weight:600}
-    input[type="text"], input[type="tel"], input[type="number"], select, textarea{width:100%;padding:10px;border:1px solid #e6e9ef;border-radius:8px;font-size:14px}
-    textarea{min-height:100px;resize:vertical}
-    .row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-    .full{grid-column:1 / -1}
-    .btn{display:inline-block;padding:10px 16px;border-radius:10px;border:none;cursor:pointer;font-weight:700}
-    .btn-primary{background:var(--accent);color:#fff}
-    .note{color:var(--muted);font-size:13px}
-
-    /* confirmation */
-    .thankbox{display:none;background:#e9fbf0;border-left:4px solid #2ecc71;padding:12px;border-radius:8px;color:#064b28}
-
-    /* Footer */
-    footer{background:#061222;color:#fff;padding:30px 18px;margin-top:30px}
-    .footer-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:20px;max-width:var(--container);margin:0 auto;align-items:start}
-    .quick-links a{display:flex;align-items:center;gap:8px;color:#fff;margin-bottom:8px;font-size:14px}
-
-    /* Responsive */
-    @media (max-width:1024px){.row{grid-template-columns:1fr 1fr}}
-    @media (max-width:780px){
-      nav ul{display:none}
-      .top-block{flex-direction:column}
-      .row{grid-template-columns:1fr}
-      .full{grid-column:1}
-    }
+    /* small helper for form */
+    .field-inline{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+    @media (max-width:640px){ .field-inline{grid-template-columns:1fr} }
   </style>
 </head>
 <body>
 
-  <!-- HEADER / NAV -->
+  <!-- ===== HEADER / NAVBAR ===== -->
   <header>
-    <div class="container navbar" role="navigation" aria-label="Main navigation">
+    <div class="container navbar">
       <div class="brand">
-        <a href="https://www.google.com/maps/search/?api=1&query=Sona+Complex+Tulshi+Nagar+Near+Dayanand+Ayurvedic+Medical+College+Siwan+Bihar+841226" target="_blank" rel="noopener noreferrer" title="Open location on Google Maps" aria-label="Open location on Google Maps">
-          <svg width="40" height="40" viewBox="0 0 24 24" role="img" aria-label="Map pin" xmlns="http://www.w3.org/2000/svg">
-            <path d="M12 2C8.686 2 6 4.686 6 8c0 4.75 6 12 6 12s6-7.25 6-12c0-3.314-2.686-6-6-6z" fill="#FF6A00"></path>
-            <circle cx="12" cy="8" r="2.2" fill="#fff"></circle>
-          </svg>
+        <a href="index.html" aria-label="Home">
+          <img src="images/logo.png" alt="Skills Builder Institute" style="height:52px;display:block">
         </a>
-        <div>
-          <div style="font-weight:700;font-size:16px">Skills Builder Institute</div>
-          <div style="font-size:12px;color:rgba(255,255,255,.8)">Practical training • Certification • Placement support</div>
-        </div>
       </div>
 
-      <nav>
+      <nav class="main-nav" aria-label="Main navigation">
         <ul>
           <li><a href="index.html">Home</a></li>
-          <li id="exploreLi">
-            <a href="explore-training.html" id="exploreToggle">Explore Training ▾</a>
-            <div class="dropdown" id="exploreDropdown" aria-hidden="true">
+
+          <li id="exploreLi" style="position:relative;">
+            <a href="explore-training.html" aria-haspopup="true" aria-expanded="false">Explore Training ▾</a>
+            <div class="dropdown" id="exploreDropdown" role="menu" aria-hidden="true">
               <a href="explore-training.html">All Training</a>
               <a href="explore-training&careerguidence/skilltraining-bluecollar.html">Skill Training</a>
-              <a href="explore-training&careerguidence/professional.html">Professional Courses</a>
-              <a href="explore-training&careerguidence/engineer.html">Engineering Courses</a>
-              <a href="explore-training&careerguidence/programmer.html">Programming & IT</a>
+              <a href="explore-training&careerguidence/professional.html">Professional</a>
+              <a href="explore-training&careerguidence/engineer.html">Engineering</a>
+              <a href="explore-training&careerguidence/programmer.html">Programming</a>
               <a href="explore-training&careerguidence/softskill.html">Soft Skills</a>
             </div>
           </li>
+
           <li><a href="career&guidence.html">Career Guidance</a></li>
           <li><a href="aboutus.html">About Us</a></li>
           <li><a href="contactus.html" aria-current="page">Contact Us</a></li>
         </ul>
       </nav>
 
-      <div class="icons-row" role="region" aria-label="Quick contact">
-        <a class="icon-btn" href="mailto:info@skillsbuilderinstitute.com" title="Email info@skillsbuilderinstitute.com" aria-label="Email info@skillsbuilderinstitute.com">
-          <svg width="18" height="18" viewBox="0 0 24 24" role="img"><path d="M3 6.5v11c0 .8.7 1.5 1.5 1.5h15c.8 0 1.5-.7 1.5-1.5v-11c0-.8-.7-1.5-1.5-1.5h-15C3.7 5 3 5.7 3 6.5z" stroke="#fff" stroke-width="1.1" fill="none"/><path d="M4 7.2l8 5 8-5" stroke="#fff" stroke-width="1.1" fill="none"/></svg>
-          <span style="font-size:13px;color:#fff">info@skillsbuilderinstitute.com</span>
+      <div class="icons-row">
+        <a class="icon-btn" href="mailto:info@skillsbuilderinstitute.com" aria-label="Email">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M3 8.5v7a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7" stroke="#fff" stroke-width="1.4"/><path d="M21 7l-9 6-9-6" stroke="#fff" stroke-width="1.4"/></svg>
+        </a>
+        <a class="icon-btn" href="tel:+917488894910" aria-label="Call">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M22 16.9v3.1a1 1 0 0 1-1.1 1A19 19 0 0 1 3 6.1 1 1 0 0 1 4 5h3.1" stroke="#fff" stroke-width="1"/></svg>
+        </a>
+        <a class="icon-btn" href="https://wa.me/917488894910" target="_blank" aria-label="WhatsApp">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M21 12.3a8.6 8.6 0 1 0-1.9 4.9L22 22l-3-0.9a8.6 8.6 0 0 0 2-8.8z" stroke="#fff" stroke-width="1"/></svg>
         </a>
 
-        <a class="icon-btn" href="https://whatsapp.com/channel/0029Vb6Kou2DuMRmU5kAKy1W" target="_blank" rel="noopener noreferrer" title="WhatsApp channel" aria-label="WhatsApp channel">
-          <svg width="18" height="18" viewBox="0 0 24 24" role="img"><path d="M21 12.1c0 4.9-3.9 8.9-8.8 8.9-1.5 0-2.9-.4-4.2-1.1L3 21l1.4-4.2C3.8 15.5 3.2 14 3.2 12.1 3.2 7.2 7.1 3.3 12 3.3S21 7.2 21 12.1z" stroke="#fff" stroke-width="1.1" fill="#25D366"/><path d="M15.1 14.2c-.3-.2-1-.5-2-.8-.7-.2-1-.4-1.5.1-.4.4-1 .8-1.6.9-.3.1-.6.1-.9-.1-.6-.2-1.8-.7-3-1.8-1.1-1.1-1.6-2-1.8-2.6-.2-.6 0-.9.2-1.1.2-.2.4-.6.6-.9.2-.3.2-.6.3-.8 0-.2 0-.5-.1-.8-.1-.4-.9-1.5-1.2-1.8-.3-.3-.5-.3-.8-.3s-.6 0-.9 0c-.3 0-.8.2-1.3.6-.5.4-1.3 1.2-1.3 2.6 0 1.4.6 3.1 1.9 4.8 1.3 1.8 3.1 3.3 5.6 4.2 2.5.9 3.7.6 4.4.5.7-.1 1.9-.8 2.1-1.5.2-.8.2-1.5-.1-1.7-.4-.2-1.1-.3-1.4-.5z" fill="#fff"/></svg>
-        </a>
+        <div class="lang-wrapper" style="position:relative">
+          <button id="langBtn" class="icon-btn" aria-haspopup="true" aria-expanded="false">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="#fff" stroke-width="1"/></svg>
+            <span style="color:#fff;font-size:13px;margin-left:6px">EN</span>
+          </button>
+          <div id="langMenu" class="dropdown" style="right:0;left:auto;display:none;min-width:170px" role="menu" aria-hidden="true">
+            <button class="lang-item" data-lang="en">English</button>
+            <button class="lang-item" data-lang="hi">Hindi</button>
+            <button class="lang-item" data-lang="ar">Arabic</button>
+          </div>
+        </div>
 
-        <select class="lang-select" id="langSelect" aria-label="Select language">
-          <option value="en">English</option>
-          <option value="hi">Hindi</option>
-          <option value="ar">Arabic</option>
-        </select>
       </div>
     </div>
   </header>
+  <!-- ===== END HEADER ===== -->
 
-  <!-- TOP CONTENT: Contact info + Socials (above form) -->
-  <main class="container" role="main" aria-label="Contact us">
-    <div class="top-block">
-      <!-- Contact details card -->
-      <div class="contact-card" role="region" aria-label="Contact details">
-        <h2>Contact Details</h2>
-        <div class="contact-item">
-          <!-- map icon -->
-          <svg width="20" height="20" viewBox="0 0 24 24" role="img"><path d="M12 2C8.686 2 6 4.686 6 8c0 4.75 6 12 6 12s6-7.25 6-12c0-3.314-2.686-6-6-6z" fill="var(--accent)"></path></svg>
-          <div>
-            <div style="font-weight:700">Sona Complex, 2nd Floor (Tulshi Nagar)</div>
-            <div style="color:var(--muted);font-size:14px;margin-top:6px">Near Dayanand Ayurvedic Medical College, Siwan (Bihar) – 841226</div>
-          </div>
-        </div>
+  <main class="container" style="padding-top:18px;padding-bottom:36px">
 
-        <div class="contact-item">
-          <svg width="20" height="20" viewBox="0 0 24 24" role="img"><path d="M3 6h18v12H3z" stroke="#000" fill="#FF6A00"></path></svg>
-          <div style="color:var(--muted)"><strong>Phone:</strong> <a href="tel:+917488894910">+91-7488894910</a>, <a href="tel:+919939998360">+91-9939998360</a>, <a href="tel:+918709225954">+91-8709225954</a></div>
-        </div>
-
-        <div class="contact-item">
-          <svg width="20" height="20" viewBox="0 0 24 24" role="img"><path d="M3 6.5v11c0 .8.7 1.5 1.5 1.5h15c.8 0 1.5-.7 1.5-1.5v-11c0-.8-.7-1.5-1.5-1.5h-15C3.7 5 3 5.7 3 6.5z" stroke="#000" fill="#FF6A00"></path></svg>
-          <div style="color:var(--muted)">Email: <a href="mailto:info@skillsbuilderinstitute.com">info@skillsbuilderinstitute.com</a></div>
-        </div>
-
-        <div style="margin-top:12px">
-          <div style="font-weight:700">Follow us</div>
-          <div class="social-row" role="navigation" aria-label="Social links">
-            <a href="https://www.youtube.com/@SkillsBuilderInstitute" target="_blank" rel="noopener noreferrer">YouTube</a>
-            <a href="https://www.fb.com/skillsbuilderinstitute" target="_blank" rel="noopener noreferrer">Facebook</a>
-            <a href="https://www.instagram.com/skills_builder_institute" target="_blank" rel="noopener noreferrer">Instagram</a>
-            <a href="https://t.me/skillsbuilderinstitute" target="_blank" rel="noopener noreferrer">Telegram</a>
-            <a href="https://whatsapp.com/channel/0029Vb6Kou2DuMRmU5kAKy1W" target="_blank" rel="noopener noreferrer">WhatsApp</a>
-            <a href="https://www.snapchat.com/add/skillsbuildersv" target="_blank" rel="noopener noreferrer">Snapchat</a>
-            <a href="https://www.threads.net/@skills_builder_institute" target="_blank" rel="noopener noreferrer">Threads</a>
-            <a href="https://x.com/@SkillsBuilderSV" target="_blank" rel="noopener noreferrer">X</a>
-          </div>
-        </div>
-
-        <div style="margin-top:12px" class="note">
-          <strong>Map:</strong> Click the pin icon in header or footer to open our location in Google Maps.
-        </div>
+    <!-- HERO / BANNER -->
+    <section class="page-hero">
+      <img class="hero-img" src="images/contactus.jpg" alt="Contact — Skills Builder Institute">
+      <div class="hero-overlay">
+        <div class="hero-title">Contact Skills Builder Institute</div>
       </div>
+    </section>
 
-      <!-- FORM CARD -->
-      <div class="form-card" role="region" aria-label="Contact form">
-        <h2>Send us a message</h2>
-        <div class="note" style="margin-bottom:8px">Fill the details below and press Submit. We will contact you soon. (No backend — uses your email client.)</div>
+    <!-- grid: left follow / right form & content -->
+    <section class="page-grid" aria-label="Contact page main area">
 
-        <div class="thankbox" id="thankbox" role="status">Thank you! Your message has been prepared. Please complete the email to send or check your inbox for confirmation.</div>
+      <!-- LEFT: contact details + follow us -->
+      <aside>
+        <div class="follow-box">
+          <h3 style="margin:0 0 10px 0">Contact Details</h3>
+          <p class="muted" style="margin:0 0 12px 0">
+            <strong>Sona Complex, 2nd Floor (Tulshi Nagar)</strong><br>
+            Near Dayanand Ayurvedic Medical College, Siwan (Bihar) — 841226<br>
+            Phone: +91-7488894910, +91-9939998360, +91-8709225954<br>
+            Email: info@skillsbuilderinstitute.com
+          </p>
 
-        <form id="contactForm" novalidate>
-          <div class="row">
-            <div>
-              <label for="name">Full Name *</label>
-              <input id="name" name="name" type="text" placeholder="Your full name" required>
-            </div>
-            <div>
-              <label for="age">Age</label>
-              <input id="age" name="age" type="number" min="14" max="100" placeholder="e.g. 22">
-            </div>
+          <h4 style="margin-top:8px;margin-bottom:8px">Follow us</h4>
+
+          <div class="follow-row">
+            <!-- WhatsApp big -->
+            <a class="follow-item" href="https://wa.me/917488894910" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" width="34" height="34" aria-hidden="true">
+                <path fill="#25D366" d="M12.2 22.8c-2.6 0-5-.7-7.1-1.9l-.5-.3-2.3.7.7-2.1-.4-.6A9.5 9.5 0 0 1 2.7 11.1C2.7 6 7.2 1.5 12.2 1.5s9.5 4.5 9.5 9.6-4.5 9.7-9.5 9.7z"/>
+                <path fill="#fff" d="M17.3 14.5c-.3-.1-1.9-.9-2.2-1a1.5 1.5 0 0 1-.7-.8c-.1-.3 0-.6.1-.7.1-.1.5-.2.8-.2.2 0 .5 0 .7.1.2.1.5.3.7.4.2.1.4.2.6 0 .2-.2.6-.7.9-.9.2-.2.6-.3.9-.2.3.1.8.3 1 .7.3.4.2.8-.1 1.1-.3.3-.9 1.1-1.2 1.3z"/>
+              </svg>
+              <div style="display:flex;flex-direction:column;align-items:flex-start">
+                <div class="label">WhatsApp</div>
+                <div class="small muted">Chat with us</div>
+              </div>
+            </a>
+
+            <a class="follow-item" href="https://www.youtube.com/@SkillsBuilderInstitute" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" width="34" height="34"><path d="M10 8l6 4-6 4V8z" fill="#FF3B3B"/></svg>
+              <div style="display:flex;flex-direction:column;align-items:flex-start">
+                <div class="label">YouTube</div>
+                <div class="small muted">Watch our videos</div>
+              </div>
+            </a>
+
+            <a class="follow-item" href="https://www.fb.com/skillsbuilderinstitute" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" width="34" height="34"><path d="M15 8h2V5h-2c-1.1 0-2 .9-2 2v1H11v3h2v6h3v-6h2l1-3h-3V8z" fill="#1877F2"/></svg>
+              <div style="display:flex;flex-direction:column;align-items:flex-start">
+                <div class="label">Facebook</div>
+                <div class="small muted">Follow us</div>
+              </div>
+            </a>
+
+            <a class="follow-item" href="https://www.instagram.com/skills_builder_institute" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" width="34" height="34"><rect x="4" y="4" width="16" height="16" rx="4" fill="#E1306C"/></svg>
+              <div style="display:flex;flex-direction:column;align-items:flex-start">
+                <div class="label">Instagram</div>
+                <div class="small muted">See our posts</div>
+              </div>
+            </a>
+
+            <a class="follow-item" href="https://t.me/skillsbuilderinstitute" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" width="34" height="34"><path d="M4 12l16-6-6 8-4 2-6-4z" fill="#2AABEE"/></svg>
+              <div style="display:flex;flex-direction:column;align-items:flex-start">
+                <div class="label">Telegram</div>
+                <div class="small muted">Join our channel</div>
+              </div>
+            </a>
+
           </div>
+        </div>
+      </aside>
 
-          <div class="row">
-            <div>
-              <label for="state">State *</label>
-              <select id="state" name="state" required>
-                <option value="">-- Select State --</option>
-                <option>Andhra Pradesh</option>
-                <option>Arunachal Pradesh</option>
-                <option>Assam</option>
-                <option>Bihar</option>
-                <option>Chhattisgarh</option>
-                <option>Goa</option>
-                <option>Gujarat</option>
-                <option>Haryana</option>
-                <option>Himachal Pradesh</option>
-                <option>Jharkhand</option>
-                <option>Karnataka</option>
-                <option>Kerala</option>
-                <option>Madhya Pradesh</option>
-                <option>Maharashtra</option>
-                <option>Manipur</option>
-                <option>Meghalaya</option>
-                <option>Mizoram</option>
-                <option>Nagaland</option>
-                <option>Odisha</option>
-                <option>Punjab</option>
-                <option>Rajasthan</option>
-                <option>Sikkim</option>
-                <option>Tamil Nadu</option>
-                <option>Telangana</option>
-                <option>Tripura</option>
-                <option>Uttar Pradesh</option>
-                <option>Uttarakhand</option>
-                <option>West Bengal</option>
-                <option>Delhi (NCT)</option>
-                <option>Puducherry</option>
-                <option>Other</option>
-              </select>
+      <!-- RIGHT: form + content -->
+      <div>
+
+        <!-- short professional description (6-7 lines) -->
+        <div class="contact-card" style="margin-bottom:18px">
+          <h2>We're here to help</h2>
+          <p class="muted">
+            At Skills Builder Institute, we stand with you at every step of your career journey. From the moment you reach out to us until you succeed on the job, our trainers and counsellors provide hands-on support and practical guidance. We focus on building real skills that employers value — technical, professional and communication abilities. Our goal is to prepare you for both local and international opportunities while supporting your growth and confidence. Trust us to train, mentor and place you — your success is our priority.
+          </p>
+        </div>
+
+        <!-- CONTACT FORM -->
+        <div class="contact-card">
+          <h2>Send us a message</h2>
+          <p class="small muted">Fill this form and click <strong>Send</strong>. Your default email client will open so you can send the details directly to our team.</p>
+
+          <form id="contactForm" class="contact-form" onsubmit="return false;">
+            <div class="field-inline">
+              <div>
+                <label for="fullname">Full Name *</label>
+                <input id="fullname" name="fullname" type="text" placeholder="Your full name" required>
+              </div>
+              <div>
+                <label for="age">Age</label>
+                <input id="age" name="age" type="number" placeholder="e.g. 21" min="14" max="100">
+              </div>
             </div>
 
-            <div>
-              <label for="city">City *</label>
-              <select id="city" name="city" required disabled>
-                <option value="">-- Select State First --</option>
-              </select>
-            </div>
-          </div>
+            <div class="field-inline" style="margin-top:8px">
+              <div>
+                <label for="state">State *</label>
+                <select id="state" required>
+                  <option value="">Select state</option>
+                  <option value="Bihar">Bihar</option>
+                  <option value="Uttar Pradesh">Uttar Pradesh</option>
+                  <option value="Delhi">Delhi</option>
+                  <option value="Maharashtra">Maharashtra</option>
+                  <option value="Karnataka">Karnataka</option>
+                  <option value="West Bengal">West Bengal</option>
+                  <option value="Gujarat">Gujarat</option>
+                  <option value="Rajasthan">Rajasthan</option>
+                  <option value="Tamil Nadu">Tamil Nadu</option>
+                  <option value="Punjab">Punjab</option>
+                  <!-- you can add more states here -->
+                </select>
+              </div>
 
-          <div class="row">
-            <div>
+              <div>
+                <label for="city">City *</label>
+                <select id="city" required>
+                  <option value="">Select city</option>
+                </select>
+              </div>
+            </div>
+
+            <div style="margin-top:10px">
               <label for="phone">Calling Phone No. *</label>
-              <input id="phone" name="phone" type="tel" placeholder="+91xxxxxxxxxx" pattern="[0-9+ -]{7,20}" required>
+              <input id="phone" name="phone" type="tel" placeholder="+91xxxxxxxxxx" required>
             </div>
-            <div>
+
+            <div style="margin-top:10px">
               <label for="whatsapp">WhatsApp No.</label>
               <input id="whatsapp" name="whatsapp" type="tel" placeholder="+91xxxxxxxxxx">
             </div>
-          </div>
 
-          <div>
-            <label for="purpose">I want*</label>
-            <select id="purpose" name="purpose" required>
-              <option value="">-- Select --</option>
-              <option value="career">Career Guidance</option>
-              <option value="training">Training</option>
-            </select>
-          </div>
-
-          <!-- Training type shown only if Training selected -->
-          <div id="trainingBlock" style="display:none">
-            <label for="trainingType">Select training category *</label>
-            <select id="trainingType" name="trainingType">
-              <option value="">-- Select category --</option>
-              <option value="skill">Skill Training (Blue Collar)</option>
-              <option value="professional">Professional Courses</option>
-              <option value="engineer">Engineering Courses</option>
-              <option value="programmer">Programming & IT</option>
-              <option value="softskill">Soft Skills</option>
-            </select>
-
-            <div style="margin-top:8px">
-              <label for="subCategory">Select specific program *</label>
-              <select id="subCategory" name="subCategory">
-                <option value="">-- Select program --</option>
+            <div style="margin-top:10px">
+              <label for="interest">I want *</label>
+              <select id="interest" required>
+                <option value="">-- select --</option>
+                <option value="Career Guidance">Career Guidance</option>
+                <option value="Training">Training</option>
               </select>
             </div>
-          </div>
 
-          <div>
-            <label for="message">Short message (optional)</label>
-            <textarea id="message" name="message" placeholder="Briefly tell us what you are looking for (optional)"></textarea>
-          </div>
+            <div id="trainingOptions" style="margin-top:10px;display:none">
+              <label for="trainingSelect">If training, choose option</label>
+              <select id="trainingSelect">
+                <option value="">Select training</option>
+                <option value="Skill Training (Blue Collar)">Skill Training (Blue Collar)</option>
+                <option value="Professional (White Collar)">Professional (White Collar)</option>
+                <option value="Engineering">Engineering</option>
+                <option value="Programming">Programming</option>
+                <option value="Soft Skills">Soft Skills</option>
+              </select>
+            </div>
 
-          <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap" class="full">
-            <button type="submit" class="btn btn-primary">Submit</button>
-            <button type="button" id="clearBtn" class="btn" style="background:#f0f2f5;border-radius:8px">Clear</button>
-            <div class="note">We do not store your data here. The form opens your email client to send the message.</div>
-          </div>
-        </form>
+            <div style="margin-top:10px">
+              <label for="message">Short message (optional)</label>
+              <textarea id="message" placeholder="Write a brief message or question"></textarea>
+            </div>
+
+            <div style="margin-top:12px;display:flex;gap:10px;align-items:center">
+              <button id="sendBtn" class="btn btn-primary" type="button">Send</button>
+              <div class="form-note">No backend — the form will open your email app so you can submit directly to our team.</div>
+            </div>
+
+          </form>
+        </div>
+
       </div>
-    </div>
+
+    </section>
+
   </main>
 
-  <!-- FOOTER (same structure as other pages) -->
-  <footer role="contentinfo" aria-label="Footer">
-    <div class="footer-grid container">
-      <div>
-        <a href="https://www.google.com/maps/search/?api=1&query=Sona+Complex+Tulshi+Nagar+Near+Dayanand+Ayurvedic+Medical+College+Siwan+Bihar+841226" target="_blank" rel="noopener noreferrer" aria-label="Open Google Maps location" style="display:flex;align-items:center;gap:12px">
-          <svg width="44" height="44" viewBox="0 0 24 24" role="img"><path d="M12 2C8.686 2 6 4.686 6 8c0 4.75 6 12 6 12s6-7.25 6-12c0-3.314-2.686-6-6-6z" fill="#FF6A00"></path><circle cx="12" cy="8" r="2.2" fill="#fff"></circle></svg>
+  <!-- ===== FOOTER ===== -->
+  <footer>
+    <div class="container footer-grid" style="display:grid;grid-template-columns:1fr 1fr 220px;gap:20px;align-items:start">
+      <div class="footer-left" style="display:flex;gap:12px;align-items:flex-start">
+        <a href="index.html"><img src="images/logo.png" alt="Skills Builder Institute" style="height:64px;border-radius:6px"></a>
+        <div>
+          <h3 style="margin:0 0 6px 0;color:#fff">Skills Builder Institute</h3>
+          <div style="color:rgba(255,255,255,0.88);font-size:14px;max-width:360px">
+            Sona Complex, 2nd Floor (Tulshi Nagar), Near Dayanand Ayurvedic Medical College, Siwan (Bihar) — 841226
+          </div>
+          <div style="margin-top:12px">
+            <a href="https://www.google.com/maps/search/?api=1&query=Sona+Complex+Tulshi+Nagar+Siwan+Bihar+841226" target="_blank" style="display:inline-flex;gap:8px;align-items:center;color:#fff">
+              <svg width="18" height="18" viewBox="0 0 24 24"><path d="M12 2C8.7 2 6 4.7 6 8c0 4.7 6 12 6 12s6-7.3 6-12c0-3.3-2.7-6-6-6z" fill="#FF6A00"/><circle cx="12" cy="8" r="2.2" fill="#fff"/></svg>
+              View on map
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="quick-links" style="color:#fff">
+        <h3 style="margin-top:4px;margin-bottom:10px">Quick Links</h3>
+        <a href="index.html">Home</a><br>
+        <a href="explore-training.html">Explore Training</a><br>
+        <a href="career&guidence.html">Career Guidance</a><br>
+        <a href="aboutus.html">About Us</a><br>
+        <a href="contactus.html">Contact Us</a>
+      </div>
+
+      <div class="footer-right" style="display:flex;flex-direction:column;align-items:flex-end;gap:12px">
+        <!-- vertical platform links -->
+        <a href="https://www.youtube.com/@SkillsBuilderInstitute" target="_blank" style="display:flex;align-items:center;gap:10px;color:#fff;padding:8px 12px;border-radius:10px;background:transparent;border:1px solid rgba(255,255,255,0.03);width:100%;justify-content:flex-end">
+          <svg width="20" height="20" viewBox="0 0 24 24"><path d="M10 8l6 4-6 4V8z" fill="#fff"/></svg>
+          <span style="font-weight:700">YouTube</span>
         </a>
-        <div style="margin-top:10px">
-          <div style="font-weight:700">Sona Complex, 2nd Floor (Tulshi Nagar)</div>
-          <div style="font-size:14px;color:rgba(255,255,255,.9);margin-top:6px">Near Dayanand Ayurvedic Medical College, Siwan (Bihar) – 841226</div>
-          <div style="margin-top:8px;font-size:14px">Phone: <a href="tel:+917488894910" style="color:#fff">+91-7488894910</a>, <a href="tel:+919939998360" style="color:#fff">+91-9939998360</a>, <a href="tel:+918709225954" style="color:#fff">+91-8709225954</a></div>
-          <div style="font-size:14px;margin-top:6px">Email: <a href="mailto:info@skillsbuilderinstitute.com" style="color:#fff">info@skillsbuilderinstitute.com</a></div>
-        </div>
-      </div>
 
-      <div>
-        <div style="font-weight:700;margin-bottom:10px">Quick Links</div>
-        <div class="quick-links" aria-label="Quick links list">
-          <a href="index.html">Home</a>
-          <a href="explore-training.html">Explore Training</a>
-          <a href="career&guidence.html">Career Guidance</a>
-          <a href="aboutus.html">About Us</a>
-          <a href="contactus.html">Contact Us</a>
-        </div>
-      </div>
+        <a href="https://www.fb.com/skillsbuilderinstitute" target="_blank" style="display:flex;align-items:center;gap:10px;color:#fff;padding:8px 12px;border-radius:10px;background:transparent;border:1px solid rgba(255,255,255,0.03);width:100%;justify-content:flex-end">
+          <svg width="20" height="20" viewBox="0 0 24 24"><path d="M15 8h2V5h-2c-1.1 0-2 .9-2 2v1H11v3h2v6h3v-6h2l1-3h-3V8z" fill="#fff"/></svg>
+          <span style="font-weight:700">Facebook</span>
+        </a>
 
-      <div>
-        <div style="font-weight:700;margin-bottom:10px">Follow us</div>
-        <div class="social-row" role="navigation" aria-label="Social media links">
-          <a href="https://www.youtube.com/@SkillsBuilderInstitute" target="_blank" rel="noopener noreferrer">YouTube</a>
-          <a href="https://www.fb.com/skillsbuilderinstitute" target="_blank" rel="noopener noreferrer">Facebook</a>
-          <a href="https://www.instagram.com/skills_builder_institute" target="_blank" rel="noopener noreferrer">Instagram</a>
-          <a href="https://t.me/skillsbuilderinstitute" target="_blank" rel="noopener noreferrer">Telegram</a>
-          <a href="https://whatsapp.com/channel/0029Vb6Kou2DuMRmU5kAKy1W" target="_blank" rel="noopener noreferrer">WhatsApp</a>
-          <a href="https://www.snapchat.com/add/skillsbuildersv" target="_blank" rel="noopener noreferrer">Snapchat</a>
-          <a href="https://www.threads.net/@skills_builder_institute" target="_blank" rel="noopener noreferrer">Threads</a>
-          <a href="https://x.com/@SkillsBuilderSV" target="_blank" rel="noopener noreferrer">X</a>
-        </div>
+        <a href="https://www.instagram.com/skills_builder_institute" target="_blank" style="display:flex;align-items:center;gap:10px;color:#fff;padding:8px 12px;border-radius:10px;background:transparent;border:1px solid rgba(255,255,255,0.03);width:100%;justify-content:flex-end">
+          <svg width="20" height="20" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="4" stroke="#fff" stroke-width="1.2"/><circle cx="12" cy="12" r="3" stroke="#fff" stroke-width="1.2"/></svg>
+          <span style="font-weight:700">Instagram</span>
+        </a>
+
+        <a href="https://t.me/skillsbuilderinstitute" target="_blank" style="display:flex;align-items:center;gap:10px;color:#fff;padding:8px 12px;border-radius:10px;background:transparent;border:1px solid rgba(255,255,255,0.03);width:100%;justify-content:flex-end">
+          <svg width="20" height="20" viewBox="0 0 24 24"><path d="M4 12l16-6-6 8-4 2-6-4z" fill="#fff"/></svg>
+          <span style="font-weight:700">Telegram</span>
+        </a>
+
+        <a href="https://whatsapp.com/channel/0029Vb6Kou2DuMRmU5kAKy1W" target="_blank" style="display:flex;align-items:center;gap:10px;color:#fff;padding:8px 12px;border-radius:10px;background:transparent;border:1px solid rgba(255,255,255,0.03);width:100%;justify-content:flex-end">
+          <svg width="20" height="20" viewBox="0 0 24 24"><path d="M21 12.3a8.6 8.6 0 1 0-1.9 4.9L22 22l-3-0.9a8.6 8.6 0 0 0 2-8.8z" stroke="#fff" stroke-width="1"/></svg>
+          <span style="font-weight:700">WhatsApp</span>
+        </a>
+
       </div>
     </div>
 
-    <div style="max-width:var(--container);margin:18px auto;color:rgba(255,255,255,.6);font-size:13px;text-align:center">© <span id="year"></span> Skills Builder Institute — All Rights Reserved</div>
+    <div style="text-align:center;color:rgba(255,255,255,0.65);font-size:13px;padding-top:18px">
+      &copy; <span id="year"></span> Skills Builder Institute — All rights reserved.
+    </div>
   </footer>
+  <!-- ===== END FOOTER ===== -->
 
-  <!-- JS: state->city mapping, dynamic training subcategories, validation, mailto fallback -->
-  <script>
-    // Year
-    document.getElementById('year').textContent = new Date().getFullYear();
+  <!-- ===== WhatsApp floating button (paste or keep on all pages) ===== -->
+  <a id="sbi-wa-btn"
+     class="sbi-wa-btn"
+     href="https://wa.me/917488894910?text=Hello%20Skills%20Builder%20Institute%2C%20I%20want%20to%20know%20about%20your%20courses."
+     target="_blank" rel="noopener noreferrer"
+     aria-label="Chat on WhatsApp" title="Chat on WhatsApp"
+     style="position:fixed;right:18px;bottom:18px;z-index:1500;display:flex;align-items:center;gap:10px;background:linear-gradient(180deg,#25D366,#128C7E);color:#fff;padding:10px 14px;border-radius:999px;box-shadow:0 10px 30px rgba(18,140,126,0.18);text-decoration:none;font-weight:700">
+    <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path fill="#25D366" d="M12.2 22.8c-2.6 0-5-.7-7.1-1.9l-.5-.3-2.3.7.7-2.1-.4-.6A9.5 9.5 0 0 1 2.7 11.1C2.7 6 7.2 1.5 12.2 1.5s9.5 4.5 9.5 9.6-4.5 9.7-9.5 9.7z"/><path fill="#fff" d="M17.3 14.5c-.3-.1-1.9-.9-2.2-1a1.5 1.5 0 0 1-.7-.8c-.1-.3 0-.6.1-.7.1-.1.5-.2.8-.2.2 0 .5 0 .7.1.2.1.5.3.7.4.2.1.4.2.6 0 .2-.2.6-.7.9-.9.2-.2.6-.3.9-.2.3.1.8.3 1 .7.3.4.2.8-.1 1.1-.3.3-.9 1.1-1.2 1.3z"/></svg>
+    <span style="font-weight:700">WhatsApp</span>
+  </a>
 
-    // Explore dropdown simple interactions
-    const exploreLi = document.getElementById('exploreLi');
-    const exploreDropdown = document.getElementById('exploreDropdown');
-    exploreLi.addEventListener('mouseenter', ()=> exploreDropdown.style.display = 'block');
-    exploreLi.addEventListener('mouseleave', ()=> exploreDropdown.style.display = 'none');
-    exploreLi.querySelector('a').addEventListener('focus', ()=> exploreDropdown.style.display = 'block');
-
-    // State -> City mapping (common cities for each state; extend as needed)
-    const citiesByState = {
-      "Andhra Pradesh":["Vijayawada","Visakhapatnam","Guntur"],
-      "Arunachal Pradesh":["Itanagar"],
-      "Assam":["Guwahati","Silchar"],
-      "Bihar":["Patna","Siwan","Gopalganj"],
-      "Chhattisgarh":["Raipur","Bhilai"],
-      "Goa":["Panaji","Margao"],
-      "Gujarat":["Ahmedabad","Surat","Vadodara"],
-      "Haryana":["Gurugram","Faridabad","Panipat"],
-      "Himachal Pradesh":["Shimla","Dharamshala"],
-      "Jharkhand":["Ranchi","Jamshedpur"],
-      "Karnataka":["Bengaluru","Mysuru","Mangalore"],
-      "Kerala":["Kochi","Thiruvananthapuram"],
-      "Madhya Pradesh":["Bhopal","Indore"],
-      "Maharashtra":["Mumbai","Pune","Nagpur"],
-      "Manipur":["Imphal"],
-      "Meghalaya":["Shillong"],
-      "Mizoram":["Aizawl"],
-      "Nagaland":["Kohima"],
-      "Odisha":["Bhubaneswar","Cuttack"],
-      "Punjab":["Ludhiana","Amritsar","Jalandhar"],
-      "Rajasthan":["Jaipur","Jodhpur","Udaipur"],
-      "Sikkim":["Gangtok"],
-      "Tamil Nadu":["Chennai","Coimbatore","Madurai"],
-      "Telangana":["Hyderabad","Warangal"],
-      "Tripura":["Agartala"],
-      "Uttar Pradesh":["Kanpur","Lucknow","Varanasi","Agra"],
-      "Uttarakhand":["Dehradun","Haridwar"],
-      "West Bengal":["Kolkata","Howrah"],
-      "Delhi (NCT)":["New Delhi"],
-      "Puducherry":["Puducherry"],
-      "Other":["Other City"]
-    };
-
-    const stateEl = document.getElementById('state');
-    const cityEl = document.getElementById('city');
-
-    stateEl.addEventListener('change', function(){
-      const s = this.value;
-      cityEl.innerHTML = '';
-      if(!s || !citiesByState[s]){
-        cityEl.disabled = true;
-        cityEl.innerHTML = '<option value="">-- Select State First --</option>';
-        return;
-      }
-      cityEl.disabled = false;
-      const opts = citiesByState[s];
-      cityEl.innerHTML = '<option value="">-- Select City --</option>';
-      opts.forEach(c => {
-        const op = document.createElement('option');
-        op.value = c;
-        op.textContent = c;
-        cityEl.appendChild(op);
-      });
-    });
-
-    // Training categories -> subcategories mapping
-    const subPrograms = {
-      "skill": ["Electrician","Plumber","Welder","Carpenter","AC Technician","Pipe Fitter","Mason","Painter","Store Keeper","Helper"],
-      "professional": ["HR Trainee","Payroll Executive","Admin Executive","Store Keeper","Sales Executive","Tally","Business Analytics","Digital Marketing","Call Centre","Data Entry"],
-      "engineer": ["Civil Engineer","Electrical Engineer","Mechanical Engineer","Electronics Engineer","Project Engineer","Product Engineer","Mobile Engineer"],
-      "programmer": ["Web Development","Frontend Developer","Backend Developer","Full Stack","Node.js Developer","React.js","AI / ML Basics","Cyber Security"],
-      "softskill": ["Communication","Public Speaking","Presentation Skills","Group Discussion","GD & Interview Skills"]
-    };
-
-    const purposeEl = document.getElementById('purpose');
-    const trainingBlock = document.getElementById('trainingBlock');
-    const trainingTypeEl = document.getElementById('trainingType');
-    const subCategoryEl = document.getElementById('subCategory');
-
-    purposeEl.addEventListener('change', function(){
-      if(this.value === 'training'){
-        trainingBlock.style.display = 'block';
-        trainingTypeEl.setAttribute('required','required');
-        subCategoryEl.setAttribute('required','required');
-      } else {
-        trainingBlock.style.display = 'none';
-        trainingTypeEl.removeAttribute('required');
-        subCategoryEl.removeAttribute('required');
-        trainingTypeEl.value = '';
-        subCategoryEl.innerHTML = '<option value="">-- Select program --</option>';
-      }
-    });
-
-    trainingTypeEl.addEventListener('change', function(){
-      const v = this.value;
-      subCategoryEl.innerHTML = '<option value="">-- Select program --</option>';
-      if(!v || !subPrograms[v]) return;
-      subPrograms[v].forEach(p => {
-        const op = document.createElement('option');
-        op.value = p;
-        op.textContent = p;
-        subCategoryEl.appendChild(op);
-      });
-    });
-
-    // Form handling: validate, generate mailto and show confirmation
-    const form = document.getElementById('contactForm');
-    const thankbox = document.getElementById('thankbox');
-    const clearBtn = document.getElementById('clearBtn');
-
-    clearBtn.addEventListener('click', ()=> {
-      form.reset();
-      cityEl.innerHTML = '<option value="">-- Select State First --</option>';
-      cityEl.disabled = true;
-      trainingBlock.style.display = 'none';
-      subCategoryEl.innerHTML = '<option value="">-- Select program --</option>';
-      thankbox.style.display = 'none';
-    });
-
-    form.addEventListener('submit', function(e){
-      e.preventDefault();
-
-      // Basic validation
-      const requiredFields = [
-        {el: document.getElementById('name'), name: 'Full name'},
-        {el: document.getElementById('state'), name: 'State'},
-        {el: document.getElementById('city'), name: 'City'},
-        {el: document.getElementById('phone'), name: 'Phone'},
-        {el: document.getElementById('purpose'), name: 'Purpose'}
-      ];
-      for(const f of requiredFields){
-        if(!f.el.value || f.el.disabled){
-          alert('Please fill: ' + f.name);
-          f.el.focus();
-          return;
-        }
-      }
-
-      if(purposeEl.value === 'training'){
-        if(!trainingTypeEl.value){
-          alert('Please select a training category.');
-          trainingTypeEl.focus();
-          return;
-        }
-        if(!subCategoryEl.value){
-          alert('Please select a specific program.');
-          subCategoryEl.focus();
-          return;
-        }
-      }
-
-      // Compose email body
-      const data = {
-        name: document.getElementById('name').value.trim(),
-        age: document.getElementById('age').value.trim(),
-        state: stateEl.value,
-        city: cityEl.value,
-        phone: document.getElementById('phone').value.trim(),
-        whatsapp: document.getElementById('whatsapp').value.trim(),
-        purpose: purposeEl.value === 'training' ? 'Training' : 'Career Guidance',
-        trainingCategory: trainingTypeEl.value || 'N/A',
-        program: subCategoryEl.value || 'N/A',
-        message: document.getElementById('message').value.trim()
-      };
-
-      let emailBody = 'New contact request from website%0D%0A%0D%0A';
-      emailBody += 'Name: ' + encodeURIComponent(data.name) + '%0D%0A';
-      emailBody += 'Age: ' + encodeURIComponent(data.age) + '%0D%0A';
-      emailBody += 'State: ' + encodeURIComponent(data.state) + '%0D%0A';
-      emailBody += 'City: ' + encodeURIComponent(data.city) + '%0D%0A';
-      emailBody += 'Phone: ' + encodeURIComponent(data.phone) + '%0D%0A';
-      emailBody += 'WhatsApp: ' + encodeURIComponent(data.whatsapp) + '%0D%0A';
-      emailBody += 'Purpose: ' + encodeURIComponent(data.purpose) + '%0D%0A';
-      emailBody += 'Training Category: ' + encodeURIComponent(data.trainingCategory) + '%0D%0A';
-      emailBody += 'Program: ' + encodeURIComponent(data.program) + '%0D%0A';
-      emailBody += 'Message: ' + encodeURIComponent(data.message) + '%0D%0A%0D%0A';
-      emailBody += '---%0D%0AThis message was prepared by the website contact form.';
-
-      const mailTo = 'mailto:info@skillsbuilderinstitute.com'
-        + '?subject=' + encodeURIComponent('Website Contact: ' + data.name)
-        + '&body=' + emailBody;
-
-      // Show thank you box and open mail client
-      thankbox.style.display = 'block';
-
-      // Open mailto in new window/tab
-      window.location.href = mailTo;
-
-      // Optionally clear form (we keep values so user can send email)
-      // form.reset();
-    });
-  </script>
-</body>
-</html>
+  <!-- ===== Inline JS: contact form handling, dropdowns, states/cities, language, year ===== -->
+  <s
