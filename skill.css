@@ -1,56 +1,52 @@
-
-/* skill.css - styles for the provided index.html
-   Responsive layout, navbar, hero slider, footer, floating WA
+/* skill.css
+   Final CSS for the provided index.html
+   Keep this file as the single source of truth for layout & style.
 */
 
-/* ---------- variables ---------- */
+/* ========== Variables & Reset ========== */
 :root{
-  --bg:#f6f8fa;
-  --nav-bg:#063445;
-  --nav-ink:#ffffff;
-  --accent:#ff7a2d;
-  --muted:#7a8b94;
-  --card-bg:#ffffff;
-  --container-max:1180px;
-  --radius:10px;
-  --footer-bg:#062f3f;
-  --footer-text:#e6f1f5;
-  --text:#05283b;
-  --gap:18px;
-  --mobile-break:900px;
-  --tablet-break:720px;
+  --bg: #f6f8fa;
+  --nav-bg: #063445;
+  --nav-text: #ffffff;
+  --accent: #ff7a2d;
+  --muted: #6f8390;
+  --card: #ffffff;
+  --footer-bg: #062f3f;
+  --footer-text: #d9eef6;
+  --container-max: 1180px;
+  --radius: 10px;
+  --gap: 18px;
+  --mobile-break: 900px;
 }
 
-/* ---------- base ---------- */
-*{box-sizing:border-box}
+*{box-sizing:border-box;margin:0;padding:0}
 html,body{height:100%}
 body{
-  margin:0;
   font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
   background:var(--bg);
-  color:var(--text);
+  color:#05283b;
   -webkit-font-smoothing:antialiased;
   -moz-osx-font-smoothing:grayscale;
   line-height:1.5;
   font-size:15px;
 }
 
-/* ---------- containers ---------- */
+/* ========== Container ========== */
 .container{
-  width:100%;
-  margin:0 auto;
-  padding:0 20px;
   max-width:var(--container-max);
+  width:92%;
+  margin:0 auto;
+  padding:0 12px;
 }
 
-/* ---------- site header / navbar ---------- */
+/* ========== NAVBAR / HEADER ========== */
 .site-header{
   background:var(--nav-bg);
-  color:var(--nav-ink);
+  color:var(--nav-text);
   position:sticky;
   top:0;
-  z-index:1600;
-  box-shadow:0 4px 18px rgba(0,0,0,0.12);
+  z-index:1500;
+  box-shadow:0 6px 24px rgba(2,20,30,0.12);
 }
 
 .main-nav{
@@ -58,44 +54,51 @@ body{
   align-items:center;
   gap:var(--gap);
   padding:12px 0;
-  align-items:center;
 }
 
-/* left logo */
+/* left logo area - keep logo close to left, small gap after */
 .nav-left{
   display:flex;
   align-items:center;
-  gap:12px;
+  gap:10px; /* as requested: small spacing after logo */
   flex:0 0 auto;
 }
+.logo img{
+  height:56px;
+  display:block;
+  width:auto;
+  border-radius:6px;
+}
 
-/* logo image sizing; small gap after logo requested */
-.logo img{ display:block; height:54px; width:auto; }
-
-/* nav center - links */
-.nav-center{ flex:1 1 auto; display:flex; justify-content:center; align-items:center; }
-.nav-list{ display:flex; gap:22px; align-items:center; margin:0; padding:0; list-style:none; }
-
-/* link base */
+/* center navigation links */
+.nav-center{
+  flex:1 1 auto;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+.nav-list{
+  list-style:none;
+  display:flex;
+  gap:20px;
+  align-items:center;
+  margin:0;
+  padding:0;
+}
 .nav-list a{
-  color:var(--nav-ink);
+  color:var(--nav-text);
   text-decoration:none;
   font-weight:600;
+  font-size:15px;
   padding:6px 6px;
   display:inline-flex;
-  align-items:center;
   gap:8px;
-  transition:opacity .18s, transform .12s;
-  letter-spacing:0.1px;
-  font-size:15px;
+  align-items:center;
+  transition:transform .12s, opacity .12s;
 }
-.nav-list a:hover{ opacity:0.92; transform:translateY(-1px); }
+.nav-list a:hover{ opacity:.95; transform:translateY(-1px) }
 
-/* contact (inside nav list) - keep small font and inline icon */
-.nav-contact a{ display:inline-flex; gap:8px; align-items:center; color:var(--nav-ink); text-decoration:none; font-weight:600; font-size:14px; opacity:.95; }
-.nav-contact svg{ display:inline-block; vertical-align:middle; opacity:.98; }
-
-/* center dropdown - explore */
+/* explore dropdown */
 .nav-item{ position:relative; }
 .dropdown-panel{
   display:none;
@@ -103,32 +106,45 @@ body{
   left:0;
   top:40px;
   min-width:220px;
-  background:var(--card-bg);
-  border-radius:10px;
-  box-shadow:0 18px 40px rgba(5,30,46,0.14);
-  padding:8px 6px;
+  background:var(--card);
+  color:#05283b;
+  border-radius:8px;
+  box-shadow:0 14px 40px rgba(5,30,46,0.16);
+  padding:6px 4px;
   z-index:1400;
 }
 .dropdown-panel a{
   display:block;
-  padding:10px 12px;
-  color:var(--text);
+  padding:10px 14px;
+  color:inherit;
   text-decoration:none;
   font-weight:600;
   border-radius:6px;
 }
-.dropdown-panel a:hover{ background: #f3f6f8; }
+.dropdown-panel a:hover{ background:#f4f7f9; }
 
-/* right area (phone/email + language) */
-.nav-right{ flex:0 0 auto; display:flex; gap:12px; align-items:center; }
+/* show dropdown on hover / focus-within / .open (JS toggled) */
+.nav-item:hover .dropdown-panel,
+.nav-item:focus-within .dropdown-panel,
+.nav-item.open .dropdown-panel {
+  display:block;
+}
 
-/* language selector button */
+/* nav-contact items (phone/email inside nav list) */
+.nav-contact{ display:inline-flex; align-items:center; gap:8px; }
+.nav-contact a{ display:inline-flex; align-items:center; gap:8px; color:var(--nav-text); text-decoration:none; font-weight:600; font-size:14px; }
+.nav-contact svg{ width:18px; height:18px; flex-shrink:0; }
+
+/* right side (language) */
+.nav-right{ display:flex; align-items:center; gap:12px; flex:0 0 auto; }
+
+/* language button and panel */
 .lang-btn{
   background:transparent;
-  border:none;
-  color:var(--nav-ink);
-  font-weight:700;
+  border:0;
+  color:var(--nav-text);
   cursor:pointer;
+  font-weight:700;
   display:inline-flex;
   gap:8px;
   align-items:center;
@@ -139,75 +155,45 @@ body{
   display:none;
   position:absolute;
   right:6px;
-  top:48px;
+  top:46px;
   background:#fff;
-  color:var(--text);
+  color:#05283b;
   border-radius:8px;
   box-shadow:0 14px 40px rgba(5,30,46,0.16);
   z-index:1500;
 }
+.lang-panel button{ display:block; width:100%; text-align:left; padding:10px 14px; border:0; background:transparent; cursor:pointer; font-weight:700; }
+.lang-panel button:hover{ background:#f4f7f9; }
 
-/* lang item */
-.lang-item{
-  display:block;
-  width:100%;
-  text-align:left;
-  padding:10px 14px;
-  border:0;
-  background:transparent;
-  cursor:pointer;
-  font-weight:600;
-}
-.lang-item:hover{ background:#f6f8fa; }
-
-/* ---------- hero slider ---------- */
-.hero{ background:transparent; }
+/* ========== HERO SLIDER ========== */
+.hero{ margin-top:14px; margin-bottom:18px; }
 .slides-wrap{
-  display:block;
+  position:relative;
   width:100%;
+  height:360px;
   border-radius:10px;
   overflow:hidden;
-  margin:18px auto 20px;
 }
 .slide{
-  height:360px;
+  position:absolute;
+  inset:0;
   background-size:cover;
   background-position:center;
-  background-repeat:no-repeat;
   opacity:0;
-  transition:opacity .6s ease-in-out;
-  width:100%;
-  position:absolute;
-  left:0; top:0;
+  transition:opacity .7s ease;
 }
-.slides-wrap{ position:relative; height:360px; }
 .slide.active{ opacity:1; position:relative; }
 
-/* small screens use shorter hero */
-@media (max-width:900px){
-  .slides-wrap{ height:220px; border-radius:8px; }
-  .slide{ height:220px; }
-}
-
-/* ---------- main content ---------- */
-.content{ padding:28px 0 44px; max-width:1100px; margin:0 auto; }
-.content h1{ margin:6px 0 12px; font-size:26px; color:var(--text); }
-.content p{ color:var(--muted); font-size:15px; line-height:1.7; text-align:justify; }
-
-/* cards row */
+/* ========== MAIN CONTENT ========== */
+.content{ padding:20px 0 40px; max-width:1100px; margin:0 auto; }
+.content h1{ font-size:28px; margin-bottom:10px; color:#05283b; }
+.content p{ color:var(--muted); font-size:15px; line-height:1.8; text-align:justify; }
 .cards{ display:flex; gap:18px; margin-top:18px; flex-wrap:wrap; }
-.card{
-  background:var(--card-bg);
-  padding:18px;
-  border-radius:12px;
-  box-shadow:0 8px 28px rgba(5,30,46,0.06);
-  flex:1 1 30%;
-  min-width:220px;
-}
-.card h3{ margin:0 0 8px; font-size:16px; color:var(--text) }
-.card p{ margin:0; color:var(--muted); font-size:14px; }
+.card{ background:var(--card); border-radius:10px; padding:16px; box-shadow:0 8px 28px rgba(5,30,46,0.06); flex:1 1 30%; min-width:220px; }
+.card h3{ margin-bottom:8px; }
+.card p{ color:var(--muted); }
 
-/* ---------- footer ---------- */
+/* ========== FOOTER ========== */
 .site-footer{
   background:var(--footer-bg);
   color:var(--footer-text);
@@ -219,98 +205,97 @@ body{
   grid-template-columns: 1fr 1fr 1fr;
   gap:28px;
   align-items:start;
-  width:100%;
   max-width:var(--container-max);
   margin:0 auto;
-  padding:0 20px;
+  padding:0 12px;
 }
-.footer-left img{ height:56px; display:block; margin-bottom:12px; }
-.footer-left .map-link{ display:inline-flex; gap:8px; align-items:center; color:var(--footer-text); text-decoration:none; font-weight:600; }
-.footer-left .address{ color:#cfe6ee; margin-top:8px; font-size:14px; line-height:1.5; }
 
-/* quick links */
-.footer-mid h4, .footer-right h4{ margin:6px 0 12px; font-size:16px; color:#e9f6fb; }
-.quick-links a, .social-grid a{
-  display:block;
-  color:#d8eef6;
+/* left column: logo, map icon, address */
+.footer-left img{ height:56px; display:block; border-radius:6px; }
+.footer-left .map-link{
+  display:inline-flex;
+  gap:8px;
+  align-items:center;
+  margin-top:12px;
   text-decoration:none;
-  padding:6px 0;
-  font-weight:600;
+  color:var(--footer-text);
+  font-weight:700;
 }
-.quick-links a::before, .social-grid a .arrow{ color:#d8eef6; margin-right:6px; }
+.footer-left .map-link svg{ width:18px; height:18px; flex-shrink:0; }
+.footer-left .address{
+  margin-top:12px;
+  color:#cfe6ee;
+  font-size:14px;
+  line-height:1.6;
+}
 
-/* social-grid layout two columns on desktop (row two per line) */
+/* make entire address block clickable: wrap it in <a> in HTML or style anchor below */
+.footer-left .address a{ color:inherit; text-decoration:none; }
+
+/* mid column: quick links */
+.footer-mid h4, .footer-right h4{ color:#e8f7fb; margin-bottom:10px; font-size:16px; }
+.quick-links a{ display:block; color:#d9eef6; text-decoration:none; font-weight:700; margin-bottom:8px; }
+.quick-links a::before{ content: "➤ "; margin-right:6px; color:#d9eef6; }
+
+/* right column: social grid (desktop 2-column) */
 .social-grid{
   display:grid;
   grid-template-columns: 1fr 1fr;
-  gap:6px 18px;
-  align-items:center;
+  gap:8px 20px;
 }
+.social-grid a{ display:flex; align-items:center; gap:8px; text-decoration:none; color:#d9eef6; font-weight:700; }
+.social-grid a .arrow{ color:#d9eef6; }
 
 /* footer note */
-.footer-note{
-  text-align:center;
-  color:#9cc5d2;
-  padding:18px 8px 36px;
-  font-size:13px;
-  background:linear-gradient(0deg, rgba(0,0,0,0.06), transparent);
-}
+.footer-note{ text-align:center; color:#9cc5d2; margin-top:18px; font-size:13px; padding-top:6px; }
 
-/* ---------- floating whatsapp ---------- */
-/* target both correct class and accidental className attr */
-.wa-float, .whatsapp-float, .whatsapp-float[aria-label], a[aria-label="Chat on WhatsApp"]{
+/* ========== Floating WhatsApp ========== */
+/* support className mistakes + aria selector */
+.wa-float, .whatsapp-float, .whatsapp-float[aria-label], a[aria-label="Chat on WhatsApp"], a.whatsapp-float, .whatsapp-float {
   position:fixed;
   right:18px;
   bottom:18px;
+  z-index:1800;
   display:inline-flex;
   align-items:center;
-  gap:8px;
-  padding:10px 12px;
+  gap:10px;
+  padding:10px 14px;
   border-radius:999px;
   background:#25d366;
   color:#fff;
   text-decoration:none;
-  box-shadow:0 8px 28px rgba(2,120,76,0.22);
-  z-index:1800;
-  transition:transform .12s ease, box-shadow .12s;
+  box-shadow:0 10px 36px rgba(2,120,76,0.22);
 }
-.wa-float svg, .whatsapp-float svg, a[aria-label="Chat on WhatsApp"] svg{ display:block; width:26px; height:26px; }
-.wa-float:hover, .whatsapp-float:hover, a[aria-label="Chat on WhatsApp"]:hover{ transform:translateY(-3px); box-shadow:0 12px 36px rgba(2,120,76,0.28); }
+.wa-float svg, a[aria-label="Chat on WhatsApp"] svg{ width:26px; height:26px; display:block; }
+.wa-text{ font-weight:800; }
 
-/* text in WA bubble */
-.wa-text, .whatsapp-float .wa-text{ display:inline-block; font-weight:700; font-size:14px; margin-left:6px; }
-
-/* ---------- small / mobile responsiveness ---------- */
-@media (max-width:900px){
-  .container{ padding:0 14px; }
-  .nav-list{ gap:10px; font-size:14px; }
-  /* reduce logo height */
+/* ========== Responsive / Mobile tweaks ========== */
+@media (max-width: var(--mobile-break)){
+  .container{ width:95%; padding:0 12px; }
   .logo img{ height:48px; }
-  /* stack footer */
-  .footer-grid{ grid-template-columns: 1fr; text-align:left; padding:0 18px; }
-  .nav-center{ justify-content:flex-start; }
-  .nav-right{ display:flex; gap:8px; }
-  /* collapse cards to column */
+  .nav-list{ gap:10px; flex-wrap:wrap; justify-content:flex-start; }
+  .nav-center{ justify-content:flex-start; padding-left:8px; }
+  .slides-wrap{ height:220px; }
+  .slide{ height:220px; }
   .cards{ flex-direction:column; }
-  .card{ width:100%; }
-  /* move WA bubble slightly higher so it doesn't overlap bottom nav on mobile */
-  .wa-float, .whatsapp-float, a[aria-label="Chat on WhatsApp"]{ right:14px; bottom:14px; padding:10px; }
-  /* hero shorter */
-  .slides-wrap{ height:200px; }
-  .slide{ height:200px; }
+  .footer-grid{ grid-template-columns: 1fr; text-align:left; padding:0 12px; }
+  .social-grid{ grid-template-columns: repeat(2, 1fr); }
+  .wa-float{ right:14px; bottom:14px; }
 }
 
-/* ---------- accessibility focus ---------- */
-a:focus, button:focus{ outline:3px solid rgba(255,122,45,0.18); outline-offset:2px; border-radius:6px; }
-
-/* ---------- helpers: show dropdown when JS toggles style.display = 'block' ---------- */
-.dropdown-panel[style*="display:block"], .lang-panel[style*="display:block"], .lang-item[style*="display:block"]{
-  display:block !important;
-}
-
-/* ensure header items don't wrap badly on narrow screens */
-@media (max-width:560px){
-  .nav-list{ display:flex; gap:8px; flex-wrap:wrap; justify-content:flex-start; }
-  .nav-contact a{ font-size:13px; }
+/* smaller phones */
+@media (max-width:520px){
+  .slides-wrap{ height:180px; }
+  .slide{ height:180px; }
   .nav-left{ gap:8px; }
 }
+
+/* ========== Accessibility & helpers ========== */
+a:focus, button:focus{ outline:3px solid rgba(255,122,45,0.12); outline-offset:2px; border-radius:6px; }
+.nav-item.open .dropdown-panel{ display:block; } /* .open toggled by JS */
+
+/* ensure dropdown set by inline style or JS still respects CSS for position */
+.nav-item .dropdown-panel[style*="display:block"]{ display:block !important; }
+
+/* small polish for anchor clickable address if HTML left plain text */
+.footer-left .address a{ display:inline-block; }
