@@ -53,23 +53,16 @@
       <!-- right: contact + language selector -->
       <div class="nav-right" style="display:flex; align-items:center; gap:14px;">
         <!-- email -->
-        <a href="mailto:info@skillsbuilderinstitute.com" class="top-link" aria-label="Email info@skillsbuilderinstitute.com" style="display:inline-flex; align-items:center; gap:8px; text-decoration:none;">
-          <!-- envelope icon simple -->
-          <svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 7.5v9A2.5 2.5 0 0 0 5.5 19h13A2.5 2.5 0 0 0 21 16.5v-9" stroke="#fff" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          <span style="font-weight:600;">info@skillsbuilderinstitute.com</span>
-        </a>
-
-        <!-- phone -->
-        <a href="tel:+917488894910" class="top-link" aria-label="Call +91-7488894910" style="display:inline-flex; align-items:center; gap:8px; text-decoration:none;">
-          <!-- phone icon simple -->
-          <svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M22 16.9a18 18 0 0 1-8.9 4.5" stroke="#fff" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          <span style="font-weight:600;">+91-7488894910</span>
-        </a>
+        <div class="nav-contact">
+      <span class="nav-phone">
+        <i class="fa-solid fa-phone"></i>(+91) 7488894910</span>
+      <span class="nav-email">
+        <i class="fa-solid fa-envelope"></i> info@skillsbuilderinstitute.com</span>
+    </div>
 
         <!-- language selector -->
         <div style="position:relative;">
-          <button class="lang-btn" id="langBtn" aria-haspopup="true" aria-expanded="false" style="background:transparent;border:0;color:inherit;cursor:pointer;font-weight:700;display:inline-flex;align-items:center;gap:8px;">
-            <span id="langFlag">🇬🇧</span>
+          <button class="lang-btn" id="langBtn" aria-haspopup="true" aria-expanded="false" style="background:transparent;border:0;color:inherit;cursor:pointer;font-weight:700;display:inline-flex;align-items:center;gap:8px;"
             <span id="langCode">EN</span>
             <svg width="12" height="12" viewBox="0 0 24 24" fill="none" style="margin-left:4px;"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </button>
