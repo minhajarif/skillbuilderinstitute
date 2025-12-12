@@ -21,7 +21,7 @@
   setInterval(() => {
     idx = (idx + 1) % slides.length;
     show(idx);
-  }, 3800);
+  }, 5000);
 
   slides.forEach((s) => {
     const img = new Image();
