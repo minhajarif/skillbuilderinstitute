@@ -10,10 +10,8 @@
   --accent:#FF6A00;
   --dark:#071028;
   --bg:#f5f7fa;
-  --card:#ffffff;
   --text:#0f1724;
   --muted:#6b7280;
-  --radius:12px;
   --container:1100px;
 }
 *{box-sizing:border-box}
@@ -35,7 +33,7 @@ header{
   display:flex;align-items:center;justify-content:space-between;gap:16px
 }
 .brand{display:flex;align-items:center;gap:12px}
-.brand .title{font-weight:700}
+.brand img{height:48px}
 nav ul{display:flex;gap:18px;list-style:none;margin:0;padding:0}
 nav li{position:relative}
 nav a{padding:8px 10px;border-radius:6px;font-size:14px}
@@ -47,7 +45,8 @@ nav a:hover{background:rgba(255,255,255,.1)}
   min-width:220px;
 }
 .dropdown a{display:block;padding:8px 10px}
-.icons-row{display:flex;gap:12px;align-items:center}
+.icons-row{display:flex;gap:14px;align-items:center}
+.icon{display:flex;align-items:center;gap:6px;font-size:13px}
 
 /* ================= SLIDER ================= */
 .hero{position:relative;overflow:hidden}
@@ -69,44 +68,28 @@ nav a:hover{background:rgba(255,255,255,.1)}
   font-size:22px;padding:8px 14px;
   border-radius:8px;cursor:pointer
 }
-.dots{
-  position:absolute;bottom:14px;left:50%;
-  transform:translateX(-50%);
-  display:flex;gap:8px
-}
-.dot{
-  width:10px;height:10px;border-radius:50%;
-  background:#ccc;cursor:pointer
-}
-.dot.active{background:var(--accent)}
 
 /* ================= CONTENT ================= */
-.cta-overlap{
-  background:#fff;margin:-40px auto 30px;
+.home-content{
+  background:#fff;
+  padding:30px;
   border-radius:12px;
-  padding:20px;
-  display:flex;justify-content:space-between;align-items:center;
-  box-shadow:0 10px 30px rgba(0,0,0,.1)
-}
-.cards-grid{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:20px
-}
-.card{
-  background:#fff;padding:18px;border-radius:12px;
+  margin-top:30px;
   box-shadow:0 8px 20px rgba(0,0,0,.08)
 }
 
 /* ================= FOOTER ================= */
 footer{
-  background:#061222;color:#fff;margin-top:40px
+  background:#061222;color:#fff;margin-top:50px
 }
 .footer-grid{
-  display:grid;grid-template-columns:repeat(3,1fr);
-  gap:20px
+  display:grid;
+  grid-template-columns:1fr 1fr 1fr;
+  gap:24px
 }
-.footer-grid a{display:block;margin-bottom:8px;color:#fff}
+.footer-grid img{height:50px}
+.footer-grid a{display:block;color:#fff;margin-bottom:8px}
+.footer-grid .arrow::before{content:"➤ ";color:var(--accent)}
 .footer-note{
   text-align:center;padding:16px;
   color:#aaa;font-size:13px
@@ -125,8 +108,7 @@ footer{
 /* ================= RESPONSIVE ================= */
 @media(max-width:768px){
   nav ul{display:none}
-  .cards-grid{grid-template-columns:1fr}
-  .cta-overlap{flex-direction:column;gap:12px}
+  .footer-grid{grid-template-columns:1fr}
   .slide{height:240px}
 }
 </style>
@@ -138,7 +120,8 @@ footer{
 <header>
   <div class="container navbar">
     <div class="brand">
-      <div class="title">Skills Builder Institute</div>
+      <img src="images/logo.png" alt="Skills Builder Institute">
+      <strong>Skills Builder Institute</strong>
     </div>
 
     <nav>
@@ -162,8 +145,13 @@ footer{
     </nav>
 
     <div class="icons-row">
-      <a href="mailto:info@skillsbuilderinstitute.com">Email</a>
-      <a href="https://wa.me/917488894910" target="_blank">WhatsApp</a>
+      <div class="icon">📞 +91-7488894910</div>
+      <div class="icon">✉ info@skillsbuilderinstitute.com</div>
+      <select>
+        <option>EN</option>
+        <option>HI</option>
+        <option>AR</option>
+      </select>
     </div>
   </div>
 </header>
@@ -181,53 +169,59 @@ footer{
     <button class="ctrl" id="prev">‹</button>
     <button class="ctrl" id="next">›</button>
   </div>
-
-  <div class="dots" id="dots"></div>
 </section>
 
-<!-- ================= HOME CONTENT ================= -->
-<div class="cta-overlap container">
-  <div>
-    <strong>Begin your career with practical skills</strong><br>
-    Industry-led training • Certification • Placement support
-  </div>
-  <div>
-    <a href="#" style="color:#fff;background:var(--accent);padding:10px 16px;border-radius:8px">Enquire Now</a>
-  </div>
-</div>
-
+<!-- ================= CONTENT ================= -->
 <main class="container">
-  <h2>Featured Programs</h2>
-  <div class="cards-grid">
-    <div class="card">Web Development</div>
-    <div class="card">Skill Training</div>
-    <div class="card">Professional Courses</div>
+  <div class="home-content">
+    <h2>Welcome to Skills Builder Institute</h2>
+    <p>Skills Builder Institute provides practical, job-oriented training designed to meet real industry needs.</p>
+    <p>Our courses focus on hands-on learning, live demonstrations and real-world project experience.</p>
+    <p>We offer technical, professional and soft-skill programs under expert guidance.</p>
+    <p>Students receive certification, career counselling and interview preparation.</p>
+    <p>Placement assistance is provided for eligible candidates in India and abroad.</p>
+    <p>Our trainers bring industry experience to help students become job-ready.</p>
+    <p>Thousands of learners have successfully built careers through our programs.</p>
+    <p>Join us to upgrade your skills and build a confident professional future.</p>
   </div>
 </main>
 
 <!-- ================= FOOTER ================= -->
 <footer>
   <div class="container footer-grid">
+
     <div>
-      <strong>Skills Builder Institute</strong>
-      <p>Siwan, Bihar</p>
+      <img src="images/logo.png" alt="logo">
+      <a href="https://www.google.com/maps/search/?api=1&query=Sona+Complex+Tulshi+Nagar+Near+Dayanand+Ayurvedic+Medical+College+Siwan+Bihar+841226" target="_blank">
+        📍 Sona Complex, 2nd Floor, Tulshi Nagar,<br>
+        Near Dayanand Ayurvedic Medical College,<br>
+        Siwan, Bihar – 841226
+      </a>
     </div>
+
     <div>
-      <strong>Quick Links</strong>
-      <a href="#">Home</a>
-      <a href="#">Explore</a>
-      <a href="#">Career</a>
-      <a href="#">Contact</a>
+      <h4>Quick Actions</h4>
+      <a class="arrow" href="#">Home</a>
+      <a class="arrow" href="#">Explore Training</a>
+      <a class="arrow" href="#">Career Guidance</a>
+      <a class="arrow" href="#">About Us</a>
+      <a class="arrow" href="#">Contact Us</a>
     </div>
+
     <div>
-      <strong>Follow Us</strong>
-      <a href="#">Instagram</a>
-      <a href="#">Facebook</a>
-      <a href="#">YouTube</a>
+      <h4>Connect With Us</h4>
+      <a class="arrow" href="https://wa.me/917488894910" target="_blank">WhatsApp</a>
+      <a class="arrow" href="https://www.instagram.com/skills_builder_institute" target="_blank">Instagram</a>
+      <a class="arrow" href="https://www.fb.com/skillsbuilderinstitute" target="_blank">Facebook</a>
+      <a class="arrow" href="https://t.me/skillsbuilderinstitute" target="_blank">Telegram</a>
+      <a class="arrow" href="https://www.youtube.com/@SkillsBuilderInstitute" target="_blank">YouTube</a>
+      <a class="arrow" href="https://x.com/@SkillsBuilderSV" target="_blank">X (Twitter)</a>
     </div>
+
   </div>
+
   <div class="footer-note">
-    © <span id="year"></span> Skills Builder Institute
+    © <span id="year"></span> Skills Builder Institute — All Rights Reserved
   </div>
 </footer>
 
@@ -243,30 +237,24 @@ footer{
 document.getElementById("year").innerText=new Date().getFullYear();
 
 /* dropdown */
-const explore=document.getElementById("exploreLi");
+const li=document.getElementById("exploreLi");
 const drop=document.getElementById("exploreDrop");
-explore.onmouseenter=()=>drop.style.display="block";
-explore.onmouseleave=()=>drop.style.display="none";
+li.onmouseenter=()=>drop.style.display="block";
+li.onmouseleave=()=>drop.style.display="none";
 
 /* slider */
 const slides=document.getElementById("slides");
-const total=slides.children.length;
-let i=0;
-const dots=document.getElementById("dots");
-for(let d=0;d<total;d++){
-  const dot=document.createElement("div");
-  dot.className="dot"+(d==0?" active":"");
-  dot.onclick=()=>go(d);
-  dots.appendChild(dot);
-}
-function go(n){
-  i=n;
+let i=0,total=slides.children.length;
+function move(){
+  i=(i+1)%total;
   slides.style.transform=`translateX(-${i*100}%)`;
-  [...dots.children].forEach((x,j)=>x.classList.toggle("active",j==i));
 }
-document.getElementById("next").onclick=()=>go((i+1)%total);
-document.getElementById("prev").onclick=()=>go((i-1+total)%total);
-setInterval(()=>go((i+1)%total),5000);
+setInterval(move,4000);
+document.getElementById("next").onclick=move;
+document.getElementById("prev").onclick=()=>{
+  i=(i-1+total)%total;
+  slides.style.transform=`translateX(-${i*100}%)`;
+};
 </script>
 
 </body>
