@@ -7,12 +7,10 @@
 
 <style>
 :root{
+  --primary:#071028;
   --accent:#FF6A00;
-  --dark:#071028;
   --bg:#f5f7fa;
   --text:#0f1724;
-  --muted:#6b7280;
-  --container:1100px;
 }
 *{box-sizing:border-box}
 body{
@@ -22,131 +20,172 @@ body{
   color:var(--text);
 }
 a{text-decoration:none;color:inherit}
-.container{max-width:var(--container);margin:auto;padding:18px}
+.container{max-width:1200px;margin:auto;padding:0 16px}
 
 /* ================= NAVBAR ================= */
 header{
+  background:var(--primary);
   position:sticky;top:0;z-index:1000;
-  background:var(--dark);color:#fff;
 }
 .navbar{
-  display:flex;align-items:center;justify-content:space-between;gap:16px
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  height:64px;
 }
-.brand{display:flex;align-items:center;gap:12px}
-.brand img{height:48px}
-nav ul{display:flex;gap:18px;list-style:none;margin:0;padding:0}
-nav li{position:relative}
-nav a{padding:8px 10px;border-radius:6px;font-size:14px}
-nav a:hover{background:rgba(255,255,255,.1)}
+.logo{
+  height:44px;
+}
+nav ul{
+  list-style:none;
+  display:flex;
+  gap:18px;
+  align-items:center;
+  margin:0;padding:0;
+}
+nav ul li{position:relative}
+nav ul a{
+  color:#fff;
+  font-size:14px;
+  padding:6px 8px;
+}
 .dropdown{
   display:none;
-  position:absolute;top:42px;left:0;
-  background:#0b1624;border-radius:8px;
+  position:absolute;
+  top:32px;
+  left:0;
+  background:#0b1624;
   min-width:220px;
+  border-radius:8px;
 }
-.dropdown a{display:block;padding:8px 10px}
-.icons-row{display:flex;gap:14px;align-items:center}
-.icon{display:flex;align-items:center;gap:6px;font-size:13px}
+.dropdown a{
+  display:block;
+  padding:10px;
+  color:#fff;
+}
+.dropdown a:hover{background:rgba(255,255,255,.08)}
+nav ul li:hover .dropdown{display:block}
+
+.nav-right{
+  display:flex;
+  align-items:center;
+  gap:16px;
+  color:#fff;
+  white-space:nowrap;
+}
+.nav-item{
+  display:flex;
+  align-items:center;
+  gap:6px;
+  font-size:13px;
+}
+.lang-select{
+  background:transparent;
+  border:1px solid rgba(255,255,255,.3);
+  color:#fff;
+  padding:4px 6px;
+  border-radius:6px;
+}
 
 /* ================= SLIDER ================= */
 .hero{position:relative;overflow:hidden}
-.slides{display:flex;transition:.6s}
+.slides{
+  display:flex;
+  transition:transform .6s ease;
+}
 .slide{
   min-width:100%;
   height:380px;
   background-size:cover;
   background-position:center;
 }
-.slider-controls{
-  position:absolute;top:50%;left:0;right:0;
-  display:flex;justify-content:space-between;
-  padding:0 12px;
-}
-.ctrl{
-  background:rgba(0,0,0,.4);
-  color:#fff;border:0;
-  font-size:22px;padding:8px 14px;
-  border-radius:8px;cursor:pointer
+@media(max-width:768px){
+  .slide{height:240px}
 }
 
 /* ================= CONTENT ================= */
-.home-content{
+.content{
   background:#fff;
-  padding:30px;
+  margin:-40px auto 40px;
   border-radius:12px;
-  margin-top:30px;
-  box-shadow:0 8px 20px rgba(0,0,0,.08)
+  padding:24px;
+  box-shadow:0 10px 30px rgba(0,0,0,.08);
 }
 
 /* ================= FOOTER ================= */
 footer{
-  background:#061222;color:#fff;margin-top:50px
+  background:#061222;
+  color:#fff;
 }
 .footer-grid{
   display:grid;
   grid-template-columns:1fr 1fr 1fr;
-  gap:24px
+  gap:20px;
+  padding:40px 0;
 }
-.footer-grid img{height:50px}
-.footer-grid a{display:block;color:#fff;margin-bottom:8px}
-.footer-grid .arrow::before{content:"➤ ";color:var(--accent)}
-.footer-note{
-  text-align:center;padding:16px;
-  color:#aaa;font-size:13px
+.footer-grid img{height:46px}
+.footer-grid a{display:block;color:#fff;margin:6px 0}
+.arrow{color:var(--accent);margin-right:6px}
+.footer-bottom{
+  text-align:center;
+  padding:14px;
+  font-size:13px;
+  color:#bbb;
+}
+@media(max-width:768px){
+  .footer-grid{grid-template-columns:1fr}
 }
 
 /* ================= WHATSAPP ================= */
 .whatsapp-float{
-  position:fixed;right:20px;bottom:20px;
-  width:56px;height:56px;
-  background:#25D366;border-radius:50%;
-  display:flex;align-items:center;justify-content:center;
-  box-shadow:0 10px 25px rgba(0,0,0,.3);
-  z-index:2000
-}
-
-/* ================= RESPONSIVE ================= */
-@media(max-width:768px){
-  nav ul{display:none}
-  .footer-grid{grid-template-columns:1fr}
-  .slide{height:240px}
+  position:fixed;
+  right:20px;
+  bottom:20px;
+  width:54px;
+  height:54px;
+  background:#25D366;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  box-shadow:0 8px 20px rgba(0,0,0,.3);
+  z-index:2000;
 }
 </style>
 </head>
-
 <body>
 
 <!-- ================= NAVBAR ================= -->
 <header>
   <div class="container navbar">
-    <div class="brand">
-      <img src="images/logo.png" alt="Skills Builder Institute">
-    </div>
+    <img src="images/logo.png" class="logo" alt="Skills Builder Institute">
 
     <nav>
       <ul>
-        <li><a href="#">Home</a></li>
-        <li id="exploreLi">
-          <a href="#">Explore Training ▾</a>
-          <div class="dropdown" id="exploreDrop">
-            <a href="#">All Training</a>
-            <a href="#">Skill Training</a>
-            <a href="#">Professional Courses</a>
-            <a href="#">Programming</a>
-            <a href="#">Engineering</a>
-            <a href="#">Soft Skills</a>
+        <li><a href="index.html">Home</a></li>
+
+        <li>
+          <a href="explore-training.html">Explore ▾</a>
+          <div class="dropdown">
+            <a href="explore-training.html">All Training</a>
+            <a href="explore-training/skilltraining-bluecollar.html">Skill Training</a>
+            <a href="explore-training/professional.html">Professional</a>
+            <a href="explore-training/programmer.html">Programming</a>
+            <a href="explore-training/engineer.html">Engineering</a>
+            <a href="explore-training/softskill.html">Soft Skills</a>
           </div>
         </li>
-        <li><a href="#">Career</a></li>
-        <li><a href="#">About</a></li>
-        <li><a href="#">Contact</a></li>
+
+        <li><a href="career-guidance.html">Career Guidance</a></li>
+        <li><a href="aboutus.html">About Us</a></li>
+        <li><a href="contactus.html">Contact</a></li>
       </ul>
     </nav>
 
-    <div class="icons-row">
-      <div class="icon">📞 +91-7488894910</div>
-      <div class="icon">✉ info@skillsbuilderinstitute.com</div>
-      <select>
+    <div class="nav-right">
+      <div class="nav-item">📞 <a href="tel:+917488894910">+91 74888 94910</a></div>
+      <div class="nav-item">✉️ <a href="mailto:info@skillsbuilderinstitute.com">info@skillsbuilderinstitute.com</a></div>
+      <select class="lang-select">
         <option>EN</option>
         <option>HI</option>
         <option>AR</option>
@@ -161,26 +200,20 @@ footer{
     <div class="slide" style="background-image:url('images/home-slider-1.png')"></div>
     <div class="slide" style="background-image:url('images/home-slider-2.png')"></div>
     <div class="slide" style="background-image:url('images/home-slider-3.png')"></div>
-    <div class="slide" style="background-image:url('images/home-slider-4.png')"></div>
-  </div>
-
-  <div class="slider-controls">
-    <button class="ctrl" id="prev">‹</button>
-    <button class="ctrl" id="next">›</button>
   </div>
 </section>
 
 <!-- ================= CONTENT ================= -->
 <main class="container">
-  <div class="home-content">
+  <div class="content">
     <h2>Welcome to Skills Builder Institute</h2>
     <p>Skills Builder Institute provides practical, job-oriented training designed to meet real industry needs.</p>
-    <p>Our courses focus on hands-on learning, live demonstrations and real-world project experience.</p>
-    <p>We offer technical, professional and soft-skill programs under expert guidance.</p>
+    <p>Our programs focus on hands-on learning, live demonstrations and real-world project experience.</p>
+    <p>We offer technical, professional and soft-skill courses under expert guidance.</p>
     <p>Students receive certification, career counselling and interview preparation.</p>
     <p>Placement assistance is provided for eligible candidates in India and abroad.</p>
-    <p>Our trainers bring industry experience to help students become job-ready.</p>
-    <p>Thousands of learners have successfully built careers through our programs.</p>
+    <p>Our trainers bring strong industry experience to build job-ready skills.</p>
+    <p>Thousands of learners have built successful careers through our programs.</p>
     <p>Join us to upgrade your skills and build a confident professional future.</p>
   </div>
 </main>
@@ -191,69 +224,59 @@ footer{
 
     <div>
       <img src="images/logo.png" alt="logo">
-      <a href="https://www.google.com/maps/search/?api=1&query=Sona+Complex+Tulshi+Nagar+Near+Dayanand+Ayurvedic+Medical+College+Siwan+Bihar+841226" target="_blank">
-        📍 Sona Complex, 2nd Floor, Tulshi Nagar,<br>
-        Near Dayanand Ayurvedic Medical College,<br>
-        Siwan, Bihar – 841226
-      </a>
+      <p>
+        <a href="https://www.google.com/maps/search/?api=1&query=Sona+Complex+Tulshi+Nagar+Near+Dayanand+Ayurvedic+Medical+College+Siwan+Bihar+841226" target="_blank">
+          📍 Sona Complex, 2nd Floor, Tulshi Nagar<br>
+          Near Dayanand Ayurvedic Medical College<br>
+          Siwan, Bihar – 841226
+        </a>
+      </p>
     </div>
 
     <div>
       <h4>Quick Actions</h4>
-      <a class="arrow" href="#">Home</a>
-      <a class="arrow" href="#">Explore Training</a>
-      <a class="arrow" href="#">Career Guidance</a>
-      <a class="arrow" href="#">About Us</a>
-      <a class="arrow" href="#">Contact Us</a>
+      <a href="index.html"><span class="arrow">➤</span>Home</a>
+      <a href="explore-training.html"><span class="arrow">➤</span>Explore Training</a>
+      <a href="career-guidance.html"><span class="arrow">➤</span>Career Guidance</a>
+      <a href="aboutus.html"><span class="arrow">➤</span>About Us</a>
+      <a href="contactus.html"><span class="arrow">➤</span>Contact Us</a>
     </div>
 
     <div>
       <h4>Connect With Us</h4>
-      <a class="arrow" href="https://wa.me/917488894910" target="_blank">WhatsApp</a>
-      <a class="arrow" href="https://www.instagram.com/skills_builder_institute" target="_blank">Instagram</a>
-      <a class="arrow" href="https://www.fb.com/skillsbuilderinstitute" target="_blank">Facebook</a>
-      <a class="arrow" href="https://t.me/skillsbuilderinstitute" target="_blank">Telegram</a>
-      <a class="arrow" href="https://www.youtube.com/@SkillsBuilderInstitute" target="_blank">YouTube</a>
-      <a class="arrow" href="https://x.com/@SkillsBuilderSV" target="_blank">X (Twitter)</a>
+      <a href="https://whatsapp.com/channel/0029Vb6Kou2DuMRmU5kAKy1W" target="_blank"><span class="arrow">➤</span>WhatsApp</a>
+      <a href="https://www.instagram.com/skills_builder_institute" target="_blank"><span class="arrow">➤</span>Instagram</a>
+      <a href="https://www.fb.com/skillsbuilderinstitute" target="_blank"><span class="arrow">➤</span>Facebook</a>
+      <a href="https://t.me/skillsbuilderinstitute" target="_blank"><span class="arrow">➤</span>Telegram</a>
+      <a href="https://www.youtube.com/@SkillsBuilderInstitute" target="_blank"><span class="arrow">➤</span>YouTube</a>
+      <a href="https://x.com/@SkillsBuilderSV" target="_blank"><span class="arrow">➤</span>X (Twitter)</a>
     </div>
 
   </div>
 
-  <div class="footer-note">
+  <div class="footer-bottom">
     © <span id="year"></span> Skills Builder Institute — All Rights Reserved
   </div>
 </footer>
 
-<!-- ================= WHATSAPP FLOAT ================= -->
-<a href="https://wa.me/917488894910" class="whatsapp-float" target="_blank">
+<!-- ================= WHATSAPP ================= -->
+<a class="whatsapp-float" href="https://whatsapp.com/channel/0029Vb6Kou2DuMRmU5kAKy1W" target="_blank">
   <svg width="26" height="26" viewBox="0 0 24 24" fill="#fff">
-    <circle cx="12" cy="12" r="12"/>
+    <path d="M12 2a10 10 0 100 20 10 10 0 000-20z"/>
   </svg>
 </a>
 
 <script>
-/* year */
-document.getElementById("year").innerText=new Date().getFullYear();
-
-/* dropdown */
-const li=document.getElementById("exploreLi");
-const drop=document.getElementById("exploreDrop");
-li.onmouseenter=()=>drop.style.display="block";
-li.onmouseleave=()=>drop.style.display="none";
-
-/* slider */
+/* Slider */
+let i=0;
 const slides=document.getElementById("slides");
-let i=0,total=slides.children.length;
-function move(){
-  i=(i+1)%total;
+setInterval(()=>{
+  i=(i+1)%slides.children.length;
   slides.style.transform=`translateX(-${i*100}%)`;
-}
-setInterval(move,4000);
-document.getElementById("next").onclick=move;
-document.getElementById("prev").onclick=()=>{
-  i=(i-1+total)%total;
-  slides.style.transform=`translateX(-${i*100}%)`;
-};
+},4000);
+
+/* Year */
+document.getElementById("year").innerText=new Date().getFullYear();
 </script>
 
 </body>
