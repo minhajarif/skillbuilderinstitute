@@ -17,7 +17,7 @@
   <header class="site-header" role="banner" aria-label="Main header">
     <nav class="main-nav container" role="navigation" aria-label="Main navigation">
       <!-- left: logo -->
-      <div class="nav-left" style="display:flex; align-items:center; gap:18px;">
+      <div class="nav-left" style="display:flex; align-items:center; gap:10px;">
         <a class="logo" href="index.html" aria-label="Skills Builder Institute homepage" style="display:inline-flex;align-items:center;">
           <img src="images/logo.png" alt="Skills Builder Institute" style="height:56px;">
         </a>
@@ -30,19 +30,20 @@
         <ul class="nav-list" id="navList" style="display:flex; gap:20px; list-style:none; margin:0; padding:0; align-items:center;">
           <li><a data-i18n="nav.home" href="index.html" style="text-decoration:none;">Home</a></li>
 
-          <li class="nav-item" id="exploreItem" style="position:relative;">
-            <a class="nav-link" id="exploreToggle" href="explore-training.html" aria-haspopup="true" aria-expanded="false" style="text-decoration:none;">
-              <span data-i18n="nav.explore">Explore Training</span> ▾
-            </a>
-            <div class="dropdown-panel" id="explorePanel" aria-hidden="true" style="position:absolute; top:36px; left:0; display:none; background:#fff; color:#05283b; border-radius:8px; min-width:220px; box-shadow:0 14px 40px rgba(5,30,46,0.16); z-index:1400;">
-              <a href="explore-training.html" style="display:block;padding:10px 14px;text-decoration:none;color:inherit">All Training</a>
-              <a href="explore-training&careerguidence/skilltraining-bluecollar.html" style="display:block;padding:10px 14px;text-decoration:none;color:inherit">Skill Training</a>
-              <a href="explore-training&careerguidence/professional.html" style="display:block;padding:10px 14px;text-decoration:none;color:inherit">Professional</a>
-              <a href="explore-training&careerguidence/programmer.html" style="display:block;padding:10px 14px;text-decoration:none;color:inherit">Programming</a>
-              <a href="explore-training&careerguidence/engineer.html" style="display:block;padding:10px 14px;text-decoration:none;color:inherit">Engineering</a>
-              <a href="explore-training&careerguidence/softskill.html" style="display:block;padding:10px 14px;text-decoration:none;color:inherit">Soft Skills</a>
-            </div>
-          </li>
+         <li class="nav-item" id="exploreItem" style="position:relative;">
+  <a class="nav-link" id="exploreToggle" href="explore-training.html" aria-haspopup="true" aria-expanded="false">
+    <span data-i18n="nav.explore">Explore Training</span> ▾
+  </a>
+
+  <div class="dropdown-panel" id="explorePanel" aria-hidden="true">
+    <a href="explore-training.html">All Training</a>
+    <a href="explore-training&careerguidence/skilltraining-bluecollar.html">Skill Training</a>
+    <a href="explore-training&careerguidence/professional.html">Professional Training</a>
+    <a href="explore-training&careerguidence/programmer.html">Programming Training</a>
+    <a href="explore-training&careerguidence/engineer.html">Engineering Training</a>
+    <a href="explore-training&careerguidence/softskill.html">Soft Skills Training</a>
+  </div>
+</li>
 
           <li><a data-i18n="nav.career" href="career&guidence.html" style="text-decoration:none;">Career & Guidance</a></li>
           <li><a data-i18n="nav.about" href="aboutus.html" style="text-decoration:none;">About Us</a></li>
@@ -69,16 +70,7 @@
         </ul>
       </div>
 
-      <!-- right: contact + language selector -->
-      <div class="nav-right" style="display:flex; align-items:center; gap:14px;">
-        <!-- email -->
-        <div class="nav-contact">
-      <span class="nav-phone">
-        <i class="fa-solid fa-phone"></i>(+91) 7488894910</span>
-      <span class="nav-email">
-        <i class="fa-solid fa-envelope"></i> info@skillsbuilderinstitute.com</span>
-    </div>
-
+      
         <!-- language selector -->
         <div style="position:relative;">
           <button class="lang-btn" id="langBtn" aria-haspopup="true" aria-expanded="false" style="background:transparent;border:0;color:inherit;cursor:pointer;font-weight:700;display:inline-flex;align-items:center;gap:8px;"
@@ -87,9 +79,9 @@
           </button>
 
           <div class="lang-panel" id="langPanel" aria-hidden="true" style="position:absolute; right:0; top:36px; display:none; background:#fff; color:#05283b; border-radius:8px; box-shadow:0 14px 40px rgba(5,30,46,0.16); z-index:1500;">
-            <button class="lang-item" data-lang="en" data-flag="🇬🇧" style="display:block;padding:10px 14px;border:0;background:transparent;width:100%;text-align:left;cursor:pointer;">🇬🇧 English</button>
-            <button class="lang-item" data-lang="hi" data-flag="🇮🇳" style="display:block;padding:10px 14px;border:0;background:transparent;width:100%;text-align:left;cursor:pointer;">🇮🇳 हिंदी</button>
-            <button class="lang-item" data-lang="ar" data-flag="🇦🇪" style="display:block;padding:10px 14px;border:0;background:transparent;width:100%;text-align:left;cursor:pointer;">🇦🇪 العربية</button>
+            <button class="lang-item" data-lang="en" data-flag="🇬🇧" style="display:block;padding:10px 14px;border:0;background:transparent;width:100%;text-align:left;cursor:pointer;">EN English</button>
+            <button class="lang-item" data-lang="hi" data-flag="🇮🇳" style="display:block;padding:10px 14px;border:0;background:transparent;width:100%;text-align:left;cursor:pointer;">HI हिंदी</button>
+            <button class="lang-item" data-lang="ar" data-flag="🇦🇪" style="display:block;padding:10px 14px;border:0;background:transparent;width:100%;text-align:left;cursor:pointer;">AR العربية</button>
           </div>
         </div>
       </div>
@@ -110,17 +102,30 @@
     <section class="content container" aria-label="Introduction">
       <h1>Welcome to Skills Builder Institute</h1>
       <p>
-        Skills Builder Institute is dedicated to practical, hands-on training that prepares learners for real jobs.
-        We provide industry-focused courses, personalized career guidance, and placement support for students and professionals.
-        Our trainers are experienced industry professionals who bring practical skills, mentorship, and real project experience.
-        Students receive certification, resume help, mock interviews, and job-placement assistance to increase hiring chances.
-        We cover technical skills like web development, programming and engineering, as well as trades and soft skills.
-        Our classroom and on-field training ensures learners are job-ready with measurable skills employers want.
-        Over 10,000+ learners trained and 5,000+ placed across local and international employers through our network.
-        Our vision is to expand training across Siwan and Bihar, empowering youth with meaningful careers and stability.
-        Join our programs to build confidence, get certified, and start a reliable career path with active support.
-        Contact us to find the course that fits your goals and start upskilling today.
-      </p>
+  Skills Builder Institute is a premier training and career-development organization committed to transforming learners into
+  industry-ready professionals. Our approach goes beyond traditional classroom teaching — we combine practical, hands-on
+  training with real-world exposure so every student develops skills that are valued and recognized by employers worldwide.
+  With a strong focus on quality education, discipline, and continuous improvement, we aim to create confident, skilled, and
+  future-ready individuals who can excel in today’s competitive job market.
+  <br><br>
+  Our programs are carefully designed in consultation with industry experts, ensuring that each learner receives updated,
+  relevant, and job-focused training. Whether it is technical skills like web development, programming, digital technology,
+  engineering, or essential soft skills such as personality development, communication, and workplace readiness — our
+  curriculum covers every aspect required to build a strong professional foundation.
+  <br><br>
+  Students at Skills Builder Institute benefit from structured learning modules, personalized career counselling, resume
+  building support, mock interviews, internship guidance, and placement assistance. Our experienced trainers bring years of
+  industry knowledge, mentorship, and practical insights that help students understand real workplace expectations. 
+  <br><br>
+  Over the years, we have successfully trained more than <strong>10,000+ learners</strong> and helped <strong>5,000+ candidates</strong> secure
+  employment across leading companies in India and abroad. This continuous trust from students, parents, and organizations
+  reflects our commitment to providing reliable, effective, and impactful training services.
+  <br><br>
+  Our mission is to empower youth with meaningful skills, boost their confidence, and create opportunities that can change
+  their lives. Whether you are starting your career, planning to upgrade your skills, or shifting to a new profession,
+  Skills Builder Institute is here to support you at every step — from learning to placement. Join us today and take a
+  confident step towards building a stable, successful, and future-proof career.
+</p>
 
       <div class="cards">
         <div class="card"><h3>Practical Courses</h3><p>Hands-on training and real project work to build skills.</p></div>
@@ -139,7 +144,7 @@
 
 
         
-        <div style="margin-top:8px">
+        <div style="margin-top:15px">
           <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Sona+Complex+Tulshi+Nagar+Siwan+Bihar+841226" target="_blank" rel="noopener noreferrer" aria-label="Open map (Google Maps)">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2C8.7 2 6 4.7 6 8c0 5.3 6 12 6 12s6-6.7 6-12c0-3.3-2.7-6-6-6z" fill="#FF6B3A"/></svg>
             <span>View on Map</span>
