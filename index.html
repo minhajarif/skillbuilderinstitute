@@ -14,12 +14,14 @@
 <body>
 
   <!-- ========== HEADER / NAVBAR (START) ==========
-       - Full-bleed header background.
-       - Inner items constrained by .container.
-       - Navigation uses data-i18n attributes for language switching.
+       NOTE: Only HTML changed to fix overlap.
+       - nav-left (logo)
+       - nav-center (links only)
+       - nav-right (contacts + language)
   -->
   <header class="site-header" role="banner" aria-label="Main header">
     <nav class="main-nav container" role="navigation" aria-label="Primary navigation">
+
       <!-- Left: logo -->
       <div class="nav-left">
         <a class="logo" href="index.html" aria-label="Skills Builder Institute homepage">
@@ -27,12 +29,12 @@
         </a>
       </div>
 
-      <!-- Center: primary links (use data-i18n keys for language translations) -->
-      <div class="nav-center" role="menubar">
+      <!-- Center: primary links (kept minimal & only links) -->
+      <div class="nav-center" role="menubar" aria-label="Primary links area">
         <ul class="nav-list" id="navList" aria-label="Primary links">
           <li><a data-i18n="nav.home" href="index.html">Home</a></li>
 
-          <!-- Explore Training dropdown -->
+          <!-- Explore Training dropdown - unchanged contents -->
           <li class="nav-item" id="exploreItem">
             <a id="exploreToggle" class="nav-link" href="explore-training.html" aria-haspopup="true" aria-expanded="false">
               <span data-i18n="nav.explore">Explore Training</span> ▾
@@ -50,40 +52,41 @@
           <li><a data-i18n="nav.career" href="career&guidence.html">Career & Guidance</a></li>
           <li><a data-i18n="nav.about" href="aboutus.html">About Us</a></li>
           <li><a data-i18n="nav.contact" href="contactus.html" class="cta">Contact Us</a></li>
-
-          <!-- Contact details shown in nav -->
-          <li class="nav-contact">
-            <a href="tel:+917488894910" aria-label="Call us">
-              <!-- phone icon (inline svg) -->
-              <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" width="18" height="18"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 3.1 12.81 19.79 19.79 0 0 1 .03 4.18 2 2 0 0 1 2 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L6.05 9.05a16 16 0 0 0 6.9 6.9l.41-.2a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-              +91-74888-94910
-            </a>
-          </li>
-
-          <li class="nav-contact">
-            <a href="mailto:info@skillsbuilderinstitute.com" aria-label="Email us">
-              <!-- mail icon -->
-              <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" width="18" height="18"><path d="M4 4h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2zm0 2v.01L12 13l8-7V6H4z"/></svg>
-              info@skillsbuilderinstitute.com
-            </a>
-          </li>
         </ul>
       </div>
 
-      <!-- Right: language selector -->
-      <div class="nav-right">
+      <!-- Right: contact info and language selector
+           -- Contact items were moved here (no CSS/JS changed) --
+           -- Inline style for alignment only (safe, minimal) --
+      -->
+      <div class="nav-right" aria-label="Contact and language" style="display:flex; align-items:center; gap:14px; flex:0 0 auto;">
+        <!-- nav-contacts keeps phone + email together and prevents overlap -->
+        <div class="nav-contacts" style="display:flex; gap:10px; align-items:center;">
+          <a class="phone-link" href="tel:+917488894910" aria-label="Call us" style="display:inline-flex; align-items:center; gap:8px; text-decoration:none;">
+            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" width="18" height="18"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 3.1 12.81 19.79 19.79 0 0 1 .03 4.18 2 2 0 0 1 2 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L6.05 9.05a16 16 0 0 0 6.9 6.9l.41-.2a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            +91-74888-94910
+          </a>
+
+          <a class="mail-link" href="mailto:info@skillsbuilderinstitute.com" aria-label="Email us" style="display:inline-flex; align-items:center; gap:8px; text-decoration:none;">
+            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" width="18" height="18"><path d="M4 4h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2zm0 2v.01L12 13l8-7V6H4z"/></svg>
+            info@skillsbuilderinstitute.com
+          </a>
+        </div>
+
+        <!-- language selector - in right area (unchanged behaviour; only relocated) -->
         <div class="lang-wrap" style="position:relative;">
-          <button class="lang-btn" id="langBtn" aria-haspopup="true" aria-expanded="false">
+          <button class="lang-btn" id="langBtn" aria-haspopup="true" aria-expanded="false" style="background:transparent;border:0;color:inherit;display:inline-flex;align-items:center;gap:6px;cursor:pointer;">
             <span id="langCode">EN</span>
             <svg width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </button>
-          <div class="lang-panel" id="langPanel" aria-hidden="true">
-            <button class="lang-item" data-lang="en" data-flag="🇬🇧">EN English</button>
-            <button class="lang-item" data-lang="hi" data-flag="🇮🇳">HI हिंदी</button>
-            <button class="lang-item" data-lang="ar" data-flag="🇦🇪">AR العربية</button>
+          <div class="lang-panel" id="langPanel" aria-hidden="true" style="display:none; position:absolute; right:0; top:36px; z-index:1500;">
+            <button class="lang-item" data-lang="en" data-flag="🇬🇧" style="display:block; width:100%;">EN English</button>
+            <button class="lang-item" data-lang="hi" data-flag="🇮🇳" style="display:block; width:100%;">HI हिंदी</button>
+            <button class="lang-item" data-lang="ar" data-flag="🇦🇪" style="display:block; width:100%;">AR العربية</button>
           </div>
         </div>
       </div>
+
     </nav>
   </header>
   <!-- ========== HEADER / NAVBAR (END) ========== -->
@@ -93,16 +96,17 @@
   <main>
 
     <!-- HERO / SLIDER
-         slides-wrap is full-bleed; slides-inner.container centers the visible content area.
-         Make sure image files exist at the exact paths: images/home-slider-1.png etc.
+         FULL-VIEWPORT slider: inline style sets height to 100vh (no CSS file edits).
+         JS builder.js will still find slides via .slide elements (unchanged).
     -->
     <section class="hero" aria-label="Home banner">
-      <div class="slides-wrap">
-        <div class="container slides-inner">
-          <div class="slide" data-img="images/home-slider-1.png" style="background-image:url('images/home-slider-1.png')"></div>
-          <div class="slide" data-img="images/home-slider-2.png" style="background-image:url('images/home-slider-2.png')"></div>
-          <div class="slide" data-img="images/home-slider-3.png" style="background-image:url('images/home-slider-3.png')"></div>
-          <div class="slide" data-img="images/home-slider-4.png" style="background-image:url('images/home-slider-4.png')"></div>
+      <div class="slides-wrap" style="height:100vh; overflow:hidden;">
+        <div class="container slides-inner" style="height:100%; display:flex; align-items:center; justify-content:center;">
+          <!-- slides set as background images (unchanged) -->
+          <div class="slide" data-img="images/home-slider-1.png" style="background-image:url('images/home-slider-1.png'); height:100%; width:100%; background-size:cover; background-position:center;"></div>
+          <div class="slide" data-img="images/home-slider-2.png" style="background-image:url('images/home-slider-2.png'); height:100%; width:100%; background-size:cover; background-position:center;"></div>
+          <div class="slide" data-img="images/home-slider-3.png" style="background-image:url('images/home-slider-3.png'); height:100%; width:100%; background-size:cover; background-position:center;"></div>
+          <div class="slide" data-img="images/home-slider-4.png" style="background-image:url('images/home-slider-4.png'); height:100%; width:100%; background-size:cover; background-position:center;"></div>
         </div>
       </div>
     </section>
@@ -110,12 +114,31 @@
     <!-- Intro content -->
     <section class="content container" aria-label="Introduction">
       <h1>Welcome to Skills Builder Institute</h1>
-      <p>
-        Skills Builder Institute is a premier training and career-development organisation committed to transforming learners into
-        industry-ready professionals. Our approach combines practical, hands-on training with real-world exposure so every student
-        develops skills valued by employers. We focus on quality education, discipline and continuous improvement to create confident,
-        future-ready individuals.
-      </p>
+     <p>
+  Skills Builder Institute is a premier training and career-development organization committed to transforming learners into
+  industry-ready professionals. Our approach goes beyond traditional classroom teaching — we combine practical, hands-on
+  training with real-world exposure so every student develops skills that are valued and recognized by employers worldwide.
+  With a strong focus on quality education, discipline, and continuous improvement, we aim to create confident, skilled, and
+  future-ready individuals who can excel in today’s competitive job market.
+  <br><br>
+  Our programs are carefully designed in consultation with industry experts, ensuring that each learner receives updated,
+  relevant, and job-focused training. Whether it is technical skills like web development, programming, digital technology,
+  engineering, or essential soft skills such as personality development, communication, and workplace readiness — our
+  curriculum covers every aspect required to build a strong professional foundation.
+  <br><br>
+  Students at Skills Builder Institute benefit from structured learning modules, personalized career counselling, resume
+  building support, mock interviews, internship guidance, and placement assistance. Our experienced trainers bring years of
+  industry knowledge, mentorship, and practical insights that help students understand real workplace expectations. 
+  <br><br>
+  Over the years, we have successfully trained more than <strong>10,000+ learners</strong> and helped <strong>5,000+ candidates</strong> secure
+  employment across leading companies in India and abroad. This continuous trust from students, parents, and organizations
+  reflects our commitment to providing reliable, effective, and impactful training services.
+  <br><br>
+  Our mission is to empower youth with meaningful skills, boost their confidence, and create opportunities that can change
+  their lives. Whether you are starting your career, planning to upgrade your skills, or shifting to a new profession,
+  Skills Builder Institute is here to support you at every step — from learning to placement. Join us today and take a
+  confident step towards building a stable, successful, and future-proof career.
+</p>
 
       <div class="cards" aria-hidden="false">
         <div class="card"><h3>Practical Courses</h3><p>Hands-on training and real project work to build skills.</p></div>
@@ -129,12 +152,10 @@
 
 
   <!-- ========== FOOTER (START) ==========
-       - Footer grid: left = address, mid = quick links, right = social links.
-       - Headings in mid/right purposely single-line (CSS controls nowrap).
+       Footer unchanged (layout controlled by skill.css).
   -->
   <footer class="site-footer" role="contentinfo">
     <div class="footer-grid container">
-      <!-- Left column -->
       <div class="footer-left">
         <a href="index.html" aria-label="Skills Builder Institute home"><img src="images/logo.png" alt="logo"></a>
 
@@ -151,7 +172,6 @@
         </div>
       </div>
 
-      <!-- Middle column: Quick Links -->
       <div class="footer-mid">
         <h4>Quick Links</h4>
         <nav class="quick-links" aria-label="Footer quick links">
@@ -163,7 +183,6 @@
         </nav>
       </div>
 
-      <!-- Right column: Follow Us -->
       <div class="footer-right">
         <h4>Follow Us</h4>
         <div class="social-grid" aria-label="Social links">
