@@ -47,6 +47,7 @@
 
           <li><a data-i18n="nav.career" href="career&guidence.html" style="text-decoration:none;">Career & Guidance</a></li>
           <li><a data-i18n="nav.about" href="aboutus.html" style="text-decoration:none;">About Us</a></li>
+          <li><a data-i18n="nav.contact" href="contactus.html" class="cta">Contact Us</a></li>
 
           
          <li class="nav-contact">
@@ -259,6 +260,130 @@
 
     // footer year
     document.getElementById('year').textContent = new Date().getFullYear();
+    <script>
+/* Dynamic overrides for layout fixes — paste before </body> */
+
+/* 1) Create a style tag with overrides */
+(function(){
+  const css = `
+  /* ====== runtime overrides ====== */
+  :root{
+    --container-max:1180px;
+  }
+
+  /* Make header & footer full-bleed (edge to edge) visually */
+  .site-header, .site-footer {
+    width:100%;
+    left:0;
+    right:0;
+    box-sizing:border-box;
+  }
+
+  /* Keep inner content centered but allow bg to fill */
+  .site-header > .container,
+  .site-footer > .container,
+  .footer-grid {
+    max-width: var(--container-max);
+    margin: 0 auto;
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  /* Ensure main nav does not wrap into multiple rows on desktop */
+  .nav-list {
+    white-space: nowrap;
+  }
+
+  /* If very narrow, allow horizontal scroll (mobile) rather than wrapping */
+  @media (max-width: 900px) {
+    .nav-list {
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      gap:12px;
+    }
+    .nav-list::-webkit-scrollbar{ height:6px; }
+  }
+
+  /* Slide height adjustments to better fit screens */
+  @media (min-width: 1100px) {
+    .slides-wrap { height:460px; } /* desktop larger banner */
+  }
+  @media (max-width: 1099px) and (min-width: 700px) {
+    .slides-wrap { height:360px; } /* tablet */
+  }
+  @media (max-width: 699px) {
+    .slides-wrap { height:220px; } /* mobile */
+  }
+
+  /* Footer headings inline / single-line and vertical alignment polish */
+  .footer-mid h4, .footer-right h4, .footer-left h4 {
+    white-space: nowrap;
+    margin: 0 0 8px 0;
+    font-weight:700;
+    display:inline-block;
+  }
+
+  /* Align column content so headings don't sit higher than the links */
+  .footer-grid { align-items: start; }
+  .footer-mid, .footer-right { display:flex; flex-direction:column; gap:6px; }
+
+  /* Make quick-links and social lists align nicely under headings */
+  .quick-links, .social-grid { margin-top:6px; }
+
+  /* Make the address block clickable area cover whole block */
+  .footer-left .address { display:block; }
+  .footer-left .address a { color:inherit; text-decoration:none; display:inline-block; }
+
+  /* small responsive nudge: reduce footer padding on tiny phones to avoid large whitespace */
+  @media (max-width:420px){
+    .site-footer { padding-bottom:18px; }
+    .footer-note{ font-size:12px; }
+  }
+  `;
+
+  const style = document.createElement('style');
+  style.setAttribute('data-injected','layout-fixes');
+  style.appendChild(document.createTextNode(css));
+  document.head.appendChild(style);
+
+  /* 2) Minor runtime adjustments: ensure header stays full width when window resizes */
+  function applyRuntimeAdjustments(){
+    // If header background or footer appears narrower because of some parent container,
+    // explicitly set left/right to 0 (defensive)
+    const header = document.querySelector('.site-header');
+    const footer = document.querySelector('.site-footer');
+    if(header) header.style.left = '0';
+    if(footer) footer.style.left = '0';
+  }
+
+  window.addEventListener('resize', applyRuntimeAdjustments);
+  // initial
+  applyRuntimeAdjustments();
+
+  /* 3) Optional: ensure dropdown remains accessible on keyboard by toggling .open on focus */
+  document.querySelectorAll('.nav-item').forEach(function(item){
+    item.addEventListener('focusin', function(){ item.classList.add('open'); });
+    item.addEventListener('focusout', function(){ item.classList.remove('open'); });
+  });
+
+  /* 4) Slightly slow down slideshow if present (if your JS uses interval variable 'setInterval'), try to detect and adjust */
+  // If your page created a slideshow via script that used the global 'idx' variable & setInterval,
+  // we cannot change that reliably here. But we can re-run a gentle show/hide to ensure slides cycle smoothly:
+  (function ensureSlides(){
+    const slides = document.querySelectorAll('.slide');
+    if(!slides || slides.length < 2) return;
+    let active = Array.from(slides).findIndex(s=> s.classList.contains('active'));
+    if(active < 0) active = 0, slides[0].classList.add('active');
+    // ensure each slide has style for transition (defensive)
+    slides.forEach(s=> {
+      s.style.transition = s.style.transition || 'opacity .7s ease';
+    });
+    // do nothing else to avoid clashing with existing slideshow; this only ensures initial state ok
+  })();
+
+  // done
+})();
+</script>
   </script>
 </body>
 </html>
