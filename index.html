@@ -7,12 +7,11 @@
 
 <style>
 :root{
-  --primary:#0b1a2f;
+  --primary:#071028;
   --accent:#ff7a18;
-  --bg:#f5f7fb;
+  --bg:#f4f6fa;
   --text:#1f2937;
 }
-
 *{box-sizing:border-box}
 body{
   margin:0;
@@ -23,9 +22,9 @@ body{
 a{text-decoration:none;color:inherit}
 .container{max-width:1200px;margin:auto;padding:0 20px}
 
-/* ================= NAVBAR (UNCHANGED) ================= */
+/* ================= NAVBAR ================= */
 header{
-  background:#071028;
+  background:var(--primary);
   color:#fff;
   position:sticky;
   top:0;
@@ -35,30 +34,50 @@ header{
   display:flex;
   align-items:center;
   justify-content:space-between;
-  gap:20px;
+  gap:18px;
   padding:10px 0;
 }
-.nav-left img{height:46px}
+.nav-left img{height:44px}
 .nav-center ul{
   display:flex;
   list-style:none;
   gap:22px;
   margin:0;padding:0;
 }
+.nav-center li{position:relative}
 .nav-center a{font-size:14px}
+
+/* Dropdown */
+.dropdown{
+  position:absolute;
+  top:38px;
+  left:0;
+  background:#0b1624;
+  border-radius:8px;
+  min-width:220px;
+  display:none;
+  box-shadow:0 10px 30px rgba(0,0,0,.35);
+}
+.dropdown a{
+  display:block;
+  padding:10px 14px;
+  font-size:14px;
+}
+.nav-center li:hover .dropdown{display:block}
+
 .nav-right{
   display:flex;
   align-items:center;
-  gap:18px;
+  gap:16px;
   font-size:13px;
   white-space:nowrap;
 }
 
 /* ================= SLIDER ================= */
 .hero{
-  position:relative;
   height:360px;
   overflow:hidden;
+  position:relative;
 }
 .slides{
   display:flex;
@@ -72,59 +91,70 @@ header{
 }
 
 /* ================= CONTENT ================= */
-.content-box{
+.content{
   background:#fff;
-  margin:50px auto 0;
-  padding:40px;
-  border-radius:14px;
-  box-shadow:0 15px 40px rgba(0,0,0,.08);
-  min-height:85vh;
+  margin:-60px auto 0;
+  padding:50px;
+  border-radius:16px;
+  box-shadow:0 20px 50px rgba(0,0,0,.08);
 }
-.content-box h1{
+.content h1{
   margin-top:0;
-  font-size:26px;
+  font-size:28px;
 }
-.content-box p{
-  line-height:1.7;
-  margin:10px 0;
+.section{
+  margin-top:35px;
+}
+.section h2{
+  font-size:22px;
+  margin-bottom:10px;
+}
+.section p{
+  line-height:1.8;
   color:#374151;
 }
 
-/* INFO CARDS */
-.info-cards{
+/* Feature Boxes */
+.features{
   display:grid;
   grid-template-columns:repeat(3,1fr);
-  gap:20px;
+  gap:22px;
   margin-top:40px;
 }
-.card{
+.feature{
   background:#f9fafb;
-  padding:24px;
-  border-radius:12px;
+  padding:26px;
+  border-radius:14px;
   text-align:center;
   box-shadow:0 8px 25px rgba(0,0,0,.06);
 }
-.card h3{margin:10px 0 6px}
+.feature h3{margin:10px 0}
 
 /* ================= FOOTER ================= */
 footer{
   background:#061222;
   color:#fff;
-  margin-top:60px;
+  margin-top:70px;
 }
 .footer-grid{
   display:grid;
   grid-template-columns:1.2fr 1fr 1fr;
   gap:40px;
   padding:50px 0 30px;
-  align-items:flex-start;
 }
-.footer-left img{height:48px;margin-bottom:20px}
-.footer-left p{font-size:14px;line-height:1.6;color:#cbd5e1}
+.footer-left img{
+  height:46px;
+  margin-bottom:22px;
+}
+.footer-left p{
+  font-size:14px;
+  line-height:1.6;
+  color:#cbd5e1;
+}
 .map-btn{
   display:inline-block;
   margin-top:18px;
-  padding:10px 16px;
+  padding:10px 18px;
   background:var(--accent);
   color:#fff;
   border-radius:8px;
@@ -157,7 +187,7 @@ footer{
 }
 
 /* ================= WHATSAPP ================= */
-.whatsapp{
+.whatsapp-float{
   position:fixed;
   right:18px;
   bottom:18px;
@@ -186,10 +216,20 @@ footer{
     <div class="nav-center">
       <ul>
         <li><a href="index.html">Home</a></li>
-        <li><a href="explore-training.html">Explore</a></li>
-        <li><a href="career&guidance.html">Career&Guidance</a></li>
-        <li><a href="aboutus.html">AboutUs</a></li>
-        <li><a href="contactus.html">ContactUs</a></li>
+        <li>
+          <a href="explore-training.html">Explore Training ▾</a>
+          <div class="dropdown">
+            <a href="explore-training.html">All Training</a>
+            <a href="skilltraining-bluecollar.html">Skill Training</a>
+            <a href="professional.html">Professional Courses</a>
+            <a href="engineer.html">Engineering Courses</a>
+            <a href="programmer.html">Programming & IT</a>
+            <a href="softskill.html">Soft Skills</a>
+          </div>
+        </li>
+        <li><a href="career-guidance.html">Career Guidance</a></li>
+        <li><a href="aboutus.html">About Us</a></li>
+        <li><a href="contactus.html">Contact Us</a></li>
       </ul>
     </div>
 
@@ -208,43 +248,42 @@ footer{
     <div class="slide" style="background-image:url('images/home-slider-2.png')"></div>
     <div class="slide" style="background-image:url('images/home-slider-3.png')"></div>
   </div>
-
-
-
 </section>
-
 
 <!-- ================= CONTENT ================= -->
 <div class="container">
-  <div class="content-box">
+  <div class="content">
+
     <h1>Welcome to Skills Builder Institute</h1>
 
+    <div class="section">
+      <p>Skills Builder Institute is a professionally managed, career-focused training organization dedicated to building practical, job-ready skills for today’s competitive industries.</p>
+      <p>We specialize in industry-oriented training programs with strong emphasis on hands-on learning, live demonstrations, and real-world project exposure.</p>
+      <p>Our institute provides technical, professional, and soft-skill courses designed to improve confidence, workplace readiness, and long-term career growth.</p>
+      <p>We actively guide learners in career planning, interview preparation, and job placement opportunities across India and international markets.</p>
+      <p>Our trainers are highly experienced industry professionals who bring real corporate exposure, advanced skills, and practical knowledge into every classroom session.</p>
+      <p>So far, we have successfully trained more than <strong>10,000+</strong> students across multiple skill domains.</p>
+      <p>We are proud to have helped <strong>5,000+</strong> candidates secure employment in India and abroad.</p>
+      <p>At Skills Builder Institute, we focus on discipline, continuous improvement, and professional excellence.</p>
+      <p>Whether you are a fresher or a working professional, we guide you at every step of your career journey.</p>
+      <p>Join Skills Builder Institute to build future-ready skills and achieve a stable, successful professional career.</p>
+    </div>
 
-    <p>Skills Builder Institute is a professionally managed, career-focused training organization dedicated to building practical, job-ready skills for today’s competitive industries.</p>
-    <p>We provide industry-oriented training programs with strong emphasis on hands-on learning, live demonstrations, and real-world project exposure.</p>
-    <p>Our institute offers technical, professional, and soft-skill courses designed to improve confidence, workplace readiness, and long-term career growth.</p>
-    <p>We actively guide learners in career planning, interview preparation, and job placement opportunities across India and abroad.</p>
-    <p>Our experienced trainers bring strong industry knowledge, advanced skills, and real corporate exposure into every classroom session.</p>
-    <p>So far, we have successfully trained more than <strong>10,000+</strong> students across multiple skill domains.</p>
-    <p>We are proud to have helped <strong>5,000+</strong> candidates secure employment opportunities in India and international markets.</p>
-    <p>At Skills Builder Institute, we focus on discipline, continuous improvement, and professional excellence.</p>
-    <p>Whether you are a fresher or a working professional, we guide you at every step of your career journey.</p>
-    <p>Join Skills Builder Institute to build future-ready skills and achieve a stable, successful professional career.</p>
-
-    <div class="info-cards">
-      <div class="card">
+    <div class="features">
+      <div class="feature">
         <h3>Industry Training</h3>
         <p>Hands-on, practical training aligned with real industry requirements.</p>
       </div>
-      <div class="card">
+      <div class="feature">
         <h3>Placement Support</h3>
         <p>Career guidance, interview preparation, and job assistance.</p>
       </div>
-      <div class="card">
+      <div class="feature">
         <h3>Certification</h3>
-        <p>Recognized certificates to strengthen your professional profile.</p>
+        <p>Recognized certification to strengthen your professional profile.</p>
       </div>
     </div>
+
   </div>
 </div>
 
@@ -254,16 +293,13 @@ footer{
 
     <div class="footer-left">
       <img src="images/logo.png" alt="logo">
-
-
-
       <p>
         Sona Complex, 2nd Floor, Tulshi Nagar<br>
         Near Dayanand Ayurvedic Medical College<br>
         Siwan, Bihar – 841226
       </p>
       <a class="map-btn" target="_blank"
-        href="https://www.google.com/maps/search/?api=1&query=Sona+Complex+Tulshi+Nagar+Siwan+Bihar">
+         href="https://www.google.com/maps/search/?api=1&query=Sona+Complex+Tulshi+Nagar+Siwan+Bihar">
         View on Map
       </a>
     </div>
@@ -294,15 +330,15 @@ footer{
   </div>
 </footer>
 
-<!-- WHATSAPP -->
-<a class="whatsapp" href="https://wa.me/917488894910" target="_blank">💬</a>
+<!-- WhatsApp -->
+<a class="whatsapp-float" href="https://wa.me/917488894910" target="_blank">💬</a>
 
 <script>
-let index=0;
+let i=0;
 const slides=document.getElementById("slides");
 setInterval(()=>{
-  index=(index+1)%3;
-  slides.style.transform=`translateX(-${index*100}%)`;
+  i=(i+1)%3;
+  slides.style.transform=`translateX(-${i*100}%)`;
 },4000);
 </script>
 
