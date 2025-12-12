@@ -1,4 +1,4 @@
-us ko<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -225,13 +225,24 @@ footer{
   z-index:999;
 }
 .whatsapp-float img{width:30px}
-/* ===== FOOTER ARROW ICON ===== */
+/* ===== FOOTER CHEVRON ARROW ===== */
+.footer-mid a,
+.footer-right a{
+  position: relative;
+  padding-left: 18px;
+}
+
 .footer-mid a::before,
 .footer-right a::before{
-  content: "›";
-  color: #ff8c2a;
-  margin-right: 8px;
-  font-size: 16px;
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 6px;
+  height: 6px;
+  border-top: 2px solid #ff8c2a;
+  border-right: 2px solid #ff8c2a;
+  transform: translateY(-50%) rotate(45deg);
 }
 </style>
 </head>
