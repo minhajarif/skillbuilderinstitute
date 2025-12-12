@@ -1,9 +1,9 @@
-/* ---------------------------
-   skill.css  (for provided index.html)
-   Paste this file and link from your HTML
-   --------------------------- */
+/* ===========================
+   skill.css — for index.html
+   (only styles for this Home page)
+   =========================== */
 
-/* === Root / theme variables === */
+/* THEME / ROOT */
 :root{
   --max-w:1150px;
   --nav-bg:#06263a;
@@ -16,14 +16,13 @@
   --wa:#25D366;
   --radius:12px;
   --text:#05283b;
-  --muted-2:#9fb0c8;
   --white:#ffffff;
   --shadow:0 10px 30px rgba(10,24,40,0.06);
-  --transition:.18s ease;
   font-family: Inter, system-ui, Arial, sans-serif;
+  font-size:15px;
 }
 
-/* === Base reset / helpers === */
+/* RESET / BASE */
 *{box-sizing:border-box}
 html,body{height:100%}
 body{
@@ -33,16 +32,17 @@ body{
   -webkit-font-smoothing:antialiased;
   -moz-osx-font-smoothing:grayscale;
   line-height:1.45;
-  font-size:15px;
 }
 a{color:inherit;text-decoration:none}
 img{max-width:100%;display:block}
 .container{max-width:var(--max-w);margin:0 auto;padding:16px}
 
-/* utility */
+/* VISIBILITY (accessibility helper) */
 .visually-hidden{position:absolute!important;height:1px;width:1px;overflow:hidden;clip:rect(1px,1px,1px,1px);white-space:nowrap}
 
-/* === HEADER / TOPBAR === */
+/* ============================
+   HEADER / TOPBAR
+   ============================ */
 header.site-header{
   background:var(--nav-grad);
   color:var(--white);
@@ -52,33 +52,59 @@ header.site-header{
   box-shadow:0 8px 30px rgba(6,38,58,0.12);
 }
 
-/* Top small strip with email & phone + lang */
-.topbar{display:flex;align-items:center;justify-content:space-between;padding:8px 16px}
+/* top small strip */
+.topbar{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:8px 16px;
+}
 .top-left{display:flex;gap:16px;align-items:center;font-weight:700}
-.top-left .top-link{display:inline-flex;gap:8px;align-items:center;color:var(--white);opacity:0.96}
-.top-left .top-link svg{display:block}
-.top-right{display:flex;align-items:center;gap:8px}
+.top-left .top-link{
+  display:inline-flex;
+  gap:8px;
+  align-items:center;
+  color:var(--white);
+  opacity:0.96;
+}
+.top-left .top-link svg{display:block;width:18px;height:18px}
+.top-right{display:flex;align-items:center;gap:8px;position:relative}
 
-/* language button - compact */
+/* language button */
 .lang-btn{
   background:transparent;
   border:0;
   color:var(--white);
   font-weight:700;
   padding:6px 10px;
-  border-radius:8px;
+  border-radius:6px;
   display:inline-flex;
   gap:8px;
   align-items:center;
   cursor:pointer;
 }
 
-/* Language panel (simple dropdown) - hidden by default (JS toggles display:block) */
-.dropdown-panel{position:absolute;left:0;top:44px;background:var(--white);color:var(--nav-bg);border-radius:10px;min-width:220px;box-shadow:0 14px 40px rgba(5,30,46,0.16);display:none;z-index:1400}
-.dropdown-panel button{display:block;padding:10px 14px;border:0;background:transparent;width:100%;text-align:left;cursor:pointer}
-.dropdown-panel button:hover{background:#f4f8fb}
+/* dropdown generic panel */
+.dropdown-panel{
+  position:absolute;
+  left:0;
+  top:44px;
+  background:var(--white);
+  color:var(--nav-bg);
+  border-radius:8px;
+  min-width:220px;
+  box-shadow:0 14px 40px rgba(5,30,46,0.16);
+  display:none;
+  z-index:1400;
+}
+.dropdown-panel button,
+.dropdown-panel a{display:block;padding:10px 14px;border:0;background:transparent;text-align:left;width:100%;cursor:pointer}
+.dropdown-panel button:hover,
+.dropdown-panel a:hover{background:#f4f8fb}
 
-/* === MAIN NAV === */
+/* ============================
+   MAIN NAV
+   ============================ */
 nav.main-nav{
   display:flex;
   align-items:center;
@@ -100,38 +126,52 @@ nav.main-nav{
   font-weight:700;
   display:inline-flex;
   align-items:center;
-  transition:background var(--transition);
+  transition:background .18s ease;
 }
 .nav-list a:hover{background:rgba(255,255,255,0.04)}
 .cta{background:rgba(255,255,255,0.06)}
 
-/* Explore dropdown */
+/* Explore dropdown specifics */
 .nav-item{position:relative}
-.dropdown-panel{position:absolute;left:0;top:44px;background:var(--white);color:var(--nav-bg);border-radius:8px;min-width:220px;box-shadow:0 14px 40px rgba(5,30,46,0.16);display:none;z-index:1400}
-.dropdown-panel a{display:block;padding:10px 14px;color:inherit;text-decoration:none}
-.dropdown-panel a:hover{background:#f4f8fb}
-/* Show on hover for larger screens */
-@media(min-width:981px){ .nav-item:hover .dropdown-panel{display:block} }
+.nav-item .dropdown-panel{left:0;top:44px}
+@media(min-width:981px){
+  .nav-item:hover .dropdown-panel{display:block}
+}
 
-/* === HERO / SLIDER === */
-.hero{margin:18px auto;border-radius:var(--radius);overflow:hidden;max-width:var(--max-w)}
-.slides{display:flex;transition:transform 500ms ease}
-.slide{min-width:100%;flex-shrink:0}
-.slide img{width:100%;height:420px;object-fit:cover;display:block}
-@media(max-width:980px){ .slide img{height:260px} }
+/* responsive nav */
+@media(max-width:980px){
+  .nav-center{justify-content:flex-start}
+  .logo img{height:48px}
+  .nav-list{gap:10px;flex-wrap:wrap}
+}
 
-/* slider indicators */
-.slider-controls{position:relative;display:flex;justify-content:center;gap:8px;padding:12px}
-.indicators{display:flex;gap:8px}
-.indicators button{width:10px;height:10px;border-radius:50%;border:0;background:rgba(0,0,0,0.18);cursor:pointer;transition:background .18s}
-.indicators button.active{background:var(--accent)}
+/* ============================
+   HERO / SLIDESHOW (AUTO)
+   ============================ */
+.hero{margin:18px auto;border-radius:var(--radius);overflow:hidden;max-width:var(--max-w);background:#e9eef5}
+.slides-wrap{position:relative;height:420px}
+.slide{
+  width:100%;
+  height:420px;
+  background-position:center;
+  background-size:cover;
+  opacity:0;
+  position:absolute;
+  left:0;
+  top:0;
+  transition:opacity 900ms ease;
+}
+.slide.active{opacity:1;position:relative}
+@media(max-width:980px){ .slide{height:260px} .slides-wrap{height:260px} }
 
-/* === CONTENT AREA === */
+/* ============================
+   CONTENT AREA
+   ============================ */
 .content{max-width:var(--max-w);margin:18px auto;padding:14px}
 .content h1{margin:6px 0 12px 0;font-size:28px}
 .content p{margin:8px 0;color:var(--muted);line-height:1.6}
 
-/* cards */
+/* CARDS */
 .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:18px}
 @media(max-width:980px){ .cards{grid-template-columns:repeat(2,1fr)} }
 @media(max-width:640px){ .cards{grid-template-columns:1fr} }
@@ -139,7 +179,9 @@ nav.main-nav{
 .card h3{margin:0 0 8px 0}
 .card p{margin:0;color:var(--muted);font-size:14px}
 
-/* === FOOTER === */
+/* ============================
+   FOOTER
+   ============================ */
 footer.site-footer{
   margin-top:28px;
   background:linear-gradient(180deg,var(--footer1),var(--footer2));
@@ -149,58 +191,58 @@ footer.site-footer{
 .footer-grid{max-width:var(--max-w);margin:0 auto;display:grid;grid-template-columns:1fr 1fr 1fr;gap:20px;padding:0 16px}
 @media(max-width:980px){ .footer-grid{grid-template-columns:1fr;gap:16px} }
 
-/* left column: logo then map link then address (distinct items) */
+/* LEFT: logo -> map (separate) -> address */
 .footer-left img{height:70px;border-radius:8px;display:block;margin-bottom:12px}
 .map-link{display:inline-flex;gap:8px;align-items:center;padding:8px 10px;background:rgba(255,255,255,0.05);border-radius:8px;color:#d7e9ff;text-decoration:none}
-.map-link svg{display:block}
 .footer-left .address{margin-top:12px;color:#d7e9ff;line-height:1.5}
 
-/* mid: quick links */
+/* MID: quick links */
 .footer-mid h4,.footer-right h4{margin:0 0 10px 0}
-.quick-links a{display:block;color:#d9e7fb;text-decoration:none;margin-bottom:8px;transition:color var(--transition)}
+.quick-links a{display:block;color:#d9e7fb;text-decoration:none;margin-bottom:8px;transition:color .14s}
 .quick-links a:hover{color:var(--white)}
 
-/* right: social grid (two per row on desktop) */
+/* RIGHT: social grid (two-per-row desktop) */
 .social-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;align-items:center}
 @media(max-width:980px){ .social-grid{grid-template-columns:repeat(2,1fr)} }
-.social-grid a{display:inline-flex;gap:8px;align-items:center;color:#d9e7fb;text-decoration:none;padding:6px 8px;border-radius:8px}
-.social-grid a .arrow{margin-right:6px;color:#d9e7fb}
+.social-grid a{display:flex;gap:10px;align-items:center;color:#d9e7fb;text-decoration:none;padding:8px;border-radius:8px}
+.social-grid a .arrow{color:#d9e7fb;font-weight:900}
 .social-grid a:hover{color:var(--white)}
 
-/* footer small note */
+/* bottom copyright note */
 .footer-note{max-width:var(--max-w);margin:10px auto;padding:8px 16px;color:#bcd7f0;font-size:13px;text-align:center}
 
-/* floating whatsapp */
+/* ============================
+   FLOATING WHATSAPP (SVG)
+   ============================ */
 .wa-float{
   position:fixed;
   right:18px;
   bottom:18px;
-  z-index:1600;
-  display:flex;
+  z-index:99999;
+  display:inline-flex;
   align-items:center;
-  gap:8px;
-  background:linear-gradient(180deg,var(--wa),#128C7E);
-  color:var(--white);
-  padding:10px 12px;
-  border-radius:999px;
-  box-shadow:0 12px 40px rgba(18,140,126,0.16);
+  gap:10px;
   text-decoration:none;
-  font-weight:700;
+  background:linear-gradient(180deg,#25D366,#128C7E);
+  color:#fff;
+  padding:10px 14px;
+  border-radius:999px;
+  box-shadow:0 8px 30px rgba(0,0,0,0.18);
+  font-weight:800;
+  font-family:Inter, system-ui, Arial, sans-serif;
 }
-.wa-float img{height:20px}
+.wa-float .wa-inner{width:44px;height:44px;display:inline-flex;align-items:center;justify-content:center;border-radius:50%}
+.wa-float .wa-text{font-size:15px}
+@media(max-width:640px){ .wa-float .wa-text{display:none} }
 
-/* === Responsiveness / header collapse hints === */
-@media(max-width:980px){
-  .topbar{padding:10px 12px}
-  .logo img{height:48px}
-  .nav-center{justify-content:flex-start}
-  .nav-list{gap:10px;flex-wrap:wrap}
-}
+/* ============================
+   INTERACTIONS / A11Y
+   ============================ */
+a:focus,button:focus{outline:3px solid rgba(255,122,0,0.14);outline-offset:2px}
+button{cursor:pointer}
 
-/* === Keyboard / focus styles === */
-a:focus, button:focus { outline:3px solid rgba(255,122,0,0.14); outline-offset:2px; }
-
-/* === RTL support when document.dir = 'rtl' === */
+/* RTL support */
+[dir="rtl"]{direction:rtl}
 [dir="rtl"] .nav-list{direction:rtl}
 [dir="rtl"] .nav-list a{text-align:right}
 [dir="rtl"] .footer-grid{direction:rtl}
@@ -208,8 +250,5 @@ a:focus, button:focus { outline:3px solid rgba(255,122,0,0.14); outline-offset:2
 [dir="rtl"] .map-link{flex-direction:row-reverse}
 [dir="rtl"] .top-left{direction:rtl}
 
-/* === Small polish === */
-button{cursor:pointer}
+/* small polish */
 .indicators button{border-radius:999px}
-
-/* end of file */
