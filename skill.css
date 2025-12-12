@@ -314,5 +314,9 @@ a:focus, button:focus, input:focus, select:focus, textarea:focus{
    ========================= */
 /* accent color used as primary brand. Use it for CTA and subtle highlights */
 :root{ --accent-tint: linear-gradient(90deg,var(--accent),var(--accent-600)); }
-
+.footer-mid a::before,
+.footer-right a::before{
+  content: "▶ ";
+  color: #ff8c2a;
+}
 /* End of skill.css */
