@@ -1,414 +1,194 @@
 /* skill.css
-   Complete replacement — professional, well-commented, English documentation.
-   Purpose:
-   - Full-bleed navbar and footer background while keeping content centered.
-   - Prevent nav links wrapping on desktop; allow horizontal scroll on small screens.
-   - Reliable dropdown on hover + keyboard focus.
-   - Footer headings (Quick Links / Follow Us) are single-line headings.
-   - Preserve floating WhatsApp control (no visual changes).
-   - Defensive rules for previously observed layout problems.
+   Complete stylesheet for the website (replace existing file).
+   Professional, responsive and accessible.
 */
 
-/* =========================
-   Variables & Reset
-   ========================= */
+/* ========== Variables & Reset ========== */
 :root{
   --bg: #f6f8fa;
-  --nav-bg: #063445;       /* navbar background (full-bleed) */
-  --nav-text: #ffffff;     /* navbar text color */
+  --nav-bg: #063445;
+  --nav-text: #ffffff;
   --accent: #ff7a2d;
   --muted: #6f8390;
   --card: #ffffff;
-  --footer-bg: #062f3f;    /* footer background (full-bleed) */
+  --footer-bg: #062f3f;
   --footer-text: #d9eef6;
-  --container-max: 1180px; /* max width for centered content */
+  --container-max: 1180px;
   --radius: 10px;
   --gap: 18px;
   --mobile-break: 900px;
 }
 
-/* reset basics */
-*{ box-sizing: border-box; margin: 0; padding: 0; }
-html, body { height: 100%; }
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%}
 body{
-  font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  background: var(--bg);
-  color: #05283b;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  line-height: 1.6;
-  font-size: 15px;
+  font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  background:var(--bg);
+  color:#05283b;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  line-height:1.6;
+  font-size:15px;
 }
 
-/* =========================
-   Container helper
-   =========================
-   We use the .container to center page content and to provide consistent padding.
-   Note: header & footer backgrounds are full width; inner content still centers.
-*/
+/* Container central width */
 .container{
-  max-width: var(--container-max);
-  width: 100%;
-  margin: 0 auto;
-  padding-left: 18px;
-  padding-right: 18px;
+  max-width:var(--container-max);
+  width:92%;
+  margin:0 auto;
+  padding:0 12px;
 }
 
-/* =========================
-   Header / Navbar (full-bleed background)
-   ========================= */
-/* background spans edge-to-edge */
+/* ========== SITE HEADER / NAVBAR ========== */
 .site-header{
-  background: var(--nav-bg);
-  color: var(--nav-text);
-  position: sticky;
-  top: 0;
-  z-index: 1600;
-  box-shadow: 0 6px 24px rgba(2,20,30,0.12);
-  width: 100%;
-  left: 0;
-  right: 0;
+  background:var(--nav-bg);
+  color:var(--nav-text);
+  position:sticky;
+  top:0;
+  z-index:1500;
+  box-shadow:0 6px 24px rgba(2,20,30,0.12);
+  width:100%;
 }
 
-/* main navigation row: logo | center menu | right controls */
+/* main-nav layout */
 .main-nav{
-  display: flex;
-  align-items: center;
-  justify-content: space-between; /* keep three zones on same row */
-  gap: var(--gap);
-  padding: 10px 0;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:var(--gap);
+  padding:10px 0;
 }
 
-/* left: logo area — keep logo close to left, only a small gap */
-.nav-left{
-  display: flex;
-  align-items: center;
-  gap: 10px;   /* minimal gap after logo as requested */
-  flex: 0 0 auto;
-}
-.logo img{
-  height: 56px;
-  display: block;
-  width: auto;
-  border-radius: 6px;
-}
+/* left logo */
+.nav-left{ display:flex; align-items:center; gap:8px; flex:0 0 auto; }
+.logo img{ height:56px; display:block; width:auto; }
 
-/* center nav container: centers the menu visually */
-.nav-center{
-  flex: 1 1 auto;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-width: 0; /* allow shrinking in small viewports */
-}
+/* center */
+.nav-center{ flex:1 1 auto; display:flex; justify-content:center; align-items:center; min-width:0; }
+.nav-list{ list-style:none; display:flex; gap:22px; align-items:center; margin:0; padding:0; white-space:nowrap; }
+.nav-list li{ display:inline-flex; align-items:center; }
 
-/* nav-list: horizontal list of links
-   - white-space: nowrap prevents wrap into multiple rows on desktop
-   - overflow hidden for large desktops; for small screens we allow scroll
-*/
-.nav-list{
-  list-style: none;
-  display: flex;
-  gap: 22px;
-  align-items: center;
-  margin: 0;
-  padding: 0;
-  white-space: nowrap;
-  overflow: hidden;
-}
-.nav-list li{ display: inline-flex; align-items: center; }
+/* links */
+.nav-list a{ color:var(--nav-text); text-decoration:none; font-weight:600; font-size:15px; padding:6px 6px; display:inline-flex; gap:8px; align-items:center; transition:transform .12s, opacity .12s; }
+.nav-list a:hover, .nav-list a:focus{ opacity:.95; transform:translateY(-1px); outline:none; }
 
-/* link style: clear, bold, and subtle hover lift */
-.nav-list a{
-  color: var(--nav-text);
-  text-decoration: none;
-  font-weight: 600;
-  font-size: 15px;
-  padding: 6px 6px;
-  display: inline-flex;
-  gap: 8px;
-  align-items: center;
-  transition: transform .12s, opacity .12s;
-  cursor: pointer;
-}
-.nav-list a:hover,
-.nav-list a:focus{
-  opacity: .95;
-  transform: translateY(-1px);
-}
+/* contact items inside nav */
+.nav-contact{ display:inline-flex; align-items:center; gap:8px; white-space:nowrap; }
+.nav-contact a{ display:inline-flex; align-items:center; gap:8px; color:var(--nav-text); text-decoration:none; font-weight:600; font-size:14px; }
+.icon{ width:18px; height:18px; fill:currentColor; flex-shrink:0; }
 
-/* =========================
-   Explore dropdown (hover + keyboard)
-   ========================= */
-.nav-item{ position: relative; }
+/* right */
+.nav-right{ display:flex; align-items:center; gap:12px; flex:0 0 auto; }
 
-/* Dropdown panel visually styled to match design */
+/* language */
+.lang-btn{ background:transparent; border:0; color:var(--nav-text); cursor:pointer; font-weight:700; display:inline-flex; gap:8px; align-items:center; padding:6px 8px; border-radius:6px; }
+.lang-panel{ display:none; position:absolute; right:6px; top:46px; background:#fff; color:#05283b; border-radius:8px; box-shadow:0 14px 40px rgba(5,30,46,0.16); z-index:1500; }
+.lang-panel button{ display:block; width:100%; text-align:left; padding:10px 14px; border:0; background:transparent; cursor:pointer; font-weight:700; }
+.lang-panel button:hover{ background:#f4f7f9; }
+
+/* ========== Dropdown (Explore) ========== */
+.nav-item{ position:relative; }
 .dropdown-panel{
-  display: none;
-  position: absolute;
-  left: 0;
-  top: 40px;
-  min-width: 220px;
-  background: var(--card);
-  color: #05283b;
-  border-radius: 8px;
-  box-shadow: 0 14px 40px rgba(5,30,46,0.16);
-  padding: 6px 4px;
-  z-index: 2000;
+  display:none;
+  position:absolute;
+  left:0;
+  top:44px;
+  min-width:220px;
+  background:var(--card);
+  color:#05283b;
+  border-radius:8px;
+  box-shadow:0 14px 40px rgba(5,30,46,0.16);
+  padding:6px 4px;
+  z-index:1400;
 }
-.dropdown-panel a{
-  display: block;
-  padding: 10px 14px;
-  color: inherit;
-  text-decoration: none;
-  font-weight: 600;
-  border-radius: 6px;
-}
-.dropdown-panel a:hover,
-.dropdown-panel a:focus{
-  background: #f4f7f9;
-}
+.dropdown-panel a{ display:block; padding:10px 14px; color:inherit; text-decoration:none; font-weight:600; border-radius:6px; }
+.dropdown-panel a:hover{ background:#f4f7f9; }
 
-/* Show dropdown on hover or when element receives keyboard focus.
-   Also respect a .open class so JS can toggle (useful for accessibility).
-*/
+/* show dropdown on hover or when .open added by JS */
 .nav-item:hover .dropdown-panel,
 .nav-item:focus-within .dropdown-panel,
-.nav-item.open .dropdown-panel {
-  display: block;
-}
+.nav-item.open .dropdown-panel { display:block; }
 
-/* Add small pointer cursor for items that open menus */
-.nav-item > a { cursor: pointer; }
+/* keyboard focus */
+.nav-item.open .dropdown-panel{ display:block; }
 
-/* =========================
-   Contacts & language control
-   ========================= */
-.nav-contact{
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  white-space: nowrap; /* prevent phone / email from breaking */
-}
-.nav-contact a{
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  color: var(--nav-text);
-  text-decoration: none;
-  font-weight: 600;
-  font-size: 14px;
-}
-.nav-contact svg{ width: 18px; height: 18px; flex-shrink: 0; fill: currentColor; }
-
-/* language area (keeps small dropdown hidden until clicked) */
-.nav-right{ display: flex; align-items: center; gap: 12px; flex: 0 0 auto; }
-.lang-btn{
-  background: transparent;
-  border: 0;
-  color: var(--nav-text);
-  cursor: pointer;
-  font-weight: 700;
-  display: inline-flex;
-  gap: 8px;
-  align-items: center;
-  padding: 6px 8px;
-  border-radius: 6px;
-}
-.lang-panel{
-  display: none;
-  position: absolute;
-  right: 6px;
-  top: 56px;
-  background: #fff;
-  color: #05283b;
-  border-radius: 8px;
-  box-shadow: 0 14px 40px rgba(5,30,46,0.16);
-  z-index: 2000;
-}
-.lang-panel button{ display: block; width: 100%; text-align: left; padding: 10px 14px; border: 0; background: transparent; cursor: pointer; font-weight: 700; }
-.lang-panel button:hover{ background: #f4f7f9; }
-
-/* =========================
-   Hero / Slideshow
-   =========================
-   - Ensure a default background so blank areas don't appear
-   - Defensive: first slide visible if JS doesn't mark active
-*/
-.hero{ margin-top: 14px; margin-bottom: 18px; }
+/* ========== HERO / SLIDER ========== */
+/* make the slider full width - slides-wrap is full-bleed; slides-inner constrains content width */
 .slides-wrap{
-  position: relative;
-  width: 100%;
-  height: 360px;
-  border-radius: 10px;
-  overflow: hidden;
-  background: #e9eef2;
+  width:100%;
+  background:#e9eef2;
+  overflow:hidden;
 }
-.slide{
-  position: absolute;
-  inset: 0;
-  background-size: cover;
-  background-position: center;
-  opacity: 0;
-  transition: opacity .7s ease;
+.slides-inner{ max-width:var(--container-max); margin:0 auto; padding:18px 12px; }
+.slides-wrap .slide{
+  height:360px;
+  border-radius:10px;
+  background-size:cover;
+  background-position:center;
+  opacity:0;
+  transition:opacity .7s ease;
+  position:absolute;
+  left:0;
+  right:0;
 }
-.slide.active { opacity: 1; position: relative; }
-/* defensive: ensure first slide visible if nothing else */
-.slide:first-child { position: relative; }
+.slides-wrap .slide.active{ opacity:1; position:relative; }
 
-/* =========================
-   Main content area
-   ========================= */
-.content{ padding: 24px 0 40px; max-width: 1100px; margin: 0 auto; }
-.content h1{ font-size: 28px; margin-bottom: 10px; color: #05283b; }
-.content p{ color: var(--muted); font-size: 15px; line-height: 1.9; text-align: justify; }
+/* ensure slides area reserves height even before images load */
+.hero { margin-top:14px; margin-bottom:18px; position:relative; }
+.hero .slides-wrap{ min-height:220px; position:relative; }
+@media (min-width:1100px){ .slides-wrap .slide{ height:460px; } }
+@media (max-width:1099px) and (min-width:700px){ .slides-wrap .slide{ height:360px; } }
+@media (max-width:699px){ .slides-wrap .slide{ height:220px; } }
 
-/* simple cards row */
-.cards{ display: flex; gap: 18px; margin-top: 18px; flex-wrap: wrap; }
-.card{
-  background: var(--card);
-  border-radius: 10px;
-  padding: 16px;
-  box-shadow: 0 8px 28px rgba(5,30,46,0.06);
-  flex: 1 1 30%;
-  min-width: 220px;
-}
-.card h3{ margin-bottom: 8px; font-size: 16px; }
-.card p{ color: var(--muted); font-size: 14px; }
+/* ========== MAIN CONTENT ========== */
+.content{ padding:24px 0 40px; max-width:1100px; margin:0 auto; }
+.content h1{ font-size:28px; margin-bottom:10px; color:#05283b; }
+.content p{ color:var(--muted); font-size:15px; line-height:1.9; text-align:justify; }
+.cards{ display:flex; gap:18px; margin-top:18px; flex-wrap:wrap; }
+.card{ background:var(--card); border-radius:10px; padding:16px; box-shadow:0 8px 28px rgba(5,30,46,0.06); flex:1 1 30%; min-width:220px; }
 
-/* =========================
-   Footer (full-bleed background)
-   ========================= */
-.site-footer{
-  background: var(--footer-bg);
-  color: var(--footer-text);
-  padding: 36px 0 18px;
-  margin-top: 26px;
-  width: 100%;
-  left: 0;
-  right: 0;
-}
-.footer-grid{
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 28px;
-  align-items: start;
-  max-width: var(--container-max);
-  margin: 0 auto;
-  padding: 0 18px;
-}
+/* ========== FOOTER ========== */
+.site-footer{ background:var(--footer-bg); color:var(--footer-text); padding:36px 0 18px; margin-top:26px; width:100%; }
+.footer-grid{ display:grid; grid-template-columns: 1fr 1fr 1fr; gap:28px; align-items:start; max-width:var(--container-max); margin:0 auto; padding:0 12px; }
 
-/* left column: logo, map, address */
-.footer-left img{ height: 56px; display: block; border-radius: 6px; }
-.footer-left .map-link{
-  display: inline-flex;
-  gap: 8px;
-  align-items: center;
-  margin-top: 12px;
-  text-decoration: none;
-  color: var(--footer-text);
-  font-weight: 700;
-}
-.footer-left .map-link svg{ width: 18px; height: 18px; flex-shrink: 0; }
-.footer-left .address{
-  margin-top: 12px;
-  color: #cfe6ee;
-  font-size: 14px;
-  line-height: 1.6;
-}
+/* footer pieces */
+.footer-left img{ height:56px; display:block; border-radius:6px; }
+.footer-left .map-link{ display:inline-flex; gap:8px; align-items:center; margin-top:12px; text-decoration:none; color:var(--footer-text); font-weight:700; }
+.footer-left .address{ margin-top:12px; color:#cfe6ee; font-size:14px; line-height:1.6; }
 
-/* mid column: Quick Links */
-.footer-mid h4, .footer-right h4 { color: #e8f7fb; margin-bottom: 10px; font-size: 16px; }
-/* ensure headings like "About Us" won't break into two lines */
-.footer-mid h4, .footer-right h4, .footer-left h4 { white-space: nowrap; }
+/* headings single-line */
+.footer-mid h4, .footer-right h4{ color:#e8f7fb; margin-bottom:10px; font-size:16px; white-space:nowrap; }
+.quick-links a{ display:block; color:#d9eef6; text-decoration:none; font-weight:700; margin-bottom:8px; }
+.quick-links a::before{ content: "➤ "; margin-right:6px; color:#d9eef6; }
 
-/* quick links list styling */
-.quick-links a{
-  display: block;
-  color: #d9eef6;
-  text-decoration: none;
-  font-weight: 700;
-  margin-bottom: 8px;
-}
-.quick-links a::before{ content: "➤ "; margin-right: 6px; color: #d9eef6; }
-
-/* right column: social links grid */
-.social-grid{ display: grid; grid-template-columns: 1fr 1fr; gap: 8px 20px; }
-.social-grid a{ display: flex; align-items: center; gap: 8px; text-decoration: none; color: #d9eef6; font-weight: 700; }
-.social-grid a .arrow{ color: #d9eef6; }
+/* social grid */
+.social-grid{ display:grid; grid-template-columns: 1fr 1fr; gap:8px 20px; }
+.social-grid a{ display:flex; align-items:center; gap:8px; text-decoration:none; color:#d9eef6; font-weight:700; }
+.social-grid a .arrow{ color:#d9eef6; }
 
 /* footer note */
-.footer-note{ text-align: center; color: #9cc5d2; margin-top: 18px; font-size: 13px; padding-top: 6px; }
+.footer-note{ text-align:center; color:#9cc5d2; margin-top:18px; font-size:13px; padding-top:6px; }
 
-/* ensure address anchor is clickable block */
-.footer-left .address a { color: inherit; text-decoration: none; display: inline-block; }
+/* float whatsapp */
+.whatsapp-float{ position:fixed; right:18px; bottom:18px; z-index:1800; display:inline-flex; align-items:center; gap:10px; padding:10px 14px; border-radius:999px; background:#25d366; color:#fff; text-decoration:none; box-shadow:0 10px 36px rgba(2,120,76,0.22); }
 
-/* =========================
-   Floating WhatsApp (unchanged visual)
-   ========================= */
-.wa-float, .whatsapp-float, .whatsapp-float[aria-label], a[aria-label="Chat on WhatsApp"], a.whatsapp-float {
-  position: fixed;
-  right: 18px;
-  bottom: 18px;
-  z-index: 1800;
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  padding: 10px 14px;
-  border-radius: 999px;
-  background: #25d366;
-  color: #fff;
-  text-decoration: none;
-  box-shadow: 0 10px 36px rgba(2,120,76,0.22);
-}
-.wa-float svg, a[aria-label="Chat on WhatsApp"] svg { width: 26px; height: 26px; display: block; }
-.wa-text{ font-weight: 800; }
-
-/* =========================
-   Responsive adjustments
-   ========================= */
-/* Tablet / narrow desktop and mobile */
-@media (max-width: var(--mobile-break)) {
-  .container{ width: 95%; padding: 0 12px; }
-  .logo img{ height: 48px; }
-  /* allow horizontal scroll for nav rather than wrapping links */
-  .nav-list{ gap: 12px; overflow-x: auto; -webkit-overflow-scrolling: touch; }
-  .nav-list::-webkit-scrollbar { height: 6px; }
-  .nav-center{ justify-content: flex-start; padding-left: 8px; }
-  .slides-wrap{ height: 220px; }
-  .slide{ height: 220px; }
-  .cards{ flex-direction: column; }
-  .footer-grid{ grid-template-columns: 1fr; text-align: left; padding: 0 12px; }
+/* ========== Responsive ========== */
+@media (max-width: var(--mobile-break)){
+  .container{ width:95%; padding:0 12px; }
+  .logo img{ height:48px; }
+  .nav-list{ gap:12px; overflow:auto; -webkit-overflow-scrolling:touch; }
+  .nav-center{ justify-content:flex-start; padding-left:8px; }
+  .slides-wrap .slide{ height:220px; }
+  .cards{ flex-direction:column; }
+  .footer-grid{ grid-template-columns: 1fr; text-align:left; padding:0 12px; }
   .social-grid{ grid-template-columns: repeat(2, 1fr); }
-  .wa-float{ right: 14px; bottom: 14px; }
+  .whatsapp-float{ right:14px; bottom:14px; }
 }
 
-/* very small phones */
-@media (max-width: 520px) {
-  .slides-wrap{ height: 180px; }
-  .slide{ height: 180px; }
-  .nav-left{ gap: 8px; }
-  .nav-list{ gap: 10px; font-size: 14px; }
-  /* allow footer headings to wrap if extremely narrow */
-  .footer-mid h4, .footer-right h4 { white-space: normal; }
+@media (max-width:520px){
+  .slides-wrap .slide{ height:180px; }
+  .nav-list{ gap:10px; font-size:14px; }
 }
 
-/* =========================
-   Accessibility and defensive polish
-   ========================= */
-/* focus outline for keyboard users */
-a:focus, button:focus { outline: 3px solid rgba(255,122,45,0.12); outline-offset: 2px; border-radius: 6px; }
-
-/* ensure JS toggled classes are respected */
-.nav-item.open .dropdown-panel{ display: block; }
-
-/* some defensive rules so inline styles / legacy CSS don't hide dropdown or slides */
-.nav-item .dropdown-panel[style*="display:block"] { display: block !important; }
-.slide[style*="display:block"] { opacity: 1 !important; position: relative !important; }
-
-/* ensure email / phone icons are visible on dark navbar */
-.site-header .nav-contact a { color: var(--nav-text) !important; }
-.site-header .nav-contact svg { fill: currentColor !important; }
-
-/* small layout polish */
-.quick-links a, .social-grid a { word-break: normal; hyphens: none; }
+/* accessibility focus */
+a:focus, button:focus{ outline:3px solid rgba(255,122,45,0.12); outline-offset:2px; border-radius:6px; }
