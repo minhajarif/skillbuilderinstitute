@@ -321,3 +321,19 @@ body{
 @media(max-width:520px){
   .slides-wrap{ height:180px; }
 }
+
+  /* NAVBAR TEXT SHOULD NOT WRAP */
+.nav-list a,
+.nav-contact {
+  white-space: nowrap;
+}
+
+/* FOOTER HEADINGS TOP ALIGNED */
+.footer-mid h4,
+.footer-right h4 {
+  color:#e8f7fb;
+  margin-bottom:12px;
+  font-size:16px;
+  display:block;
+  line-height:1;
+}
