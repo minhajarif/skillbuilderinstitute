@@ -1,142 +1,231 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Skill Training (Blue Collar) – Skills Builder Institute</title>
-    <link rel="stylesheet" href="../skill.css">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Skill Training (Blue Collar)</title>
+
+<link rel="stylesheet" href="../skill.css">
+
+<style>
+  :root{
+    --accent:#FF6A00;
+    --bg:#f5f7fa;
+    --card:#ffffff;
+    --text:#0f1724;
+    --muted:#6b7280;
+    --container:1100px;
+    --radius:12px;
+  }
+
+  body{margin:0;font-family:Inter,system-ui,Arial;background:var(--bg);color:var(--text);}
+  a{text-decoration:none;color:inherit}
+  .container{max-width:var(--container);margin:0 auto;padding:18px}
+
+  /* Header */
+  header{background:#071028;color:#fff;padding:12px 18px;position:sticky;top:0;z-index:1000}
+  .navbar{display:flex;align-items:center;justify-content:space-between}
+  nav ul{display:flex;gap:18px;list-style:none}
+  nav a{color:#fff;padding:8px 10px;border-radius:6px;font-size:14px}
+  nav a:hover{background:rgba(255,255,255,.08)}
+  .dropdown{background:#0b1624;padding:6px;border-radius:8px;position:absolute;top:44px;display:none;min-width:200px}
+
+  /* Banner */
+  .banner{
+    height:260px;
+    background-size:cover;
+    background-position:center;
+    margin-bottom:20px;
+  }
+
+  /* Boxes */
+  .grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:14px;
+    margin-top:-10px;
+  }
+
+  .box{
+    background:#fff;
+    padding:18px;
+    border-radius:12px;
+    text-align:center;
+    font-weight:700;
+    cursor:pointer;
+    box-shadow:0 10px 30px rgba(2,6,23,.08);
+    transition:.3s;
+  }
+
+  .box:hover{
+    transform:translateY(-4px);
+    box-shadow:0 14px 40px rgba(2,6,23,.12);
+  }
+
+  @media(max-width:780px){
+    .grid{grid-template-columns:repeat(2,1fr);}
+    .banner{height:200px}
+  }
+
+  /* Content */
+  .section{
+    background:#fff;
+    padding:18px;
+    margin-top:20px;
+    border-radius:12px;
+    box-shadow:0 10px 30px rgba(2,6,23,.06);
+  }
+
+  /* Footer */
+  footer{background:#061222;color:#fff;padding:30px 18px;margin-top:40px}
+  .footer-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:20px;max-width:var(--container);margin:0 auto}
+  .social-row{display:flex;gap:12px;flex-wrap:wrap}
+</style>
 </head>
 
 <body>
 
-<!-- NAVBAR -->
-<header class="top-header">
-    <div class="contact-left">
-        <span><img src="../images/mail.png" class="icon-small"> info@skillsbuilderinstitute.com</span>
-        <span><img src="../images/call.png" class="icon-small"> +91-7488894910</span>
-    </div>
+<!-- HEADER -->
+<header>
+  <div class="container navbar">
 
-    <div class="lang-box">
-        <button id="langBtn">🌐 <span id="langLabel">EN</span> ▾</button>
-        <div id="langMenu" class="lang-menu">
-            <button data-lang="en">🇬🇧 English</button>
-            <button data-lang="hi">🇮🇳 हिंदी</button>
-            <button data-lang="ar">🇦🇪 العربية</button>
-        </div>
-    </div>
-</header>
+    <!-- Map Icon -->
+    <a href="https://www.google.com/maps/search/?api=1&query=Sona+Complex+Tulshi+Nagar+Near+Dayanand+Ayurvedic+Medical+College+Siwan+Bihar+841226" target="_blank">
+      <svg width="40" height="40" viewBox="0 0 24 24">
+        <path d="M12 2C8.7 2 6 4.7 6 8c0 4.7 6 12 6 12s6-7.3 6-12c0-3.3-2.7-6-6-6z" fill="#FF6A00"/>
+        <circle cx="12" cy="8" r="2.2" fill="#fff"/>
+      </svg>
+    </a>
 
-<nav class="main-nav">
-    <a href="../index.html" class="logo-link"><img src="../images/logo.png" class="nav-logo"></a>
-
-    <ul>
+    <nav>
+      <ul>
         <li><a href="../index.html">Home</a></li>
 
-        <li class="dropdown">
-            <a href="../explore-training.html">Explore Training ▾</a>
-            <div class="dropdown-items">
-                <a href="skilltraining-bluecollar.html">Skill Training</a>
-                <a href="professional.html">Professional</a>
-                <a href="programmer.html">Programmer</a>
-                <a href="engineer.html">Engineer</a>
-                <a href="softskill.html">Soft Skill</a>
-            </div>
+        <li style="position:relative" id="exploreLi">
+          <a href="../explore-training.html">Explore Training ▾</a>
+          <div class="dropdown" id="exploreDropdown">
+            <a href="../explore-training.html">All Training</a>
+            <a href="skilltraining-bluecollar.html">Skill Training</a>
+            <a href="professional.html">Professional Courses</a>
+            <a href="engineer.html">Engineering Courses</a>
+            <a href="programmer.html">Programming</a>
+            <a href="softskill.html">Soft Skills</a>
+          </div>
         </li>
 
         <li><a href="../career&guidence.html">Career Guidance</a></li>
         <li><a href="../aboutus.html">About Us</a></li>
         <li><a href="../contactus.html">Contact Us</a></li>
-    </ul>
-</nav>
+      </ul>
+    </nav>
 
-<!-- PAGE BANNER -->
-<section class="page-banner">
-    <img src="../images/skilltrainingbanner.png" alt="Skill Training Banner">
-</section>
+  </div>
+</header>
 
-<!-- PAGE CONTENT -->
-<section class="page-content">
-    <h2>Skill Training (Blue Collar)</h2>
+<!-- BANNER -->
+<div class="banner" style="background-image:url('../explorephotos/skilltrainingbanner.png')"></div>
 
-    <p>
-        Our Blue-Collar Skill Training programs are designed for students, beginners, 
-        and working individuals who want to build strong technical skills and secure 
-        better job opportunities. We provide hands-on practical training with real tools, 
-        real work situations, and guidance from experienced industry professionals.
+<!-- BOX GRID -->
+<div class="container">
+  <div class="grid">
+
+    <div class="box">Electrician</div>
+    <div class="box">Plumber</div>
+    <div class="box">Welder</div>
+    <div class="box">Shuttering / Carpenter</div>
+    <div class="box">Pipe Fitter</div>
+    <div class="box">Steel Fixer</div>
+    <div class="box">AC Technician</div>
+    <div class="box">Mason</div>
+    <div class="box">Painter</div>
+    <div class="box">Cleaner</div>
+    <div class="box">House Keeper</div>
+    <div class="box">Store Keeper</div>
+    <div class="box">Helper</div>
+
+  </div>
+</div>
+
+<!-- CONTENT -->
+<div class="container">
+  <div class="section">
+    <h2>Blue Collar Skill Training</h2>
+
+    <p style="color:var(--muted);line-height:1.6">
+      Our Blue Collar Skill Training programs are designed for learners who want practical, hands-on experience
+      that directly prepares them for jobs in India and abroad. All training is delivered by experienced industry
+      professionals who focus on real-world tasks, tools, safety practices, and technical accuracy.
     </p>
 
-    <h3>Courses We Provide:</h3>
+    <p style="color:var(--muted);line-height:1.6">
+      Each category such as Electrician, Plumber, Welder, Mason, Carpenter, or AC Technician includes practical
+      workshops that help students learn through real working conditions. Trainees get full exposure to tools,
+      machines, repair techniques, installation procedures, and field-level problem solving.
+    </p>
 
-    <ul class="course-list">
-        <li>➤ Electrician Training – Wiring, appliances, home electrical system</li>
-        <li>➤ Plumbing Training – Home/Office pipe fitting, repairing, maintenance</li>
-        <li>➤ AC / Refrigeration Mechanic – Cooling system installation & repair</li>
-        <li>➤ Welding Technician – Gas welding, arc welding, safety operations</li>
-        <li>➤ House Painting & Decoration – Modern tools, techniques & finishing</li>
-        <li>➤ Construction Helper – Safety, measurement, basic masonry skills</li>
-    </ul>
-
-    <h3>Why Choose Our Blue-Collar Training?</h3>
-
-    <ul class="course-list">
-        <li>➤ 100% practical training with real tools</li>
-        <li>➤ Industry-expert trainers</li>
-        <li>➤ Certification after course completion</li>
-        <li>➤ Job assistance in local & international markets</li>
-        <li>➤ Skill-based earning opportunities</li>
-    </ul>
-</section>
+    <p style="color:var(--muted);line-height:1.6">
+      After successful training, students receive a certificate and guidance for job placements. Many students
+      trained under Skill Builder Institute have secured opportunities in India, Gulf countries, and various
+      international projects. We focus on ensuring that every learner becomes confident, work-ready, and capable
+      of delivering quality results.
+    </p>
+  </div>
+</div>
 
 <!-- FOOTER -->
-<footer class="footer">
-    <div class="footer-left">
-        <img src="../images/logo.png" class="footer-logo">
+<footer>
+  <div class="footer-grid container">
 
-        <p>
-            <img src="../images/location.png" class="icon-small">
-            Sona Complex, 2nd Floor (Tulshi Nagar)<br>
-            Near Dayanand Ayurvedic Medical College, Siwan (Bihar) - 841226
-        </p>
-        <p>
-            <img src="../images/call.png" class="icon-small">
-            +91-7488894910, +91-9939998360, +91-8709225954
-        </p>
-        <p>
-            <img src="../images/mail.png" class="icon-small">
-            info@skillsbuilderinstitute.com
-        </p>
+    <div>
+      <a href="https://www.google.com/maps/search/?api=1&query=Sona+Complex+Tulshi+Nagar+Near+Dayanand+Ayurvedic+Medical+College+Siwan+Bihar+841226" target="_blank">
+        <svg width="44" height="44" viewBox="0 0 24 24">
+          <path d="M12 2C8.7 2 6 4.7 6 8c0 4.7 6 12 6 12s6-7.3 6-12c0-3.3-2.7-6-6-6z" fill="#FF6A00"/>
+          <circle cx="12" cy="8" r="2.2" fill="#fff"/>
+        </svg>
+      </a>
 
-        <a href="https://maps.app.goo.gl/9TkqgssUuQkkpCgC9" target="_blank" class="map-btn">View on Google Map</a>
+      <div style="margin-top:10px">
+        <b>Sona Complex, 2nd Floor, Tulshi Nagar</b>
+        <div style="color:#ddd;margin-top:6px">Near Dayanand Ayurvedic Medical College, Siwan (Bihar)</div>
+      </div>
     </div>
 
-    <div class="footer-mid">
-        <h3>Quick Links</h3>
-        <a href="../index.html">➤ Home</a>
-        <a href="../explore-training.html">➤ Explore Training</a>
-        <a href="../career&guidence.html">➤ Career Guidance</a>
-        <a href="../aboutus.html">➤ About Us</a>
-        <a href="../contactus.html">➤ Contact Us</a>
+    <div>
+      <h3>Quick Links</h3>
+      <div style="display:flex;flex-direction:column;gap:6px;margin-top:10px">
+        <a href="../index.html">Home</a>
+        <a href="../explore-training.html">Explore Training</a>
+        <a href="../career&guidence.html">Career Guidance</a>
+        <a href="../aboutus.html">About Us</a>
+        <a href="../contactus.html">Contact Us</a>
+      </div>
     </div>
 
-    <div class="footer-right">
-        <h3>Follow Us</h3>
-        <a>➤ WhatsApp</a>
-        <a>➤ Instagram</a>
-        <a>➤ Facebook</a>
-        <a>➤ YouTube</a>
-        <a>➤ Telegram</a>
-        <a>➤ Snapchat</a>
-        <a>➤ X (Twitter)</a>
+    <div>
+      <h3>Follow Us</h3>
+      <div class="social-row" style="margin-top:10px">
+        <a href="https://www.youtube.com/@SkillsBuilderInstitute" target="_blank">YouTube</a>
+        <a href="https://www.fb.com/skillsbuilderinstitute" target="_blank">Facebook</a>
+        <a href="https://www.instagram.com/skills_builder_institute" target="_blank">Instagram</a>
+        <a href="https://t.me/skillsbuilderinstitute" target="_blank">Telegram</a>
+        <a href="https://whatsapp.com/channel/0029Vb6Kou2DuMRmU5kAKy1W" target="_blank">WhatsApp</a>
+        <a href="https://www.snapchat.com/add/skillsbuildersv" target="_blank">Snapchat</a>
+        <a href="https://www.threads.net/@skills_builder_institute" target="_blank">Threads</a>
+        <a href="https://x.com/@SkillsBuilderSV" target="_blank">X</a>
+      </div>
     </div>
+
+  </div>
 </footer>
 
-<!-- Floating WhatsApp -->
-<a href="https://wa.me/917488894910" class="whatsapp-float">
-    <img src="../images/whatsapp.png">
-</a>
+<script>
+  // Dropdown menu
+  const exploreLi = document.getElementById("exploreLi");
+  const exploreDropdown = document.getElementById("exploreDropdown");
 
-<script src="../js/i18n.js"></script>
-<script src="../builder.js"></script>
+  exploreLi.addEventListener("mouseenter", ()=> exploreDropdown.style.display="block");
+  exploreLi.addEventListener("mouseleave", ()=> exploreDropdown.style.display="none");
+</script>
 
 </body>
 </html>
