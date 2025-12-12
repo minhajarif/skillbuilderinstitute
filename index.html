@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Skills Builder Institute — Home</title>
 
-  <!-- Basic styles (embedded so page works standalone) -->
   <style>
     :root{
       --max-w:1150px;
@@ -17,122 +16,118 @@
       --footer1:#05283b;
       --footer2:#0a3760;
       --wa:#25D366;
-      --radius:10px;
+      --radius:12px;
+      --text:#05283b;
+      --white:#ffffff;
       font-family:Inter, system-ui, Arial, sans-serif;
     }
     *{box-sizing:border-box}
-    body{margin:0;background:#f6f8fb;color:#05283b;-webkit-font-smoothing:antialiased}
-    a{color:inherit}
-
-    /* container */
+    body{margin:0;background:#f6f8fb;color:var(--text);-webkit-font-smoothing:antialiased}
+    a{color:inherit;text-decoration:none}
     .container{max-width:var(--max-w);margin:0 auto;padding:16px}
 
-    /* ========== HEADER / NAV ========== */
-    header.site-header{background:var(--nav-grad); color:#fff; position:sticky; top:0; z-index:1200; box-shadow:0 8px 30px rgba(6,38,58,0.12)}
+    /* header topbar */
+    header.site-header{background:var(--nav-grad); color:var(--white); position:sticky; top:0; z-index:1200; box-shadow:0 8px 30px rgba(6,38,58,0.12)}
     .topbar{display:flex;align-items:center;justify-content:space-between;padding:8px 16px}
     .top-left{display:flex;gap:16px;align-items:center;font-weight:700}
-    .top-left .top-link{display:inline-flex;gap:8px;align-items:center;color:#fff;text-decoration:none}
-    .top-right{display:flex;align-items:center;gap:8px}
-    .lang-btn{background:transparent;border:0;color:#fff;font-weight:700;padding:6px 10px;border-radius:6px;display:inline-flex;gap:8px;align-items:center;cursor:pointer}
+    .top-left .top-link{display:inline-flex;gap:8px;align-items:center;color:var(--white);opacity:0.96}
+    .top-left .icon{width:18px;height:18px;display:inline-block}
+    .top-right{display:flex;align-items:center;gap:8px;position:relative}
+    .lang-btn{background:transparent;border:0;color:var(--white);font-weight:700;padding:6px 10px;border-radius:6px;display:inline-flex;gap:8px;align-items:center;cursor:pointer}
 
+    /* main nav */
     nav.main-nav{display:flex;align-items:center;gap:18px;padding:10px 16px;border-top:1px solid rgba(255,255,255,0.03)}
     .nav-left{display:flex;align-items:center;gap:18px;flex:0 0 auto}
-    .logo img{height:56px}
+    .logo img{height:56px;display:block}
     .nav-center{flex:1;display:flex;justify-content:center}
     .nav-list{list-style:none;margin:0;padding:0;display:flex;gap:18px;align-items:center}
-    .nav-list a{color:#fff;text-decoration:none;padding:8px 10px;border-radius:8px;font-weight:700;display:inline-flex;align-items:center}
+    .nav-list a{color:var(--white);text-decoration:none;padding:8px 10px;border-radius:8px;font-weight:700;display:inline-flex;align-items:center}
     .nav-list a:hover{background:rgba(255,255,255,0.04)}
     .nav-item{position:relative}
-    .dropdown-panel{position:absolute;left:0;top:44px;background:#fff;color:var(--nav-bg);border-radius:8px;min-width:220px;box-shadow:0 14px 40px rgba(5,30,46,0.16);display:none;z-index:1400}
+    .dropdown-panel{position:absolute;left:0;top:44px;background:var(--white);color:var(--nav-bg);border-radius:8px;min-width:220px;box-shadow:0 14px 40px rgba(5,30,46,0.16);display:none;z-index:1400}
     .dropdown-panel a{display:block;padding:10px 14px;color:inherit;text-decoration:none}
     .dropdown-panel a:hover{background:#f4f8fb}
-    /* show on hover desktop */
     @media(min-width:981px){ .nav-item:hover .dropdown-panel{display:block} }
 
-    /* small screen: stack nav */
-    @media(max-width:980px){
-      .nav-center{justify-content:flex-start}
-      .logo img{height:48px}
-      .nav-list{gap:10px;flex-wrap:wrap}
-    }
+    /* hero slideshow */
+    .hero{margin:18px auto;border-radius:var(--radius);overflow:hidden;max-width:var(--max-w);background:#e9eef5}
+    .slide{width:100%;height:420px;background-position:center;background-size:cover;opacity:0;position:absolute;left:0;top:0;transition:opacity 900ms ease}
+    .slide.active{opacity:1;position:relative}
+    .slides-wrap{position:relative;height:420px}
+    @media(max-width:980px){ .slide{height:260px} .slides-wrap{height:260px} }
 
-    /* Hero slider */
-    .hero{margin:18px auto;border-radius:12px;overflow:hidden;max-width:var(--max-w)}
-    .slides{display:flex;transition:transform 500ms ease}
-    .slide{min-width:100%;flex-shrink:0}
-    .slide img{width:100%;height:420px;object-fit:cover;display:block}
-    @media(max-width:980px){ .slide img{height:260px} }
-
-    .slider-controls{position:relative;display:flex;justify-content:center;gap:8px;padding:12px}
-    .indicators{display:flex;gap:8px}
-    .indicators button{width:10px;height:10px;border-radius:50%;border:0;background:rgba(0,0,0,0.2)}
-    .indicators button.active{background:var(--accent)}
-
-    /* main content: 10-12 lines area */
+    /* content */
     .content{max-width:var(--max-w);margin:18px auto;padding:14px}
     .content h1{margin:6px 0 12px 0;font-size:28px}
     .content p{margin:8px 0;color:var(--muted);line-height:1.6}
 
-    /* cards area for highlights */
+    /* cards */
     .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:18px}
     @media(max-width:980px){ .cards{grid-template-columns:repeat(2,1fr)} }
     @media(max-width:640px){ .cards{grid-template-columns:1fr} }
-
-    .card{background:#fff;padding:16px;border-radius:12px;box-shadow:0 10px 30px rgba(10,24,40,0.06)}
+    .card{background:var(--card);padding:16px;border-radius:12px;box-shadow:0 10px 30px rgba(10,24,40,0.06)}
     .card h3{margin:0 0 8px 0}
     .card p{margin:0;color:var(--muted);font-size:14px}
 
-    /* ========== FOOTER ========== */
-    footer.site-footer{margin-top:28px;background:linear-gradient(180deg,var(--footer1),var(--footer2));color:#fff;padding:28px 0}
+    /* footer */
+    footer.site-footer{margin-top:28px;background:linear-gradient(180deg,var(--footer1),var(--footer2));color:var(--white);padding:28px 0}
     .footer-grid{max-width:var(--max-w);margin:0 auto;display:grid;grid-template-columns:1fr 1fr 1fr;gap:20px;padding:0 16px}
     @media(max-width:980px){ .footer-grid{grid-template-columns:1fr;gap:16px} }
     .footer-left img{height:70px;border-radius:8px;display:block;margin-bottom:12px}
-    .map-link{display:inline-flex;gap:8px;align-items:center;padding:8px 10px;background:rgba(255,255,255,0.05);border-radius:8px;text-decoration:none;color:#d7e9ff}
+    .map-link{display:inline-flex;gap:8px;align-items:center;padding:8px 10px;background:rgba(255,255,255,0.05);border-radius:8px;color:#d7e9ff;text-decoration:none}
     .footer-left .address{margin-top:12px;color:#d7e9ff;line-height:1.5}
-    .footer-mid h4, .footer-right h4{margin:0 0 10px 0}
+
+    .footer-mid h4,.footer-right h4{margin:0 0 10px 0}
     .quick-links a{display:block;color:#d9e7fb;text-decoration:none;margin-bottom:8px}
-    /* social layout: two per row on desktop */
+    .quick-links a:hover{color:var(--white)}
+
+    /* social: two per row desktop */
     .social-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;align-items:center}
     @media(max-width:980px){ .social-grid{grid-template-columns:repeat(2,1fr)} }
-    .social-grid a{display:inline-flex;gap:8px;align-items:center;color:#d9e7fb;text-decoration:none;padding:6px 8px;border-radius:8px}
-    .social-grid a .arrow{margin-right:6px;color:#d9e7fb}
-    /* bottom small note */
+    .social-grid a{display:flex;gap:10px;align-items:center;color:#d9e7fb;text-decoration:none;padding:8px;border-radius:8px}
+    .social-grid a .arrow{color:#d9e7fb;font-weight:800}
+    .social-grid a:hover{color:var(--white)}
+
     .footer-note{max-width:var(--max-w);margin:10px auto;padding:8px 16px;color:#bcd7f0;font-size:13px;text-align:center}
 
-    /* floating WhatsApp (optional) */
-    .wa-float{position:fixed;right:18px;bottom:18px;z-index:1600;display:flex;align-items:center;gap:8px;background:linear-gradient(180deg,var(--wa),#128C7E);color:#fff;padding:10px 12px;border-radius:999px;box-shadow:0 12px 40px rgba(18,140,126,0.16);text-decoration:none;font-weight:700}
-    .wa-float img{height:20px}
+    /* floating whatsapp (SVG) */
+    .wa-float{position:fixed;right:18px;bottom:18px;z-index:99999;display:inline-flex;align-items:center;gap:10px;text-decoration:none;background:linear-gradient(180deg,#25D366,#128C7E);color:#fff;padding:10px 14px;border-radius:999px;box-shadow:0 8px 30px rgba(0,0,0,0.18);font-weight:800}
+    .wa-float .wa-inner{width:44px;height:44px;display:inline-flex;align-items:center;justify-content:center;border-radius:50%}
+    .wa-float .wa-text{font-size:15px}
+    @media(max-width:640px){ .wa-float .wa-text{display:none} }
+
     /* small helpers */
     .visually-hidden{position:absolute!important;height:1px;width:1px;overflow:hidden;clip:rect(1px,1px,1px,1px);white-space:nowrap}
+    button{cursor:pointer}
+    a:focus,button:focus{outline:3px solid rgba(255,122,0,0.14);outline-offset:2px}
+    /* rtl tweak */
+    [dir="rtl"] { direction: rtl }
   </style>
 </head>
 <body>
 
-  <!-- HEADER -->
   <header class="site-header" role="banner" aria-label="Top header">
     <div class="topbar container">
-      <div class="top-left">
+      <div class="top-left" role="region" aria-label="Contact topbar">
         <a href="mailto:info@skillsbuilderinstitute.com" class="top-link" aria-label="Email info@skillsbuilderinstitute.com">
-          <!-- mail icon -->
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 7.5v9A2.5 2.5 0 0 0 5.5 19h13A2.5 2.5 0 0 0 21 16.5v-9" stroke="#fff" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 7.5v9A2.5 2.5 0 0 0 5.5 19h13A2.5 2.5 0 0 0 21 16.5v-9" stroke="#fff" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
           <span>info@skillsbuilderinstitute.com</span>
         </a>
 
         <a href="tel:+917488894910" class="top-link" aria-label="Call +91-7488894910">
-          <!-- phone icon -->
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M22 16.9a18 18 0 0 1-8.9 4.5" stroke="#fff" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M22 16.9a18 18 0 0 1-8.9 4.5" stroke="#fff" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
           <span>+91-7488894910</span>
         </a>
       </div>
 
-      <div class="top-right">
+      <div class="top-right" role="region" aria-label="Language selection">
         <button class="lang-btn" id="langBtn" aria-haspopup="true" aria-expanded="false">
           <span id="langFlag">🇬🇧</span>&nbsp;<span id="langCode">EN</span>&nbsp;▾
         </button>
         <div id="langPanel" class="dropdown-panel" aria-hidden="true" style="right:16px;left:auto;">
-          <button class="lang-item" data-lang="en" data-flag="🇬🇧" style="display:block;border:0;background:transparent;padding:10px 14px;text-align:left;width:100%">🇬🇧 English</button>
-          <button class="lang-item" data-lang="hi" data-flag="🇮🇳" style="display:block;border:0;background:transparent;padding:10px 14px;text-align:left;width:100%">🇮🇳 हिंदी</button>
-          <button class="lang-item" data-lang="ar" data-flag="🇦🇪" style="display:block;border:0;background:transparent;padding:10px 14px;text-align:left;width:100%">🇦🇪 العربية</button>
+          <button class="lang-item" data-lang="en" data-flag="🇬🇧">🇬🇧 English</button>
+          <button class="lang-item" data-lang="hi" data-flag="🇮🇳">🇮🇳 हिंदी</button>
+          <button class="lang-item" data-lang="ar" data-flag="🇦🇪">🇦🇪 العربية</button>
         </div>
       </div>
     </div>
@@ -167,65 +162,46 @@
     </nav>
   </header>
 
-  <!-- HERO / SLIDER -->
   <main>
     <section class="hero" aria-label="Home banner">
-      <div class="slides" id="slides">
-        <div class="slide"><img src="images/slider-home-1.jpg" alt="Slide 1"></div>
-        <div class="slide"><img src="images/slider-home-2.jpg" alt="Slide 2"></div>
-        <div class="slide"><img src="images/slider-home-3.jpg" alt="Slide 3"></div>
-        <div class="slide"><img src="images/slider-home-4.jpg" alt="Slide 4"></div>
-      </div>
-
-      <div class="slider-controls container">
-        <div class="indicators" id="slideIndicators"></div>
+      <div class="slides-wrap container" id="slidesWrap">
+        <div class="slide" data-img="images/home-slider-1.png" style="background-image:url('images/home-slider-1.png')"></div>
+        <div class="slide" data-img="images/home-slider-2.png" style="background-image:url('images/home-slider-2.png')"></div>
+        <div class="slide" data-img="images/home-slider-3.png" style="background-image:url('images/home-slider-3.png')"></div>
+        <div class="slide" data-img="images/home-slider-4.png" style="background-image:url('images/home-slider-4.png')"></div>
       </div>
     </section>
 
-    <!-- CONTENT: 10-12 lines, focused and professional -->
     <section class="content container" aria-label="Introduction">
       <h1>Welcome to Skills Builder Institute</h1>
       <p>
         Skills Builder Institute is dedicated to practical, hands-on training that prepares learners for real jobs.
-        We offer industry-focused courses, personalized career guidance and placement support for students and professionals.
-        Our experienced trainers bring real workplace skills, mentorship and certification to every course.
-        We focus on both technical and soft skills — from web and programming to trades and professional development.
-        Learners get practical projects, mock interviews, and ongoing counselling to help land jobs locally and internationally.
-        We have trained over 10,000+ learners and helped 5,000+ secure jobs through consistent mentorship and placement assistance.
-        Our vision is to expand high-quality skill training across Siwan and Bihar, empowering youth with job-ready capabilities.
-        Join our programs to gain confidence, certificates, and a pathway to a stable career.
-        We prioritize real outcomes: practical learning, assessment, and support through the entire job-hunt process.
-        Contact us to learn which program fits you best and how we can help accelerate your career.
+        We provide industry-focused courses, personalized career guidance, and placement support for students and professionals.
+        Our trainers are experienced industry professionals who bring practical skills, mentorship, and real project experience.
+        Students receive certification, resume help, mock interviews, and job-placement assistance to increase hiring chances.
+        We cover technical skills like web development, programming and engineering, as well as trades and soft skills.
+        Our classroom and on-field training ensures learners are job-ready with measurable skills employers want.
+        Over 10,000+ learners trained and 5,000+ placed across local and international employers through our network.
+        Our vision is to expand training across Siwan and Bihar, empowering youth with meaningful careers and stability.
+        Join our programs to build confidence, get certified, and start a reliable career path with active support.
+        Contact us to find the course that fits your goals and start upskilling today.
       </p>
 
-      <!-- Highlight cards -->
       <div class="cards">
-        <div class="card">
-          <h3>Practical Courses</h3>
-          <p>Hands-on training with real projects and industry-relevant tools.</p>
-        </div>
-        <div class="card">
-          <h3>Certification</h3>
-          <p>Get recognized certificates to showcase your skills to employers.</p>
-        </div>
-        <div class="card">
-          <h3>Placement Support</h3>
-          <p>Resume building, mock interviews and job placement assistance.</p>
-        </div>
+        <div class="card"><h3>Practical Courses</h3><p>Hands-on training and real project work to build skills.</p></div>
+        <div class="card"><h3>Certification</h3><p>Certificate on course completion to show employers.</p></div>
+        <div class="card"><h3>Placement Support</h3><p>Resume help, mock interviews and job introduction support.</p></div>
       </div>
     </section>
   </main>
 
-  <!-- FOOTER -->
   <footer class="site-footer" role="contentinfo">
     <div class="footer-grid container">
-      <!-- LEFT: Logo + Map icon (separate) + Address -->
       <div class="footer-left">
         <a href="index.html" aria-label="Skills Builder Institute home"><img src="images/logo.png" alt="logo"></a>
 
         <div style="margin-top:8px">
           <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Sona+Complex+Tulshi+Nagar+Siwan+Bihar+841226" target="_blank" rel="noopener noreferrer" aria-label="Open map (Google Maps)">
-            <!-- map icon -->
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2C8.7 2 6 4.7 6 8c0 5.3 6 12 6 12s6-6.7 6-12c0-3.3-2.7-6-6-6z" fill="#FF6B3A"/></svg>
             <span>View on Map</span>
           </a>
@@ -237,7 +213,6 @@
         </div>
       </div>
 
-      <!-- MID: Quick Links -->
       <div class="footer-mid">
         <h4>Quick Links</h4>
         <div class="quick-links" role="navigation" aria-label="Footer quick links">
@@ -249,23 +224,19 @@
         </div>
       </div>
 
-      <!-- RIGHT: Social grid (two per row on desktop) -->
       <div class="footer-right">
         <h4>Follow Us</h4>
         <div class="social-grid" aria-label="Social links">
-          <a href="https://wa.me/917488894910" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
-            <span class="arrow">➤</span> <span>WhatsApp</span>
-          </a>
-          <a href="https://www.instagram.com/skills_builder_institute" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
-            <span class="arrow">➤</span> <span>Instagram</span>
-          </a>
+          <a href="https://wa.me/917488894910" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp"><span class="arrow">➤</span><span>WhatsApp</span></a>
+          <a href="https://www.instagram.com/skills_builder_institute" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><span class="arrow">➤</span><span>Instagram</span></a>
 
-          <a href="https://www.fb.com/skillsbuilderinstitute" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
-            <span class="arrow">➤</span> <span>Facebook</span>
-          </a>
-          <a href="https://t.me/skillsbuilderinstitute" target="_blank" rel="noopener noreferrer" aria-label="Telegram">
-            <span class="arrow">➤</span> <span>Telegram</span>
-          </a>
+          <a href="https://www.fb.com/skillsbuilderinstitute" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><span class="arrow">➤</span><span>Facebook</span></a>
+          <a href="https://t.me/skillsbuilderinstitute" target="_blank" rel="noopener noreferrer" aria-label="Telegram"><span class="arrow">➤</span><span>Telegram</span></a>
+
+          <a href="https://www.youtube.com/@SkillsBuilderInstitute" target="_blank" rel="noopener noreferrer" aria-label="YouTube"><span class="arrow">➤</span><span>YouTube</span></a>
+          <a href="https://www.snapchat.com/add/skillsbuildersv" target="_blank" rel="noopener noreferrer" aria-label="Snapchat"><span class="arrow">➤</span><span>Snapchat</span></a>
+
+          <a href="https://x.com/@SkillsBuilderSV" target="_blank" rel="noopener noreferrer" aria-label="X (Twitter)"><span class="arrow">➤</span><span>X (Twitter)</span></a>
         </div>
       </div>
     </div>
@@ -273,71 +244,65 @@
     <div class="footer-note">© <span id="year"></span> Skills Builder Institute — All rights reserved.</div>
   </footer>
 
-  <!-- Floating WhatsApp (kept small & optional) -->
-  <a class="wa-float" href="https://wa.me/917488894910" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp">
-    <img src="images/whatsapp.png" alt="wa"><span>Chat</span>
+  <!-- Floating WhatsApp (SVG, no image file needed) -->
+  <a href="https://wa.me/917488894910" class="wa-float" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+    <span class="wa-inner" aria-hidden="true">
+      <svg viewBox="0 0 24 24" width="28" height="28" xmlns="http://www.w3.org/2000/svg" fill="none">
+        <circle cx="12" cy="12" r="12" fill="#25D366"/>
+        <path d="M17.3 14.5c-.3-.1-1.9-.9-2.2-1a1.5 1.5 0 0 1-.7-.8c-.1-.3 0-.6.1-.7.1-.1.5-.2.8-.2.2 0 .5 0 .7.1.2.1.5.3.7.4.2.1.4.2.6 0 .2-.2.6-.7.9-.9.2-.2.6-.3.9-.2.3.1.8.3 1 .7.3.4.2.8-.1 1.1-.3.3-.9 1.1-1.2 1.3z" fill="#fff"/>
+        <path d="M7.2 10.6c-.1-.6.1-1.2.6-1.6l.7-.5c.3-.2.6-.2.9-.1l1.2.4c.2.1.4.3.5.5l.6 1.1c.2.4.1.8-.2 1.1l-1.6 1.6c-.8.8-1.9 1.2-3 1.2-.7 0-1.4-.1-2.1-.4-.2-.1-.3-.3-.3-.5l.1-1.5c0-.5.2-1 .6-1.3z" fill="#fff" opacity="0.95"/>
+      </svg>
+    </span>
+    <span class="wa-text">WhatsApp</span>
   </a>
 
-  <!-- Minimal JS: slider, language panel, basic i18n for nav (no external files) -->
   <script>
-    // slider
+    // autoplay slideshow (no controls)
     (function(){
-      const slidesWrap = document.getElementById('slides');
       const slides = Array.from(document.querySelectorAll('.slide'));
-      const indicators = document.getElementById('slideIndicators');
-      let idx = 0, auto;
-      slides.forEach((s,i)=>{
-        const b = document.createElement('button');
-        b.addEventListener('click', ()=> { idx = i; update(); });
-        if(i===0) b.classList.add('active');
-        indicators.appendChild(b);
-      });
-      function update(){
-        slidesWrap.style.transform = 'translateX(-' + (idx*100) + '%)';
-        Array.from(indicators.children).forEach((b,i)=> b.classList.toggle('active', i===idx));
+      let idx = 0;
+      function show(i){
+        slides.forEach((s,si)=> s.classList.toggle('active', si===i));
       }
-      auto = setInterval(()=>{ idx = (idx+1) % slides.length; update(); }, 4500);
-      slidesWrap.parentElement.addEventListener('mouseenter', ()=> clearInterval(auto));
-      slidesWrap.parentElement.addEventListener('mouseleave', ()=> auto = setInterval(()=>{ idx = (idx+1) % slides.length; update(); },4500));
+      // initial
+      show(0);
+      setInterval(()=> {
+        idx = (idx + 1) % slides.length;
+        show(idx);
+      }, 3800);
+      // preload images to avoid flicker
+      slides.forEach(s=>{
+        const url = s.dataset.img;
+        const img = new Image();
+        img.src = url;
+      });
     })();
 
-    // language panel & tiny i18n for nav labels (inline)
+    // small language panel + tiny i18n for nav labels + RTL
     (function(){
       const langBtn = document.getElementById('langBtn');
       const langPanel = document.getElementById('langPanel');
-      const langFlag = document.getElementById('langFlag');
-      const langCode = document.getElementById('langCode');
       const translations = {
         en:{ "nav.home":"Home","nav.explore":"Explore Training","nav.career":"Career & Guidance","nav.about":"About Us","nav.contact":"Contact Us" },
-        hi:{ "nav.home":"होम","nav.explore":"एक्सप्लोर ट्रेनिंग","nav.career":"कैरियर और मार्गदर्शन","nav.about":"हमारे बारे में","nav.contact":"संपर्क करें" },
+        hi:{ "nav.home":"होम","nav.explore":"एक्सप्लोर ट्रेनिंग","nav.career":"कैरियर एवं मार्गदर्शन","nav.about":"हमारे बारे में","nav.contact":"संपर्क करें" },
         ar:{ "nav.home":"الرئيسية","nav.explore":"استكشاف التدريب","nav.career":"الإرشاد المهني","nav.about":"معلومات عنا","nav.contact":"اتصل بنا" }
       };
-      // toggle panel
       langBtn.addEventListener('click', (e)=> {
         e.stopPropagation();
-        const open = langPanel.style.display === 'block';
-        langPanel.style.display = open ? 'none' : 'block';
-        langBtn.setAttribute('aria-expanded', String(!open));
+        langPanel.style.display = langPanel.style.display === 'block' ? 'none' : 'block';
       });
-      // outside click closes
-      document.addEventListener('click', ()=> { langPanel.style.display = 'none'; langBtn.setAttribute('aria-expanded','false'); });
-      // apply language
+      document.addEventListener('click', ()=> { langPanel.style.display = 'none'; });
       Array.from(document.querySelectorAll('.lang-item')).forEach(b=>{
         b.addEventListener('click', ()=> {
           const code = b.dataset.lang;
-          const flag = b.dataset.flag;
-          langFlag.textContent = flag;
-          langCode.textContent = code.toUpperCase();
+          document.getElementById('langFlag').textContent = b.dataset.flag || '🇬🇧';
+          document.getElementById('langCode').textContent = code.toUpperCase();
           langPanel.style.display = 'none';
-          // apply small translations
           document.querySelectorAll('[data-i18n]').forEach(el=>{
             const key = el.getAttribute('data-i18n');
-            const txt = translations[code] && translations[code][key] ? translations[code][key] : el.textContent;
-            el.textContent = txt;
+            if(translations[code] && translations[code][key]) el.textContent = translations[code][key];
           });
-          // RTL for Arabic
-          if(code === 'ar'){ document.documentElement.setAttribute('dir','rtl'); }
-          else { document.documentElement.setAttribute('dir','ltr'); }
+          if(code === 'ar'){ document.documentElement.setAttribute('dir','rtl'); } else { document.documentElement.setAttribute('dir','ltr'); }
         });
       });
     })();
