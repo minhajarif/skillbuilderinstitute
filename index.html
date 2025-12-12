@@ -5,104 +5,11 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Skills Builder Institute — Home</title>
 
-  <style>
-    :root{
-      --max-w:1150px;
-      --nav-bg:#06263a;
-      --nav-grad:linear-gradient(90deg,#06263a,#073147);
-      --accent:#ff7a00;
-      --muted:#6b7a92;
-      --card:#ffffff;
-      --footer1:#05283b;
-      --footer2:#0a3760;
-      --wa:#25D366;
-      --radius:12px;
-      --text:#05283b;
-      --white:#ffffff;
-      font-family:Inter, system-ui, Arial, sans-serif;
-    }
-    *{box-sizing:border-box}
-    body{margin:0;background:#f6f8fb;color:var(--text);-webkit-font-smoothing:antialiased}
-    a{color:inherit;text-decoration:none}
-    .container{max-width:var(--max-w);margin:0 auto;padding:16px}
+  <!-- LINK TO CSS (ensure skill.css is in same folder or correct path) -->
+  <link rel="stylesheet" href="skill.css">
 
-    /* header topbar */
-    header.site-header{background:var(--nav-grad); color:var(--white); position:sticky; top:0; z-index:1200; box-shadow:0 8px 30px rgba(6,38,58,0.12)}
-    .topbar{display:flex;align-items:center;justify-content:space-between;padding:8px 16px}
-    .top-left{display:flex;gap:16px;align-items:center;font-weight:700}
-    .top-left .top-link{display:inline-flex;gap:8px;align-items:center;color:var(--white);opacity:0.96}
-    .top-left .icon{width:18px;height:18px;display:inline-block}
-    .top-right{display:flex;align-items:center;gap:8px;position:relative}
-    .lang-btn{background:transparent;border:0;color:var(--white);font-weight:700;padding:6px 10px;border-radius:6px;display:inline-flex;gap:8px;align-items:center;cursor:pointer}
-
-    /* main nav */
-    nav.main-nav{display:flex;align-items:center;gap:18px;padding:10px 16px;border-top:1px solid rgba(255,255,255,0.03)}
-    .nav-left{display:flex;align-items:center;gap:18px;flex:0 0 auto}
-    .logo img{height:56px;display:block}
-    .nav-center{flex:1;display:flex;justify-content:center}
-    .nav-list{list-style:none;margin:0;padding:0;display:flex;gap:18px;align-items:center}
-    .nav-list a{color:var(--white);text-decoration:none;padding:8px 10px;border-radius:8px;font-weight:700;display:inline-flex;align-items:center}
-    .nav-list a:hover{background:rgba(255,255,255,0.04)}
-    .nav-item{position:relative}
-    .dropdown-panel{position:absolute;left:0;top:44px;background:var(--white);color:var(--nav-bg);border-radius:8px;min-width:220px;box-shadow:0 14px 40px rgba(5,30,46,0.16);display:none;z-index:1400}
-    .dropdown-panel a{display:block;padding:10px 14px;color:inherit;text-decoration:none}
-    .dropdown-panel a:hover{background:#f4f8fb}
-    @media(min-width:981px){ .nav-item:hover .dropdown-panel{display:block} }
-
-    /* hero slideshow */
-    .hero{margin:18px auto;border-radius:var(--radius);overflow:hidden;max-width:var(--max-w);background:#e9eef5}
-    .slide{width:100%;height:420px;background-position:center;background-size:cover;opacity:0;position:absolute;left:0;top:0;transition:opacity 900ms ease}
-    .slide.active{opacity:1;position:relative}
-    .slides-wrap{position:relative;height:420px}
-    @media(max-width:980px){ .slide{height:260px} .slides-wrap{height:260px} }
-
-    /* content */
-    .content{max-width:var(--max-w);margin:18px auto;padding:14px}
-    .content h1{margin:6px 0 12px 0;font-size:28px}
-    .content p{margin:8px 0;color:var(--muted);line-height:1.6}
-
-    /* cards */
-    .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:18px}
-    @media(max-width:980px){ .cards{grid-template-columns:repeat(2,1fr)} }
-    @media(max-width:640px){ .cards{grid-template-columns:1fr} }
-    .card{background:var(--card);padding:16px;border-radius:12px;box-shadow:0 10px 30px rgba(10,24,40,0.06)}
-    .card h3{margin:0 0 8px 0}
-    .card p{margin:0;color:var(--muted);font-size:14px}
-
-    /* footer */
-    footer.site-footer{margin-top:28px;background:linear-gradient(180deg,var(--footer1),var(--footer2));color:var(--white);padding:28px 0}
-    .footer-grid{max-width:var(--max-w);margin:0 auto;display:grid;grid-template-columns:1fr 1fr 1fr;gap:20px;padding:0 16px}
-    @media(max-width:980px){ .footer-grid{grid-template-columns:1fr;gap:16px} }
-    .footer-left img{height:70px;border-radius:8px;display:block;margin-bottom:12px}
-    .map-link{display:inline-flex;gap:8px;align-items:center;padding:8px 10px;background:rgba(255,255,255,0.05);border-radius:8px;color:#d7e9ff;text-decoration:none}
-    .footer-left .address{margin-top:12px;color:#d7e9ff;line-height:1.5}
-
-    .footer-mid h4,.footer-right h4{margin:0 0 10px 0}
-    .quick-links a{display:block;color:#d9e7fb;text-decoration:none;margin-bottom:8px}
-    .quick-links a:hover{color:var(--white)}
-
-    /* social: two per row desktop */
-    .social-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;align-items:center}
-    @media(max-width:980px){ .social-grid{grid-template-columns:repeat(2,1fr)} }
-    .social-grid a{display:flex;gap:10px;align-items:center;color:#d9e7fb;text-decoration:none;padding:8px;border-radius:8px}
-    .social-grid a .arrow{color:#d9e7fb;font-weight:800}
-    .social-grid a:hover{color:var(--white)}
-
-    .footer-note{max-width:var(--max-w);margin:10px auto;padding:8px 16px;color:#bcd7f0;font-size:13px;text-align:center}
-
-    /* floating whatsapp (SVG) */
-    .wa-float{position:fixed;right:18px;bottom:18px;z-index:99999;display:inline-flex;align-items:center;gap:10px;text-decoration:none;background:linear-gradient(180deg,#25D366,#128C7E);color:#fff;padding:10px 14px;border-radius:999px;box-shadow:0 8px 30px rgba(0,0,0,0.18);font-weight:800}
-    .wa-float .wa-inner{width:44px;height:44px;display:inline-flex;align-items:center;justify-content:center;border-radius:50%}
-    .wa-float .wa-text{font-size:15px}
-    @media(max-width:640px){ .wa-float .wa-text{display:none} }
-
-    /* small helpers */
-    .visually-hidden{position:absolute!important;height:1px;width:1px;overflow:hidden;clip:rect(1px,1px,1px,1px);white-space:nowrap}
-    button{cursor:pointer}
-    a:focus,button:focus{outline:3px solid rgba(255,122,0,0.14);outline-offset:2px}
-    /* rtl tweak */
-    [dir="rtl"] { direction: rtl }
-  </style>
+  <!-- Optional font (if you want Inter) -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
@@ -264,21 +171,15 @@
       function show(i){
         slides.forEach((s,si)=> s.classList.toggle('active', si===i));
       }
-      // initial
       show(0);
       setInterval(()=> {
         idx = (idx + 1) % slides.length;
         show(idx);
       }, 3800);
-      // preload images to avoid flicker
-      slides.forEach(s=>{
-        const url = s.dataset.img;
-        const img = new Image();
-        img.src = url;
-      });
+      slides.forEach(s=>{ const url = s.dataset.img; const img = new Image(); img.src = url; });
     })();
 
-    // small language panel + tiny i18n for nav labels + RTL
+    // tiny language panel + minimal i18n for nav labels + RTL handling
     (function(){
       const langBtn = document.getElementById('langBtn');
       const langPanel = document.getElementById('langPanel');
@@ -287,10 +188,7 @@
         hi:{ "nav.home":"होम","nav.explore":"एक्सप्लोर ट्रेनिंग","nav.career":"कैरियर एवं मार्गदर्शन","nav.about":"हमारे बारे में","nav.contact":"संपर्क करें" },
         ar:{ "nav.home":"الرئيسية","nav.explore":"استكشاف التدريب","nav.career":"الإرشاد المهني","nav.about":"معلومات عنا","nav.contact":"اتصل بنا" }
       };
-      langBtn.addEventListener('click', (e)=> {
-        e.stopPropagation();
-        langPanel.style.display = langPanel.style.display === 'block' ? 'none' : 'block';
-      });
+      langBtn.addEventListener('click', (e)=> { e.stopPropagation(); langPanel.style.display = langPanel.style.display === 'block' ? 'none' : 'block'; });
       document.addEventListener('click', ()=> { langPanel.style.display = 'none'; });
       Array.from(document.querySelectorAll('.lang-item')).forEach(b=>{
         b.addEventListener('click', ()=> {
@@ -312,3 +210,4 @@
   </script>
 </body>
 </html>
+```0
