@@ -5,246 +5,268 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Skills Builder Institute — Home</title>
 
-<link rel="stylesheet" href="skill.css">
-
 <style>
-/* ================= HEADER CSS ================= */
-.site-header{
-  background:#071028;
-  position:sticky;
-  top:0;
-  z-index:1000;
-  box-shadow:0 2px 8px rgba(0,0,0,.25);
+:root{
+  --accent:#FF6A00;
+  --dark:#071028;
+  --bg:#f5f7fa;
+  --card:#ffffff;
+  --text:#0f1724;
+  --muted:#6b7280;
+  --radius:12px;
+  --container:1100px;
 }
-.main-nav{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-}
-.nav-left img{height:55px}
-
-.nav-list{
-  list-style:none;
-  display:flex;
-  gap:18px;
+*{box-sizing:border-box}
+body{
   margin:0;
-  padding:0;
+  font-family:Inter,system-ui,Arial;
+  background:var(--bg);
+  color:var(--text);
 }
-.nav-list a{
-  color:#fff;
-  font-size:14px;
-  padding:8px 10px;
-  border-radius:6px;
-}
-.nav-list a:hover{background:rgba(255,255,255,.08)}
-.nav-item{position:relative}
+a{text-decoration:none;color:inherit}
+.container{max-width:var(--container);margin:auto;padding:18px}
 
-.dropdown-panel{
-  position:absolute;
-  top:42px;
-  left:0;
-  background:#0b1624;
+/* ================= NAVBAR ================= */
+header{
+  position:sticky;top:0;z-index:1000;
+  background:var(--dark);color:#fff;
+}
+.navbar{
+  display:flex;align-items:center;justify-content:space-between;gap:16px
+}
+.brand{display:flex;align-items:center;gap:12px}
+.brand .title{font-weight:700}
+nav ul{display:flex;gap:18px;list-style:none;margin:0;padding:0}
+nav li{position:relative}
+nav a{padding:8px 10px;border-radius:6px;font-size:14px}
+nav a:hover{background:rgba(255,255,255,.1)}
+.dropdown{
+  display:none;
+  position:absolute;top:42px;left:0;
+  background:#0b1624;border-radius:8px;
   min-width:220px;
-  border-radius:8px;
-  padding:6px;
-  display:none;
 }
-.dropdown-panel a{
-  display:block;
-  padding:8px 10px;
-  color:#fff;
-  font-size:14px;
-}
-.dropdown-panel a:hover{background:rgba(255,255,255,.08)}
+.dropdown a{display:block;padding:8px 10px}
+.icons-row{display:flex;gap:12px;align-items:center}
 
-.nav-right{
-  display:flex;
-  gap:18px;
-  align-items:center;
+/* ================= SLIDER ================= */
+.hero{position:relative;overflow:hidden}
+.slides{display:flex;transition:.6s}
+.slide{
+  min-width:100%;
+  height:380px;
+  background-size:cover;
+  background-position:center;
 }
-.nav-contacts a{
-  display:block;
-  font-size:13px;
-  color:#fff;
+.slider-controls{
+  position:absolute;top:50%;left:0;right:0;
+  display:flex;justify-content:space-between;
+  padding:0 12px;
 }
+.ctrl{
+  background:rgba(0,0,0,.4);
+  color:#fff;border:0;
+  font-size:22px;padding:8px 14px;
+  border-radius:8px;cursor:pointer
+}
+.dots{
+  position:absolute;bottom:14px;left:50%;
+  transform:translateX(-50%);
+  display:flex;gap:8px
+}
+.dot{
+  width:10px;height:10px;border-radius:50%;
+  background:#ccc;cursor:pointer
+}
+.dot.active{background:var(--accent)}
 
-.lang-wrap{position:relative}
-.lang-btn{
-  background:transparent;
-  border:1px solid rgba(255,255,255,.25);
-  color:#fff;
-  padding:6px 10px;
-  border-radius:6px;
-  cursor:pointer;
+/* ================= CONTENT ================= */
+.cta-overlap{
+  background:#fff;margin:-40px auto 30px;
+  border-radius:12px;
+  padding:20px;
+  display:flex;justify-content:space-between;align-items:center;
+  box-shadow:0 10px 30px rgba(0,0,0,.1)
 }
-.lang-panel{
-  position:absolute;
-  right:0;
-  top:42px;
-  background:#0b1624;
-  border-radius:8px;
-  padding:6px;
-  display:none;
+.cards-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:20px
 }
-.lang-panel button{
-  background:none;
-  border:none;
-  color:#fff;
-  width:100%;
-  text-align:left;
-  padding:8px 10px;
-  cursor:pointer;
-}
-.lang-panel button:hover{background:rgba(255,255,255,.08)}
-
-@media(max-width:900px){
-  .nav-center{display:none}
+.card{
+  background:#fff;padding:18px;border-radius:12px;
+  box-shadow:0 8px 20px rgba(0,0,0,.08)
 }
 
-/* ================= FOOTER CSS ================= */
-.site-footer{
-  background:#061222;
-  color:#fff;
-  padding:40px 20px;
+/* ================= FOOTER ================= */
+footer{
+  background:#061222;color:#fff;margin-top:40px
 }
 .footer-grid{
-  display:grid;
-  grid-template-columns:1fr 1fr 1fr;
-  gap:20px;
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:20px
 }
-.footer-grid a{color:#fff;font-size:14px}
+.footer-grid a{display:block;margin-bottom:8px;color:#fff}
 .footer-note{
-  text-align:center;
-  margin-top:25px;
-  font-size:13px;
-  color:rgba(255,255,255,.6);
+  text-align:center;padding:16px;
+  color:#aaa;font-size:13px
 }
+
+/* ================= WHATSAPP ================= */
+.whatsapp-float{
+  position:fixed;right:20px;bottom:20px;
+  width:56px;height:56px;
+  background:#25D366;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 10px 25px rgba(0,0,0,.3);
+  z-index:2000
+}
+
+/* ================= RESPONSIVE ================= */
 @media(max-width:768px){
-  .footer-grid{grid-template-columns:1fr}
+  nav ul{display:none}
+  .cards-grid{grid-template-columns:1fr}
+  .cta-overlap{flex-direction:column;gap:12px}
+  .slide{height:240px}
 }
 </style>
 </head>
 
 <body>
 
-<!-- ================= HEADER ================= -->
-<header class="site-header">
-  <nav class="main-nav container">
-
-    <div class="nav-left">
-      <a href="index.html">
-        <img src="images/logo.png" alt="Skills Builder Institute">
-      </a>
+<!-- ================= NAVBAR ================= -->
+<header>
+  <div class="container navbar">
+    <div class="brand">
+      <div class="title">Skills Builder Institute</div>
     </div>
 
-    <div class="nav-center">
-      <ul class="nav-list">
-        <li><a href="index.html">Home</a></li>
-
-        <li class="nav-item" id="exploreItem">
-          <a href="#" id="exploreToggle">Explore Training ▾</a>
-          <div class="dropdown-panel" id="explorePanel">
-            <a href="explore-training.html">All Training</a>
-            <a href="explore-training&careerguidence/skilltraining-bluecollar.html">Skill Training</a>
-            <a href="explore-training&careerguidence/professional.html">Professional Courses</a>
-            <a href="explore-training&careerguidence/engineer.html">Engineering Courses</a>
-            <a href="explore-training&careerguidence/programmer.html">Programming & IT</a>
-            <a href="explore-training&careerguidence/softskill.html">Soft Skills</a>
+    <nav>
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li id="exploreLi">
+          <a href="#">Explore Training ▾</a>
+          <div class="dropdown" id="exploreDrop">
+            <a href="#">All Training</a>
+            <a href="#">Skill Training</a>
+            <a href="#">Professional Courses</a>
+            <a href="#">Programming</a>
+            <a href="#">Engineering</a>
+            <a href="#">Soft Skills</a>
           </div>
         </li>
-
-        <li><a href="career&guidence.html">Career Guidance</a></li>
-        <li><a href="aboutus.html">About Us</a></li>
-        <li><a href="contactus.html">Contact Us</a></li>
+        <li><a href="#">Career</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Contact</a></li>
       </ul>
+    </nav>
+
+    <div class="icons-row">
+      <a href="mailto:info@skillsbuilderinstitute.com">Email</a>
+      <a href="https://wa.me/917488894910" target="_blank">WhatsApp</a>
     </div>
-
-    <div class="nav-right">
-      <div class="nav-contacts">
-        <a href="tel:+917488894910">+91-74888-94910</a>
-        <a href="mailto:info@skillsbuilderinstitute.com">info@skillsbuilderinstitute.com</a>
-      </div>
-
-      <div class="lang-wrap">
-        <button class="lang-btn" id="langBtn">EN ▾</button>
-        <div class="lang-panel" id="langPanel">
-          <button>EN English</button>
-          <button>HI हिंदी</button>
-          <button>AR العربية</button>
-        </div>
-      </div>
-    </div>
-
-  </nav>
+  </div>
 </header>
 
-<!-- ================= MAIN CONTENT (UNCHANGED) ================= -->
-<!-- 👉 Yahan se tumhara hero, slider, cards, content SAME rahega -->
-<!-- (Tumhara diya hua main content exactly yahin paste hai – unchanged) -->
-
-<!-- ================= FOOTER ================= -->
-<footer class="site-footer">
-  <div class="footer-grid container">
-
-    <div>
-      <img src="images/logo.png" height="50"><br><br>
-      Sona Complex, 2nd Floor (Tulshi Nagar)<br>
-      Near Dayanand Ayurvedic Medical College,<br>
-      Siwan (Bihar) — 841226
-    </div>
-
-    <div>
-      <h4>Quick Links</h4>
-      <a href="index.html">Home</a><br>
-      <a href="explore-training.html">Explore Training</a><br>
-      <a href="career&guidence.html">Career Guidance</a><br>
-      <a href="aboutus.html">About Us</a><br>
-      <a href="contactus.html">Contact Us</a>
-    </div>
-
-    <div>
-      <h4>Follow Us</h4>
-      <a href="#">YouTube</a><br>
-      <a href="#">Facebook</a><br>
-      <a href="#">Instagram</a><br>
-      <a href="#">Telegram</a><br>
-      <a href="#">WhatsApp</a>
-    </div>
-
+<!-- ================= SLIDER ================= -->
+<section class="hero">
+  <div class="slides" id="slides">
+    <div class="slide" style="background-image:url('images/home-slider-1.png')"></div>
+    <div class="slide" style="background-image:url('images/home-slider-2.png')"></div>
+    <div class="slide" style="background-image:url('images/home-slider-3.png')"></div>
+    <div class="slide" style="background-image:url('images/home-slider-4.png')"></div>
   </div>
 
+  <div class="slider-controls">
+    <button class="ctrl" id="prev">‹</button>
+    <button class="ctrl" id="next">›</button>
+  </div>
+
+  <div class="dots" id="dots"></div>
+</section>
+
+<!-- ================= HOME CONTENT ================= -->
+<div class="cta-overlap container">
+  <div>
+    <strong>Begin your career with practical skills</strong><br>
+    Industry-led training • Certification • Placement support
+  </div>
+  <div>
+    <a href="#" style="color:#fff;background:var(--accent);padding:10px 16px;border-radius:8px">Enquire Now</a>
+  </div>
+</div>
+
+<main class="container">
+  <h2>Featured Programs</h2>
+  <div class="cards-grid">
+    <div class="card">Web Development</div>
+    <div class="card">Skill Training</div>
+    <div class="card">Professional Courses</div>
+  </div>
+</main>
+
+<!-- ================= FOOTER ================= -->
+<footer>
+  <div class="container footer-grid">
+    <div>
+      <strong>Skills Builder Institute</strong>
+      <p>Siwan, Bihar</p>
+    </div>
+    <div>
+      <strong>Quick Links</strong>
+      <a href="#">Home</a>
+      <a href="#">Explore</a>
+      <a href="#">Career</a>
+      <a href="#">Contact</a>
+    </div>
+    <div>
+      <strong>Follow Us</strong>
+      <a href="#">Instagram</a>
+      <a href="#">Facebook</a>
+      <a href="#">YouTube</a>
+    </div>
+  </div>
   <div class="footer-note">
-    © <span id="year"></span> Skills Builder Institute — All Rights Reserved
+    © <span id="year"></span> Skills Builder Institute
   </div>
 </footer>
 
-<!-- ================= HEADER + FOOTER JS ================= -->
+<!-- ================= WHATSAPP FLOAT ================= -->
+<a href="https://wa.me/917488894910" class="whatsapp-float" target="_blank">
+  <svg width="26" height="26" viewBox="0 0 24 24" fill="#fff">
+    <circle cx="12" cy="12" r="12"/>
+  </svg>
+</a>
+
 <script>
-/* Header dropdown */
-const exploreToggle = document.getElementById("exploreToggle");
-const explorePanel  = document.getElementById("explorePanel");
-exploreToggle.onclick = e=>{
-  e.preventDefault();
-  explorePanel.style.display =
-    explorePanel.style.display==="block"?"none":"block";
-};
-document.addEventListener("click",e=>{
-  if(!e.target.closest("#exploreItem")) explorePanel.style.display="none";
-});
+/* year */
+document.getElementById("year").innerText=new Date().getFullYear();
 
-/* Language dropdown */
-const langBtn = document.getElementById("langBtn");
-const langPanel = document.getElementById("langPanel");
-langBtn.onclick = ()=> {
-  langPanel.style.display =
-    langPanel.style.display==="block"?"none":"block";
-};
-document.addEventListener("click",e=>{
-  if(!e.target.closest(".lang-wrap")) langPanel.style.display="none";
-});
+/* dropdown */
+const explore=document.getElementById("exploreLi");
+const drop=document.getElementById("exploreDrop");
+explore.onmouseenter=()=>drop.style.display="block";
+explore.onmouseleave=()=>drop.style.display="none";
 
-/* Footer year */
-document.getElementById("year").textContent = new Date().getFullYear();
+/* slider */
+const slides=document.getElementById("slides");
+const total=slides.children.length;
+let i=0;
+const dots=document.getElementById("dots");
+for(let d=0;d<total;d++){
+  const dot=document.createElement("div");
+  dot.className="dot"+(d==0?" active":"");
+  dot.onclick=()=>go(d);
+  dots.appendChild(dot);
+}
+function go(n){
+  i=n;
+  slides.style.transform=`translateX(-${i*100}%)`;
+  [...dots.children].forEach((x,j)=>x.classList.toggle("active",j==i));
+}
+document.getElementById("next").onclick=()=>go((i+1)%total);
+document.getElementById("prev").onclick=()=>go((i-1+total)%total);
+setInterval(()=>go((i+1)%total),5000);
 </script>
 
 </body>
