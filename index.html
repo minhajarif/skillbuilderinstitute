@@ -13,62 +13,78 @@
 </head>
 <body>
 
-  <header class="site-header" role="banner" aria-label="Top header">
-    <div class="topbar container">
-      <div class="top-left" role="region" aria-label="Contact topbar">
-        <a href="mailto:info@skillsbuilderinstitute.com" class="top-link" aria-label="Email info@skillsbuilderinstitute.com">
-          <svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 7.5v9A2.5 2.5 0 0 0 5.5 19h13A2.5 2.5 0 0 0 21 16.5v-9" stroke="#fff" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          <span>info@skillsbuilderinstitute.com</span>
-        </a>
-
-        <a href="tel:+917488894910" class="top-link" aria-label="Call +91-7488894910">
-          <svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M22 16.9a18 18 0 0 1-8.9 4.5" stroke="#fff" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          <span>+91-7488894910</span>
-        </a>
-      </div>
-
-      <div class="top-right" role="region" aria-label="Language selection">
-        <button class="lang-btn" id="langBtn" aria-haspopup="true" aria-expanded="false">
-          <span id="langFlag">🇬🇧</span>&nbsp;<span id="langCode">EN</span>&nbsp;▾
-        </button>
-        <div id="langPanel" class="dropdown-panel" aria-hidden="true" style="right:16px;left:auto;">
-          <button class="lang-item" data-lang="en" data-flag="🇬🇧">🇬🇧 English</button>
-          <button class="lang-item" data-lang="hi" data-flag="🇮🇳">🇮🇳 हिंदी</button>
-          <button class="lang-item" data-lang="ar" data-flag="🇦🇪">🇦🇪 العربية</button>
-        </div>
-      </div>
-    </div>
-
+  <!-- ========== NAVBAR (replaced: top header removed) ========== -->
+  <header class="site-header" role="banner" aria-label="Main header">
     <nav class="main-nav container" role="navigation" aria-label="Main navigation">
-      <div class="nav-left">
-        <a class="logo" href="index.html" aria-label="Skills Builder Institute homepage"><img src="images/logo.png" alt="Skills Builder Institute"></a>
+      <!-- left: logo -->
+      <div class="nav-left" style="display:flex; align-items:center; gap:18px;">
+        <a class="logo" href="index.html" aria-label="Skills Builder Institute homepage" style="display:inline-flex;align-items:center;">
+          <img src="images/logo.png" alt="Skills Builder Institute" style="height:56px;">
+        </a>
+        <!-- small spacing after logo (as requested) -->
+        <div style="width:14px;"></div>
       </div>
 
-      <div class="nav-center" role="menubar">
-        <ul class="nav-list" id="navList">
-          <li><a data-i18n="nav.home" href="index.html">Home</a></li>
+      <!-- center: nav links -->
+      <div class="nav-center" role="menubar" style="flex:1; display:flex; justify-content:center;">
+        <ul class="nav-list" id="navList" style="display:flex; gap:20px; list-style:none; margin:0; padding:0; align-items:center;">
+          <li><a data-i18n="nav.home" href="index.html" style="text-decoration:none;">Home</a></li>
 
-          <li class="nav-item" id="exploreItem">
-            <a class="nav-link" id="exploreToggle" href="explore-training.html" aria-haspopup="true" aria-expanded="false"><span data-i18n="nav.explore">Explore Training</span> ▾</a>
-            <div class="dropdown-panel" id="explorePanel" aria-hidden="true">
-              <a href="explore-training.html">All Training</a>
-              <a href="explore-training&careerguidence/skilltraining-bluecollar.html">Skill Training</a>
-              <a href="explore-training&careerguidence/professional.html">Professional</a>
-              <a href="explore-training&careerguidence/programmer.html">Programming</a>
-              <a href="explore-training&careerguidence/engineer.html">Engineering</a>
-              <a href="explore-training&careerguidence/softskill.html">Soft Skills</a>
+          <li class="nav-item" id="exploreItem" style="position:relative;">
+            <a class="nav-link" id="exploreToggle" href="explore-training.html" aria-haspopup="true" aria-expanded="false" style="text-decoration:none;">
+              <span data-i18n="nav.explore">Explore Training</span> ▾
+            </a>
+            <div class="dropdown-panel" id="explorePanel" aria-hidden="true" style="position:absolute; top:36px; left:0; display:none; background:#fff; color:#05283b; border-radius:8px; min-width:220px; box-shadow:0 14px 40px rgba(5,30,46,0.16); z-index:1400;">
+              <a href="explore-training.html" style="display:block;padding:10px 14px;text-decoration:none;color:inherit">All Training</a>
+              <a href="explore-training&careerguidence/skilltraining-bluecollar.html" style="display:block;padding:10px 14px;text-decoration:none;color:inherit">Skill Training</a>
+              <a href="explore-training&careerguidence/professional.html" style="display:block;padding:10px 14px;text-decoration:none;color:inherit">Professional</a>
+              <a href="explore-training&careerguidence/programmer.html" style="display:block;padding:10px 14px;text-decoration:none;color:inherit">Programming</a>
+              <a href="explore-training&careerguidence/engineer.html" style="display:block;padding:10px 14px;text-decoration:none;color:inherit">Engineering</a>
+              <a href="explore-training&careerguidence/softskill.html" style="display:block;padding:10px 14px;text-decoration:none;color:inherit">Soft Skills</a>
             </div>
           </li>
 
-          <li><a data-i18n="nav.career" href="career&guidence.html">Career & Guidance</a></li>
-          <li><a data-i18n="nav.about" href="aboutus.html">About Us</a></li>
-          <li><a data-i18n="nav.contact" href="contactus.html" class="cta">Contact Us</a></li>
+          <li><a data-i18n="nav.career" href="career&guidence.html" style="text-decoration:none;">Career & Guidance</a></li>
+          <li><a data-i18n="nav.about" href="aboutus.html" style="text-decoration:none;">About Us</a></li>
+          <li><a data-i18n="nav.contact" href="contactus.html" class="cta" style="text-decoration:none;">Contact Us</a></li>
         </ul>
       </div>
 
+      <!-- right: contact + language selector -->
+      <div class="nav-right" style="display:flex; align-items:center; gap:14px;">
+        <!-- email -->
+        <a href="mailto:info@skillsbuilderinstitute.com" class="top-link" aria-label="Email info@skillsbuilderinstitute.com" style="display:inline-flex; align-items:center; gap:8px; text-decoration:none;">
+          <!-- envelope icon simple -->
+          <svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 7.5v9A2.5 2.5 0 0 0 5.5 19h13A2.5 2.5 0 0 0 21 16.5v-9" stroke="#fff" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span style="font-weight:600;">info@skillsbuilderinstitute.com</span>
+        </a>
+
+        <!-- phone -->
+        <a href="tel:+917488894910" class="top-link" aria-label="Call +91-7488894910" style="display:inline-flex; align-items:center; gap:8px; text-decoration:none;">
+          <!-- phone icon simple -->
+          <svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M22 16.9a18 18 0 0 1-8.9 4.5" stroke="#fff" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span style="font-weight:600;">+91-7488894910</span>
+        </a>
+
+        <!-- language selector -->
+        <div style="position:relative;">
+          <button class="lang-btn" id="langBtn" aria-haspopup="true" aria-expanded="false" style="background:transparent;border:0;color:inherit;cursor:pointer;font-weight:700;display:inline-flex;align-items:center;gap:8px;">
+            <span id="langFlag">🇬🇧</span>
+            <span id="langCode">EN</span>
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" style="margin-left:4px;"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+
+          <div class="lang-panel" id="langPanel" aria-hidden="true" style="position:absolute; right:0; top:36px; display:none; background:#fff; color:#05283b; border-radius:8px; box-shadow:0 14px 40px rgba(5,30,46,0.16); z-index:1500;">
+            <button class="lang-item" data-lang="en" data-flag="🇬🇧" style="display:block;padding:10px 14px;border:0;background:transparent;width:100%;text-align:left;cursor:pointer;">🇬🇧 English</button>
+            <button class="lang-item" data-lang="hi" data-flag="🇮🇳" style="display:block;padding:10px 14px;border:0;background:transparent;width:100%;text-align:left;cursor:pointer;">🇮🇳 हिंदी</button>
+            <button class="lang-item" data-lang="ar" data-flag="🇦🇪" style="display:block;padding:10px 14px;border:0;background:transparent;width:100%;text-align:left;cursor:pointer;">🇦🇪 العربية</button>
+          </div>
+        </div>
+      </div>
     </nav>
   </header>
 
+  <!-- ========== MAIN (unchanged) ========== -->
   <main>
     <section class="hero" aria-label="Home banner">
       <div class="slides-wrap container" id="slidesWrap">
@@ -102,6 +118,7 @@
     </section>
   </main>
 
+  <!-- ========== FOOTER (unchanged) ========== -->
   <footer class="site-footer" role="contentinfo">
     <div class="footer-grid container">
       <div class="footer-left">
@@ -179,6 +196,20 @@
       slides.forEach(s=>{ const url = s.dataset.img; const img = new Image(); img.src = url; });
     })();
 
+    // dropdown for explore (simple show/hide)
+    (function(){
+      const exploreToggle = document.getElementById('exploreToggle');
+      const explorePanel = document.getElementById('explorePanel');
+      if(exploreToggle && explorePanel){
+        exploreToggle.addEventListener('click', function(e){
+          e.preventDefault();
+          e.stopPropagation();
+          explorePanel.style.display = explorePanel.style.display === 'block' ? 'none' : 'block';
+        });
+        document.addEventListener('click', ()=> { if(explorePanel) explorePanel.style.display = 'none'; });
+      }
+    })();
+
     // tiny language panel + minimal i18n for nav labels + RTL handling
     (function(){
       const langBtn = document.getElementById('langBtn');
@@ -188,21 +219,23 @@
         hi:{ "nav.home":"होम","nav.explore":"एक्सप्लोर ट्रेनिंग","nav.career":"कैरियर एवं मार्गदर्शन","nav.about":"हमारे बारे में","nav.contact":"संपर्क करें" },
         ar:{ "nav.home":"الرئيسية","nav.explore":"استكشاف التدريب","nav.career":"الإرشاد المهني","nav.about":"معلومات عنا","nav.contact":"اتصل بنا" }
       };
-      langBtn.addEventListener('click', (e)=> { e.stopPropagation(); langPanel.style.display = langPanel.style.display === 'block' ? 'none' : 'block'; });
-      document.addEventListener('click', ()=> { langPanel.style.display = 'none'; });
-      Array.from(document.querySelectorAll('.lang-item')).forEach(b=>{
-        b.addEventListener('click', ()=> {
-          const code = b.dataset.lang;
-          document.getElementById('langFlag').textContent = b.dataset.flag || '🇬🇧';
-          document.getElementById('langCode').textContent = code.toUpperCase();
-          langPanel.style.display = 'none';
-          document.querySelectorAll('[data-i18n]').forEach(el=>{
-            const key = el.getAttribute('data-i18n');
-            if(translations[code] && translations[code][key]) el.textContent = translations[code][key];
+      if(langBtn && langPanel){
+        langBtn.addEventListener('click', (e)=> { e.stopPropagation(); langPanel.style.display = langPanel.style.display === 'block' ? 'none' : 'block'; });
+        document.addEventListener('click', ()=> { langPanel.style.display = 'none'; });
+        Array.from(document.querySelectorAll('.lang-item')).forEach(b=>{
+          b.addEventListener('click', ()=> {
+            const code = b.dataset.lang;
+            document.getElementById('langFlag').textContent = b.dataset.flag || '🇬🇧';
+            document.getElementById('langCode').textContent = code.toUpperCase();
+            langPanel.style.display = 'none';
+            document.querySelectorAll('[data-i18n]').forEach(el=>{
+              const key = el.getAttribute('data-i18n');
+              if(translations[code] && translations[code][key]) el.textContent = translations[code][key];
+            });
+            if(code === 'ar'){ document.documentElement.setAttribute('dir','rtl'); } else { document.documentElement.setAttribute('dir','ltr'); }
           });
-          if(code === 'ar'){ document.documentElement.setAttribute('dir','rtl'); } else { document.documentElement.setAttribute('dir','ltr'); }
         });
-      });
+      }
     })();
 
     // footer year
@@ -210,4 +243,3 @@
   </script>
 </body>
 </html>
-```0
