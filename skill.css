@@ -1,12 +1,13 @@
 /* skill.css
-   Complete stylesheet for the website (replace existing file).
-   Professional, responsive and accessible.
+   Clean, responsive stylesheet for Skills Builder Institute
+   - Matches the HTML structure provided (nav-left, nav-center, nav-right, slides-wrap, slide, footer-grid)
+   - Keep filename as skill.css
 */
 
-/* ========== Variables & Reset ========== */
+/* ========== VARIABLES & RESET ========== */
 :root{
   --bg: #f6f8fa;
-  --nav-bg: #063445;
+  --nav-bg: #063445;       /* dark teal nav */
   --nav-text: #ffffff;
   --accent: #ff7a2d;
   --muted: #6f8390;
@@ -14,11 +15,16 @@
   --footer-bg: #062f3f;
   --footer-text: #d9eef6;
   --container-max: 1180px;
-  --radius: 10px;
+  --radius: 12px;
   --gap: 18px;
+  --header-height: 64px;   /* used to compute hero height fallback in CSS */
   --mobile-break: 900px;
+  --transition: 0.28s ease;
+  --shadow-soft: 0 8px 28px rgba(5,30,46,0.06);
+  --shadow-deep: 0 14px 40px rgba(5,30,46,0.12);
 }
 
+/* Base reset */
 *{box-sizing:border-box;margin:0;padding:0}
 html,body{height:100%}
 body{
@@ -31,7 +37,7 @@ body{
   font-size:15px;
 }
 
-/* Container central width */
+/* ========== GLOBAL LAYOUT ========== */
 .container{
   max-width:var(--container-max);
   width:92%;
@@ -39,156 +45,287 @@ body{
   padding:0 12px;
 }
 
-/* ========== SITE HEADER / NAVBAR ========== */
+/* Utility */
+a{ color:inherit; text-decoration:none; }
+img{ display:block; max-width:100%; height:auto; }
+
+/* ========== HEADER / NAVBAR ========== */
+/* Header is full width background (edge-to-edge). .container centers inner content */
 .site-header{
   background:var(--nav-bg);
   color:var(--nav-text);
   position:sticky;
   top:0;
   z-index:1500;
-  box-shadow:0 6px 24px rgba(2,20,30,0.12);
-  width:100%;
+  box-shadow:0 6px 18px rgba(2,20,30,0.12);
 }
 
-/* main-nav layout */
+/* Main nav: three regions (left logo, center links, right contacts/language) */
 .main-nav{
   display:flex;
   align-items:center;
   justify-content:space-between;
   gap:var(--gap);
-  padding:10px 0;
+  padding:8px 0;
+  height:var(--header-height);
 }
 
-/* left logo */
-.nav-left{ display:flex; align-items:center; gap:8px; flex:0 0 auto; }
-.logo img{ height:56px; display:block; width:auto; }
+/* Left area: logo */
+.nav-left{ display:flex; align-items:center; gap:10px; flex:0 0 auto; }
+.logo img{ height:48px; width:auto; display:block; border-radius:6px; }
 
-/* center */
-.nav-center{ flex:1 1 auto; display:flex; justify-content:center; align-items:center; min-width:0; }
-.nav-list{ list-style:none; display:flex; gap:22px; align-items:center; margin:0; padding:0; white-space:nowrap; }
-.nav-list li{ display:inline-flex; align-items:center; }
+/* Center: primary nav (flex grow) */
+.nav-center{
+  flex:1 1 auto;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  min-width:0;
+}
 
-/* links */
-.nav-list a{ color:var(--nav-text); text-decoration:none; font-weight:600; font-size:15px; padding:6px 6px; display:inline-flex; gap:8px; align-items:center; transition:transform .12s, opacity .12s; }
-.nav-list a:hover, .nav-list a:focus{ opacity:.95; transform:translateY(-1px); outline:none; }
+/* nav-list as single row, prevents wrapping & overlapping, allows horizontal scroll on narrow screens */
+.nav-list{
+  list-style:none;
+  display:flex;
+  gap:28px;
+  align-items:center;
+  margin:0;
+  padding:0;
+  white-space:nowrap;
+  overflow:visible;
+}
 
-/* contact items inside nav */
-.nav-contact{ display:inline-flex; align-items:center; gap:8px; white-space:nowrap; }
-.nav-contact a{ display:inline-flex; align-items:center; gap:8px; color:var(--nav-text); text-decoration:none; font-weight:600; font-size:14px; }
-.icon{ width:18px; height:18px; fill:currentColor; flex-shrink:0; }
+/* Each link */
+.nav-list a{
+  color:var(--nav-text);
+  text-decoration:none;
+  font-weight:600;
+  font-size:15px;
+  display:inline-flex;
+  gap:8px;
+  align-items:center;
+  padding:6px 6px;
+  transition:transform .12s, opacity .12s;
+}
+.nav-list a:hover{ opacity:.95; transform:translateY(-1px); }
 
-/* right */
-.nav-right{ display:flex; align-items:center; gap:12px; flex:0 0 auto; }
-
-/* language */
-.lang-btn{ background:transparent; border:0; color:var(--nav-text); cursor:pointer; font-weight:700; display:inline-flex; gap:8px; align-items:center; padding:6px 8px; border-radius:6px; }
-.lang-panel{ display:none; position:absolute; right:6px; top:46px; background:#fff; color:#05283b; border-radius:8px; box-shadow:0 14px 40px rgba(5,30,46,0.16); z-index:1500; }
-.lang-panel button{ display:block; width:100%; text-align:left; padding:10px 14px; border:0; background:transparent; cursor:pointer; font-weight:700; }
-.lang-panel button:hover{ background:#f4f7f9; }
-
-/* ========== Dropdown (Explore) ========== */
+/* nav-item (dropdown container) */
 .nav-item{ position:relative; }
+
+/* Dropdown panel - hidden by default; builder.js toggles display/block or .open class */
 .dropdown-panel{
   display:none;
   position:absolute;
   left:0;
-  top:44px;
+  top:42px;
   min-width:220px;
   background:var(--card);
   color:#05283b;
   border-radius:8px;
-  box-shadow:0 14px 40px rgba(5,30,46,0.16);
-  padding:6px 4px;
+  box-shadow:var(--shadow-deep);
+  padding:6px 6px;
   z-index:1400;
 }
-.dropdown-panel a{ display:block; padding:10px 14px; color:inherit; text-decoration:none; font-weight:600; border-radius:6px; }
+.dropdown-panel a{
+  display:block;
+  padding:10px 14px;
+  color:inherit;
+  text-decoration:none;
+  font-weight:700;
+  border-radius:6px;
+}
 .dropdown-panel a:hover{ background:#f4f7f9; }
 
-/* show dropdown on hover or when .open added by JS */
-.nav-item:hover .dropdown-panel,
+/* show dropdown when nav-item has .open (JS toggles) and keyboard focus */
+.nav-item.open .dropdown-panel,
 .nav-item:focus-within .dropdown-panel,
-.nav-item.open .dropdown-panel { display:block; }
+.nav-item:hover .dropdown-panel { display:block; }
 
-/* keyboard focus */
-.nav-item.open .dropdown-panel{ display:block; }
+/* ========== RIGHT SIDE: contacts + language ========== */
+/* Right area fixed width */
+.nav-right{ display:flex; align-items:center; gap:12px; flex:0 0 auto; }
+
+/* Contact items inside header (phone / email) */
+.nav-contacts{ display:flex; gap:12px; align-items:center; }
+.nav-contact{ display:inline-flex; gap:8px; align-items:center; color:var(--nav-text); font-weight:700; font-size:14px; white-space:nowrap; }
+.nav-contact svg{ width:18px; height:18px; flex-shrink:0; }
+
+/* If nav items become too many on narrow screens: allow nav-center to scroll horizontally but keep logo & right fixed */
+@media (max-width: var(--mobile-break)){
+  .nav-center{ justify-content:flex-start; padding-left:8px; }
+  .nav-list{ gap:14px; overflow:auto; -webkit-overflow-scrolling:touch; padding-bottom:6px; }
+  .nav-list::-webkit-scrollbar{ height:7px; }
+}
+
+/* Language selector (small dropdown) */
+.lang-btn{
+  background:transparent;
+  border:0;
+  color:var(--nav-text);
+  cursor:pointer;
+  font-weight:700;
+  display:inline-flex;
+  gap:8px;
+  align-items:center;
+  padding:6px 8px;
+  border-radius:6px;
+}
+.lang-panel{
+  display:none;
+  position:absolute;
+  right:0;
+  top:46px;
+  background:#fff;
+  color:#05283b;
+  border-radius:8px;
+  box-shadow:var(--shadow-deep);
+  z-index:1500;
+}
+.lang-panel button{ display:block; width:100%; text-align:left; padding:10px 14px; border:0; background:transparent; cursor:pointer; font-weight:700; }
+.lang-panel button:hover{ background:#f4f7f9; }
+
+/* When JS sets langPanel to block or toggles .open */
+.lang-panel[style*="display:block"], .lang-btn.open + .lang-panel{ display:block !important; }
 
 /* ========== HERO / SLIDER ========== */
-/* make the slider full width - slides-wrap is full-bleed; slides-inner constrains content width */
+/* slides-wrap is full-bleed. slides-inner.container centers content area. */
+.hero{ margin-top:14px; margin-bottom:18px; }
 .slides-wrap{
   width:100%;
-  background:#e9eef2;
   overflow:hidden;
+  background:#e9eef2;
+  position:relative;
 }
-.slides-inner{ max-width:var(--container-max); margin:0 auto; padding:18px 12px; }
-.slides-wrap .slide{
-  height:360px;
-  border-radius:10px;
+
+/* Try to set hero height to fill viewport minus header (works in most browsers).
+   JS can adjust if header height changes. Fallbacks provided for smaller screens. */
+.slides-wrap{
+  min-height: calc(100vh - var(--header-height));
+  max-height: 900px;
+  display:block;
+}
+.slides-inner{ padding:0; }
+
+/* Slide styling - full cover background */
+.slide{
+  position:absolute;
+  inset:0;
   background-size:cover;
   background-position:center;
+  background-repeat:no-repeat;
   opacity:0;
   transition:opacity .7s ease;
-  position:absolute;
-  left:0;
-  right:0;
+  will-change: opacity;
 }
-.slides-wrap .slide.active{ opacity:1; position:relative; }
+.slide.active{ opacity:1; position:relative; }
 
-/* ensure slides area reserves height even before images load */
-.hero { margin-top:14px; margin-bottom:18px; position:relative; }
-.hero .slides-wrap{ min-height:220px; position:relative; }
-@media (min-width:1100px){ .slides-wrap .slide{ height:460px; } }
-@media (max-width:1099px) and (min-width:700px){ .slides-wrap .slide{ height:360px; } }
-@media (max-width:699px){ .slides-wrap .slide{ height:220px; } }
+/* Ensure the slides inner container stacks and preserves the aspect */
+.slides-wrap > .slides-inner { position:relative; min-height: calc(100vh - var(--header-height)); }
+
+/* Accessibility: each slide uses role="img" and aria-label in HTML */
+@media (max-width: 900px){
+  .slides-wrap, .slides-wrap > .slides-inner { min-height: 48vh; } /* mobile-friendly hero */
+}
+@media (max-width: 420px){
+  .slides-wrap, .slides-wrap > .slides-inner { min-height: 36vh; }
+}
 
 /* ========== MAIN CONTENT ========== */
-.content{ padding:24px 0 40px; max-width:1100px; margin:0 auto; }
-.content h1{ font-size:28px; margin-bottom:10px; color:#05283b; }
-.content p{ color:var(--muted); font-size:15px; line-height:1.9; text-align:justify; }
+.content{ padding:28px 0 40px; max-width:1100px; margin:0 auto; color:#05283b; }
+.content h1{ font-size:28px; margin-bottom:12px; color:#05283b; }
+.content p{ color:var(--muted); font-size:15px; line-height:1.9; text-align:left; }
+
+/* Cards */
 .cards{ display:flex; gap:18px; margin-top:18px; flex-wrap:wrap; }
-.card{ background:var(--card); border-radius:10px; padding:16px; box-shadow:0 8px 28px rgba(5,30,46,0.06); flex:1 1 30%; min-width:220px; }
+.card{ background:var(--card); border-radius:12px; padding:16px; box-shadow:var(--shadow-soft); flex:1 1 30%; min-width:220px; }
+.card h3{ margin-bottom:8px; font-size:16px; }
+.card p{ color:var(--muted); font-size:14px; }
 
 /* ========== FOOTER ========== */
-.site-footer{ background:var(--footer-bg); color:var(--footer-text); padding:36px 0 18px; margin-top:26px; width:100%; }
-.footer-grid{ display:grid; grid-template-columns: 1fr 1fr 1fr; gap:28px; align-items:start; max-width:var(--container-max); margin:0 auto; padding:0 12px; }
+.site-footer{
+  background:var(--footer-bg);
+  color:var(--footer-text);
+  padding:36px 0 18px;
+  margin-top:26px;
+}
+.footer-grid{
+  display:grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap:28px;
+  align-items:start;
+  max-width:var(--container-max);
+  margin:0 auto;
+  padding:0 12px;
+}
 
-/* footer pieces */
+/* left column: logo, map icon, address */
 .footer-left img{ height:56px; display:block; border-radius:6px; }
 .footer-left .map-link{ display:inline-flex; gap:8px; align-items:center; margin-top:12px; text-decoration:none; color:var(--footer-text); font-weight:700; }
+.footer-left .map-link svg{ width:18px; height:18px; flex-shrink:0; }
 .footer-left .address{ margin-top:12px; color:#cfe6ee; font-size:14px; line-height:1.6; }
 
-/* headings single-line */
-.footer-mid h4, .footer-right h4{ color:#e8f7fb; margin-bottom:10px; font-size:16px; white-space:nowrap; }
+/* mid & right columns heading */
+.footer-mid h4, .footer-right h4{ color:#e8f7fb; margin-bottom:10px; font-size:16px; font-weight:700; }
+
+/* Links */
 .quick-links a{ display:block; color:#d9eef6; text-decoration:none; font-weight:700; margin-bottom:8px; }
 .quick-links a::before{ content: "➤ "; margin-right:6px; color:#d9eef6; }
 
-/* social grid */
-.social-grid{ display:grid; grid-template-columns: 1fr 1fr; gap:8px 20px; }
+/* Social grid */
+.social-grid{
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  gap:8px 20px;
+}
 .social-grid a{ display:flex; align-items:center; gap:8px; text-decoration:none; color:#d9eef6; font-weight:700; }
 .social-grid a .arrow{ color:#d9eef6; }
 
-/* footer note */
+/* Footer note */
 .footer-note{ text-align:center; color:#9cc5d2; margin-top:18px; font-size:13px; padding-top:6px; }
 
-/* float whatsapp */
-.whatsapp-float{ position:fixed; right:18px; bottom:18px; z-index:1800; display:inline-flex; align-items:center; gap:10px; padding:10px 14px; border-radius:999px; background:#25d366; color:#fff; text-decoration:none; box-shadow:0 10px 36px rgba(2,120,76,0.22); }
+/* Ensure footer headings do not wrap onto two lines on small widths */
+.footer-mid h4, .footer-right h4, .footer-left h4 { white-space:nowrap; }
 
-/* ========== Responsive ========== */
-@media (max-width: var(--mobile-break)){
-  .container{ width:95%; padding:0 12px; }
-  .logo img{ height:48px; }
-  .nav-list{ gap:12px; overflow:auto; -webkit-overflow-scrolling:touch; }
-  .nav-center{ justify-content:flex-start; padding-left:8px; }
-  .slides-wrap .slide{ height:220px; }
-  .cards{ flex-direction:column; }
-  .footer-grid{ grid-template-columns: 1fr; text-align:left; padding:0 12px; }
+/* ========== FLOATING WHATSAPP ========== */
+.whatsapp-float, .wa-float {
+  position:fixed;
+  right:18px;
+  bottom:18px;
+  z-index:1800;
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  padding:10px 14px;
+  border-radius:999px;
+  background:#25d366;
+  color:#fff;
+  text-decoration:none;
+  box-shadow:0 10px 36px rgba(2,120,76,0.22);
+}
+.whatsapp-float svg{ width:26px; height:26px; display:block; }
+
+/* ========== RESPONSIVE TWEAKS ========== */
+@media (max-width: 900px){
+  .footer-grid{ grid-template-columns:1fr; text-align:left; padding:0 12px; }
   .social-grid{ grid-template-columns: repeat(2, 1fr); }
-  .whatsapp-float{ right:14px; bottom:14px; }
+  .cards{ flex-direction:column; }
+  .nav-list{ gap:12px; }
+  .logo img{ height:44px; }
 }
 
 @media (max-width:520px){
-  .slides-wrap .slide{ height:180px; }
-  .nav-list{ gap:10px; font-size:14px; }
+  .slides-wrap{ min-height:36vh; }
+  .nav-list{ font-size:14px; gap:10px; }
+  .nav-contact-text{ display:none; } /* hide long phone/email on smallest screens to avoid overlap */
+  .nav-contacts{ gap:8px; }
 }
 
-/* accessibility focus */
+/* ========== ACCESSIBILITY & HELPERS ========== */
 a:focus, button:focus{ outline:3px solid rgba(255,122,45,0.12); outline-offset:2px; border-radius:6px; }
+.nav-item.open .dropdown-panel{ display:block; } /* JS sets .open */
+
+/* Polishing: prevent quick-links words from breaking awkwardly */
+.quick-links a, .social-grid a { word-break:normal; }
+
+/* Defensive: ensure slides have a default transition in case JS manipulates classes */
+.slide{ transition:opacity .7s ease; }
