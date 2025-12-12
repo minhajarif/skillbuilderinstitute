@@ -1,247 +1,378 @@
 /* builder.js
-   For: Skills Builder Institute
-   Place this file as builder.js and ensure index.html includes: <script src="builder.js"></script>
-   Purpose: slider, dropdown, language switcher, hero sizing, footer year, accessibility helpers
+   Master site JS for Skills Builder Institute
+   - Replace FORMSPREE_ENDPOINT value with your Formspree endpoint (e.g. https://formspree.io/f/yourId)
+   - If FORMSPREE_ENDPOINT === '' -> mailto fallback will be used
+   - Handles: sliders, dropdowns, language demo, state->city, training subcategories, contact form submit & validation
 */
 
 (function () {
-  "use strict";
+  'use strict';
 
-  /* ---------- Helpers ---------- */
-  const $ = (sel, ctx = document) => ctx.querySelector(sel);
-  const $$ = (sel, ctx = document) => Array.from(ctx.querySelectorAll(sel));
-  const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
+  /* ====== CONFIG ====== */
+  // Put your Formspree endpoint here. Example: "https://formspree.io/f/mypageid"
+  const FORMSPREE_ENDPOINT = 'https://formspree.io/f/yourFormID'; // <-- replace with your endpoint
+  // The 'to' email fallback for mailto (used if FORMSPREE_ENDPOINT is empty or fetch fails)
+  const CONTACT_EMAIL = 'info@skillsbuilderinstitute.com';
 
-  /* ---------- DOM Ready ---------- */
-  document.addEventListener("DOMContentLoaded", function () {
-    const header = $(".site-header");
-    const slidesWrap = $(".slides-wrap");
-    const slides = $$(".slide", slidesWrap || document);
-    const exploreToggle = $("#exploreToggle");
-    const exploreItem = $("#exploreItem");
-    const explorePanel = $("#explorePanel");
-    const langBtn = $("#langBtn");
-    const langPanel = $("#langPanel");
-    const langItems = $$(".lang-item");
-    const i18nTargets = $$("[data-i18n]");
-    const yearEl = $("#year");
+  /* ====== UTILITIES ====== */
+  function qs(sel, root = document) { return root.querySelector(sel); }
+  function qsa(sel, root = document) { return Array.from((root || document).querySelectorAll(sel)); }
+  function safeText(s) { return (s === null || s === undefined) ? '' : String(s); }
 
-    /* ---------- 1) HERO SIZING - keep hero below sticky header (prevents overlap on all viewports) ---------- */
-    function adjustHeroHeight() {
-      if (!slidesWrap || !header) return;
-      // compute available viewport height minus header height (min 240px)
-      const headerH = header.getBoundingClientRect().height || 64;
-      const available = window.innerHeight - headerH;
-      const minHeight = Math.max(240, Math.round(available * 0.9)); // keep a sane min
-      slidesWrap.style.minHeight = minHeight + "px";
-      // ensure slides-inner also fills
-      const slidesInner = slidesWrap.querySelector(".slides-inner");
-      if (slidesInner) slidesInner.style.minHeight = minHeight + "px";
+  /* ====== YEAR ====== */
+  (function setYear() {
+    const yEl = qs('#year');
+    if (yEl) yEl.textContent = new Date().getFullYear();
+  })();
+
+  /* ====== NAV DROPDOWN (Explore) ====== */
+  (function dropdowns() {
+    const exploreLi = qs('#exploreLi');
+    const exploreDropdown = qs('#exploreDropdown');
+    if (exploreLi && exploreDropdown) {
+      exploreLi.addEventListener('mouseenter', () => exploreDropdown.style.display = 'block');
+      exploreLi.addEventListener('mouseleave', () => exploreDropdown.style.display = 'none');
+      // keyboard accessible
+      const a = exploreLi.querySelector('a');
+      if (a) {
+        a.addEventListener('focus', () => exploreDropdown.style.display = 'block');
+        a.addEventListener('blur', () => {
+          // small timeout to allow focus to move into dropdown
+          setTimeout(() => {
+            if (!exploreLi.contains(document.activeElement)) exploreDropdown.style.display = 'none';
+          }, 150);
+        });
+      }
+    }
+  })();
+
+  /* ====== LANGUAGE SELECT DEMO ====== */
+  (function langDemo() {
+    const sel = qs('#langSelect');
+    if (!sel) return;
+    sel.addEventListener('change', function () {
+      const val = this.value;
+      if (!val || val === 'en') {
+        // do nothing
+        this.value = 'en';
+        return;
+      }
+      if (val === 'hi') {
+        alert('Hindi selected (demo). Site content remains English until full translation is added.');
+      } else if (val === 'ar') {
+        alert('Arabic selected (demo). Site content remains English until full translation is added.');
+      } else {
+        alert('Language selected: ' + val);
+      }
+      // keep UI in English as requested
+      this.value = 'en';
+    });
+  })();
+
+  /* ====== GENERIC SLIDER INITIALIZER ======
+     It supports both slider types used in pages:
+     - index.html: #slides (transform X)
+     - explore page: .slide elements with active class (opacity)
+  ===========================================*/
+  (function sliders() {
+    // index-style slides (container transform)
+    const slidesContainer = qs('#slides');
+    if (slidesContainer) {
+      const slides = Array.from(slidesContainer.children);
+      let idx = 0, timer;
+      const total = slides.length;
+      const dots = qsa('#dots .dot');
+
+      function goTo(i) {
+        idx = ((i % total) + total) % total;
+        slidesContainer.style.transform = `translateX(${-idx * 100}%)`;
+        dots.forEach(d => d.classList.remove('active'));
+        if (dots[idx]) dots[idx].classList.add('active');
+        reset();
+      }
+      function next() { goTo(idx + 1); }
+      function prev() { goTo(idx - 1); }
+      function reset() {
+        clearTimeout(timer);
+        timer = setTimeout(next, 5000);
+      }
+      // attach controls if present
+      const nextBtn = qs('#next');
+      const prevBtn = qs('#prev');
+      if (nextBtn) nextBtn.addEventListener('click', next);
+      if (prevBtn) prevBtn.addEventListener('click', prev);
+      qsa('#dots .dot').forEach(d => d.addEventListener('click', () => goTo(Number(d.dataset.index))));
+      // pause on hover
+      const hero = qs('.hero');
+      if (hero) {
+        hero.addEventListener('mouseenter', () => clearTimeout(timer));
+        hero.addEventListener('mouseleave', reset);
+      }
+      reset();
     }
 
-    // Run on load and resize
-    adjustHeroHeight();
-    window.addEventListener("resize", adjustHeroHeight);
-    // Also run after orientation changes (mobile)
-    window.addEventListener("orientationchange", () => setTimeout(adjustHeroHeight, 250));
-
-    /* ---------- 2) SLIDER: preload images + autoplay fade ---------- */
-    (function initSlider() {
-      if (!slides || !slides.length) return;
-
-      // preload backgrounds used via data-img
-      slides.forEach((s) => {
-        const url = s.dataset.img || "";
-        if (url) {
-          const img = new Image();
-          img.src = url;
-          img.onload = () => {
-            // nothing special needed beyond preloading
-          };
-          img.onerror = () => {
-            // if image fails, keep slide but reduce opacity to avoid white flash
-            s.style.backgroundColor = "#e9eef2";
-          };
-        }
-      });
-
-      let idx = 0;
-      const len = slides.length;
-      const intervalMs = 4200; // 4.2s per slide (smooth, not too quick)
-      let timer = null;
-
-      function show(i) {
-        slides.forEach((sl, j) => {
-          const isActive = j === i;
-          sl.classList.toggle("active", isActive);
-          // keep inactive slides visually hidden for screen readers
-          sl.setAttribute("aria-hidden", !isActive);
-        });
+    // explore-style slides: .slide with .active toggled (opacity fade)
+    (function exploreSlides() {
+      const slideEls = qsa('.slider-wrapper .slide');
+      if (!slideEls || slideEls.length === 0) return;
+      let sidx = 0;
+      function show() {
+        slideEls.forEach((el, i) => el.classList.toggle('active', i === sidx));
+        sidx = (sidx + 1) % slideEls.length;
       }
+      // start and loop every 3s
+      show();
+      setInterval(show, 3000);
+    })();
+  })();
 
-      // initial
-      show(0);
+  /* ====== STATE -> CITY MAPPING (same as earlier) ====== */
+  const citiesByState = {
+    "Andhra Pradesh":["Vijayawada","Visakhapatnam","Guntur"],
+    "Arunachal Pradesh":["Itanagar"],
+    "Assam":["Guwahati","Silchar"],
+    "Bihar":["Patna","Siwan","Gopalganj"],
+    "Chhattisgarh":["Raipur","Bhilai"],
+    "Goa":["Panaji","Margao"],
+    "Gujarat":["Ahmedabad","Surat","Vadodara"],
+    "Haryana":["Gurugram","Faridabad","Panipat"],
+    "Himachal Pradesh":["Shimla","Dharamshala"],
+    "Jharkhand":["Ranchi","Jamshedpur"],
+    "Karnataka":["Bengaluru","Mysuru","Mangalore"],
+    "Kerala":["Kochi","Thiruvananthapuram"],
+    "Madhya Pradesh":["Bhopal","Indore"],
+    "Maharashtra":["Mumbai","Pune","Nagpur"],
+    "Manipur":["Imphal"],
+    "Meghalaya":["Shillong"],
+    "Mizoram":["Aizawl"],
+    "Nagaland":["Kohima"],
+    "Odisha":["Bhubaneswar","Cuttack"],
+    "Punjab":["Ludhiana","Amritsar","Jalandhar"],
+    "Rajasthan":["Jaipur","Jodhpur","Udaipur"],
+    "Sikkim":["Gangtok"],
+    "Tamil Nadu":["Chennai","Coimbatore","Madurai"],
+    "Telangana":["Hyderabad","Warangal"],
+    "Tripura":["Agartala"],
+    "Uttar Pradesh":["Kanpur","Lucknow","Varanasi","Agra"],
+    "Uttarakhand":["Dehradun","Haridwar"],
+    "West Bengal":["Kolkata","Howrah"],
+    "Delhi (NCT)":["New Delhi"],
+    "Puducherry":["Puducherry"],
+    "Other":["Other City"]
+  };
 
-      // interval
-      function start() {
-        stop();
-        timer = setInterval(() => {
-          idx = (idx + 1) % len;
-          show(idx);
-        }, intervalMs);
+  (function bindStateCity() {
+    const stateEl = qs('#state');
+    const cityEl = qs('#city');
+    if (!stateEl || !cityEl) return;
+    stateEl.addEventListener('change', function () {
+      const s = this.value;
+      cityEl.innerHTML = '';
+      if (!s || !citiesByState[s]) {
+        cityEl.disabled = true;
+        cityEl.innerHTML = '<option value="">-- Select State First --</option>';
+        return;
       }
-      function stop() {
-        if (timer) {
-          clearInterval(timer);
-          timer = null;
-        }
-      }
-
-      // pause on pointer over (desktop) to improve UX
-      slidesWrap.addEventListener("pointerenter", stop);
-      slidesWrap.addEventListener("pointerleave", start);
-
-      // start autoplay
-      start();
-
-      // expose for debug (optional)
-      window._sbi_slider = { start, stop, show, getIndex: () => idx };
-    })();
-
-    /* ---------- 3) DROPDOWN - Explore Training ---------- */
-    (function initExploreDropdown() {
-      if (!exploreToggle || !exploreItem || !explorePanel) return;
-
-      // If an anchor is taking to dropdown, prevent navigation when toggling
-      exploreToggle.addEventListener("click", function (ev) {
-        // If there are links inside dropdown (and user wants to open the page on link),
-        // clicking the text should toggle the panel instead of navigating to explore page.
-        ev.preventDefault();
-        ev.stopPropagation();
-        const open = exploreItem.classList.toggle("open");
-        exploreToggle.setAttribute("aria-expanded", open ? "true" : "false");
-        explorePanel.setAttribute("aria-hidden", open ? "false" : "true");
+      cityEl.disabled = false;
+      const opts = citiesByState[s];
+      cityEl.innerHTML = '<option value="">-- Select City --</option>';
+      opts.forEach(c => {
+        const o = document.createElement('option'); o.value = c; o.textContent = c;
+        cityEl.appendChild(o);
       });
+    });
+  })();
 
-      // keyboard accessibility: focus in/out => show/hide
-      exploreItem.addEventListener("focusin", () => {
-        exploreItem.classList.add("open");
-        explorePanel.setAttribute("aria-hidden", "false");
-      });
-      exploreItem.addEventListener("focusout", () => {
-        // give small delay for keyboard navigation inside the panel
-        setTimeout(() => {
-          if (!exploreItem.contains(document.activeElement)) {
-            exploreItem.classList.remove("open");
-            explorePanel.setAttribute("aria-hidden", "true");
-          }
-        }, 120);
-      });
+  /* ====== TRAINING categories -> subPrograms mapping ====== */
+  const subPrograms = {
+    "skill": ["Electrician","Plumber","Welder","Carpenter","AC Technician","Pipe Fitter","Mason","Painter","Store Keeper","Helper"],
+    "professional": ["HR Trainee","Payroll Executive","Admin Executive","Store Keeper","Sales Executive","Tally","Business Analytics","Digital Marketing","Call Centre","Data Entry"],
+    "engineer": ["Civil Engineer","Electrical Engineer","Mechanical Engineer","Electronics Engineer","Project Engineer","Product Engineer","Mobile Engineer"],
+    "programmer": ["Web Development","Frontend Developer","Backend Developer","Full Stack","Node.js Developer","React.js","AI / ML Basics","Cyber Security"],
+    "softskill": ["Communication","Public Speaking","Presentation Skills","Group Discussion","GD & Interview Skills"]
+  };
 
-      // close when clicking outside
-      document.addEventListener("click", (e) => {
-        if (!exploreItem.contains(e.target)) {
-          exploreItem.classList.remove("open");
-          explorePanel.setAttribute("aria-hidden", "true");
-          exploreToggle.setAttribute("aria-expanded", "false");
-        }
-      });
-    })();
+  (function bindTrainingSelects() {
+    const purposeEl = qs('#purpose');
+    const trainingBlock = qs('#trainingBlock');
+    const trainingTypeEl = qs('#trainingType');
+    const subCategoryEl = qs('#subCategory');
+    if (!purposeEl) return;
 
-    /* ---------- 4) LANGUAGE PANEL & i18n ---------- */
-    (function initLanguage() {
-      if (!langBtn || !langPanel) return;
-
-      // small translations set - expand as needed
-      const translations = {
-        en: {
-          "nav.home": "Home",
-          "nav.explore": "Explore Training",
-          "nav.career": "Career & Guidance",
-          "nav.about": "About Us",
-          "nav.contact": "Contact Us",
-        },
-        hi: {
-          "nav.home": "होम",
-          "nav.explore": "एक्सप्लोर ट्रेनिंग",
-          "nav.career": "कैरियर एवं मार्गदर्शन",
-          "nav.about": "हमारे बारे में",
-          "nav.contact": "संपर्क करें",
-        },
-        ar: {
-          "nav.home": "الرئيسية",
-          "nav.explore": "استكشاف التدريب",
-          "nav.career": "الإرشاد المهني",
-          "nav.about": "معلومات عنا",
-          "nav.contact": "اتصل بنا",
-        },
-      };
-
-      // toggle panel on button click
-      langBtn.addEventListener("click", function (ev) {
-        ev.stopPropagation();
-        const open = langPanel.style.display === "block";
-        langPanel.style.display = open ? "none" : "block";
-        langBtn.setAttribute("aria-expanded", open ? "false" : "true");
-      });
-
-      // close on outside click
-      document.addEventListener("click", () => {
-        langPanel.style.display = "none";
-        langBtn.setAttribute("aria-expanded", "false");
-      });
-
-      // set language click handlers
-      langItems.forEach((btn) => {
-        btn.addEventListener("click", function (ev) {
-          ev.stopPropagation();
-          const lang = btn.dataset.lang || "en";
-          const flag = btn.dataset.flag || "";
-          // update UI label
-          const codeEl = document.getElementById("langCode");
-          if (codeEl) codeEl.textContent = (lang || "EN").toUpperCase();
-          // apply translations
-          i18nTargets.forEach((el) => {
-            const key = el.getAttribute("data-i18n");
-            if (key && translations[lang] && translations[lang][key]) {
-              el.textContent = translations[lang][key];
-            }
-          });
-          // rtl handling
-          if (lang === "ar") {
-            document.documentElement.setAttribute("dir", "rtl");
-          } else {
-            document.documentElement.setAttribute("dir", "ltr");
-          }
-          // hide panel
-          langPanel.style.display = "none";
-        });
-      });
-    })();
-
-    /* ---------- 5) FOOTER YEAR ---------- */
-    (function setFooterYear() {
-      if (!yearEl) return;
-      yearEl.textContent = String(new Date().getFullYear());
-    })();
-
-    /* ---------- 6) Accessibility: ESC to close panels ---------- */
-    document.addEventListener("keydown", (ev) => {
-      if (ev.key === "Escape" || ev.key === "Esc") {
-        // close explore
-        if (exploreItem) {
-          exploreItem.classList.remove("open");
-          if (explorePanel) explorePanel.setAttribute("aria-hidden", "true");
-          if (exploreToggle) exploreToggle.setAttribute("aria-expanded", "false");
-        }
-        // close lang
-        if (langPanel) langPanel.style.display = "none";
-        if (langBtn) langBtn.setAttribute("aria-expanded", "false");
+    purposeEl.addEventListener('change', function () {
+      if (this.value === 'training') {
+        if (trainingBlock) trainingBlock.style.display = 'block';
+        if (trainingTypeEl) trainingTypeEl.setAttribute('required', 'required');
+        if (subCategoryEl) subCategoryEl.setAttribute('required', 'required');
+      } else {
+        if (trainingBlock) trainingBlock.style.display = 'none';
+        if (trainingTypeEl) trainingTypeEl.removeAttribute('required');
+        if (subCategoryEl) subCategoryEl.removeAttribute('required');
+        if (trainingTypeEl) trainingTypeEl.value = '';
+        if (subCategoryEl) subCategoryEl.innerHTML = '<option value="">-- Select program --</option>';
       }
     });
 
-    /* ---------- 7) Defensive: if header or nav items are very tall, re-adjust hero after small delay ---------- */
-    setTimeout(adjustHeroHeight, 300);
-    setTimeout(adjustHeroHeight, 900);
-  });
-})();
+    if (trainingTypeEl) {
+      trainingTypeEl.addEventListener('change', function () {
+        const v = this.value;
+        if (!subCategoryEl) return;
+        subCategoryEl.innerHTML = '<option value="">-- Select program --</option>';
+        if (!v || !subPrograms[v]) return;
+        subPrograms[v].forEach(p => {
+          const op = document.createElement('option');
+          op.value = p;
+          op.textContent = p;
+          subCategoryEl.appendChild(op);
+        });
+      });
+    }
+  })();
+
+  /* ====== CONTACT FORM HANDLER (Formspree) ======
+     - Validates required fields
+     - If FORMSPREE_ENDPOINT is set, it will POST the form using fetch(FormData)
+     - On success shows thank box and clears the form (optional)
+     - On failure (or if endpoint is empty) it falls back to mailto:
+  ==============================================*/
+  (function contactFormHandler() {
+    const form = qs('#contactForm');
+    if (!form) return;
+
+    const clearBtn = qs('#clearBtn');
+    const thankbox = qs('#thankbox');
+
+    function showThank(msg) {
+      if (!thankbox) return;
+      thankbox.textContent = msg || 'Thank you! Your request has been submitted.';
+      thankbox.style.display = 'block';
+      setTimeout(() => { thankbox.style.display = 'none'; }, 7000);
+    }
+
+    if (clearBtn) {
+      clearBtn.addEventListener('click', () => {
+        form.reset();
+        const cityEl = qs('#city');
+        if (cityEl) { cityEl.innerHTML = '<option value="">-- Select State First --</option>'; cityEl.disabled = true; }
+        const trainingBlock = qs('#trainingBlock');
+        if (trainingBlock) trainingBlock.style.display = 'none';
+        const subCategoryEl = qs('#subCategory');
+        if (subCategoryEl) subCategoryEl.innerHTML = '<option value="">-- Select program --</option>';
+        if (thankbox) thankbox.style.display = 'none';
+      });
+    }
+
+    form.addEventListener('submit', async function (e) {
+      e.preventDefault();
+
+      // Basic required validation -- mirror HTML required but with messages
+      const nameEl = qs('#name'); const stateEl = qs('#state'); const cityEl = qs('#city');
+      const phoneEl = qs('#phone'); const purposeEl = qs('#purpose');
+      if (!nameEl || !stateEl || !cityEl || !phoneEl || !purposeEl) {
+        alert('Form structure error. Please contact admin.');
+        return;
+      }
+      if (!nameEl.value.trim()) { alert('Please enter your full name.'); nameEl.focus(); return; }
+      if (!stateEl.value) { alert('Please select your State.'); stateEl.focus(); return; }
+      if (!cityEl.value) { alert('Please select your City.'); cityEl.focus(); return; }
+      if (!phoneEl.value.trim()) { alert('Please enter your calling phone number.'); phoneEl.focus(); return; }
+      if (!purposeEl.value) { alert('Please select whether you want Career Guidance or Training.'); purposeEl.focus(); return; }
+
+      // If training -> require category and program
+      const purposeVal = purposeEl.value;
+      const trainingTypeEl = qs('#trainingType');
+      const subCategoryEl = qs('#subCategory');
+      if (purposeVal === 'training') {
+        if (!trainingTypeEl || !trainingTypeEl.value) { alert('Please select a training category.'); if (trainingTypeEl) trainingTypeEl.focus(); return; }
+        if (!subCategoryEl || !subCategoryEl.value) { alert('Please select specific program.'); if (subCategoryEl) subCategoryEl.focus(); return; }
+      }
+
+      // prepare data
+      const formData = new FormData(form);
+      // add some extra fields (human readable)
+      formData.append('_subject', `Website Contact: ${nameEl.value.trim()}`);
+      formData.append('_source', location.href);
+
+      // If FORMSPREE_ENDPOINT is configured -> use it
+      if (FORMSPREE_ENDPOINT && FORMSPREE_ENDPOINT.trim() !== '') {
+        try {
+          // Formspree accepts form-encoded POST
+          const resp = await fetch(FORMSPREE_ENDPOINT, {
+            method: 'POST',
+            body: formData,
+            headers: {
+              // NOTE: do not set Content-Type; browser will set multipart/form-data with boundary
+              'Accept': 'application/json'
+            }
+          });
+
+          if (resp.ok) {
+            showThank('Thank you — your message was sent. We will contact you soon.');
+            // optional: clear form
+            form.reset();
+            const cityEl2 = qs('#city'); if (cityEl2) { cityEl2.innerHTML = '<option value="">-- Select State First --</option>'; cityEl2.disabled = true; }
+            const trainingBlock = qs('#trainingBlock'); if (trainingBlock) trainingBlock.style.display = 'none';
+          } else {
+            // try to parse JSON error message
+            let json;
+            try { json = await resp.json(); } catch (err) { json = null; }
+            const errMsg = (json && (json.error || json.message)) ? json.error || json.message : `Form submission failed (status ${resp.status}).`;
+            alert('Formspree error: ' + errMsg + '\nFalling back to mail client.');
+            // fallback
+            fallbackMail(form);
+          }
+        } catch (err) {
+          console.error('Formspree request failed', err);
+          alert('Network error while sending form. Falling back to mail client.');
+          fallbackMail(form);
+        }
+      } else {
+        // No Formspree endpoint configured -> fallback to mailto
+        fallbackMail(form);
+      }
+    });
+
+    // fallback: generate a mailto: link prefilled with form data and open it
+    function fallbackMail(formEl) {
+      const d = new FormData(formEl);
+      const name = safeText(d.get('name'));
+      const age = safeText(d.get('age'));
+      const state = safeText(d.get('state'));
+      const city = safeText(d.get('city'));
+      const phone = safeText(d.get('phone'));
+      const whatsapp = safeText(d.get('whatsapp'));
+      const purpose = safeText(d.get('purpose'));
+      const trainingCategory = safeText(d.get('trainingType'));
+      const program = safeText(d.get('subCategory'));
+      const message = safeText(d.get('message'));
+
+      let body = '';
+      body += `Name: ${name}\n`;
+      if (age) body += `Age: ${age}\n`;
+      body += `State: ${state}\nCity: ${city}\n`;
+      body += `Phone: ${phone}\nWhatsApp: ${whatsapp}\n`;
+      body += `Purpose: ${purpose}\n`;
+      if (purpose === 'training') {
+        body += `Training category: ${trainingCategory}\nProgram: ${program}\n`;
+      }
+      if (message) body += `Message: ${message}\n`;
+      body += `\n-- Sent from website contact form`;
+
+      const subject = encodeURIComponent(`Website Contact: ${name || 'New Lead'}`);
+      const mailto = `mailto:${CONTACT_EMAIL}?subject=${subject}&body=${encodeURIComponent(body)}`;
+
+      // open mail client
+      window.location.href = mailto;
+      showThank('A draft email has been prepared in your mail client. Please send it to complete the request.');
+    }
+
+  })();
+
+  /* ====== OPTIONAL: Expose a small global for debugging in console (if needed) */
+  window.SBI = window.SBI || {};
+  window.SBI.builder = {
+    FORMSPREE_ENDPOINT,
+    citiesByStateKeys: Object.keys(citiesByState)
+  };
+
+})(); // end builder.js
