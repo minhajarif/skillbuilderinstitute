@@ -488,3 +488,46 @@ form button:hover{
 .contact-banner{
   background:url("images/contactus.jpg") center/cover no-repeat;
 }
+
+/* ================= BOX GRID ================= */
+.box-grid{
+  margin-top:-40px;              /* banner ke upar thoda overlap */
+  position:relative;
+  z-index:10;
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:16px;
+}
+
+/* Individual box */
+.box{
+  background:#ffffff;
+  padding:20px;
+  border-radius:12px;
+  text-align:center;
+  font-weight:600;
+  font-size:16px;
+  color:#071028;
+  box-shadow:0 10px 30px rgba(2,6,23,.10);
+  cursor:pointer;
+  transition:all .3s ease;
+}
+
+/* Hover effect */
+.box:hover{
+  transform:translateY(-5px);
+  box-shadow:0 14px 40px rgba(2,6,23,.18);
+}
+
+/* ================= RESPONSIVE ================= */
+@media(max-width:900px){
+  .box-grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+}
+
+@media(max-width:520px){
+  .box-grid{
+    grid-template-columns:1fr;
+  }
+}
