@@ -88,45 +88,36 @@
 
 <body>
 
-<!-- HEADER START -->
+<!-- ================= NAVBAR ================= -->
 <header>
-  <div class="container navbar">
+  <div class="navbar">
+    <div class="logo">
+      <img src="images/logo.png">
+    </div>
 
-    <!-- Logo Map Icon -->
-    <a href="https://www.google.com/maps/search/?api=1&query=Sona+Complex+Tulshi+Nagar+Near+Dayanand+Ayurvedic+Medical+College+Siwan+Bihar+841226" target="_blank">
-      <svg width="40" height="40" viewBox="0 0 24 24">
-        <path d="M12 2C8.7 2 6 4.7 6 8c0 4.7 6 12 6 12s6-7.3 6-12c0-3.3-2.7-6-6-6z" fill="#FF6A00"/>
-        <circle cx="12" cy="8" r="2.2" fill="#fff"/>
-      </svg>
-    </a>
+    <nav class="nav-links">
+      <a href="index.html">Home</a>
 
-    <nav>
-      <ul>
-        <li><a href="index.html">Home</a></li>
+      <div class="dropdown">
+        <a href="explore-training.html">Explore Training</a>
+        <div class="dropdown-menu">
+          <a href="explore-training&careerguidence/skilltraining-bluecollar.html">Skill Training</a>
+          <a href="explore-training&careerguidence/professional.html">Professional</a>
+          <a href="explore-training&careerguidence/programmer.html">Programming</a>
+          <a href="explore-training&careerguidence/engineer.html">Engineering</a>
+          <a href="explore-training&careerguidence/softskill.html">Soft Skills</a>
+        </div>
+      </div>
 
-        <li id="exploreLi" style="position:relative">
-          <a href="explore-training.html">Explore Training ▾</a>
-          <div class="dropdown" id="exploreDropdown">
-            <a href="explore-training.html">All Training</a>
-            <a href="explore-training&careerguidence/skilltraining-bluecollar.html">Skill Training</a>
-            <a href="explore-training&careerguidence/professional.html">Professional Courses</a>
-            <a href="explore-training&careerguidence/engineer.html">Engineering Courses</a>
-            <a href="explore-training&careerguidence/programmer.html">Programming & IT</a>
-            <a href="explore-training&careerguidence/softskill.html">Soft Skills</a>
-          </div>
-        </li>
-
-        <li><a href="career&guidence.html">Career Guidance</a></li>
-        <li><a href="aboutus.html">About Us</a></li>
-        <li><a href="contactus.html">Contact Us</a></li>
-      </ul>
+      <a href="career&guidence.html">Career Guidance</a>
+      <a href="aboutus.html">About Us</a>
+      <a href="contactus.html">Contact Us</a>
     </nav>
 
-    <select id="langSelect" style="padding:6px;border-radius:6px;background:transparent;color:white;border:1px solid rgba(255,255,255,.2)">
-      <option value="en">English</option>
-      <option value="hi">Hindi</option>
-      <option value="ar">Arabic</option>
-    </select>
+    <div class="nav-right">
+      <div class="nav-contact">📞 +91 74888 94910</div>
+      <div class="nav-contact">✉ info@skillsbuilderinstitute.com</div>
+    </div>
   </div>
 </header>
 <!-- HEADER END -->
@@ -177,55 +168,56 @@
   </div>
 </div>
 
-<!-- FOOTER START -->
+<!-- ================= FOOTER ================= -->
 <footer>
-  <div class="footer-grid container">
-
-    <!-- Map & Address -->
-    <div>
-      <a href="https://www.google.com/maps/search/?api=1&query=Sona+Complex+Tulshi+Nagar+Near+Dayanand+Ayurvedic+Medical+College+Siwan+Bihar+841226" target="_blank">
-        <svg width="44" height="44" viewBox="0 0 24 24">
-          <path d="M12 2C8.7 2 6 4.7 6 8c0 4.7 6 12 6 12s6-7.3 6-12c0-3.3-2.7-6-6-6z" fill="#FF6A00"/>
-          <circle cx="12" cy="8" r="2.2" fill="#fff"/>
-        </svg>
+  <div class="footer-inner">
+    <div class="footer-left">
+      <img src="images/logo.png" style="height:42px">
+      <p>Sona Complex, 2nd Floor, Tulshi Nagar</p>
+      <p>Near Dayanand Ayurvedic Medical College</p>
+      <p>Siwan, Bihar – 841226</p>
+      <a class="map-btn" target="_blank"
+         href="https://www.google.com/maps/search/?api=1&query=Sona+Complex+Tulshi+Nagar+Siwan">
+         View on Map
       </a>
-
-      <div style="margin-top:10px">
-        <b>Sona Complex, 2nd Floor (Tulshi Nagar)</b>
-        <div style="color:#ddd;margin-top:6px">Near Dayanand Ayurvedic Medical College, Siwan (Bihar)</div>
-      </div>
     </div>
 
-    <!-- Quick Links -->
-    <div>
-      <h3 style="margin-bottom:10px">Quick Links</h3>
-      <div style="display:flex;flex-direction:column;gap:6px">
-        <a href="index.html">Home</a>
-        <a href="explore-training.html">Explore Training</a>
-        <a href="career&guidence.html">Career Guidance</a>
-        <a href="aboutus.html">About Us</a>
-        <a href="contactus.html">Contact Us</a>
-      </div>
+    <div class="footer-mid">
+      <h4>Quick Actions</h4>
+      <a href="index.html">Home</a>
+      <a href="explore-training.html">Explore Training</a>
+      <a href="career&guidence.html">Career&Guidance</a>
+      <a href="aboutus.html">About Us</a>
+      <a href="contactus.html">Contact Us</a>
     </div>
 
-    <!-- Social Links -->
-    <div>
-      <h3 style="margin-bottom:10px">Follow Us</h3>
-      <div class="social-row">
-        <a href="https://www.youtube.com/@SkillsBuilderInstitute" target="_blank">YouTube</a>
-        <a href="https://www.fb.com/skillsbuilderinstitute" target="_blank">Facebook</a>
-        <a href="https://www.instagram.com/skills_builder_institute" target="_blank">Instagram</a>
-        <a href="https://t.me/skillsbuilderinstitute" target="_blank">Telegram</a>
-        <a href="https://whatsapp.com/channel/0029Vb6Kou2DuMRmU5kAKy1W" target="_blank">WhatsApp</a>
-        <a href="https://www.snapchat.com/add/skillsbuildersv" target="_blank">Snapchat</a>
-        <a href="https://www.threads.net/@skills_builder_institute" target="_blank">Threads</a>
-        <a href="https://x.com/@SkillsBuilderSV" target="_blank">X</a>
-      </div>
+    <div class="footer-right">
+      <h4>Connect With Us</h4>
+      <a href="https://wa.me/channel/0029Vb6Kou2DuMRmU5kAKy1W">WhatsApp</a>
+      <a href="https://www.instagram.com/skills_builder_institute">Instagram</a>
+      <a href="https://www.fb.com/skillsbuilderinstitute">Facebook</a>
+      <a href="https://t.me/skillsbuilderinstitute">Telegram</a>
+      <a href="https://www.youtube.com/@SkillsBuilderInstitute">YouTube</a>
+      <a href="https://x.com/@SkillsBuilderSV">X (Twitter)</a>
+      <a href="https://www.snapchat.com/add/skillsbuildersv">Snapchat</a>
     </div>
+  </div>
 
+  <div class="footer-bottom">
+    © 2025 Skills Builder Institute — All Rights Reserved
   </div>
 </footer>
-<!-- FOOTER END -->
+
+<!-- ================= WHATSAPP FLOAT ================= -->
+<a class="whatsapp-float" href="https://wa.me/917488894910" target="_blank">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg">
+</a>
+
+<!-- JS -->
+<script src="builder.js"></script>
+</body>
+</html>
+
 
 <!-- SLIDER SCRIPT -->
 <script>
