@@ -7,99 +7,7 @@
 
 <link rel="stylesheet" href="skill.css">
 
-<style>
-  :root{
-    --accent:#FF6A00;
-    --bg:#f5f7fa;
-    --card:#ffffff;
-    --text:#0f1724;
-    --muted:#6b7280;
-    --radius:12px;
-    --container:1100px;
-  }
 
-  body{
-    margin:0;
-    font-family:Inter,system-ui,Arial;
-    background:var(--bg);
-    color:var(--text);
-  }
-
-  a{text-decoration:none;color:inherit}
-
-  .container{max-width:var(--container);margin:0 auto;padding:18px}
-
-  /* HEADER same as other pages */
-  header{background:#071028;color:#fff;padding:12px 18px;position:sticky;top:0;z-index:1000;box-shadow:0 2px 8px rgba(2,6,23,.08)}
-  .navbar{display:flex;align-items:center;justify-content:space-between}
-  nav ul{display:flex;gap:18px;list-style:none;margin:0;padding:0}
-  nav a{padding:8px 10px;color:#fff;border-radius:6px;font-size:14px}
-  nav a:hover{background:rgba(255,255,255,.08)}
-
-  /* Dropdown */
-/* Navbar item */
-.dropdown{
-  position:relative;     /* ⭐ navbar ke flow me rahe */
-}
-
-/* Actual dropdown list */
-.dropdown-menu{
-  position:absolute;
-  top:100%;              /* Explore ke bilkul neeche */
-  left:0;
-  background:#0b2347;
-  min-width:220px;
-  display:none;
-  flex-direction:column;
-  border-radius:6px;
-  overflow:hidden;
-  z-index:9999;
-}
-
-  /* Slider Banner */
-  .slider-wrapper{position:relative;width:100%;height:340px;overflow:hidden;border-bottom-left-radius:0;border-bottom-right-radius:0}
-  .slide{position:absolute;width:100%;height:100%;background-size:cover;background-position:center;opacity:0;transition:opacity .7s}
-  .slide.active{opacity:1}
-
-  /* Overlap Category Boxes */
-  .overlap-boxes{
-    position:relative;
-    top:-40px;
-    z-index:10;
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:12px;
-    padding:0 20px;
-  }
-
-  .cat-box{
-    background:#fff;
-    border-radius:12px;
-    padding:18px;
-    text-align:center;
-    font-weight:700;
-    color:#071028;
-    box-shadow:0 8px 25px rgba(2,6,23,.08);
-    cursor:pointer;
-    transition:.3s;
-  }
-  .cat-box:hover{transform:translateY(-3px);box-shadow:0 12px 35px rgba(2,6,23,.12)}
-
-  @media(max-width:768px){
-    .overlap-boxes{grid-template-columns:repeat(2,1fr);}
-    .slider-wrapper{height:240px}
-  }
-
-  /* Content section */
-  .section{
-    background:white;padding:18px;border-radius:12px;box-shadow:0 10px 30px rgba(2,6,23,.06);margin-top:-20px
-  }
-
-  /* FOOTER same as other pages */
-  footer{background:#061222;color:#fff;padding:30px 18px;margin-top:30px}
-  .footer-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:20px;max-width:var(--container);margin:0 auto}
-  .social-row{display:flex;gap:12px;flex-wrap:wrap}
-</style>
 </head>
 
 <body>
@@ -183,7 +91,6 @@
     </p>
   </div>
 <div class="section">
-  <h2>Training Programs Overview</h2>
 
   <p>
     At <strong>Skills Builder Institute</strong>, our training programs are carefully structured to transform
