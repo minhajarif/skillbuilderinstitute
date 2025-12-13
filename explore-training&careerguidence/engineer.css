@@ -1,353 +1,237 @@
-:root{
-  --accent:#FF6A00;
-  --bg:#f5f7fa;
-  --text:#0f1724;
-  --muted:#6b7280;
-  --container:1100px;
-  --radius:12px;
-}
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Engineering Courses — Skills Builder Institute</title>
 
-*{margin:0;padding:0;box-sizing:border-box}
-body{
-  font-family:Inter,system-ui,Arial;
-  background:var(--bg);
-  color:var(--text);
-}
+<link rel="stylesheet" href="../skill.css">
 
-a{text-decoration:none;color:inherit}
-ul{list-style:none}
+<style>
+  :root{
+    --accent:#FF6A00;
+    --bg:#f5f7fa;
+    --card:#ffffff;
+    --text:#0f1724;
+    --muted:#6b7280;
+    --container:1100px;
+    --radius:12px;
+  }
+  body{margin:0;font-family:Inter,system-ui,Arial;background:var(--bg);color:var(--text);}
+  a{text-decoration:none;color:inherit}
+  .container{max-width:var(--container);margin:0 auto;padding:18px}
 
-.container{
-  max-width:var(--container);
-  margin:auto;
-  padding:18px;
-}
+  /* Header */
+  header{background:#071028;color:#fff;padding:12px 18px;position:sticky;top:0;z-index:1000}
+  .navbar{display:flex;align-items:center;justify-content:space-between}
+  nav ul{display:flex;list-style:none;gap:18px;padding:0;margin:0}
+  nav a{color:#fff;padding:8px 10px;border-radius:6px;font-size:14px}
+  nav a:hover{background:rgba(255,255,255,.08)}
+  .dropdown{background:#0b1624;border-radius:8px;padding:6px;position:absolute;top:44px;left:0;min-width:200px;display:none}
 
-/* HEADER */
-header{background:#071028;color:#fff;position:sticky;top:0;z-index:1000}
-.navbar{display:flex;justify-content:space-between;align-items:center}
+  /* Banner */
+  .banner{
+    height:260px;
+    background-size:cover;
+    background-position:center;
+    margin-bottom:20px;
+  }
 
-nav ul{display:flex;gap:18px}
-nav a{padding:8px 10px;border-radius:6px;font-size:14px}
-nav a:hover{background:rgba(255,255,255,.1)}
-
-.dropdown{
-  position:absolute;
-  background:#0b1624;
-  padding:6px;
-  border-radius:8px;
-  min-width:200px;
-  display:none;
-}
-
-/* BANNER */
-.banner{
-  height:260px;
-  background-size:cover;
-  background-position:center;
-}
-
-/* GRID */
-.grid{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:14px;
-  margin-top:-10px;
-}
-
-.box{
-  background:#fff;
-  padding:18px;
-  border-radius:12px;
-  text-align:center;
-  font-weight:700;
-  box-shadow:0 10px 30px rgba(0,0,0,.08);
-  transition:.3s;
-}
-.box:hover{transform:translateY(-4px)}
-
-/* CONTENT */
-.section{
-  background:#fff;
-  padding:18px;
-  margin-top:20px;
-  border-radius:12px;
-  box-shadow:0 10px 30px rgba(0,0,0,.06);
-}
-
-/* FOOTER */
-footer{
-  background:#061222;
-  color:#fff;
-  padding:30px 18px;
-}
-.footer-grid{
-  display:grid;
-  grid-template-columns:1fr 1fr 1fr;
-  gap:20px;
-}
-
-/* ================= RESET ================= */
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-}
-
-body{
-  font-family:Inter,Arial,sans-serif;
-  background:#f6f8fb;
-  color:#333;
-}
-
-a{text-decoration:none;color:inherit}
-ul{list-style:none}
-img{max-width:100%;display:block}
-
-/* ================= CONTAINER ================= */
-.container{
-  max-width:1100px;
-  margin:auto;
-  padding:40px 20px;
-}
-
-/* ================= NAVBAR (SAME AS HOME) ================= */
-header{
-  background:#071a33;
-  height:78px;
-  display:flex;
-  align-items:center;
-}
-
-.navbar{
-  width:100%;
-  max-width:1200px;
-  margin:auto;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-}
-
-nav ul{
-  display:flex;
-  align-items:center;
-  gap:28px;
-}
-
-nav a{
-  color:#fff;
-  font-size:14px;
-}
-
-nav a:hover{
-  color:#ff8c2a;
-}
-
-/* ===== DROPDOWN ===== */
-#exploreLi{
-  position:relative;
-}
-
-.dropdown{
-  position:absolute;
-  top:120%;
-  left:0;
-  background:#0b2347;
-  min-width:220px;
-  display:none;
-  flex-direction:column;
-  border-radius:6px;
-  overflow:hidden;
-  z-index:99;
-}
-
-.dropdown a{
-  padding:12px 16px;
-  font-size:14px;
-  color:#fff;
-}
-
-.dropdown a:hover{
-  background:#ff8c2a;
-}
-
-#exploreLi:hover .dropdown{
-  display:flex;
-}
-
-/* ================= BANNER ================= */
-.banner{
-  height:300px;
-  background-size:cover;
-  background-position:center;
-}
-
-/* ================= GRID BOXES ================= */
-.grid{
-  margin-top:-50px;
-  position:relative;
-  z-index:10;
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:18px;
-}
-
-.box{
-  background:#fff;
-  padding:22px;
-  border-radius:14px;
-  text-align:center;
-  font-weight:700;
-  font-size:16px;
-  color:#071028;
-  box-shadow:0 10px 30px rgba(0,0,0,.08);
-  transition:.3s;
-}
-
-.box:hover{
-  transform:translateY(-6px);
-  box-shadow:0 16px 45px rgba(0,0,0,.15);
-}
-
-/* ================= CONTENT SECTION ================= */
-.section{
-  background:#fff;
-  padding:28px;
-  border-radius:14px;
-  margin-top:30px;
-  box-shadow:0 10px 30px rgba(0,0,0,.08);
-}
-
-.section h2{
-  font-size:22px;
-  margin-bottom:14px;
-}
-
-.section p{
-  font-size:15px;
-  line-height:1.7;
-  margin-bottom:14px;
-  color:#444;
-}
-
-/* ================= FOOTER (SAME AS HOME) ================= */
-footer{
-  background:#071a33;
-  color:#fff;
-  margin-top:60px;
-}
-
-.footer-inner{
-  max-width:1200px;
-  margin:auto;
-  padding:60px 20px;
-  display:grid;
-  grid-template-columns:1.2fr 1fr 1fr;
-  gap:70px;
-}
-
-.footer-left p{
-  margin:8px 0;
-  font-size:14px;
-  color:#ddd;
-}
-
-.map-btn{
-  margin-top:16px;
-  display:inline-block;
-  background:#ff8c2a;
-  color:#fff;
-  padding:10px 18px;
-  border-radius:6px;
-  font-size:14px;
-}
-
-.footer-mid h4,
-.footer-right h4{
-  margin-bottom:16px;
-  font-size:16px;
-}
-
-.footer-mid a,
-.footer-right a{
-  display:block;
-  margin-bottom:10px;
-  font-size:14px;
-  color:#ddd;
-  position:relative;
-  padding-left:18px;
-}
-
-.footer-mid a:hover,
-.footer-right a:hover{
-  color:#ff8c2a;
-}
-
-/* ===== FOOTER ARROW ===== */
-.footer-mid a::before,
-.footer-right a::before{
-  content:"";
-  position:absolute;
-  left:0;
-  top:50%;
-  transform:translateY(-50%);
-  border-top:5px solid transparent;
-  border-bottom:5px solid transparent;
-  border-left:7px solid #ff8c2a;
-}
-
-.footer-bottom{
-  text-align:center;
-  padding:16px;
-  background:#06152b;
-  font-size:13px;
-  color:#ccc;
-}
-
-/* ================= WHATSAPP FLOAT ================= */
-.whatsapp-float{
-  position:fixed;
-  right:20px;
-  bottom:20px;
-  width:56px;
-  height:56px;
-  background:#25d366;
-  border-radius:50%;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  z-index:999;
-}
-
-.whatsapp-float img{
-  width:30px;
-}
-
-/* ================= RESPONSIVE ================= */
-@media(max-width:900px){
+  /* Boxes grid */
   .grid{
-    grid-template-columns:repeat(2,1fr);
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:14px;
+    margin-top:-10px;
+  }
+  .box{
+    background:#fff;
+    padding:18px;
+    border-radius:12px;
+    text-align:center;
+    font-weight:700;
+    cursor:pointer;
+    box-shadow:0 10px 30px rgba(2,6,23,.08);
+    transition:.3s;
+  }
+  .box:hover{
+    transform:translateY(-4px);
+    box-shadow:0 14px 40px rgba(2,6,23,.12);
+  }
+  @media(max-width:780px){
+    .grid{grid-template-columns:repeat(2,1fr);}
+    .banner{height:200px}
   }
 
-  .footer-inner{
-    grid-template-columns:1fr;
-    gap:40px;
-  }
-}
-
-@media(max-width:520px){
-  .grid{
-    grid-template-columns:1fr;
-    margin-top:-30px;
+  /* Content */
+  .section{
+    background:#fff;
+    padding:18px;
+    margin-top:20px;
+    border-radius:12px;
+    box-shadow:0 10px 30px rgba(2,6,23,.06);
   }
 
-  header{
-    height:auto;
-    padding:14px 0;
-  }
+  /* Footer */
+  footer{background:#061222;color:#fff;padding:30px 18px;margin-top:40px}
+  .footer-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:20px;max-width:var(--container);margin:0 auto}
+  .social-row{display:flex;gap:12px;flex-wrap:wrap}
+</style>
+</head>
 
-  nav ul{
-    flex-wrap:wrap;
-    gap:16px;
-  }
-}
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="container navbar">
+
+    <!-- Logo Map -->
+    <a href="https://www.google.com/maps/search/?api=1&query=Sona+Complex+Tulshi+Nagar+Near+Dayanand+Ayurvedic+Medical+College+Siwan+Bihar+841226" target="_blank">
+      <svg width="40" height="40" viewBox="0 0 24 24">
+        <path d="M12 2C8.7 2 6 4.7 6 8c0 4.7 6 12 6 12s6-7.3 6-12c0-3.3-2.7-6-6-6z" fill="#FF6A00"/>
+        <circle cx="12" cy="8" r="2.2" fill="#fff"/>
+      </svg>
+    </a>
+
+    <nav>
+      <ul>
+        <li><a href="../index.html">Home</a></li>
+
+        <li id="exploreLi" style="position:relative">
+          <a href="../explore-training.html">Explore Training ▾</a>
+          <div class="dropdown" id="exploreDropdown">
+            <a href="../explore-training.html">All Training</a>
+            <a href="skilltraining-bluecollar.html">Skill Training</a>
+            <a href="professional.html">Professional Courses</a>
+            <a href="engineer.html" aria-current="page">Engineering Courses</a>
+            <a href="programmer.html">Programming</a>
+            <a href="softskill.html">Soft Skills</a>
+          </div>
+        </li>
+
+        <li><a href="../career&guidence.html">Career Guidance</a></li>
+        <li><a href="../aboutus.html">About Us</a></li>
+        <li><a href="../contactus.html">Contact Us</a></li>
+      </ul>
+    </nav>
+
+  </div>
+</header>
+
+<!-- BANNER -->
+<div class="banner" style="background-image:url('../explorephotos/engineerbanner.png')"></div>
+
+<!-- GRID BOXES -->
+<div class="container">
+  <div class="grid">
+
+    <div class="box">Civil Engineer</div>
+    <div class="box">Electrical Engineer</div>
+    <div class="box">Mechanical Engineer</div>
+
+    <div class="box">Electronic Engineer</div>
+    <div class="box">Mobile Engineer</div>
+    <div class="box">Project Engineer</div>
+
+    <div class="box">Data Analytics</div>
+    <div class="box">Product Engineer</div>
+
+  </div>
+</div>
+
+<!-- CONTENT -->
+<div class="container">
+  <div class="section">
+    <h2>Engineering Skill Development</h2>
+
+    <p style="color:var(--muted);line-height:1.6">
+      Our Engineering courses are designed for students who want industry-oriented technical skills along with
+      real project exposure. Each module focuses on practical learning, tool-based training, and professional
+      problem-solving techniques relevant to modern engineering roles.
+    </p>
+
+    <p style="color:var(--muted);line-height:1.6">
+      Civil, Mechanical, Electrical and Electronics engineering modules include hands-on labs, equipment practice,
+      site-level concepts, drafting basics, project understanding and real application-based tasks. Learners get
+      exposure to how engineering operations work in real organisations.
+    </p>
+
+    <p style="color:var(--muted);line-height:1.6">
+      The Mobile Engineer and Project Engineer tracks help students understand technical workflows, product
+      repair basics, project planning, team coordination, reporting and quality standards needed in engineering
+      companies.
+    </p>
+
+    <p style="color:var(--muted);line-height:1.6">
+      Our Data Analytics and Product Engineering modules introduce essential analytics tools, product lifecycle,
+      requirements understanding, documentation, and decision-making concepts used in product teams.
+    </p>
+
+    <p style="color:var(--muted);line-height:1.6">
+      Students completing these engineering programs receive certificates and placement support for suitable
+      roles in India and international markets. Training is delivered by experienced professionals who guide
+      learners through real examples and industry expectations.
+    </p>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid container">
+
+    <!-- Address -->
+    <div>
+      <a href="https://www.google.com/maps/search/?api=1&query=Sona+Complex+Tulshi+Nagar+Near+Dayanand+Ayurvedic+Medical+College+Siwan+Bihar+841226" target="_blank">
+        <svg width="44" height="44" viewBox="0 0 24 24">
+          <path d="M12 2C8.7 2 6 4.7 6 8c0 4.7 6 12 6 12s6-7.3 6-12c0-3.3-2.7-6-6-6z" fill="#FF6A00"/>
+          <circle cx="12" cy="8" r="2.2" fill="#fff"/>
+        </svg>
+      </a>
+
+      <div style="margin-top:10px">
+        <b>Sona Complex, 2nd Floor, Tulshi Nagar</b>
+        <div style="color:#ddd;margin-top:6px">Near Dayanand Ayurvedic Medical College, Siwan (Bihar)</div>
+      </div>
+    </div>
+
+    <!-- quick links -->
+    <div>
+      <h3>Quick Links</h3>
+      <div style="margin-top:10px;display:flex;flex-direction:column;gap:6px">
+        <a href="../index.html">Home</a>
+        <a href="../explore-training.html">Explore Training</a>
+        <a href="../career&guidence.html">Career Guidance</a>
+        <a href="../aboutus.html">About Us</a>
+        <a href="../contactus.html">Contact Us</a>
+      </div>
+    </div>
+
+    <!-- Social -->
+    <div>
+      <h3>Follow Us</h3>
+      <div class="social-row" style="margin-top:10px">
+        <a href="https://www.youtube.com/@SkillsBuilderInstitute" target="_blank">YouTube</a>
+        <a href="https://www.fb.com/skillsbuilderinstitute" target="_blank">Facebook</a>
+        <a href="https://www.instagram.com/skills_builder_institute" target="_blank">Instagram</a>
+        <a href="https://t.me/skillsbuilderinstitute" target="_blank">Telegram</a>
+        <a href="https://whatsapp.com/channel/0029Vb6Kou2DuMRmU5kAKy1W" target="_blank">WhatsApp</a>
+        <a href="https://www.snapchat.com/add/skillsbuildersv" target="_blank">Snapchat</a>
+        <a href="https://www.threads.net/@skills_builder_institute" target="_blank">Threads</a>
+        <a href="https://x.com/@SkillsBuilderSV" target="_blank">X</a>
+      </div>
+    </div>
+
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script>
+  const exploreLi = document.getElementById('exploreLi');
+  const exploreDropdown = document.getElementById('exploreDropdown');
+
+  exploreLi.addEventListener('mouseenter', ()=> exploreDropdown.style.display='block');
+  exploreLi.addEventListener('mouseleave', ()=> exploreDropdown.style.display='none');
+</script>
+
+</body>
+</html>
