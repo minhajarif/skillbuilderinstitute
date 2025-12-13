@@ -1,1 +1,59 @@
-.
+<!doctype html>
+<html>
+<head>
+<style>
+/* Navbar CSS from index.html */
+header{
+  background:#071a33;
+  height:78px;
+  display:flex;
+  align-items:center;
+}
+.navbar{
+  max-width:1200px;
+  margin:auto;
+  width:100%;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+.logo img{height:42px}
+.nav-links{display:flex;align-items:center;gap:30px;color:#fff;font-size:14px}
+.nav-links a:hover{color:#ff8c2a}
+.dropdown{position:relative}
+.dropdown > a::after{content:" ▾";font-size:12px}
+.dropdown-menu{position:absolute;top:120%;left:0;background:#0b2347;min-width:220px;display:none;flex-direction:column;border-radius:6px;overflow:hidden;z-index:99}
+.dropdown-menu a{padding:12px 16px;color:#fff;font-size:14px}
+.dropdown-menu a:hover{background:#ff8c2a}
+.dropdown:hover .dropdown-menu{display:flex}
+.nav-right{display:flex;align-items:center;gap:22px;color:#fff;font-size:13px}
+</style>
+</head>
+<body>
+<header>
+  <div class="navbar">
+    <div class="logo"><img src="images/logo.png"></div>
+    <nav class="nav-links">
+      <a href="/skillbuilderinstitute/">Home</a>
+      <div class="dropdown">
+        <a href="explore-training.html">Explore Training</a>
+        <div class="dropdown-menu">
+          <a href="explore-training&careerguidence/skilltraining-bluecollar.html">Skill Training</a>
+          <a href="explore-training&careerguidence/professional.html">Professional</a>
+          <a href="explore-training&careerguidence/programmer.html">Programming</a>
+          <a href="explore-training&careerguidence/engineer.html">Engineering</a>
+          <a href="explore-training&careerguidence/softskill.html">Soft Skills</a>
+        </div>
+      </div>
+      <a href="career&guidence.html">Career Guidance</a>
+      <a href="aboutus.html">About Us</a>
+      <a href="contactus.html">Contact Us</a>
+    </nav>
+    <div class="nav-right">
+      <div>📞 +91 74888 94910</div>
+      <div>✉️ info@skillsbuilderinstitute.com</div>
+    </div>
+  </div>
+</header>
+</body>
+</html>
