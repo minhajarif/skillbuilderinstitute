@@ -642,3 +642,9 @@ form select{
   color:#6b7280;
   margin-bottom:12px;
 }
+
+select{
+  pointer-events:auto !important;
+  position:relative !important;
+  z-index:9999 !important;
+}
