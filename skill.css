@@ -535,3 +535,17 @@ form button:hover{
     margin-top:-30px;
   }
 }
+
+/* ================= CAREER GUIDANCE FIX ================= */
+
+/* banner ke turant baad wale container ka top padding hatao */
+.banner + .container{
+  padding-top:0;
+}
+
+/* overlap boxes forcefully upar lao */
+.banner + .container .box-grid{
+  margin-top:-70px;
+  position:relative;
+  z-index:20;
+}
