@@ -90,7 +90,6 @@ if (trainingTypeSelect && subCategorySelect) {
    Works for: Home, About, Contact
 ================================ */
 
-/* ================= HERO SLIDER (ALL PAGES SAFE) ================= */
 document.addEventListener("DOMContentLoaded", () => {
   const slides = document.querySelectorAll(".slide");
   if (!slides.length) return;
