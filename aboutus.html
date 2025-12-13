@@ -16,6 +16,62 @@ body{
 a{text-decoration:none;color:inherit}
 ul{list-style:none}
 
+/* ================= NAVBAR (HOME SAME) ================= */
+header{
+  background:#071a33;
+  height:78px;
+  display:flex;
+  align-items:center;
+}
+.navbar{
+  max-width:1200px;
+  margin:auto;
+  width:100%;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+.logo img{height:42px}
+
+.nav-links{
+  display:flex;
+  align-items:center;
+  gap:30px;
+  color:#fff;
+  font-size:14px;
+}
+.nav-links a:hover{color:#ff8c2a}
+
+/* Dropdown */
+.dropdown{position:relative}
+.dropdown > a::after{content:" ▾";font-size:12px}
+.dropdown-menu{
+  position:absolute;
+  top:120%;
+  left:0;
+  background:#0b2347;
+  min-width:220px;
+  display:none;
+  flex-direction:column;
+  border-radius:6px;
+  overflow:hidden;
+  z-index:99;
+}
+.dropdown-menu a{
+  padding:12px 16px;
+  color:#fff;
+}
+.dropdown-menu a:hover{background:#ff8c2a}
+.dropdown:hover .dropdown-menu{display:flex}
+
+.nav-right{
+  display:flex;
+  gap:22px;
+  color:#fff;
+  font-size:13px;
+  white-space:nowrap;
+}
+
 /* ================= BANNER ================= */
 .banner{
   height:320px;
@@ -47,56 +103,203 @@ ul{list-style:none}
   margin-bottom:26px;
   box-shadow:0 10px 30px rgba(0,0,0,.08);
 }
+
+/* ================= FOOTER (HOME SAME) ================= */
+footer{
+  background:#071a33;
+  color:#fff;
+}
+.footer-inner{
+  max-width:1200px;
+  margin:auto;
+  padding:60px 20px;
+  display:grid;
+  grid-template-columns:1.2fr 1fr 1fr;
+  gap:70px;
+}
+.footer-mid a,
+.footer-right a{
+  display:block;
+  margin-bottom:10px;
+  font-size:14px;
+  color:#ddd;
+  padding-left:18px;
+  position:relative;
+}
+.footer-mid a::before,
+.footer-right a::before{
+  content:"";
+  position:absolute;
+  left:0;
+  top:50%;
+  transform:translateY(-50%);
+  border-top:5px solid transparent;
+  border-bottom:5px solid transparent;
+  border-left:7px solid #ff8c2a;
+}
+.footer-bottom{
+  text-align:center;
+  padding:16px;
+  background:#06152b;
+  font-size:13px;
+  color:#ccc;
+}
+
+/* ================= WHATSAPP FLOAT ================= */
+.whatsapp-float{
+  position:fixed;
+  right:20px;
+  bottom:20px;
+  width:56px;
+  height:56px;
+  background:#25d366;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  z-index:999;
+}
+.whatsapp-float img{width:30px}
 </style>
 </head>
 
 <body>
 
-<!-- ================= COMMON HEADER ================= -->
-<iframe 
-  src="common-header.html" 
-  style="width:100%;height:78px;border:none;display:block;"
-></iframe>
+<!-- ===== NAVBAR ===== -->
+<header>
+  <div class="navbar">
+    <div class="logo">
+      <img src="images/logo.png">
+    </div>
 
-<!-- ================= BANNER ================= -->
+    <nav class="nav-links">
+      <a href="index.html">Home</a>
+
+      <div class="dropdown">
+        <a href="explore-training.html">Explore Training</a>
+        <div class="dropdown-menu">
+          <a href="explore-training&careerguidence/skilltraining-bluecollar.html">Skill Training</a>
+          <a href="explore-training&careerguidence/professional.html">Professional</a>
+          <a href="explore-training&careerguidence/programmer.html">Programming</a>
+          <a href="explore-training&careerguidence/engineer.html">Engineering</a>
+          <a href="explore-training&careerguidence/softskill.html">Soft Skills</a>
+        </div>
+      </div>
+
+      <a href="career&guidence.html">Career Guidance</a>
+      <a href="aboutus.html">About Us</a>
+      <a href="contactus.html">Contact Us</a>
+    </nav>
+
+    <div class="nav-right">
+      <div>📞 +91 74888 94910</div>
+      <div>✉️ info@skillsbuilderinstitute.com</div>
+    </div>
+  </div>
+</header>
+
+<!-- ===== BANNER ===== -->
 <section class="banner">
   <div class="banner-overlay">
     <div class="banner-title">About Skills Builder Institute</div>
   </div>
 </section>
 
-<!-- ================= CONTENT (UNCHANGED) ================= -->
+<!-- ===== CONTENT (TUMHARA SAME) ===== -->
 <main class="container">
+<main class="container" role="main" aria-label="About us content" style="padding-top:20px">  <!-- Who we are -->    
+<section class="section" aria-labelledby="who-heading">    
+  <h2 id="who-heading">Who We Are</h2>    
+  <p style="color:var(--muted);line-height:1.6">    
+    Skills Builder Institute is a vocational and professional training centre dedicated to delivering practical, job-oriented courses. We combine hands-on workshops with industry exposure to prepare learners for real work environments. Our programmes cover a wide range of technical, professional and soft-skill subjects designed for immediate employability and career advancement.    
+  </p>    
+</section>    <!-- Vision & Mission -->    <section class="section" aria-labelledby="vision-heading">    
+  <h2 id="vision-heading">Our Vision & Mission</h2>      <div style="margin-top:8px">    
+    <strong>Vision:</strong>    
+    <div style="color:var(--muted);margin-top:6px">To become a trusted and innovative skill development institute that empowers learners with practical skills for the modern workforce.</div>    
+  </div>      <div style="margin-top:12px">    
+    <strong>Mission:</strong>    
+    <ul class="list" style="color:var(--muted)">    
+      <li>Provide practical, hands-on training aligned with industry requirements.</li>    
+      <li>Bridge the gap between education and employment with job-relevant skills.</li>    
+      <li>Offer youth-targeted training that opens opportunities in local and international job markets.</li>    
+      <li>Encourage continuous learning and professional growth through certifications and mentoring.</li>    
+    </ul>    
+  </div>    
+</section>    <!-- Achievements -->    <section class="section" aria-labelledby="achieve-heading">    
+  <h2 id="achieve-heading">Our Achievements</h2>    
+  <ul class="achievements" style="color:var(--muted)">    
+    <li>Trained 1000+ learners across blue-collar and white-collar programmes.</li>    
+    <li>Helped many candidates pass overseas skill tests and obtain GCC job placements.</li>    
+    <li>High success rate for placement assistance among eligible participants.</li>    
+    <li>Strong partnerships with industry recruiters and employers.</li>    
+  </ul>    
+</section>    <!-- Courses offered -->    <section class="section" aria-labelledby="courses-heading">    
+  <h2 id="courses-heading">Courses Offered</h2>      <h4 style="margin-bottom:6px">Blue Collar / Technical Skill Programs</h4>    
+  <ul class="list" style="color:var(--muted)">    
+    <li>Electrician, Plumber, Pipe Fitter, Welder, Fabricator, Steel Fixer, Carpenter</li>    
+    <li>AC Technician, MEP Foreman training, Mason, Painter, Helper and other trades</li>    
+    <li>Saudi Skill Test preparation & practical job-readiness training</li>    
+  </ul>      <h4 style="margin-top:12px;margin-bottom:6px">White Collar / Professional Programs</h4>    
+  <ul class="list" style="color:var(--muted)">    
+    <li>HR Trainee, Payroll Executive, Admin Executive, Store Keeper</li>    
+    <li>Sales Executive, Digital Marketing, Business Communication, Tally</li>    
+    <li>Call Centre / BPO training, Data Entry, Product & Business Analytics basics</li>    
+  </ul>    
+</section>    <!-- Infrastructure -->    <section class="section" aria-labelledby="infra-heading">    
+  <h2 id="infra-heading">Our World-Class Infrastructure</h2>    
+  <div class="infra-grid">    
+    <div class="infra-item"><svg width="18" height="18" viewBox="0 0 24 24" role="img"><rect x="2" y="4" width="20" height="14" rx="2" fill="#FF6A00"/></svg><div>Smart classrooms & projectors</div></div>    
+    <div class="infra-item"><svg width="18" height="18" viewBox="0 0 24 24" role="img"><rect x="2" y="4" width="20" height="14" rx="2" fill="#FF6A00"/></svg><div>Modern computer lab</div></div>    
+    <div class="infra-item"><svg width="18" height="18" viewBox="0 0 24 24" role="img"><rect x="2" y="6" width="20" height="12" rx="2" fill="#FF6A00"/></svg><div>Free study materials</div></div>    
+    <div class="infra-item"><svg width="18" height="18" viewBox="0 0 24 24" role="img"><rect x="2" y="6" width="20" height="12" rx="2" fill="#FF6A00"/></svg><div>Placement support desk</div></div>    
+    <div class="infra-item"><svg width="18" height="18" viewBox="0 0 24 24" role="img"><rect x="3" y="3" width="18" height="18" rx="3" fill="#FF6A00"/></svg><div>Air-conditioned premises</div></div>    
+    <div class="infra-item"><svg width="18" height="18" viewBox="0 0 24 24" role="img"><rect x="3" y="3" width="18" height="18" rx="3" fill="#FF6A00"/></svg><div>Free Wi-Fi & refreshment area</div></div>    
+  </div>    
+</section>    <!-- Call to action -->    <section class="section" aria-labelledby="cta-heading">    
+  <h2 id="cta-heading">Why Choose Us</h2>    
+  <p style="color:var(--muted);line-height:1.6">    
+    We focus on practical learning delivered by experienced trainers who understand industry expectations. Our training model emphasizes hands-on practice, industry-aligned curriculum, and placement guidance to help students convert skills into jobs. Certificates are issued to participants who complete the courses, and placement support is offered to eligible learners in India and abroad.    
+  </p>    
+  <div style="margin-top:12px">    
+    <a class="btn" style="background:var(--accent);color:#fff;border-radius:10px;padding:10px 14px" href="contactus.html">Enquire Now</a>    
+  </div>    
+</section>    </main> 
 
-<section class="section">
-  <h2>Who We Are</h2>
-  <p>
-    Skills Builder Institute is a vocational and professional training centre dedicated to delivering
-    practical, job-oriented courses. We combine hands-on workshops with industry exposure to prepare
-    learners for real work environments.
-  </p>
-</section>
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="footer-inner">
+    <div>
+      <img src="images/logo.png" style="height:42px">
+      <p>Sona Complex, 2nd Floor, Tulshi Nagar</p>
+      <p>Siwan, Bihar – 841226</p>
+    </div>
 
-<section class="section">
-  <h2>Our Vision & Mission</h2>
-  <p><strong>Vision:</strong> To become a trusted and innovative skill development institute.</p>
-  <p><strong>Mission:</strong></p>
-  <ul>
-    <li>Provide practical, hands-on training aligned with industry requirements.</li>
-    <li>Bridge the gap between education and employment.</li>
-    <li>Encourage continuous learning and professional growth.</li>
-  </ul>
-</section>
+    <div class="footer-mid">
+      <h4>Quick Actions</h4>
+      <a href="index.html">Home</a>
+      <a href="explore-training.html">Explore Training</a>
+      <a href="career&guidence.html">Career Guidance</a>
+      <a href="contactus.html">Contact Us</a>
+    </div>
 
-<!-- (बाकी सारा content जैसा है वैसा ही रहेगा) -->
+    <div class="footer-right">
+      <h4>Connect With Us</h4>
+      <a href="#">WhatsApp</a>
+      <a href="#">Instagram</a>
+      <a href="#">YouTube</a>
+    </div>
+  </div>
 
-</main>
+  <div class="footer-bottom">
+    © 2025 Skills Builder Institute — All Rights Reserved
+  </div>
+</footer>
 
-<!-- ================= COMMON FOOTER ================= -->
-<iframe 
-  src="common-footer.html" 
-  style="width:100%;border:none;display:block;"
-></iframe>
+<!-- ===== WHATSAPP FLOAT ===== -->
+<a class="whatsapp-float" href="https://wa.me/917488894910" target="_blank">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg">
+</a>
 
 </body>
 </html>
