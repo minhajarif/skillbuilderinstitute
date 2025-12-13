@@ -488,3 +488,15 @@ form button:hover{
 .contact-banner{
   background:url("images/contactus.jpg") center/cover no-repeat;
 }
+
+header,
+.navbar,
+.dropdown{
+  overflow: visible;
+}
+
+.dropdown-menu{
+  position:absolute;
+  top:100%;
+  left:0;
+}
