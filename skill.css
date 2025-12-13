@@ -466,3 +466,25 @@ form button:hover{
     grid-template-columns:1fr;
   }
 }
+/* ================= BANNER COMMON ================= */
+.banner{
+  height:320px;
+  position:relative;
+}
+
+/* Dark overlay */
+.banner-overlay{
+  position:absolute;
+  inset:0;
+  background:rgba(0,0,0,.45);
+}
+
+/* About Us banner image */
+.about-banner{
+  background:url("images/aboutus.png") center/cover no-repeat;
+}
+
+/* Contact Us banner image */
+.contact-banner{
+  background:url("images/contactus.jpg") center/cover no-repeat;
+}
