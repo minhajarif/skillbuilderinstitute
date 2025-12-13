@@ -50,85 +50,85 @@
   </div>
 </section>
 
-<section class="section">
-  <h2>Trusted Skill Development Partner</h2>
-
-  <p>
-    From the first consultation to successful course completion, Skills Builder Institute stands with you at every step of your career journey. We are committed to guiding, training, and preparing individuals with practical skills that meet real industry demands.
-  </p>
-
-  <p>
-    Our institute is built on the belief that true success comes from hands-on learning, expert mentorship, and clear career direction. We focus on transforming learners into confident professionals who are ready to perform in real work environments from day one.
-  </p>
-
-  <p>
-    With structured training programs, experienced trainers, and industry-aligned curriculum, we ensure that every student gains practical knowledge, technical confidence, and professional discipline. Our approach is result-driven, not theory-based.
-  </p>
-
-  <p>
-    We support candidates from the beginning — understanding their goals, identifying the right skill path, and providing continuous guidance throughout the training process. Whether you aim for local employment or international opportunities, we prepare you accordingly.
-  </p>
-
-  <p>
-    Skills Builder Institute has earned trust through consistent quality, transparent guidance, and a strong focus on career outcomes. Thousands of learners have already taken confident steps toward a better future with us.
-  </p>
-
-  <p>
-    Our commitment does not end with training. We provide certification support, interview preparation, and placement assistance wherever applicable, helping students convert skills into real career opportunities.
-  </p>
-
-  <p>
-    At Skills Builder Institute, your success is our responsibility. We work with honesty, dedication, and a clear mission — to build skilled, job-ready professionals who can grow confidently in today’s competitive workforce.
-  </p>
-</section>
-
+<!-- ================= INTRO CONTENT ================= -->
 <section class="container">
-  <!-- Tum yahan baad me paragraph likhna -->
+  <section class="section">
+    <h2>Your Trusted Partner in Skill Development & Career Growth</h2>
+
+    <p>
+      At Skills Builder Institute, we stand with you from the very first step of your career journey.
+      Our mission is to guide, train, and prepare individuals with practical, job-oriented skills that
+      meet real industry requirements.
+    </p>
+
+    <p>
+      We believe that successful careers are built on strong foundations — clear guidance, hands-on
+      training, and continuous support. That is why our programs focus on practical learning,
+      professional discipline, and workplace readiness.
+    </p>
+
+    <p>
+      Whether you are seeking career guidance or professional training, our expert team helps you
+      identify the right path based on your goals, background, and future opportunities.
+    </p>
+
+    <p>
+      Thousands of learners have trusted Skills Builder Institute to transform their skills into
+      meaningful careers. Your success is our responsibility, and we are committed to delivering
+      honest guidance, quality training, and long-term career support.
+    </p>
+
+    <!-- 👉 Tum yahan aur paragraph baad me add kar sakte ho -->
+  </section>
 </section>
 
-<!-- ================= CONTENT ================= -->
-<main class="container" style="display:grid;grid-template-columns:1.1fr .9fr;gap:30px">
+<!-- ================= MAIN CONTENT ================= -->
+<main class="container" style="display:grid;grid-template-columns:1.2fr .8fr;gap:30px">
 
-  <!-- ========== FORM ========== -->
+  <!-- ================= FORM ================= -->
   <section class="section">
-    <h2>Send Us a Message</h2>
+    <h2>Send Us Your Details</h2>
 
     <form id="contactForm">
 
       <label>Full Name *</label>
       <input type="text" required>
 
+      <label>Age</label>
+      <input type="number" min="14" max="60">
+
+      <label>Calling Phone Number *</label>
+      <input type="tel" required>
+
+      <label>WhatsApp Number</label>
+      <input type="tel">
+
       <label>State *</label>
       <select id="state" required>
         <option value="">Select State</option>
-        <option>Bihar</option>
-        <option>Uttar Pradesh</option>
-        <option>Delhi</option>
+        <!-- All 26 states handled in JS -->
       </select>
 
       <label>City *</label>
-      <select id="city" disabled required>
+      <select id="city" required disabled>
         <option value="">Select State First</option>
       </select>
 
-      <label>Phone *</label>
-      <input type="tel" required>
-
-      <label>I want *</label>
+      <label>I Want *</label>
       <select id="purpose" required>
         <option value="">Select</option>
         <option value="career">Career Guidance</option>
         <option value="training">Training</option>
       </select>
 
-      <!-- Training block -->
+      <!-- Training Options -->
       <div id="trainingBlock" style="display:none">
 
         <label>Training Category *</label>
         <select id="trainingType">
           <option value="">Select Category</option>
           <option value="skill">Skill Training</option>
-          <option value="professional">Professional</option>
+          <option value="professional">Professional Courses</option>
           <option value="engineering">Engineering</option>
           <option value="programming">Programming</option>
           <option value="softskill">Soft Skills</option>
@@ -141,41 +141,42 @@
 
       </div>
 
-      <label>Message</label>
-      <textarea></textarea>
+      <label>Message (Optional)</label>
+      <textarea placeholder="Write your query here..."></textarea>
 
-      <button type="submit">Submit</button>
+      <button type="submit">Submit Enquiry</button>
     </form>
   </section>
 
-  <!-- ========== CONTACT DETAILS BOX ========== -->
+  <!-- ================= CONTACT BOX ================= -->
   <section class="section">
-    <h2>Contact Details</h2>
+    <h2>Contact Information</h2>
 
-    <p><strong>Address:</strong><br>
+    <p><strong>Address</strong><br>
       Sona Complex, 2nd Floor, Tulshi Nagar<br>
       Near Dayanand Ayurvedic Medical College<br>
       Siwan, Bihar – 841226
     </p>
 
-    <p><strong>Phone:</strong><br>
+    <p><strong>Phone</strong><br>
       +91 74888 94910<br>
       +91 99399 98360
     </p>
 
-    <p><strong>Email:</strong><br>
+    <p><strong>Email</strong><br>
       info@skillsbuilderinstitute.com
     </p>
 
     <hr>
 
-    <p><strong>Connect with us</strong></p>
+    <p><strong>Connect With Us</strong></p>
     <ul>
-      <li><a href="#">WhatsApp</a></li>
-      <li><a href="#">Instagram</a></li>
-      <li><a href="#">Facebook</a></li>
-      <li><a href="#">YouTube</a></li>
-      <li><a href="#">Telegram</a></li>
+      <li><a href="https://wa.me/channel/0029Vb6Kou2DuMRmU5kAKy1W">WhatsApp</a></li>
+      <li><a href="https://www.instagram.com/skills_builder_institute">Instagram</a></li>
+      <li><a href="https://www.fb.com/skillsbuilderinstitute">Facebook</a></li>
+      <li><a href="https://www.youtube.com/@SkillsBuilderInstitute">YouTube</a></li>
+      <li><a href="https://t.me/skillsbuilderinstitute">Telegram</a></li>
+      <li><a href="https://x.com/@SkillsBuilderSV">X (Twitter)</a></li>
     </ul>
   </section>
 
@@ -226,44 +227,7 @@
   <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg">
 </a>
 
-<!-- ================= JS ================= -->
-<script>
-const cities = {
-  "Bihar": ["Siwan","Patna","Gaya"],
-  "Uttar Pradesh": ["Kanpur","Lucknow","Noida"],
-  "Delhi": ["New Delhi"]
-};
-
-document.getElementById("state").addEventListener("change", function(){
-  const city = document.getElementById("city");
-  city.innerHTML = '<option value="">Select City</option>';
-  if(!this.value){ city.disabled = true; return; }
-  cities[this.value].forEach(c=>{
-    city.innerHTML += `<option>${c}</option>`;
-  });
-  city.disabled = false;
-});
-
-document.getElementById("purpose").addEventListener("change", function(){
-  document.getElementById("trainingBlock").style.display =
-    this.value === "training" ? "block" : "none";
-});
-
-const programs = {
-  skill:["Electrician","Plumber","Welder"],
-  professional:["HR","Accounts","Sales"],
-  engineering:["Civil","Mechanical"],
-  programming:["Web","Python","Java"],
-  softskill:["Communication","Interview Skills"]
-};
-
-document.getElementById("trainingType").addEventListener("change", function(){
-  const sub = document.getElementById("subCategory");
-  sub.innerHTML = '<option value="">Select Program</option>';
-  (programs[this.value]||[]).forEach(p=>{
-    sub.innerHTML += `<option>${p}</option>`;
-  });
-});
-</script>
+<!-- JS -->
+<script src="builder.js"></script>
 </body>
 </html>
