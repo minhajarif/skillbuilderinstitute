@@ -84,3 +84,147 @@ if (trainingTypeSelect && subCategorySelect) {
     }
   });
 }
+
+/* ===============================
+   COMMON BUILDER.JS
+   Works for: Home, About, Contact
+================================ */
+
+/* ---------- HERO SLIDER (HOME ONLY) ---------- */
+(function () {
+  const slides = document.querySelectorAll(".slide");
+  if (!slides.length) return;
+
+  let index = 0;
+  slides[index].classList.add("active");
+
+  setInterval(() => {
+    slides[index].classList.remove("active");
+    index = (index + 1) % slides.length;
+    slides[index].classList.add("active");
+  }, 5000);
+})();
+
+/* ---------- CONTACT FORM LOGIC ---------- */
+document.addEventListener("DOMContentLoaded", function () {
+
+  /* ===== STATE → CITY DATA (26+ STATES) ===== */
+  const stateCityMap = {
+    "Andhra Pradesh": ["Vijayawada", "Visakhapatnam", "Guntur"],
+    "Arunachal Pradesh": ["Itanagar"],
+    "Assam": ["Guwahati", "Silchar", "Dibrugarh"],
+    "Bihar": ["Patna", "Siwan", "Gaya", "Muzaffarpur"],
+    "Chhattisgarh": ["Raipur", "Bhilai", "Bilaspur"],
+    "Delhi": ["New Delhi", "Dwarka", "Rohini"],
+    "Goa": ["Panaji", "Margao"],
+    "Gujarat": ["Ahmedabad", "Surat", "Vadodara"],
+    "Haryana": ["Gurugram", "Faridabad", "Panipat"],
+    "Himachal Pradesh": ["Shimla", "Solan"],
+    "Jharkhand": ["Ranchi", "Jamshedpur"],
+    "Karnataka": ["Bengaluru", "Mysuru", "Hubli"],
+    "Kerala": ["Kochi", "Thiruvananthapuram"],
+    "Madhya Pradesh": ["Bhopal", "Indore", "Gwalior"],
+    "Maharashtra": ["Mumbai", "Pune", "Nagpur"],
+    "Odisha": ["Bhubaneswar", "Cuttack"],
+    "Punjab": ["Ludhiana", "Amritsar"],
+    "Rajasthan": ["Jaipur", "Jodhpur", "Udaipur"],
+    "Tamil Nadu": ["Chennai", "Coimbatore", "Madurai"],
+    "Telangana": ["Hyderabad", "Warangal"],
+    "Uttar Pradesh": ["Lucknow", "Kanpur", "Noida", "Varanasi"],
+    "Uttarakhand": ["Dehradun", "Haridwar"],
+    "West Bengal": ["Kolkata", "Siliguri"]
+  };
+
+  /* ===== TRAINING DATA ===== */
+  const trainingPrograms = {
+    skill: [
+      "Electrician",
+      "Plumber",
+      "Welder",
+      "Carpenter",
+      "Painter",
+      "Helper"
+    ],
+    professional: [
+      "HR Executive",
+      "Accounts Executive",
+      "Office Administration",
+      "Sales Executive",
+      "Digital Marketing"
+    ],
+    engineering: [
+      "Civil Engineering",
+      "Mechanical Engineering",
+      "Electrical Engineering"
+    ],
+    programming: [
+      "Web Development",
+      "Python Programming",
+      "Java Programming",
+      "Full Stack Development"
+    ],
+    softskill: [
+      "Communication Skills",
+      "Interview Preparation",
+      "Personality Development",
+      "Spoken English"
+    ]
+  };
+
+  /* ===== ELEMENTS ===== */
+  const stateSelect = document.getElementById("state");
+  const citySelect = document.getElementById("city");
+  const purposeSelect = document.getElementById("purpose");
+  const trainingBlock = document.getElementById("trainingBlock");
+  const trainingType = document.getElementById("trainingType");
+  const subCategory = document.getElementById("subCategory");
+
+  /* ===== STATE → CITY ===== */
+  if (stateSelect && citySelect) {
+    stateSelect.addEventListener("change", function () {
+      citySelect.innerHTML = `<option value="">Select City</option>`;
+      citySelect.disabled = true;
+
+      if (!this.value || !stateCityMap[this.value]) return;
+
+      stateCityMap[this.value].forEach(city => {
+        const opt = document.createElement("option");
+        opt.value = city;
+        opt.textContent = city;
+        citySelect.appendChild(opt);
+      });
+
+      citySelect.disabled = false;
+    });
+  }
+
+  /* ===== PURPOSE (CAREER / TRAINING) ===== */
+  if (purposeSelect && trainingBlock) {
+    purposeSelect.addEventListener("change", function () {
+      if (this.value === "training") {
+        trainingBlock.style.display = "block";
+      } else {
+        trainingBlock.style.display = "none";
+        trainingType.value = "";
+        subCategory.innerHTML = `<option value="">Select Program</option>`;
+      }
+    });
+  }
+
+  /* ===== TRAINING TYPE → PROGRAMS ===== */
+  if (trainingType && subCategory) {
+    trainingType.addEventListener("change", function () {
+      subCategory.innerHTML = `<option value="">Select Program</option>`;
+
+      if (!trainingPrograms[this.value]) return;
+
+      trainingPrograms[this.value].forEach(program => {
+        const opt = document.createElement("option");
+        opt.value = program;
+        opt.textContent = program;
+        subCategory.appendChild(opt);
+      });
+    });
+  }
+
+});
