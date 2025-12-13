@@ -429,6 +429,11 @@ form button:hover{
   line-height:1.5;
 }
 
+form select{
+  pointer-events: auto !important;
+  z-index: 99;
+  position: relative;
+}
 .contact-box .divider{
   height:1px;
   background:#e6e6e6;
