@@ -235,3 +235,157 @@ footer{
   z-index:999;
 }
 .whatsapp-float img{width:30px}
+
+/* ================= RESET ================= */
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+  font-family:Inter,Arial,sans-serif;
+  background:#f6f8fb;
+  color:#333;
+}
+a{text-decoration:none;color:inherit}
+ul{list-style:none}
+
+/* ================= NAVBAR ================= */
+header{
+  background:#071a33;
+  height:78px;
+  display:flex;
+  align-items:center;
+}
+.navbar{
+  max-width:1200px;
+  margin:auto;
+  width:100%;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+.logo img{height:42px}
+
+.nav-links{
+  display:flex;
+  align-items:center;
+  gap:30px;
+  color:#fff;
+  font-size:14px;
+}
+.nav-links a:hover{color:#ff8c2a}
+
+/* DROPDOWN */
+.dropdown{position:relative}
+.dropdown>a::after{content:" ▾";font-size:12px}
+.dropdown-menu{
+  position:absolute;
+  top:120%;
+  left:0;
+  background:#0b2347;
+  min-width:220px;
+  display:none;
+  flex-direction:column;
+  border-radius:6px;
+  overflow:hidden;
+  z-index:99;
+}
+.dropdown-menu a{
+  padding:12px 16px;
+  color:#fff;
+}
+.dropdown-menu a:hover{background:#ff8c2a}
+.dropdown:hover .dropdown-menu{display:flex}
+
+.nav-right{
+  display:flex;
+  gap:22px;
+  color:#fff;
+  font-size:13px;
+}
+
+/* ================= BANNER ================= */
+.banner{
+  height:320px;
+  background:url('images/aboutus.png') center/cover no-repeat;
+}
+.banner-overlay{
+  background:rgba(0,0,0,.35);
+  height:100%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+.banner-title{
+  color:#fff;
+  font-size:30px;
+  font-weight:700;
+}
+
+/* ================= CONTENT ================= */
+.container{
+  max-width:1100px;
+  margin:auto;
+  padding:40px 20px;
+}
+.section{
+  background:#fff;
+  padding:26px;
+  border-radius:14px;
+  margin-bottom:26px;
+  box-shadow:0 10px 30px rgba(0,0,0,.08);
+}
+
+/* ================= FOOTER ================= */
+footer{
+  background:#071a33;
+  color:#fff;
+}
+.footer-inner{
+  max-width:1200px;
+  margin:auto;
+  padding:60px 20px;
+  display:grid;
+  grid-template-columns:1.2fr 1fr 1fr;
+  gap:70px;
+}
+.footer-mid a,
+.footer-right a{
+  display:block;
+  margin-bottom:10px;
+  font-size:14px;
+  color:#ddd;
+  padding-left:18px;
+  position:relative;
+}
+.footer-mid a::before,
+.footer-right a::before{
+  content:"";
+  position:absolute;
+  left:0;
+  top:50%;
+  transform:translateY(-50%);
+  border-top:5px solid transparent;
+  border-bottom:5px solid transparent;
+  border-left:7px solid #ff8c2a;
+}
+.footer-bottom{
+  text-align:center;
+  padding:16px;
+  background:#06152b;
+  font-size:13px;
+  color:#ccc;
+}
+
+/* ================= WHATSAPP FLOAT ================= */
+.whatsapp-float{
+  position:fixed;
+  right:20px;
+  bottom:20px;
+  width:56px;
+  height:56px;
+  background:#25d366;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  z-index:999;
+}
+.whatsapp-float img{width:30px}
