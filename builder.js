@@ -336,3 +336,64 @@ document.addEventListener("DOMContentLoaded", () => {
   exploreLi.addEventListener("mouseenter", () => exploreDropdown.style.display = "block");
   exploreLi.addEventListener("mouseleave", () => exploreDropdown.style.display = "none");
 </script>
+
+/* =========================
+   GLOBAL JS – Skills Builder
+   ========================= */
+
+/* ===== HERO / SLIDER (Explore Training) ===== */
+document.addEventListener("DOMContentLoaded", () => {
+  const slides = document.querySelectorAll(".slide");
+
+  if (slides.length > 1) {
+    let current = 0;
+
+    setInterval(() => {
+      slides[current].classList.remove("active");
+      current = (current + 1) % slides.length;
+      slides[current].classList.add("active");
+    }, 4000); // 4 seconds
+  }
+});
+
+
+/* ===== DROPDOWN SAFETY (Mobile + Desktop) ===== */
+document.addEventListener("DOMContentLoaded", () => {
+  const dropdowns = document.querySelectorAll(".dropdown");
+
+  dropdowns.forEach(drop => {
+    const menu = drop.querySelector(".dropdown-menu");
+
+    if (!menu) return;
+
+    // Desktop hover
+    drop.addEventListener("mouseenter", () => {
+      menu.style.display = "flex";
+    });
+
+    drop.addEventListener("mouseleave", () => {
+      menu.style.display = "none";
+    });
+
+    // Mobile click
+    drop.addEventListener("click", (e) => {
+      if (window.innerWidth <= 900) {
+        e.preventDefault();
+        menu.style.display =
+          menu.style.display === "flex" ? "none" : "flex";
+      }
+    });
+  });
+});
+
+
+/* ===== SMOOTH SCROLL (Optional – safe) ===== */
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener("click", function (e) {
+    e.preventDefault();
+    const target = document.querySelector(this.getAttribute("href"));
+    if (target) {
+      target.scrollIntoView({ behavior: "smooth" });
+    }
+  });
+});
