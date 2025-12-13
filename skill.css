@@ -29,7 +29,6 @@ header{
   gap:10px;
   color:#fff;
   font-weight:700;
-  font-size:16px;
 }
 .logo img{height:42px}
 
@@ -42,15 +41,12 @@ header{
 }
 .nav-links a:hover{color:#ff8c2a}
 
-/* ===== DROPDOWN ===== */
+/* ===== NAVBAR DROPDOWN (DO NOT TOUCH) ===== */
 .dropdown{position:relative}
-.dropdown > a::after{
-  content:" ▾";
-  font-size:12px;
-}
+.dropdown > a::after{content:" ▾";font-size:12px}
 .dropdown-menu{
   position:absolute;
-  top:120%;
+  top:100%;
   left:0;
   background:#0b2347;
   min-width:220px;
@@ -58,33 +54,22 @@ header{
   flex-direction:column;
   border-radius:6px;
   overflow:hidden;
-  z-index:99;
+  z-index:999;
 }
 .dropdown-menu a{
   padding:12px 16px;
   color:#fff;
   font-size:14px;
 }
-.dropdown-menu a:hover{
-  background:#ff8c2a;
-}
-.dropdown:hover .dropdown-menu{
-  display:flex;
-}
+.dropdown-menu a:hover{background:#ff8c2a}
+.dropdown:hover .dropdown-menu{display:flex}
 
-/* ===== RIGHT CONTACT ===== */
+/* ===== NAV RIGHT ===== */
 .nav-right{
   display:flex;
-  align-items:center;
   gap:22px;
   color:#fff;
   font-size:13px;
-}
-.nav-contact{
-  display:flex;
-  align-items:center;
-  gap:6px;
-  white-space:nowrap;
 }
 
 /* ================= HERO SLIDER ================= */
@@ -100,7 +85,6 @@ header{
   background-size:cover;
   background-position:center;
   opacity:0;
-  transform:scale(1);
   transition:opacity 1s ease, transform 6s linear;
 }
 .slide.active{
@@ -108,39 +92,134 @@ header{
   transform:scale(1.08);
 }
 
-/* ================= CONTENT ================= */
-.home-content{
+/* ================= COMMON CONTENT ================= */
+.container{
   max-width:1100px;
   margin:auto;
-  padding:90px 20px 70px;
+  padding:40px 20px;
 }
-.home-content h1{
-  font-size:32px;
+.section{
+  background:#fff;
+  padding:28px;
+  border-radius:14px;
   margin-bottom:26px;
+  box-shadow:0 10px 30px rgba(0,0,0,.08);
 }
-.home-content p{
-  margin-bottom:18px;
-  line-height:1.75;
+.section h2{
+  font-size:22px;
+  margin-bottom:14px;
+}
+.section p{
   font-size:15px;
+  line-height:1.7;
   color:#444;
 }
 
-/* ================= FEATURES ================= */
-.features{
+/* ================= BANNER COMMON ================= */
+.banner{
+  height:320px;
+  position:relative;
+}
+.banner-overlay{
+  position:absolute;
+  inset:0;
+  background:rgba(0,0,0,.45);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+.banner-title{
+  color:#fff;
+  font-size:32px;
+  font-weight:700;
+}
+
+/* Page specific banners */
+.about-banner{
+  background:url("images/aboutus.png") center/cover no-repeat;
+}
+.contact-banner{
+  background:url("images/contactus.jpg") center/cover no-repeat;
+}
+.career-banner{
+  background:url("images/career&guidencebanner.png") center/cover no-repeat;
+}
+
+/* ================= CONTACT PAGE LAYOUT ================= */
+.contact-layout{
   display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:26px;
-  margin-top:50px;
+  grid-template-columns:1.1fr .9fr;
+  gap:30px;
 }
-.feature{
+
+/* ================= FORM ================= */
+form label{
+  display:block;
+  margin:14px 0 6px;
+  font-weight:600;
+}
+form input,
+form select,
+form textarea{
+  width:100%;
+  padding:11px 12px;
+  border:1px solid #d9dde3;
+  border-radius:8px;
+}
+form textarea{min-height:110px}
+form input:focus,
+form select:focus,
+form textarea:focus{
+  outline:none;
+  border-color:#ff8c2a;
+}
+form button{
+  margin-top:18px;
+  width:100%;
+  padding:12px;
+  background:#ff8c2a;
+  border:none;
+  border-radius:10px;
+  color:#fff;
+  font-weight:700;
+  cursor:pointer;
+}
+
+/* ================= CONTACT INFO BOX ================= */
+.contact-box{
   background:#fff;
-  padding:30px;
+  padding:28px;
   border-radius:14px;
-  box-shadow:0 10px 30px rgba(0,0,0,.08);
+  box-shadow:0 12px 35px rgba(0,0,0,.08);
 }
-.feature h3{
-  margin-bottom:12px;
-  font-size:18px;
+.contact-item{
+  display:flex;
+  gap:14px;
+  margin-bottom:18px;
+}
+.contact-item strong{display:block}
+.contact-box hr{
+  margin:22px 0;
+  border:none;
+  border-top:1px solid #ddd;
+}
+
+/* Social boxes */
+.social-links{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:12px;
+}
+.social-links a{
+  background:#f6f8fb;
+  padding:10px;
+  border-radius:8px;
+  text-align:center;
+  transition:.3s;
+}
+.social-links a:hover{
+  background:#ff8c2a;
+  color:#fff;
 }
 
 /* ================= FOOTER ================= */
@@ -156,68 +235,30 @@ footer{
   grid-template-columns:1.2fr 1fr 1fr;
   gap:70px;
 }
-.footer-left p{
-  margin:8px 0;
-  font-size:14px;
-  color:#ddd;
-}
-.map-btn{
-  margin-top:16px;
-  display:inline-block;
-  background:#ff8c2a;
-  color:#fff;
-  padding:10px 18px;
-  border-radius:6px;
-  font-size:14px;
-}
-
-.footer-mid{
-  padding-left:40px;
-}
-.footer-right{
-  padding-left:60px;
-}
-.footer-mid h4,
-.footer-right h4{
-  margin-bottom:16px;
-  font-size:16px;
-}
 .footer-mid a,
 .footer-right a{
   display:block;
   margin-bottom:10px;
-  font-size:14px;
   color:#ddd;
-}
-.footer-mid a:hover,
-.footer-right a:hover{
-  color:#ff8c2a;
-}
-
-/* ===== FOOTER TRIANGLE ARROW ===== */
-.footer-mid a,
-.footer-right a{
-  position: relative;
-  padding-left: 18px;
+  padding-left:18px;
+  position:relative;
 }
 .footer-mid a::before,
 .footer-right a::before{
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 50%;
-  transform: translateY(-50%);
-  border-top: 5px solid transparent;
-  border-bottom: 5px solid transparent;
-  border-left: 7px solid #ff8c2a;
+  content:"";
+  position:absolute;
+  left:0;
+  top:50%;
+  transform:translateY(-50%);
+  border-left:7px solid #ff8c2a;
+  border-top:5px solid transparent;
+  border-bottom:5px solid transparent;
 }
-
 .footer-bottom{
   text-align:center;
   padding:16px;
   background:#06152b;
   font-size:13px;
-  color:#ccc;
 }
 
 /* ================= WHATSAPP FLOAT ================= */
@@ -236,267 +277,8 @@ footer{
 }
 .whatsapp-float img{width:30px}
 
-/* ================= BANNER (ABOUT / CONTACT) ================= */
-.banner{
-  height:320px;
-  background:center/cover no-repeat;
-}
-.banner-overlay{
-  background:rgba(0,0,0,.35);
-  height:100%;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-}
-.banner-title{
-  color:#fff;
-  font-size:30px;
-  font-weight:700;
-}
-
-/* ================= COMMON CONTENT ================= */
-.container{
-  max-width:1100px;
-  margin:auto;
-  padding:40px 20px;
-}
-.section{
-  background:#fff;
-  padding:26px;
-  border-radius:14px;
-  margin-bottom:26px;
-  box-shadow:0 10px 30px rgba(0,0,0,.08);
-}
-/* ================= CONTACT PAGE BANNER ================= */
-.banner{
-  height:320px;
-  background:url("images/contactus.jpg") center/cover no-repeat;
-}
-.banner-overlay{
-  height:100%;
-  background:rgba(0,0,0,.45);
-  display:flex;
-  align-items:center;
-  justify-content:center;
-}
-.banner-title{
-  color:#fff;
-  font-size:32px;
-  font-weight:700;
-}
-
-/* ================= PAGE CONTENT ================= */
-.container{
-  max-width:1100px;
-  margin:auto;
-  padding:40px 20px;
-}
-
-.section{
-  background:#fff;
-  padding:28px;
-  border-radius:14px;
-  margin-bottom:26px;
-  box-shadow:0 10px 30px rgba(0,0,0,.08);
-}
-.section h2{
-  font-size:22px;
-  margin-bottom:14px;
-}
-.section p{
-  font-size:15px;
-  line-height:1.7;
-  margin-bottom:14px;
-  color:#444;
-}
-
-/* ================= CONTACT LAYOUT ================= */
-.contact-layout{
-  display:grid;
-  grid-template-columns:1.1fr .9fr;
-  gap:30px;
-}
-
-/* ================= FORM ================= */
-form label{
-  display:block;
-  margin:14px 0 6px;
-  font-weight:600;
-  font-size:14px;
-}
-form input,
-form select,
-form textarea{
-  width:100%;
-  padding:11px 12px;
-  border:1px solid #d9dde3;
-  border-radius:8px;
-  font-size:14px;
-}
-form textarea{
-  min-height:110px;
-  resize:vertical;
-}
-form input:focus,
-form select:focus,
-form textarea:focus{
-  outline:none;
-  border-color:#ff8c2a;
-}
-form button{
-  margin-top:18px;
-  width:100%;
-  padding:12px;
-  background:#ff8c2a;
-  border:none;
-  border-radius:10px;
-  color:#fff;
-  font-weight:700;
-  font-size:15px;
-  cursor:pointer;
-}
-form button:hover{
-  background:#e96f13;
-}
-
-/* ================= CONTACT INFO BOX ================= */
-.contact-box p{
-  margin-bottom:12px;
-  font-size:14px;
-  color:#444;
-}
-.contact-box strong{
-  color:#111;
-}
-.contact-box hr{
-  margin:18px 0;
-  border:none;
-  border-top:1px solid #ddd;
-}
-.contact-box ul{
-  list-style:none;
-  padding:0;
-}
-.contact-box ul li{
-  margin-bottom:8px;
-}
-.contact-box ul li a{
-  color:#ff8c2a;
-  font-weight:500;
-}
-
 /* ================= RESPONSIVE ================= */
 @media(max-width:900px){
-  .contact-layout{
-    grid-template-columns:1fr;
-  }
-}
-/* ================= CONTACT INFO BOX ================= */
-.contact-box{
-  background:#ffffff;
-  padding:28px;
-  border-radius:14px;
-  box-shadow:0 12px 35px rgba(0,0,0,.08);
-}
-
-.contact-box h2{
-  font-size:22px;
-  margin-bottom:20px;
-}
-
-.contact-item{
-  display:flex;
-  gap:14px;
-  margin-bottom:18px;
-}
-
-.contact-item .icon{
-  font-size:20px;
-  line-height:1;
-  margin-top:4px;
-}
-
-.contact-item strong{
-  display:block;
-  font-size:15px;
-  margin-bottom:4px;
-}
-
-.contact-item p{
-  font-size:14px;
-  color:#555;
-  line-height:1.5;
-}
-
-.contact-box .divider{
-  height:1px;
-  background:#e6e6e6;
-  margin:22px 0;
-}
-
-.contact-box h3{
-  font-size:18px;
-  margin-bottom:14px;
-}
-
-.social-links{
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:12px;
-}
-
-.social-links a{
-  display:block;
-  background:#f6f8fb;
-  padding:10px 14px;
-  border-radius:8px;
-  font-size:14px;
-  text-align:center;
-  transition:.25s;
-}
-
-.social-links a:hover{
-  background:#ff8c2a;
-  color:#fff;
-}
-
-/* Responsive */
-@media(max-width:900px){
-  .social-links{
-    grid-template-columns:1fr;
-  }
-}
-/* ================= BANNER COMMON ================= */
-.banner{
-  height:320px;
-  position:relative;
-}
-
-/* Dark overlay */
-.banner-overlay{
-  position:absolute;
-  inset:0;
-  background:rgba(0,0,0,.45);
-}
-
-/* About Us banner image */
-.about-banner{
-  background:url("images/aboutus.png") center/cover no-repeat;
-}
-
-/* Contact Us banner image */
-.contact-banner{
-  background:url("images/contactus.jpg") center/cover no-repeat;
-}
-
-header,
-.navbar,
-.dropdown{
-  overflow: visible;
-}
-
-.dropdown-menu{
-  position:absolute;
-  top:100%;
-  left:0;
+  .contact-layout{grid-template-columns:1fr}
+  .social-links{grid-template-columns:1fr}
 }
