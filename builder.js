@@ -228,3 +228,91 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
 });
+
+document.addEventListener("DOMContentLoaded", () => {
+
+  /* ================= STATE → CITY DATA ================= */
+  const stateCityMap = {
+    "Andhra Pradesh": ["Visakhapatnam","Vijayawada","Guntur"],
+    "Assam": ["Guwahati","Silchar"],
+    "Bihar": ["Patna","Siwan","Gaya","Muzaffarpur"],
+    "Chhattisgarh": ["Raipur","Bilaspur"],
+    "Delhi": ["New Delhi"],
+    "Gujarat": ["Ahmedabad","Surat","Vadodara"],
+    "Haryana": ["Gurugram","Faridabad","Panipat"],
+    "Himachal Pradesh": ["Shimla","Solan"],
+    "Jharkhand": ["Ranchi","Dhanbad"],
+    "Karnataka": ["Bengaluru","Mysuru"],
+    "Kerala": ["Kochi","Thiruvananthapuram"],
+    "Madhya Pradesh": ["Bhopal","Indore"],
+    "Maharashtra": ["Mumbai","Pune","Nagpur"],
+    "Odisha": ["Bhubaneswar","Cuttack"],
+    "Punjab": ["Ludhiana","Amritsar"],
+    "Rajasthan": ["Jaipur","Jodhpur"],
+    "Tamil Nadu": ["Chennai","Coimbatore"],
+    "Telangana": ["Hyderabad","Warangal"],
+    "Uttar Pradesh": ["Lucknow","Kanpur","Noida","Varanasi"],
+    "Uttarakhand": ["Dehradun","Haridwar"],
+    "West Bengal": ["Kolkata","Howrah"]
+  };
+
+  const stateSelect = document.getElementById("state");
+  const citySelect  = document.getElementById("city");
+
+  /* ================= LOAD STATES ================= */
+  Object.keys(stateCityMap).forEach(state => {
+    const opt = document.createElement("option");
+    opt.value = state;
+    opt.textContent = state;
+    stateSelect.appendChild(opt);
+  });
+
+  /* ================= STATE CHANGE ================= */
+  stateSelect.addEventListener("change", () => {
+    citySelect.innerHTML = `<option value="">Select City</option>`;
+    citySelect.disabled = true;
+
+    if (!stateSelect.value) return;
+
+    stateCityMap[stateSelect.value].forEach(city => {
+      const opt = document.createElement("option");
+      opt.value = city;
+      opt.textContent = city;
+      citySelect.appendChild(opt);
+    });
+
+    citySelect.disabled = false;
+  });
+
+  /* ================= PURPOSE ================= */
+  const purpose = document.getElementById("purpose");
+  const trainingBlock = document.getElementById("trainingBlock");
+
+  purpose.addEventListener("change", () => {
+    trainingBlock.style.display =
+      purpose.value === "training" ? "block" : "none";
+  });
+
+  /* ================= TRAINING PROGRAMS ================= */
+  const programs = {
+    skill: ["Electrician","Plumber","Welder","Fitter","Helper"],
+    professional: ["HR Executive","Accounts","Sales"],
+    engineering: ["Civil","Mechanical","Electrical"],
+    programming: ["Web Development","Python","Java"],
+    softskill: ["Communication","Interview Skills"]
+  };
+
+  const trainingType = document.getElementById("trainingType");
+  const subCategory  = document.getElementById("subCategory");
+
+  trainingType.addEventListener("change", () => {
+    subCategory.innerHTML = `<option value="">Select Program</option>`;
+    (programs[trainingType.value] || []).forEach(p => {
+      const opt = document.createElement("option");
+      opt.value = p;
+      opt.textContent = p;
+      subCategory.appendChild(opt);
+    });
+  });
+
+});
