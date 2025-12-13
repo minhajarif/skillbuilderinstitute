@@ -90,8 +90,8 @@ if (trainingTypeSelect && subCategorySelect) {
    Works for: Home, About, Contact
 ================================ */
 
-/* ---------- HERO SLIDER (HOME ONLY) ---------- */
-(function () {
+/* ================= HERO SLIDER (ALL PAGES SAFE) ================= */
+document.addEventListener("DOMContentLoaded", () => {
   const slides = document.querySelectorAll(".slide");
   if (!slides.length) return;
 
@@ -102,8 +102,8 @@ if (trainingTypeSelect && subCategorySelect) {
     slides[index].classList.remove("active");
     index = (index + 1) % slides.length;
     slides[index].classList.add("active");
-  }, 5000);
-})();
+  }, 4000);
+});
 
 /* ---------- CONTACT FORM LOGIC ---------- */
 document.addEventListener("DOMContentLoaded", function () {
