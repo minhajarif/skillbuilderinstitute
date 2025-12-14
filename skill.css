@@ -652,6 +652,38 @@ a{text-decoration:none;color:inherit}
 
   /* Dropdown */
 /* Navbar item */
+
+/* ================= RESPONSIVE MEDIA QUERY (SAFE – NO CHANGE) ================= */
+
+/* Large Desktop (default tumhara CSS handle kar raha hai) */
+
+/* Laptop / Tablet */
+@media (max-width: 1024px) {
+
+  .box-grid,
+  .grid,
+  .overlap-boxes{
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+
+  .box-grid,
+  .grid,
+  .overlap-boxes{
+    grid-template-columns: 1fr;
+  }
+
+  .box,
+  .cat-box,
+  .card{
+    width: 100%;
+  }
+
+}
 .dropdown{
   position:relative;     /* ⭐ navbar ke flow me rahe */
 }
