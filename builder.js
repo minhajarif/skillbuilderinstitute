@@ -15,36 +15,6 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 
-/* ================= CONTACT FORM LOGIC ================= */
-
-/* STATE → CITY */
-const citiesByState = {
-  "Bihar": ["Siwan", "Patna", "Gaya"],
-  "Uttar Pradesh": ["Kanpur", "Lucknow", "Noida"],
-  "Delhi": ["New Delhi"]
-};
-
-const stateSelect = document.getElementById("state");
-const citySelect = document.getElementById("city");
-
-if (stateSelect && citySelect) {
-  stateSelect.addEventListener("change", function () {
-    citySelect.innerHTML = '<option value="">Select City</option>';
-    citySelect.disabled = true;
-
-    if (citiesByState[this.value]) {
-      citiesByState[this.value].forEach(city => {
-        const option = document.createElement("option");
-        option.textContent = city;
-        option.value = city;
-        citySelect.appendChild(option);
-      });
-      citySelect.disabled = false;
-    }
-  });
-}
-
-
 /* I WANT → TRAINING BLOCK */
 const purposeSelect = document.getElementById("purpose");
 const trainingBlock = document.getElementById("trainingBlock");
@@ -112,7 +82,7 @@ document.addEventListener("DOMContentLoaded", function () {
     "Andhra Pradesh": ["Vijayawada", "Visakhapatnam", "Guntur"],
     "Arunachal Pradesh": ["Itanagar"],
     "Assam": ["Guwahati", "Silchar", "Dibrugarh"],
-    "Bihar": ["Patna", "Siwan", "Gaya", "Muzaffarpur"],
+    "Bihar": ["Patna", "Gaya", "Bhagalpur", "Muzaffarpur", "Darbhanga", "Purnia", "Arrah", "Begusarai", "Katihar", "Munger", "Chapra", "Sasaram", "Hajipur", "Siwan", "Motihari", "Bettiah", "Sitamarhi", "Madhubani", "Samastipur", "Nalanda (Bihar Sharif)", "Jehanabad", "Aurangabad", "Nawada", "Lakhisarai", "Sheikhpura", "Jamui", "Buxar", "Rohtas", "Kaimur (Bhabua)", "Gopalganj", "Supaul", "Madhepura", "Saharsa", "Araria", "Kishanganj", "Khagaria", "West Champaran", "East Champaran", "Vaishali", "Banka"/"],
     "Chhattisgarh": ["Raipur", "Bhilai", "Bilaspur"],
     "Delhi": ["New Delhi", "Dwarka", "Rohini"],
     "Goa": ["Panaji", "Margao"],
