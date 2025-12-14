@@ -724,3 +724,23 @@ a{text-decoration:none;color:inherit}
   }
 
   
+  /* Cards grid */
+.grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:14px;
+    margin-top:-10px;
+  }
+.card{
+    background:#fff;
+    padding:18px;
+    border-radius:12px;
+    text-align:center;
+    font-weight:700;
+    cursor:pointer;
+    box-shadow:0 10px 30px rgba(2,6,23,.08);
+    transition:.28s;
+  }
+.card:hover{transform:translateY(-4px);box-shadow:0 14px 40px rgba(2,6,23,.12)}
+
+ 
