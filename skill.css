@@ -31,7 +31,7 @@ header{
   font-weight:700;
   font-size:25px;
 }
-.logo img{height:42px}
+.logo img{height:52px}
 
 .nav-links{
   display:flex;
@@ -762,8 +762,8 @@ html, body{
  }
 
   .logo{
-    font-size:20px;
-    gap:12px;
+    font-size:35px;
+    gap:22px;
   }
 
   header .logo{
