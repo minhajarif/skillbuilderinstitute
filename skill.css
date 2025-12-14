@@ -742,3 +742,21 @@ a{text-decoration:none;color:inherit}
     transition:.28s;
   }
 .card:hover{transform:translateY(-4px);box-shadow:0 14px 40px rgba(2,6,23,.12)}
+
+/* ================= EXPLORE INNER PAGES BOX OVERLAP ================= */
+body.inner-explore .box-grid,
+body.inner-explore .overlap-boxes,
+body.inner-explore .grid{
+  position: relative;
+  margin-top: -60px;
+  z-index: 20;
+}
+
+/* Mobile */
+@media(max-width:600px){
+  body.inner-explore .box-grid,
+  body.inner-explore .overlap-boxes,
+  body.inner-explore .grid{
+    margin-top: -45px;
+  }
+}
