@@ -78,21 +78,19 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 
-let slides = document.querySelectorAll(".slide");
+document.addEventListener("DOMContentLoaded", () => {
+
+  let slides = document.querySelectorAll(".slide");
   let index = 0;
 
-function showSlide(){
-    slides.forEach(s => s.classList.remove("active"));
-    slides[index].classList.add("active");
-    index = (index + 1) % slides.length;
+  if(slides.length > 0){
+    slides[0].classList.add("active");
+
+    setInterval(() => {
+      slides.forEach(s => s.classList.remove("active"));
+      slides[index].classList.add("active");
+      index = (index + 1) % slides.length;
+    }, 3000);
   }
 
-setInterval(showSlide, 3000);
-
-  // Dropdown
-const exploreLi = document.getElementById("exploreLi");
- 
-const exploreDropdown = document.getElementById("exploreDropdown");
-
-  exploreLi.addEventListener("mouseenter", () => exploreDropdown.style.display = "block");
-  exploreLi.addEventListener("mouseleave", () => exploreDropdown.style.display = "none");
+});
