@@ -335,3 +335,64 @@ form button{
     grid-template-columns:1fr;
   }
 }
+
+/* =====================================================
+   EXPLORE TRAINING INNER PAGES – OVERLAP FIX ONLY
+   (NO CHANGE TO MAIN EXPLORE PAGE)
+===================================================== */
+
+/* Programming */
+body:has(a[href*="programming"]) .overlap-boxes,
+body:has(a[href*="programming"]) .box-grid,
+body:has(a[href*="programming"]) .grid{
+  margin-top:-60px;
+  position:relative;
+  z-index:20;
+}
+
+/* Professional */
+body:has(a[href*="professional"]) .overlap-boxes,
+body:has(a[href*="professional"]) .box-grid,
+body:has(a[href*="professional"]) .grid{
+  margin-top:-60px;
+  position:relative;
+  z-index:20;
+}
+
+/* Engineering */
+body:has(a[href*="engineering"]) .overlap-boxes,
+body:has(a[href*="engineering"]) .box-grid,
+body:has(a[href*="engineering"]) .grid{
+  margin-top:-60px;
+  position:relative;
+  z-index:20;
+}
+
+/* Skill Training */
+body:has(a[href*="skill"]) .overlap-boxes,
+body:has(a[href*="skill"]) .box-grid,
+body:has(a[href*="skill"]) .grid{
+  margin-top:-60px;
+  position:relative;
+  z-index:20;
+}
+
+/* Soft Skills */
+body:has(a[href*="soft"]) .overlap-boxes,
+body:has(a[href*="soft"]) .box-grid,
+body:has(a[href*="soft"]) .grid{
+  margin-top:-60px;
+  position:relative;
+  z-index:20;
+}
+
+/* Mobile adjustment – inner pages only */
+@media(max-width:600px){
+  body:has(a[href*="programming"]) .overlap-boxes,
+  body:has(a[href*="professional"]) .overlap-boxes,
+  body:has(a[href*="engineering"]) .overlap-boxes,
+  body:has(a[href*="skill"]) .overlap-boxes,
+  body:has(a[href*="soft"]) .overlap-boxes{
+    margin-top:-45px;
+  }
+}
