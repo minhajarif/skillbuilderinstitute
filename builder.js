@@ -82,7 +82,7 @@ document.addEventListener("DOMContentLoaded", function () {
     "Andhra Pradesh": ["Vijayawada", "Visakhapatnam", "Guntur"],
     "Arunachal Pradesh": ["Itanagar"],
     "Assam": ["Guwahati", "Silchar", "Dibrugarh"],
-    "Bihar": ["Patna", "Gaya", "Bhagalpur", "Muzaffarpur", "Darbhanga", "Purnia", "Arrah", "Begusarai", "Katihar", "Munger", "Chapra", "Sasaram", "Hajipur", "Siwan", "Motihari", "Bettiah", "Sitamarhi", "Madhubani", "Samastipur", "Nalanda (Bihar Sharif)", "Jehanabad", "Aurangabad", "Nawada", "Lakhisarai", "Sheikhpura", "Jamui", "Buxar", "Rohtas", "Kaimur (Bhabua)", "Gopalganj", "Supaul", "Madhepura", "Saharsa", "Araria", "Kishanganj", "Khagaria", "West Champaran", "East Champaran", "Vaishali", "Banka"/"],
+    "Bihar": ["Patna", "Gaya", "Bhagalpur", "Muzaffarpur", "Darbhanga", "Purnia", "Arrah", "Begusarai", "Katihar", "Munger", "Chapra", "Sasaram", "Hajipur", "Siwan", "Motihari", "Bettiah", "Sitamarhi", "Madhubani", "Samastipur", "Nalanda (Bihar Sharif)", "Jehanabad", "Aurangabad", "Nawada", "Lakhisarai", "Sheikhpura", "Jamui", "Buxar", "Rohtas", "Kaimur (Bhabua)", "Gopalganj", "Supaul", "Madhepura", "Saharsa", "Araria", "Kishanganj", "Khagaria", "West Champaran", "East Champaran", "Vaishali", "Banka"],
     "Chhattisgarh": ["Raipur", "Bhilai", "Bilaspur"],
     "Delhi": ["New Delhi", "Dwarka", "Rohini"],
     "Goa": ["Panaji", "Margao"],
