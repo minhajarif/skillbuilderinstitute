@@ -738,3 +738,62 @@ body.inner-explore .grid{
     margin-top: -45px;
   }
 }
+
+/* ================= FINAL MOBILE RESPONSIVE FIX ================= */
+
+/* Stop horizontal overflow */
+html, body{
+  width:100%;
+  overflow-x:hidden;
+}
+
+/* Mobile adjustments */
+@media (max-width:768px){
+
+  /* ===== NAVBAR FIX ===== */
+  header{
+    height:auto;
+  }
+
+  .navbar{
+    flex-wrap:wrap;
+    padding:10px 16px;
+    gap:12px;
+  }
+
+  .logo{
+    font-size:20px;
+    gap:12px;
+  }
+
+  .nav-links{
+    width:100%;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:16px;
+  }
+
+  .nav-right{
+    width:100%;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:14px;
+  }
+
+  .nav-contact{
+    white-space:normal;
+  }
+
+  /* ===== FOOTER FIX ===== */
+  .footer-inner{
+    grid-template-columns:1fr;
+    gap:40px;
+    padding:40px 16px;
+  }
+
+  .footer-mid,
+  .footer-right{
+    padding-left:0;
+  }
+
+}
