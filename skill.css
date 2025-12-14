@@ -26,10 +26,10 @@ header{
 .logo{
   display:flex;
   align-items:center;
-  gap:10px;
+  gap:20px;
   color:#fff;
   font-weight:700;
-  font-size:16px;
+  font-size:25px;
 }
 .logo img{height:42px}
 
@@ -386,12 +386,6 @@ form button:hover{
   font-weight:500;
 }
 
-/* ================= RESPONSIVE ================= */
-@media(max-width:900px){
-  .contact-layout{
-    grid-template-columns:1fr;
-  }
-}
 /* ================= CONTACT INFO BOX ================= */
 .contact-box{
   background:#ffffff;
@@ -466,12 +460,7 @@ form select{
   color:#fff;
 }
 
-/* Responsive */
-@media(max-width:900px){
-  .social-links{
-    grid-template-columns:1fr;
-  }
-}
+
 /* ================= BANNER COMMON ================= */
 .banner{
   height:320px;
@@ -582,21 +571,7 @@ form select{
   color:#6b7280;
 }
 
-/* MOBILE FIX */
-@media(max-width:600px){
-  .blue-collar-section{
-    margin:40px auto;
-    gap:18px;
-  }
 
-  .blue-card{
-    padding:22px;
-  }
-
-  .blue-card h3{
-    font-size:18px;
-  }
-}
 
 
 /* ===== TEXT CARD FIX (SAFE) ===== */
@@ -653,37 +628,8 @@ a{text-decoration:none;color:inherit}
   /* Dropdown */
 /* Navbar item */
 
-/* ================= RESPONSIVE MEDIA QUERY (SAFE – NO CHANGE) ================= */
 
-/* Large Desktop (default tumhara CSS handle kar raha hai) */
 
-/* Laptop / Tablet */
-@media (max-width: 1024px) {
-
-  .box-grid,
-  .grid,
-  .overlap-boxes{
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-}
-
-/* Mobile */
-@media (max-width: 600px) {
-
-  .box-grid,
-  .grid,
-  .overlap-boxes{
-    grid-template-columns: 1fr;
-  }
-
-  .box,
-  .cat-box,
-  .card{
-    width: 100%;
-  }
-
-}
 .dropdown{
   position:relative;     /* ⭐ navbar ke flow me rahe */
 }
