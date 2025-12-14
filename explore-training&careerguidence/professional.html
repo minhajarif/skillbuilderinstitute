@@ -5,31 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Professional Courses — Skills Builder Institute</title>
 
-<!-- assuming this page is in explore-training&careerguidence/ -->
 <link rel="stylesheet" href="../skill.css">
 
-<style>
-  :root{
-    --accent:#FF6A00;
-    --bg:#f5f7fa;
-    --card:#ffffff;
-    --text:#0f1724;
-    --muted:#6b7280;
-    --container:1100px;
-    --radius:12px;
-  }
-
-  body{margin:0;font-family:Inter,system-ui,Arial;background:var(--bg);color:var(--text);}
-  a{text-decoration:none;color:inherit}
-  .container{max-width:var(--container);margin:0 auto;padding:18px}
-
-  /* Header */
-  header{background:#071028;color:#fff;padding:12px 18px;position:sticky;top:0;z-index:1000}
-  .navbar{display:flex;align-items:center;justify-content:space-between}
-  nav ul{display:flex;gap:18px;list-style:none;margin:0;padding:0}
-  nav a{color:#fff;padding:8px 10px;border-radius:6px;font-size:14px}
-  nav a:hover{background:rgba(255,255,255,.08)}
-  .dropdown{background:#0b1624;padding:6px;border-radius:8px;position:absolute;top:44px;display:none;min-width:200px}
 
   /* Banner */
   .banner{
@@ -82,38 +59,35 @@
 
 <!-- HEADER -->
 <header>
-  <div class="container navbar">
+  <!-- ================= NAVBAR ================= -->
+  <div class="navbar">
+    <div class="logo">
+      <img src="../images/logo.png">
+    </div>
 
-    <!-- Map icon (clickable) -->
-    <a href="https://www.google.com/maps/search/?api=1&query=Sona+Complex+Tulshi+Nagar+Near+Dayanand+Ayurvedic+Medical+College+Siwan+Bihar+841226" target="_blank">
-      <svg width="40" height="40" viewBox="0 0 24 24" role="img" aria-label="Map pin">
-        <path d="M12 2C8.7 2 6 4.7 6 8c0 4.7 6 12 6 12s6-7.3 6-12c0-3.3-2.7-6-6-6z" fill="#FF6A00"/>
-        <circle cx="12" cy="8" r="2.2" fill="#fff"/>
-      </svg>
-    </a>
+    <nav class="nav-links">
+      <a href="../index.html">Home</a>
 
-    <nav>
-      <ul>
-        <li><a href="../index.html">Home</a></li>
+      <div class="dropdown">
+        <a href="../explore-training.html">Explore Training</a>
+        <div class="dropdown-menu">
+          <a href="../explore-training&careerguidence/skilltraining-bluecollar.html">Skill Training</a>
+          <a href="../explore-training&careerguidence/professional.html">Professional</a>
+          <a href="../explore-training&careerguidence/programmer.html">Programming</a>
+          <a href="../explore-training&careerguidence/engineer.html">Engineering</a>
+          <a href="../explore-training&careerguidence/softskill.html">Soft Skills</a>
+        </div>
+      </div>
 
-        <li id="exploreLi" style="position:relative">
-          <a href="../explore-training.html">Explore Training ▾</a>
-          <div class="dropdown" id="exploreDropdown">
-            <a href="../explore-training.html">All Training</a>
-            <a href="skilltraining-bluecollar.html">Skill Training</a>
-            <a href="professional.html">Professional Courses</a>
-            <a href="engineer.html">Engineering Courses</a>
-            <a href="programmer.html">Programming</a>
-            <a href="softskill.html">Soft Skills</a>
-          </div>
-        </li>
-
-        <li><a href="../career&guidence.html">Career Guidance</a></li>
-        <li><a href="../aboutus.html">About Us</a></li>
-        <li><a href="../contactus.html">Contact Us</a></li>
-      </ul>
+      <a href="../career&guidence.html">Career Guidance</a>
+      <a href="../aboutus.html">About Us</a>
+      <a href="../contactus.html">Contact Us</a>
     </nav>
 
+    <div class="nav-right">
+      <div class="nav-contact">📞 +91 74888 94910</div>
+      <div class="nav-contact">✉ info@skillsbuilderinstitute.com</div>
+    </div>
   </div>
 </header>
 
@@ -220,11 +194,11 @@
 
     <div class="footer-mid">
       <h4>Quick Actions</h4>
-      <a href="index.html">Home</a>
-      <a href="explore-training.html">Explore Training</a>
-      <a href="career&guidence.html">Career&Guidance</a>
-      <a href="aboutus.html">About Us</a>
-      <a href="contactus.html">Contact Us</a>
+      <a href="../index.html">Home</a>
+      <a href="../explore-training.html">Explore Training</a>
+      <a href="../career&guidence.html">Career&Guidance</a>
+      <a href="../aboutus.html">About Us</a>
+      <a href="../contactus.html">Contact Us</a>
     </div>
 
     <div class="footer-right">
@@ -250,17 +224,6 @@
 </a>
 
 <!-- JS -->
-<script src="builder.js"></script>
-</body>
-</html>
-<!-- Small scripts -->
-<script>
-  // Dropdown menu interactions
-  const exploreLi = document.getElementById('exploreLi');
-  const exploreDropdown = document.getElementById('exploreDropdown');
-  exploreLi.addEventListener('mouseenter', ()=> exploreDropdown.style.display='block');
-  exploreLi.addEventListener('mouseleave', ()=> exploreDropdown.style.display='none');
-</script>
-
+<script src="../builder.js"></script>
 </body>
 </html>
