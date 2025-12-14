@@ -56,7 +56,7 @@ document.addEventListener("DOMContentLoaded", () => {
     skill: ["Electrician","Plumber","Welder","Carpenter","Pipefitter","Steel Fixer","Store Keeper","Helper","AC Technician","Cleaner","Mason","Painter"],
     professional: ["HR","Accounts","Sales","BPO","Data Entry","Manager","Business Analytics","Product Analyst","Supervisor","Excel","Tally Calling"],
     engineering: ["Civil","Mechanical","Electronic","Electrical","Mobile","Project Engineer","Data Analytics","Product Engineer"],
-    programming: ["Frontend","Backend",Full Stack","Web Development","Node.js Developer","React.js Developer","Artificial Intelligence","Machine Learning","Python Developer","Java Developer","Cyber Security"],
+    programming: ["Frontend","Backend","Full Stack","Web Development","Node.js Developer","React.js Developer","Artificial Intelligence","Machine Learning","Python Developer","Java Developer","Cyber Security"],
     softskill: ["Communication","Interview Skills","Public Speaking","Presentation Skill","Group Discussion (GD)","Gesture"]
   };
 
