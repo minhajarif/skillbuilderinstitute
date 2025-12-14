@@ -712,18 +712,3 @@ a{text-decoration:none;color:inherit}
     transition:.3s;
   }
   .cat-box:hover{transform:translateY(-3px);box-shadow:0 12px 35px rgba(2,6,23,.12)}
-
-  @media(max-width:768px){
-    .overlap-boxes{grid-template-columns:repeat(2,1fr);}
-    .slider-wrapper{height:240px}
-  }
-
-  /* Content section */
-  .section{
-    background:white;padding:18px;border-radius:12px;box-shadow:0 10px 30px rgba(2,6,23,.06);margin-top:-20px
-  }
-
-  /* FOOTER same as other pages */
-  footer{background:#061222;color:#fff;padding:30px 18px;margin-top:30px}
-  .footer-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:20px;max-width:var(--container);margin:0 auto}
-  .social-row{display:flex;gap:12px;flex-wrap:wrap}
